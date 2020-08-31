@@ -21,6 +21,9 @@ todoListController.post('/', (req, res) => {
         res.status(500).send(err);
     });
 });
+todoListController.delete('/:id', (req, res) => {
+    todolist_model_1.TodoList.findByPk(req.params.id).then(found => found.destroy().then(item => res.status(200).send())).catch(err => res.status(500).send(err));
+});
 todoListController.get('/', (req, res) => {
     todolist_model_1.TodoList.findAll({ include: [todolist_model_1.TodoList.associations.todoItems] }).then(list => res.status(200).send(list));
 });

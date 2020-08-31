@@ -41,6 +41,7 @@ export class Server {
             .use('/todolist', TodoListController)
             .use('/user',  UserController)
             .use('/secured', SecuredController)
+            .use(express.static('./src/public'))
             .get('/', (req, res) => res.send("<h1>Welcome to the ESE-2020 Course</h1><span style=\"font-size:100px;\">&#127881;</span>"));
     }
 

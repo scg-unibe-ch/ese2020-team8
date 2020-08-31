@@ -37,6 +37,7 @@ class Server {
             .use('/todolist', todolist_controller_1.TodoListController)
             .use('/user', user_controller_1.UserController)
             .use('/secured', secured_controller_1.SecuredController)
+            .use(express_1.default.static('./src/public'))
             .get('/', (req, res) => res.send("<h1>Welcome to the ESE-2020 Course</h1><span style=\"font-size:100px;\">&#127881;</span>"));
     }
     configureSequelize() {

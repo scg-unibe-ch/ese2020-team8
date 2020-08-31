@@ -21,5 +21,10 @@ todoitemController.post('/', (req, res) => {
         res.status(500).send(err);
     });
 });
+todoitemController.delete('/:id', (req, res) => {
+    todoitem_model_1.TodoItem.findByPk(req.params.id)
+        .then(found => found.destroy().then(item => res.status(200).send()))
+        .catch(err => res.status(500).send(err));
+});
 exports.TodoItemController = todoitemController;
 //# sourceMappingURL=todoitem.controller.js.map
