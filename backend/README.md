@@ -7,9 +7,9 @@
 - open your browser with the url `http://localhost:3000/`
 
 ## Endpoints
+<details>
+	<summary>#### POST</summary>
 
-### `/todoitem`
-#### POST
 <details>
 	<summary>Request</summary>
 
@@ -39,6 +39,9 @@
 }
 ```
 </details>
+</details>
+### `/todoitem`
+
 
 #### DELETE `/:id`
 Status: 200
