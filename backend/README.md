@@ -1,24 +1,18 @@
 # ESE2020 Scaffolding Backend
 
-## TODO
-
-- Link to postman collection	
+## TODO	
 - links to readinglist?
 - readinglist
-	- tslint
-	- typescript tutorial
-	- express docs
-	- sequelize docs
-	- jwt
-	- best practices (e.g. structure of a project, commits, envoirenment variables, )
+	- [tsconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+	- [alternative example repo](https://github.com/maximegris/typescript-express-sequelize)
 
-This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used, which are:
+This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used:
 
-- typescript (javascript)
-- express
-- sequelize
-- jwt
-- bcrypt
+- [typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)
+- [express](https://expressjs.com/de/)
+- [sequelize](https://sequelize.org/master/index.html)
+- [jwt](https://jwt.io/)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 We tried to show you different approaches how your backend may be structured, however you are free to follow your own principles.
 Notice the differences between the [UserController](./src/controllers/user.controller.ts) and e.g. [TodoItemController](./src/controllers/todoitem.controller.ts). 
@@ -28,31 +22,33 @@ Notice the differences between the [UserController](./src/controllers/user.contr
 	- logic e.g. creating/authentication is done via [UserService](./src/services/user.service.ts)
 2. The controller itself is structured as a class.
 
-Note that the `UserController`-approach is more suited for bigger architectures and for typescript applications. You may choose any aproach you wish, but make sure the code is well structured.
-
-## Jump straight to
-
-- middleware
-- login
-- registration
-- crud
-- how the code will be compiled
-- routers
-- root of the website
-- 
+Note that the `UserController`-approach is more suited for bigger architectures and for typescript applications. You may choose any aproach you wish, but make sure your code is well structured.
 
 ## Start
 - clone this repository
-- navigate to the backend folder ` cd ese2020-project-scaffolding/backend`
+- navigate to the backend folder `cd ese2020-project-scaffolding/backend`
 - run `npm install`
 - run `npm start`
 - open your browser with the url [http://localhost:3000](http://localhost:3000/)
 - to run the server with nodemon you can run `npm run dev` in your console (in the backend folder)
 
-## Notes
+## Jump straight to example for
 
+- [middleware](./middlewares/checkAuth.ts)
+- Login: 
+	- [service](./services/user.service.ts)
+	- [controller](./controllers/user.controller.ts)
+- Registration:
+	- [service](./services/user.service.ts)
+	- [controller](./controllers/user.controller.ts)
+- [crud](./controllers/todolist.controller.ts)
+- [typescript config](./tsconfig.json)
+- [routing](./controllers)
+- [API construction](./server.ts)
 
 ## Endpoints
+Some endpoints can be called in a [browser](http://localhost:3000), others have to be called by a REST Client. [Here](./postman_collection) you can find a collection that contains all requests, which you can import with Postman. [Postman](https://www.postman.com/) is a REST Client.
+
 ### `/todoitem`
 #### POST
 
@@ -251,8 +247,3 @@ Status: 200
 <h1>Welcome to the ESE-2020 Course</h1><span style=\"font-size:100px;\">&#127881;</span>
 ```
 </details>
-
-## Feedback and Contribute
-
-Any feedback is appreciated.
-If you find anything important missing from this scaffolding, you may fork this repository and create a pull request. 
