@@ -5,6 +5,7 @@
 - readinglist
 	- [tsconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 	- [alternative example repo](https://github.com/maximegris/typescript-express-sequelize)
+	- [alternative example repo](https://developer.okta.com/blog/2018/11/15/node-express-typescript)
 
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used:
 
@@ -32,19 +33,19 @@ Note that the `UserController`-approach is more suited for bigger architectures 
 - open your browser with the url [http://localhost:3000](http://localhost:3000/)
 - to run the server with nodemon you can run `npm run dev` in your console (in the backend folder)
 
-## Jump straight to example for
+## Jump straight to an example for
 
-- [middleware](./middlewares/checkAuth.ts)
+- [middleware](./src/middlewares/checkAuth.ts)
 - Login: 
-	- [service](./services/user.service.ts)
-	- [controller](./controllers/user.controller.ts)
+	- [service](./src/services/user.service.ts)
+	- [controller](./src/controllers/user.controller.ts)
 - Registration:
-	- [service](./services/user.service.ts)
-	- [controller](./controllers/user.controller.ts)
-- [crud](./controllers/todolist.controller.ts)
-- [typescript config](./tsconfig.json)
-- [routing](./controllers)
-- [API construction](./server.ts)
+	- [service](./src/services/user.service.ts)
+	- [controller](./src/controllers/user.controller.ts)
+- [crud](./src/controllers/todolist.controller.ts)
+- [typescript config](./src/tsconfig.json)
+- [routing](./src/controllers)
+- [API construction](./src/server.ts)
 
 ## Endpoints
 Some endpoints can be called in a [browser](http://localhost:3000), others have to be called by a REST Client. [Here](./postman_collection) you can find a collection that contains all requests, which you can import with Postman. [Postman](https://www.postman.com/) is a REST Client.
@@ -219,10 +220,12 @@ Status: 200
 
 ### `/secured`
 #### GET
-	
-	Request
+<details>
+	<summary>Request</summary>
 
-	Header: Authorization: Bearer  + <token>
+	
+Header: Authorization: Bearer  + <token>
+</details>
 
 <details>
 	<summary>Response</summary>
