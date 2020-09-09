@@ -1,12 +1,13 @@
 # ESE2020 Scaffolding Backend
 
-## TODO	
-- links to readinglist?
-- readinglist
-	- [tsconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
-	- [alternative example repo](https://github.com/maximegris/typescript-express-sequelize)
-	- [alternative example repo](https://developer.okta.com/blog/2018/11/15/node-express-typescript)
+## Start
+- clone this repository
+- navigate to the backend folder `cd ese2020-project-scaffolding/backend`
+- run `npm install`
+- run `npm run dev`
+- open your browser with the url [http://localhost:3000](http://localhost:3000/)
 
+## Notes
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used:
 
 - [typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)
@@ -25,13 +26,11 @@ Notice the differences between the [UserController](./src/controllers/user.contr
 
 Note that the `UserController`-approach is more suited for bigger architectures and for typescript applications. You may choose any aproach you wish, but make sure your code is well structured.
 
-## Start
-- clone this repository
-- navigate to the backend folder `cd ese2020-project-scaffolding/backend`
-- run `npm install`
-- run `npm start`
-- open your browser with the url [http://localhost:3000](http://localhost:3000/)
-- to run the server with nodemon you can run `npm run dev` in your console (in the backend folder)
+Here are more resources you can read: 
+
+- [tsconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+- [alternative example repo](https://github.com/maximegris/typescript-express-sequelize)
+- [alternative example repo](https://developer.okta.com/blog/2018/11/15/node-express-typescript)
 
 ## Jump straight to an example for
 
