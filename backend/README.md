@@ -34,7 +34,9 @@ Here are more resources you can read:
 
 ## Jump straight to an example for
 
-- [middleware](./src/middlewares/checkAuth.ts)
+- Middleware
+	- [the function](./src/middlewares/checkAuth.ts)
+	- [how to use in express](./src/controllers/secured.controller.ts)
 - Login: 
 	- [service](./src/services/user.service.ts)
 	- [controller](./src/controllers/user.controller.ts)
@@ -47,7 +49,7 @@ Here are more resources you can read:
 - [API construction](./src/server.ts)
 
 ## Endpoints
-Some endpoints can be called in a [browser](http://localhost:3000), others have to be called by a REST Client. [Here](./postman_collection) you can find a collection that contains all requests, which you can import with Postman. [Postman](https://www.postman.com/) is a REST Client.
+Some endpoints can be called in a [browser](http://localhost:3000), others have to be called by a REST Client. [Here](./postman_collection) you can find a collection that contains all requests, which you can import into Postman. [Postman](https://www.postman.com/) is a REST Client.
 
 ### `/todoitem`
 #### POST
