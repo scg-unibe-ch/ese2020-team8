@@ -224,7 +224,7 @@ Status: 200
 	<summary>Request</summary>
 
 	
-Header: Authorization: Bearer  + <token>
+Header: Authorization: Bearer  + `token`
 </details>
 
 <details>
