@@ -7,7 +7,7 @@
 - run `npm run dev`
 - open your browser with the url [http://localhost:3000](http://localhost:3000/)
 
-## Notes
+## Remarks
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used:
 
 - [typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)
