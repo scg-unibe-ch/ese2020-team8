@@ -1,21 +1,14 @@
 # ESE2020 Scaffolding Backend
 
 ## Start
-- clone this repository
+- clone the ese2020-project-scaffolding repository
 - navigate to the backend folder `cd ese2020-project-scaffolding/backend`
 - run `npm install`
 - run `npm run dev`
 - open your browser with the url [http://localhost:3000](http://localhost:3000/)
 
 ## Remarks
-This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used:
-
-- [typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)
-- [express](https://expressjs.com/de/)
-- [sequelize](https://sequelize.org/master/index.html)
-- [jwt](https://jwt.io/)
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
-
+This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used. Please refer to the [reading list](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list) for links and tutorials.
 We tried to show you different approaches how your backend may be structured, however you are free to follow your own principles.
 Notice the differences between the [UserController](./src/controllers/user.controller.ts) and e.g. [TodoItemController](./src/controllers/todoitem.controller.ts). 
 
