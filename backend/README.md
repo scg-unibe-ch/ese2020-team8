@@ -9,6 +9,7 @@
 
 ## Remarks
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used. Please refer to the [reading list](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list) for links and tutorials.
+
 We tried to show you different approaches how your backend may be structured, however you are free to follow your own principles.
 Notice the differences between the [UserController](./src/controllers/user.controller.ts) and e.g. [TodoItemController](./src/controllers/todoitem.controller.ts). 
 
