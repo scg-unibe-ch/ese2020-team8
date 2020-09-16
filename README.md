@@ -8,6 +8,6 @@ Note that the folders deliverables, frontend and backend are present on the top 
 You should take the rest of the structure as a guide but you may also use your own folder structure.
 
 ## Overview 
-The image below gives you an overview on the different technologies used. You can find informations about them by consulting the [readinglist](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list).
+The image below gives you an overview on the different technologies used. You can find informations about them by consulting the [readinglist](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list). It show s a request the frontend makes to the backend.
 
 ![image overview](./backend/src/public/images/tech_overview.png)
