@@ -2,6 +2,7 @@
 
 ## Prerequisite
 First of all you have to install [NodeJs](https://nodejs.org/de/download/), which comes per default with the packet manager [npm](https://www.npmjs.com/get-npm).
+To verify the installation worked, type `npm -v` and `node -v` in your favourite cli. If a version number appears and no errormessage appears the installation was successful.
 
 ## General Information
 Note that the folders deliverables, frontend and backend are present on the top level of the repository. Your repository should also contain these three folders. 
