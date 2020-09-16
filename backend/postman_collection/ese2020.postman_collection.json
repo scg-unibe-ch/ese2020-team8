@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/images/covid_risk.png",
+					"raw": "http://localhost:3000/images/tech_overview.png",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -19,7 +19,7 @@
 					"port": "3000",
 					"path": [
 						"images",
-						"covid_risk.png"
+						"tech_overview.png"
 					]
 				}
 			},
