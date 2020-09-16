@@ -1,6 +1,6 @@
 # ese2020-project-scaffolding
 
-## Preequisite
+## Prerequisite
 First of all you have to install [NodeJs](https://nodejs.org/de/download/), which comes per default with the packet manager [npm](https://www.npmjs.com/get-npm).
 
 ## General Information
