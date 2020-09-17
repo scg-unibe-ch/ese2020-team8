@@ -1,5 +1,8 @@
 # ESE2020 Scaffolding Backend
 
+## Prerequisite
+You should have installed [NodeJS and npm](https://nodejs.org/en/download/) in order to start the backend server.
+
 ## Start
 - clone the ese2020-project-scaffolding repository
 - navigate to the backend folder `cd ese2020-project-scaffolding/backend`
