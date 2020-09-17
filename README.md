@@ -1,5 +1,7 @@
 # ese2020-project-scaffolding
 
+To clone the repository you can either download it as a zip folder (recommended) or clone it and delete the .git folder. 
+
 ## Prerequisite
 First of all you have to install [NodeJs](https://nodejs.org/de/download/), which comes per default with the packet manager [npm](https://www.npmjs.com/get-npm).
 To verify the installation worked, type `npm -v` and `node -v` in your favourite cli. If a version number appears and no errormessage appears the installation was successful.
