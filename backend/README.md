@@ -46,202 +46,203 @@ Here are more resources you can read:
 Some endpoints can be called in a [browser](http://localhost:3000), others have to be called by a REST Client. [Here](./postman_collection) you can find a collection that contains all requests, which you can import into Postman. [Postman](https://www.postman.com/) is a REST Client.
 
 ### `/todoitem`
-#### POST
+- POST
 
-<details>
-	<summary>Request</summary>
+	<details>
+		<summary>Request</summary>
 
-```json
+	```json
+		{
+			"name": "string",
+			"done": "boolean",
+			"todoListId":"number"
+		}
+	```
+
+	</details>
+
+
+	<details>
+		<summary>Response</summary>
+
+		Code: 200
+		Body:
+
+	```json
 	{
+		"todoItemId": "number",
 		"name": "string",
 		"done": "boolean",
 		"todoListId":"number"
 	}
-```
-
+	```
 </details>
 
-
-<details>
-	<summary>Response</summary>
-
-	Code: 200
-	Body:
-
-```json
-{
-	"todoItemId": "number",
-	"name": "string",
-	"done": "boolean",
-	"todoListId":"number"
-}
-```
-</details>
-
-#### DELETE `/:id`
-Status: 200
+- DELETE `/:id`<br/>
+	Response: Status: 200
 
 ### `/todolist`
-#### POST
-<details>
-	<summary>Request</summary>
+- POST
+	<details>
+		<summary>Request</summary>
 
-	Code: 200
-	Body:
-```json
-{
-	"name":"string"
-}
+		Code: 200
+		Body:
+	```json
+	{
+		"name":"string"
+	}
 
-```
-</details>
-<details>
-	<summary>Response</summary>
+	```
+	</details>
+	<details>
+		<summary>Response</summary>
 
-	Code: 200
-	Body:
-```json
-{
-	"todoListId": "number",
-	"name":"string"
-}
+		Code: 200
+		Body:
+	```json
+	{
+		"todoListId": "number",
+		"name":"string"
+	}
 
-```
-</details>
+	```
+	</details>
 
-#### DELETE `/:id`
-Status: 200
+- DELETE `/:id`<br>
+	Response: Status: 200
 
-#### GET
-<details>
-	<summary>Response</summary>
+- GET
+	<details>
+		<summary>Response</summary>
 
-	Code: 200
-	Body:
-```json
-{
-	"todoListId": "number",
-	"name":"string",
-	"todoItems":"TodoItem[]"
-}
-```
-</details>
+		Code: 200
+		Body:
+	```json
+	{
+		"todoListId": "number",
+		"name":"string",
+		"todoItems":"TodoItem[]"
+	}
+	```
+	</details>
 
 ### `/user`
-#### POST `/register`
-<details>
-	<summary>Request</summary>
+- POST `/register`
+	<details>
+		<summary>Request</summary>
 
-	Code: 200
-	Body:
-```json
-{
-	"userName":"string",
-	"password":"stiring"
-}
-
-```
-</details>
-<details>
-	<summary>Response</summary>
-
-	Code: 200
-	Body:
-```json
-{
-	"userId": "number",
-	"userName":"string",
-	"password":"string(hashed)"
-}
-
-```
-</details>
-
-#### POST `/login`
-<details>
-	<summary>Request</summary>
-
-	Code: 200
-	Body:
-```json
-{
-	"userName":"string",
-	"password":"string"
-}
-
-```
-</details>
-<details>
-	<summary>Response</summary>
-
-	Code: 200 || 403
-	Body:
-```json
-{
-	"user": {
-		"userId":"string",
-		"userName":"string",
-		"password":"stirng(hashed)"
-	},
-	"token":"string"
-}
-
-```
-</details>
-
-#### GET
-<details>
-	<summary>Response</summary>
-
-	Code: 200
-	Body:
-```json
-[
+		Code: 200
+		Body:
+	```json
 	{
-		"userId":"string",
 		"userName":"string",
-		"password":"stirng(hashed)"
-	},
-	{
-		"userId":"string",
-		"userName":"string",
-		"password":"stirng(hashed)"
-	},
-	...
-]
+		"password":"stiring"
+	}
 
-```
-</details>
+	```
+	</details>
+	<details>
+		<summary>Response</summary>
+
+		Code: 200
+		Body:
+	```json
+	{
+		"userId": "number",
+		"userName":"string",
+		"password":"string(hashed)"
+	}
+
+	```
+	</details>
+
+- POST `/login`
+	<details>
+		<summary>Request</summary>
+
+		Code: 200
+		Body:
+	```json
+	{
+		"userName":"string",
+		"password":"string"
+	}
+
+	```
+	</details>
+	<details>
+		<summary>Response</summary>
+
+		Code: 200 || 403
+		Body:
+	```json
+	{
+		"user": {
+			"userId":"string",
+			"userName":"string",
+			"password":"stirng(hashed)"
+		},
+		"token":"string"
+	}
+
+	```
+	</details>
+
+- GET
+	<details>
+		<summary>Response</summary>
+
+		Code: 200
+		Body:
+	```json
+	[
+		{
+			"userId":"string",
+			"userName":"string",
+			"password":"stirng(hashed)"
+		},
+		{
+			"userId":"string",
+			"userName":"string",
+			"password":"stirng(hashed)"
+		},
+		...
+	]
+
+	```
+	</details>
 
 ### `/secured`
-#### GET
-<details>
-	<summary>Request</summary>
+- GET
+	<details>
+		<summary>Request</summary>
 
-	
-Header: Authorization: Bearer  + `token`
-</details>
 
-<details>
-	<summary>Response</summary>
+	Header: Authorization: Bearer  + `token`
+	</details>
 
-	Code: 200 | 403
-	Body:
-```json
-{
-	"message":"string"
-}
+	<details>
+		<summary>Response</summary>
 
-```
-</details>
+		Code: 200 | 403
+		Body:
+	```json
+	{
+		"message":"string"
+	}
+
+	```
+	</details>
 
 ### `/`
-<details>
-	<summary>Response</summary>
+- GET
+	<details>
+		<summary>Response</summary>
 
-	Code: 200
-	Body:
-```text
-<h1>Welcome to the ESE-2020 Course</h1><span style=\"font-size:100px;\">&#127881;</span>
-```
-</details>
+		Code: 200
+		Body:
+	```text
+	<h1>Welcome to the ESE-2020 Course</h1><span style=\"font-size:100px;\">&#127881;</span>
+	```
+	</details>
