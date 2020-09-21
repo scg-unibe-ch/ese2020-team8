@@ -81,11 +81,70 @@ Some endpoints can be called in a [browser](http://localhost:3000), others have 
 	```
 </details>
 
+- PUT `/:id`
+
+	<details>
+		<summary>Request</summary>
+
+	```json
+		{
+			"name": "string",
+			"done": "boolean",
+			"todoListId":"number"
+		}
+	```
+
+	</details>
+
+
+	<details>
+		<summary>Response</summary>
+
+		Code: 200
+		Body:
+
+	```json
+	{
+		"todoItemId": "number",
+		"name": "string",
+		"done": "boolean",
+		"todoListId":"number"
+	}
+	```
+</details>
+
 - DELETE `/:id`<br/>
 	Response: Status: 200
 
 ### `/todolist`
 - POST
+	<details>
+		<summary>Request</summary>
+
+		Code: 200
+		Body:
+	```json
+	{
+		"name":"string"
+	}
+
+	```
+	</details>
+	<details>
+		<summary>Response</summary>
+
+		Code: 200
+		Body:
+	```json
+	{
+		"todoListId": "number",
+		"name":"string"
+	}
+
+	```
+	</details>
+
+- PUT `/:id`
 	<details>
 		<summary>Request</summary>
 
