@@ -29,7 +29,8 @@ Here are more resources you can read:
 - [alternative example repo](https://github.com/maximegris/typescript-express-sequelize)
 - [alternative example repo](https://developer.okta.com/blog/2018/11/15/node-express-typescript)
 
-## Jump straight to an example for
+## Quick Links
+These are links to some of the files that we have implemented/modified when developing the backend:
 
 - Middleware
 	- [the function](./src/middlewares/checkAuth.ts)
