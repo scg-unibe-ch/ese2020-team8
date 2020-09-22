@@ -49,10 +49,9 @@ export class Server {
         };
 
         return express()
-            .use(cors(options))
+            .use(cors())
             .use(express.json())                    // parses an incoming json to an object
             .use(morgan('tiny'))                    // logs incoming requests
-            .use(this.corsConfig)
             .use('/todoitem', TodoItemController)   // any request on this path is forwarded to the TodoItemController
             .use('/todolist', TodoListController)
             .use('/user', UserController)
@@ -69,13 +68,6 @@ export class Server {
             storage: 'db.sqlite',
             logging: false // can be set to true for debugging
         });
-    }
-
-    private corsConfig(req: Request, res: Response, next: any) { // enables the browser running the frontend to do requests to the backend
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Methods', '*');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        next();
     }
 }
 
