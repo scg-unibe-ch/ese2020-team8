@@ -8,8 +8,12 @@ First of all you have to install [NodeJs](https://nodejs.org/de/download/), whic
 To verify the installation worked, type `npm -v` and `node -v` in your favourite command line interface (cli). If a version number appears and no error message appears the installation was successful.
 
 ## Start
-If you would like to use this scaffolding as a basis for your actual project (which we recommend) please download it as a zip file, drag it in your cloned respository (teams repo, such as https://github.com/scg-unibe-ch/ese2020-team1) and unzip it there.
-You can either download it as a zip folder (recommended) or clone it and delete the .git folder. Then you can follow the README in the frontend folder and backend folder respectively.<br>
+If you would like to use this scaffolding as a basis for your actual project (which we recommend): 
+- please download or clone your teams repository (for example, by running `git clone https://github.com/scg-unibe-ch/ese2020-team1>` at your desired location ), 
+- download as a zip file or clone this repository inside your team's repository,
+- unzip if downloaded as a zip,
+- and ***delete the .git folder*** from this repository (WARNING: keep .git folder from your team's repo). 
+Then you can follow the README in the frontend folder and backend folder respectively.<br>
 
 
 ## General Information
