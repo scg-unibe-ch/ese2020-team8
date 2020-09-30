@@ -1,5 +1,5 @@
-# ese2020-project-scaffolding
-test luki
+# ESE Team-8 Project
+
 ## About
 This project contains an Angular frontend and an NodeJs backend which uses Express as a framework. The website displays todolists which can be customized with items to complete. Every list and item is saved in a database, meaning they will still be available after you restart the website or the backend. 
 
