@@ -17,12 +17,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
 
+//added by Maenae as a basis for the register form
+import { ReactiveFormsModule } from '@angular/forms';
+import { NameEditorComponent } from './name-editor/name-editor.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    NameEditorComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MatCheckboxModule,
     MatCardModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    //added by Maenae for Register-Forms
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -46,6 +56,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
   ],
   bootstrap: [
     AppComponent
+  
   ]
 })
 export class AppModule { }

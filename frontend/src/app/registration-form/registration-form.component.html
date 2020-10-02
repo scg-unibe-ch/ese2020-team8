@@ -1,0 +1,16 @@
+<p>registration-form works!</p>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+  
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+
+    <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+
+  </form>
