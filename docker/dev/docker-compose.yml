@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    image: node:12
+    working_dir: "/app/backend"
+    volumes:
+      - "../../:/app"
+    command: "npm run dev"
+
+  frontend:
+    image: node:12
+    working_dir: "/app/frontend"
+    volumes:
+      - "../../:/app"
+    command: "npm run dev"
