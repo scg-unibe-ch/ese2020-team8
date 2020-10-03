@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { UserService } from '../user.service';
+import {User} from '../user';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +10,8 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  lastName = new FormControl("");
-  firstName = new FormControl("");
-  email = new FormControl("");
+  userName = new FormControl("");
+  password = new FormControl("");
 
   constructor(
     private userService: UserService
@@ -22,12 +22,13 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const user = {
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
-      email: this.email.value,
+      userName: this.userName.value,
+      password: this.password.value,
     }
 
-    this.userService.register(user)
+    this.userService.register(user).subscribe( res => {
+      console.log(res);
+    });
   }
 
 }

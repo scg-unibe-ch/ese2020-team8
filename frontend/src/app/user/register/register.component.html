@@ -1,23 +1,20 @@
 <mat-card>
   <form (ngSubmit)="onSubmit()">
-
     <mat-form-field>
-      <mat-label>First Name</mat-label>
-      <input matInput [formControl]="lastName" placeholder="First Name">
+      <mat-label>Username</mat-label>
+      <input matInput [formControl]="userName" placeholder="Username" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Last Name</mat-label>
-      <input matInput [formControl]="firstName" eplaceholder="Last Name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput [formControl]="email" type="email" placeholder="mail@example.org">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        [formControl]="password"
+        placeholder="Password"
+      />
     </mat-form-field>
 
     <button type="submit" mat-button>Register</button>
-
-
   </form>
 </mat-card>
