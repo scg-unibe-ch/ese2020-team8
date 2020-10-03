@@ -11,6 +11,8 @@ services:
   frontend:
     image: node:12
     working_dir: "/app/frontend"
+    ports:
+      - "4200:4200"
     volumes:
       - "../../:/app"
-    command: "npm run dev"
+    command: "npm run docker:dev"
