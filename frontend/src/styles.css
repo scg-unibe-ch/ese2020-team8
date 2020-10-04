@@ -3,9 +3,14 @@
 html, body { height: 100%; }
 body { margin: 30px; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
 .mat-card {
-  margin: 20px 0;
-  background-color: #EEE;
+  margin: 20px;
+  background-color: #FFF;
 }
 
 button, input {

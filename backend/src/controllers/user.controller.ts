@@ -14,6 +14,7 @@ userController.post('/register',
 
 userController.post('/login',
     (req: Request, res: Response) => {
+        console.log(req.body);
         userService.login(req.body).then(login => res.send(login)).catch(err => res.status(500).send(err));
     }
 );

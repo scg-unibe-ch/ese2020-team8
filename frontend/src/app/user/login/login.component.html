@@ -9,6 +9,8 @@
     <button mat-flat-button color="primary" (click)="login()">Login</button>
   </div>
 
+  <div *ngIf="userNotExists"></div>
+
   <div *ngIf="loggedIn">
     <button mat-flat-button color="warn" (click)="logout()">Logout</button>
     You are currently logged in as {{ userName }}

@@ -14,17 +14,20 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { RegisterComponent } from './user/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+import { TabsComponent } from './tabs/tabs.component';
+
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
-    UserLoginComponent,
-    RegisterComponent
+    TabsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,11 @@ import { RegisterComponent } from './user/register/register.component';
     MatCardModule,
     MatTabsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatIconModule,
+    UserModule,
+    AppRoutingModule
   ],
   providers: [
     {
