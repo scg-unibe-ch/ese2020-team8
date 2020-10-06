@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
-  url = environment.endpointURL + '/user';
+  url = environment.endpointURL + 'user';
 
   constructor(
     private http: HttpClient
