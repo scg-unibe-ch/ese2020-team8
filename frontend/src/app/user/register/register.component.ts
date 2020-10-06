@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
 
   userName = new FormControl('');
   password = new FormControl('');
+  passwordConfirm = new FormControl('');
 
   constructor(
     private userService: UserService

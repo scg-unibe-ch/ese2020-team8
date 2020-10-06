@@ -12,12 +12,16 @@ body {
   margin: 20px;
   background-color: #FFF;
 }
-
-button, input {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-}
+/*  */
+/* button, input { */
+/*   margin-left: 15px !important; */
+/*   margin-right: 15px !important; */
+/* } */
 
 .mat-form-field-wrapper {
   margin-right: 25px !important;
+}
+
+.user-auth-card {
+  margin: 20px auto;
 }

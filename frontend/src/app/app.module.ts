@@ -21,13 +21,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabsComponent } from './tabs/tabs.component';
 
 import { UserModule } from './user/user.module';
+import { NavigationComponent } from './navigation/navigation.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
-    TabsComponent
+    TabsComponent,
+    NavigationComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { UserModule } from './user/user.module';
     MatSidenavModule,
     MatIconModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule
   ],
   providers: [
     {

@@ -1,0 +1,17 @@
+
+.main-content {
+  background-color: #eee;
+}
+
+.main-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

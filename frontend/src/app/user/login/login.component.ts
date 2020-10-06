@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -16,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   secureEndpointResponse = '';
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
       userName: this.userName,
       password: this.password,
     };
-    this.userService.login(user).subscribe();
+    this.userService.login(user).subscribe( () => this.router.navigate(['']));
   }
 
   logout(): void {

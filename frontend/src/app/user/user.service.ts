@@ -18,7 +18,9 @@ export class UserService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.checkUserStatus();
+  }
 
   register(user: User): Observable<any> {
     return this.http.post(this.url + '/register', user);

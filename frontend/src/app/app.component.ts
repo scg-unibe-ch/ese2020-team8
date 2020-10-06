@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   goToLogin(): void {
-    debugger;
     this.router.navigate(['user', 'login']);
     // this.router.navigate(['/user/login']);
   }

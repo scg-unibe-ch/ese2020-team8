@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatMenuModule
   ]
 })
 export class UserModule { }
