@@ -1,0 +1,26 @@
+<mat-card>
+  <h1>Welcome to the amazing App of Team8</h1>
+
+  <div class="icons">
+    <img src="/assets/angular.png" alt="Angular Logo">
+    <img src="/assets/nodejs.png" alt="Nodejs Logo">
+  </div>
+</mat-card>
+<mat-card *ngIf="!userService.loggedIn">
+  Continue To
+  <button mat-button routerLink="/user/login">LOGIN</button>
+
+  Go To
+  <button mat-button routerLink="/user/register">REGISTER</button>
+</mat-card>
+<mat-card *ngIf="userService.loggedIn">
+  Continue with
+  <button mat-button routerLink="/todolist">TODOLIST</button>
+</mat-card>
+
+<mat-card *ngIf="userService.loggedIn">
+  <button *ngIf="!secureEndpointResponse" mat-flat-button color="primary" (click)="accessSecuredEndpoint()">
+    Access Secure Endpoint (only for logged in users)
+  </button>
+  {{ secureEndpointResponse }}
+</mat-card>

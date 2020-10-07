@@ -1,0 +1,37 @@
+<mat-card class="user-auth-card">
+  <form>
+    <div *ngIf="!loggedIn" class="login-input-group">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="User Name"
+          [(ngModel)]="userName"
+          name="userName"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+        />
+      </mat-form-field>
+      <span class="alert" *ngIf="loginErrorMessage">
+        {{ loginErrorMessage }}
+      </span>
+      <button mat-flat-button color="primary" (click)="login()">Login</button>
+      <a routerLink="/user/register"
+        >If you don't have an account already click here to
+      </a>
+    </div>
+
+
+    <div *ngIf="userService.loggedIn">
+      <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+      You are currently logged in as {{ userService.user }}
+    </div>
+  </form>
+</mat-card>
+

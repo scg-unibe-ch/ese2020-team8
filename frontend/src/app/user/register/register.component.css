@@ -1,0 +1,9 @@
+
+.user-auth-card>form {
+  display:flex;
+  flex-direction: column;
+}
+
+form>button {
+  margin-bottom: 20px;
+}
