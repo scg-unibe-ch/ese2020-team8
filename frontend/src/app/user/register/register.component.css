@@ -4,10 +4,6 @@
   flex-direction: column;
 }
 
-mat-form-field {
-  margin: 10px 0;
-}
-
 form>button {
   margin-bottom: 20px;
 }

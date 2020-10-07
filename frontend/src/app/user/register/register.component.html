@@ -3,9 +3,6 @@
     <mat-form-field>
       <mat-label>Username</mat-label>
       <input matInput formControlName="userName" placeholder="Username" />
-      <mat-error *ngIf="registerForm.get('userName').invalid">
-        Username is required and must be longer than 3 characters
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -16,12 +13,6 @@
         formControlName="password"
         placeholder="Password"
       />
-      <mat-error *ngIf="registerForm.get('password').hasError('minlength')">
-        Password must be longer than 7 characters
-      </mat-error>
-      <mat-error *ngIf="registerForm.get('password').hasError('passwordStrength')">
-        Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters.
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -37,6 +28,9 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- <div *ngIf="registerForm.errors?.passwordsDoNotMatch &#38;&#38; (registerForm.touched || registerForm.dirty)" class="alert alert&#45;danger"> -->
+    <!--   The passwords do not match -->
+    <!-- </div> -->
 
     <button type="submit" color="primary" mat-flat-button>Register</button>
 
