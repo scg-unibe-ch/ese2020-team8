@@ -18,21 +18,11 @@ export class LoginComponent implements OnInit {
   secureEndpointResponse = '';
 
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.checkUserStatus();
-  }
-
-  checkUserStatus(): void {
-    // Get user data from local storage
-    this.userToken = localStorage.getItem('userToken');
-    this.userName = localStorage.getItem('userName');
-
-    // Set boolean whether a user is logged in or not
-    this.loggedIn = !!this.userToken;
   }
 
   login(): void {

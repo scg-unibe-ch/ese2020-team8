@@ -1,24 +1,41 @@
 <mat-card class="user-auth-card">
-  <div *ngIf="!loggedIn">
-    <mat-form-field>
-      <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password">
-    </mat-form-field>
-    <button mat-flat-button color="primary" (click)="login()">Login</button>
-    <a routerLink="/user/register">If you don't have an account already click here to </a>
-  </div>
+  <form>
+    <div *ngIf="!loggedIn" class="login-input-group">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="User Name"
+          [(ngModel)]="userName"
+          name="userName"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+        />
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="login()">Login</button>
+      <a routerLink="/user/register"
+        >If you don't have an account already click here to
+      </a>
+    </div>
 
-  <div *ngIf="userNotExists"></div>
+    <div *ngIf="userNotExists"></div>
 
-  <div *ngIf="loggedIn">
-    <button mat-flat-button color="warn" (click)="logout()">Logout</button>
-    You are currently logged in as {{ userName }}
-  </div>
+    <div *ngIf="userService.loggedIn">
+      <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+      You are currently logged in as {{ userService.user }}
+    </div>
+  </form>
 </mat-card>
 
 <mat-card>
-  <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">Access Secure Endpoint (only for logged in users)</button>
+  <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">
+    Access Secure Endpoint (only for logged in users)
+  </button>
   {{ secureEndpointResponse }}
 </mat-card>
