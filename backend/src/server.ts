@@ -1,4 +1,4 @@
-import express, { Application , Request, Response } from 'express'; // Test command to explain git to noob
+import express, { Application , Request, Response } from 'express'; 
 import morgan from 'morgan';
 import { Sequelize } from 'sequelize';
 import { TodoList } from './models/todolist.model';
