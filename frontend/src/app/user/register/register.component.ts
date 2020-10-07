@@ -39,7 +39,6 @@ export class RegisterComponent implements core.OnInit {
       userName: this.registerForm.get('userName').value,
       password: this.registerForm.get('password').value,
     };
-    debugger;
 
     if (this.registerForm.valid) {
       this.userService.register(user).subscribe((res) => {

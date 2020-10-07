@@ -17,3 +17,10 @@
   Continue with
   <button mat-button routerLink="/todolist">TODOLIST</button>
 </mat-card>
+
+<mat-card *ngIf="userService.loggedIn">
+  <button *ngIf="!secureEndpointResponse" mat-flat-button color="primary" (click)="accessSecuredEndpoint()">
+    Access Secure Endpoint (only for logged in users)
+  </button>
+  {{ secureEndpointResponse }}
+</mat-card>

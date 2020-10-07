@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-user-login',
@@ -16,40 +17,28 @@ export class LoginComponent implements OnInit {
   userNotExists = false;
 
   secureEndpointResponse = '';
+  loginErrorMessage: string;
 
-  constructor(
-    public userService: UserService,
-    private router: Router
-  ) {}
+  constructor(public userService: UserService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(): void {
     const user = {
       userName: this.userName,
       password: this.password,
     };
-    this.userService.login(user).subscribe( () => this.router.navigate(['']));
+    this.userService.login(user).subscribe(
+      () => this.router.navigate(['']),
+      (err: HttpErrorResponse) => {
+        if (err.status === 500) {
+          this.loginErrorMessage = 'Username or password is incorrect';
+        }
+      }
+    );
   }
 
   logout(): void {
     this.userService.logout();
-  }
-
-  /**
-   * Function to access a secure endpoint that can only be accessed by logged in users by providing their token.
-   */
-  accessSecuredEndpoint(): void {
-    this.userService.accessSecuredEndpoint().subscribe(
-      (res: any) => {
-        this.secureEndpointResponse =
-          'Successfully accessed secure endpoint. Message from server: ' +
-          res.message;
-      },
-      (error: any) => {
-        this.secureEndpointResponse = 'Unauthorized';
-      }
-    );
   }
 }

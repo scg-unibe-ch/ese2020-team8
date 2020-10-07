@@ -18,13 +18,15 @@
           type="password"
         />
       </mat-form-field>
+      <span class="alert" *ngIf="loginErrorMessage">
+        {{ loginErrorMessage }}
+      </span>
       <button mat-flat-button color="primary" (click)="login()">Login</button>
       <a routerLink="/user/register"
         >If you don't have an account already click here to
       </a>
     </div>
 
-    <div *ngIf="userNotExists"></div>
 
     <div *ngIf="userService.loggedIn">
       <button mat-flat-button color="warn" (click)="logout()">Logout</button>
@@ -33,9 +35,3 @@
   </form>
 </mat-card>
 
-<mat-card>
-  <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">
-    Access Secure Endpoint (only for logged in users)
-  </button>
-  {{ secureEndpointResponse }}
-</mat-card>
