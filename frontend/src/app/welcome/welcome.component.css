@@ -1,0 +1,10 @@
+
+.icons {
+  display:flex;
+  align-items: center;
+}
+
+.icons>img{
+  max-width: 20%;
+  max-height: 2%;
+}

@@ -1,0 +1,9 @@
+
+.user-auth-card>form, .login-input-group {
+  display:flex;
+  flex-direction: column;
+}
+
+.alert {
+  color: red;
+}

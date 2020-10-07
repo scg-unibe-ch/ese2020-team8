@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="/" mat-button>ESE2020 Team8</a>
+  <button *ngIf="userService.loggedIn" mat-icon-button aria-label="go to todolist" routerLink="/todolist">TodoList</button>
+  <span class="spacer"></span>
+  <button *ngIf="!userService.loggedIn" mat-icon-button aria-label="login button" (click)="goToLogin()">Login</button>
+  <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <span [innerHTML]="userService.user"></span>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="userService.logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="main-container">
+  <mat-sidenav #drawer mode="side">Sidenav content</mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <ng-content>
+    </ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

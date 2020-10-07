@@ -36,7 +36,7 @@ export class TodoListComponent {
 
   // TodoItem - CREATE
   onItemCreate(): void {
-    this.httpClient.post(environment.endpointURL + 'todoitem', {
+    this.httpClient.post(environment.endpointURL + '/todoitem', {
       name: this.newTodoItemName,
       done: false,
       todoListId: this.todoList.listId
@@ -51,7 +51,7 @@ export class TodoListComponent {
 
   // TodoItem - UPDATE
   onItemUpdate(todoItem: TodoItem): void{
-    this.httpClient.put(environment.endpointURL + 'todoitem/' + todoItem.itemId, {
+    this.httpClient.put(environment.endpointURL + '/todoitem/' + todoItem.itemId, {
       name: todoItem.name,
       done: todoItem.done,
       todoListId: todoItem.listId
@@ -60,7 +60,7 @@ export class TodoListComponent {
 
   // TodoItem - DELETE
   onItemDelete(todoItem: TodoItem): void{
-    this.httpClient.delete(environment.endpointURL + 'todoitem/' + todoItem.itemId).subscribe(() => {
+    this.httpClient.delete(environment.endpointURL + '/todoitem/' + todoItem.itemId).subscribe(() => {
       this.todoList.todoItems.splice(this.todoList.todoItems.indexOf(todoItem), 1);
     });
   }
