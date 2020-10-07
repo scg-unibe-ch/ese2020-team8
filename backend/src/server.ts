@@ -1,15 +1,12 @@
-import express, { Application , Request, Response } from 'express';
+import express, { Application , Request, Response } from 'express'; 
 import morgan from 'morgan';
-import { TodoItemController } from './controllers/todoitem.controller';
-import { TodoListController } from './controllers/todolist.controller';
-import { UserController } from './controllers/user.controller';
-import { SecuredController } from './controllers/secured.controller';
 import { Sequelize } from 'sequelize';
 import { TodoList } from './models/todolist.model';
 import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
 
 import cors from 'cors';
+import {ApiController} from './api';
 
 export class Server {
     private server: Application;
@@ -53,10 +50,7 @@ export class Server {
             .use(cors())
             .use(express.json())                    // parses an incoming json to an object
             .use(morgan('tiny'))                    // logs incoming requests
-            .use('/todoitem', TodoItemController)   // any request on this path is forwarded to the TodoItemController
-            .use('/todolist', TodoListController)
-            .use('/user', UserController)
-            .use('/secured', SecuredController)
+            .use('/api', ApiController)
             .options('*', cors(options))
             .use(express.static('./src/public'))
             // this is the message you get if you open http://localhost:3000/ when the server is running

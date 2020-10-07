@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case $1 in
+    *)
+        docker-compose -f docker/dev/docker-compose.yml "${@:1}"
+esac

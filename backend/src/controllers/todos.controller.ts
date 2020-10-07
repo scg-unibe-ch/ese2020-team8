@@ -36,5 +36,11 @@ todoitemController.delete('/:id', (req: Request, res: Response) => {
         })
         .catch(err => res.status(500).send(err));
 });
+todoitemController.get('/', (req: Request, res: Response) => {
+    // this automatically fills each todolist with the according todoitems
+    TodoItem.findAll({ include: [TodoItem.associations.todoItems] })
+        .then(list => res.status(200).send(list))
+        .catch(err => res.status(500).send(err));
+});
 
 export const TodoItemController: Router = todoitemController;
