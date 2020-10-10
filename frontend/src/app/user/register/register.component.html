@@ -17,10 +17,10 @@
         placeholder="Password"
       />
       <mat-error *ngIf="registerForm.get('password').hasError('minlength')">
-        Password must be longer than 7 characters
+        Password must contain at least 7 characters
       </mat-error>
       <mat-error *ngIf="registerForm.get('password').hasError('passwordStrength')">
-        Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters.
+        The password must contain capital and small letters, numbers, and special characters
       </mat-error>
     </mat-form-field>
 
