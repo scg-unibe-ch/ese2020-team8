@@ -15,6 +15,11 @@ If you would like to use this scaffolding as a basis for your actual project (wh
 - and ***delete the .git folder*** from this repository (WARNING: keep .git folder from your team's repo). 
 Then you can follow the README in the frontend folder and backend folder respectively.<br>
 
+## Create admin user
+
+refer to README.md in backend
+[./backend/README.md](./backend/README.md)
+
 
 ## General Information
 Note that the folders deliverables, frontend and backend are present on the top level of the repository. Your repository should also contain these three folders. 

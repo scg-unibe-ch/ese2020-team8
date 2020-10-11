@@ -7,7 +7,7 @@ export interface UserAttributes {
     email: string;
     firstName: string;
     lastName: string;
-    isAdmin: boolean;
+    isAdmin?: boolean;
     gender?: string;
     phone?: string;
     street?: string;
@@ -25,7 +25,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     email: string;
     firstName: string;
     lastName: string;
-    isAdmin: boolean;
+    isAdmin?: boolean;
     gender?: string;
     phone?: string;
     street?: string;
