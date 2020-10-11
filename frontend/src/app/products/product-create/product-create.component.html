@@ -1,8 +1,8 @@
-<mat-card class="user-auth-card">
+<mat-card>
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
 
     <mat-form-field>
-      <mat-label>First name</mat-label>
+      <mat-label>Product name</mat-label>
       <input matInput formControlName="productName" placeholder="Product Name" />
       <mat-error *ngIf="productForm.get('productName').invalid">
         Product name is required and must be longer than 3 characters
@@ -10,35 +10,14 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>First name</mat-label>
-      <input matInput formControlName="productName" placeholder="Product Name" />
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="productName" />
       <mat-error *ngIf="productForm.get('productName').invalid">
         Product name is required and must be longer than 3 characters
       </mat-error>
     </mat-form-field>
 
-
-    <!-- <mat&#45;form&#45;field appearance="fill"> -->
-    <!--   <mat&#45;label>Gender</mat&#45;label> -->
-    <!--   <mat&#45;select formControlName="gender"> -->
-    <!--     <mat&#45;option *ngFor="let gender of genders" [value]="gender.value"> -->
-    <!--       {{ gender }} -->
-    <!--     </mat&#45;option> -->
-    <!--   </mat&#45;select> -->
-    <!-- </mat&#45;form&#45;field> -->
-
-    <!-- <dl> -->
-    <!--   <dt>Gender:</dt> -->
-    <!--   <dd>{{productForm.get('gender').value}}</dd> -->
-    <!--   <dt>Street:</dt> -->
-    <!--   <dd>{{productForm.get('street').value}}</dd> -->
-    <!--   <dt>City:</dt> -->
-    <!--   <dd>{{productForm.get('city').value}}</dd> -->
-    <!--   <dt>Country:</dt> -->
-    <!--   <dd>{{productForm.get('country').value}}</dd> -->
-    <!-- </dl> -->
-
-    <button type="submit" color="primary" mat-flat-button>Register</button>
+    <button type="submit" color="primary" mat-flat-button>Create</button>
 
   </form>
 </mat-card>

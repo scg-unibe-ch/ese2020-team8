@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
+import {ProductsService} from '../products.service';
 
 @Component({
   selector: 'app-product-create',
@@ -12,13 +13,23 @@ export class ProductCreateComponent implements OnInit {
     productName: '',
     price: '',
     category: ''
-  })
+  });
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private productService: ProductsService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    this.productService.create(
+      {
+        name: this.productForm.value.productName,
+        price: this.productForm.value.price,
+      }
+    );
   }
 
 }

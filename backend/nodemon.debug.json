@@ -1,7 +1,7 @@
 {
     "watch":["src", "./"],
     "ext":"ts, json",
-    "exec": "npm start",
+    "exec": "npm run start:debug",
     "env":{
         "PORT":3000,
         "JWT_SECRET":"not_secure"
