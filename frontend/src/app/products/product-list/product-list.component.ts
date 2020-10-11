@@ -26,9 +26,9 @@ export class ProductListComponent implements OnInit {
   ) {
     this.products = this.productService.getProductsWithoutApproval();
     if (this.userService.loggedIn) {
-      this.displayedColumns  = ['name', 'price', 'action'];
+      this.displayedColumns  = ['title', 'description', 'action'];
     } else {
-      this.displayedColumns  = ['name', 'price'];
+      this.displayedColumns  = ['title', 'description'];
     }
   }
 

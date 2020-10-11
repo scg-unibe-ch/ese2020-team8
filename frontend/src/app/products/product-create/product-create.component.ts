@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {ProductsService} from '../products.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-create',
@@ -10,14 +11,14 @@ import {ProductsService} from '../products.service';
 export class ProductCreateComponent implements OnInit {
 
   productForm = this.fb.group({
-    productName: '',
-    price: '',
-    category: ''
+    title: '',
+    description: ''
   });
 
   constructor(
     private fb: FormBuilder,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,11 +26,9 @@ export class ProductCreateComponent implements OnInit {
 
   onSubmit() {
     this.productService.create(
-      {
-        name: this.productForm.value.productName,
-        price: this.productForm.value.price,
-      }
+        this.productForm.value
     );
+    this.router.navigate(['products']);
   }
 
 }

@@ -8,20 +8,20 @@ export class ProductsService {
   products = [
     {
       id: 0,
-      name: 'Prod1',
-      price: 60
+      title: 'Prod1',
+      description: 'this is product number 1'
     },
     {
       id: 1,
-      name: 'Prod2',
-      price: 120
+      title: 'Prod2',
+      description: 'this is product number 3'
     },
     {
       id: 2,
-      name: 'Prod3',
-      price: 100
+      title: 'Prod3',
+      description: 'this is product number 3'
     }
-  ]
+  ];
 
   constructor(
   ) { }
