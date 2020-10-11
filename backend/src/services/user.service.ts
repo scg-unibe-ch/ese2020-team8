@@ -33,3 +33,4 @@ export class UserService {
         return User.findAll();
     }
 }
+

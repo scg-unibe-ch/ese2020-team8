@@ -16,6 +16,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements core.OnInit {
+  genders = [
+    'male',
+    'female',
+    'other'
+  ];
+
   registerForm = new FormGroup({
     userName: new FormControl('', [
       Validators.required,
@@ -26,6 +32,24 @@ export class RegisterComponent implements core.OnInit {
       Validators.minLength(7),
       passwordStrengthValidator,
     ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    gender: new FormControl(''),
+    phone: new FormControl(''),
+    street: new FormControl(''),
+    zip: new FormControl(''),
+    city: new FormControl(''),
+    country: new FormControl(''),
     passwordConfirm: new FormControl('', passwordRepeatValidator('password')),
   });
 
@@ -34,10 +58,8 @@ export class RegisterComponent implements core.OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    const user = {
-      userName: this.registerForm.get('userName').value,
-      password: this.registerForm.get('password').value,
-    };
+
+    const user = this.registerForm.value;
 
     if (this.registerForm.valid) {
       this.userService.register(user).subscribe((res) => {
