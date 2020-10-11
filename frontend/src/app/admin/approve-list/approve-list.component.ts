@@ -7,8 +7,8 @@ import { ProductsService } from '../../products/products.service';
   styleUrls: ['./approve-list.component.css']
 })
 export class ApproveListComponent implements OnInit {
-  products: {name: string; price: number;}[];
-  displayedColumns: string[] = ['name', 'price', 'other'];
+  products: any;
+  displayedColumns: string[] = ['title', 'description', 'action'];
 
   constructor(
     private productService: ProductsService
