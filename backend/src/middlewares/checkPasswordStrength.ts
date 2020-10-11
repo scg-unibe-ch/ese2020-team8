@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export function checkPassword(req: Request, res: Response, next: NextFunction) {
+export function checkPasswordStrength(req: Request, res: Response, next: NextFunction) {
   const password = req.body.password;
 
   const upperCaseCharacters = /[A-Z]+/g;
