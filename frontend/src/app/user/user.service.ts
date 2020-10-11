@@ -15,6 +15,7 @@ export class UserService {
   token: string;
   user: string;
   loggedIn: boolean;
+  isAdmin: boolean;
 
   constructor(
     private http: HttpClient
@@ -58,7 +59,13 @@ export class UserService {
   checkUserStatus(): void {
     // Get user data from local storage
     this.token = localStorage.getItem('userToken');
-    this.user = localStorage.getItem('userName');
+
+    if (this.token) {
+      const user = JSON.parse(atob(this.token.split('.')[1]));
+
+      this.user = user.userName;
+      this.isAdmin = user.isAdmin;
+    }
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.token);

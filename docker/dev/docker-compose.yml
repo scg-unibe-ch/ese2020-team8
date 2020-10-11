@@ -4,15 +4,19 @@ services:
   backend:
     image: node:12
     working_dir: "/app/backend"
+    user: node
     ports:
       - "3000:3000"
+      - "9229:9229"
     volumes:
       - "../../:/app"
-    command: "npm run dev"
+    # command: "npm run dev"
+    command: "npm run dev:debug"
 
   frontend:
     image: node:12
     working_dir: "/app/frontend"
+    user: node
     ports:
       - "4200:4200"
     volumes:

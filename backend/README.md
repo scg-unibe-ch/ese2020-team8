@@ -10,6 +10,11 @@ You should have installed [NodeJS and npm](https://nodejs.org/en/download/) (the
 - run `npm run dev`
 - open your browser with the url [http://localhost:3000](http://localhost:3000/)
 
+## Create Admin User
+
+- make sure that `scripts` typescript files are compiled `npm run build:scripts`
+- execute script `node ./scripts/build/scripts/createAdminUser.js`
+
 ## About
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used. Please refer to the [reading list](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list) for links and tutorials.
 

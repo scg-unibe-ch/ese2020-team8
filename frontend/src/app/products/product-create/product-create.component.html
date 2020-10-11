@@ -1,0 +1,23 @@
+<mat-card>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <mat-label>Product name</mat-label>
+      <input matInput formControlName="productName" placeholder="Product Name" />
+      <mat-error *ngIf="productForm.get('productName').invalid">
+        Product name is required and must be longer than 3 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="productName" />
+      <mat-error *ngIf="productForm.get('productName').invalid">
+        Product name is required and must be longer than 3 characters
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" color="primary" mat-flat-button>Create</button>
+
+  </form>
+</mat-card>

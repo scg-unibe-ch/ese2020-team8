@@ -6,8 +6,11 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
+    "build:scripts": "tsc -p tsconfig.scripts.json",
     "prestart": "npm run build",
     "dev": "nodemon",
+    "dev:debug": "nodemon --config nodemon.debug.json",
+    "start:debug": "npm run build && node --inspect=0.0.0.0 build/server.js",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

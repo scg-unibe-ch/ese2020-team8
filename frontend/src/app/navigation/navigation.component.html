@@ -3,7 +3,11 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a href="/" mat-button>ESE2020 Team8</a>
-  <button *ngIf="userService.loggedIn" mat-icon-button aria-label="go to todolist" routerLink="/todolist">TodoList</button>
+  <button mat-button aria-label="go to product list" routerLink="/products">Products</button>
+  <button *ngIf="userService.isAdmin" mat-icon-button aria-label="go to approve list" routerLink="/admin/approve">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin</span>
+  </button>
   <span class="spacer"></span>
   <button *ngIf="!userService.loggedIn" mat-icon-button aria-label="login button" (click)="goToLogin()">Login</button>
   <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
