@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../products/products.service';
+import { ProductsService, IProduct } from '../../products/products.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-approve-list',
@@ -11,16 +12,24 @@ export class ApproveListComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'action'];
 
   constructor(
-    private productService: ProductsService
+    private productService: ProductsService,
+    private snackBar: MatSnackBar
   ) {
-    this.products = this.productService.getProductsWithoutApproval();
+    this.refreshProducts();
+  }
+
+  refreshProducts(): void {
+    this.productService.getAllPending().subscribe(products => this.products = products);
   }
 
   ngOnInit(): void {
   }
 
-  approve(element) {
-    console.log(element);
+  approve(element: IProduct) {
+    this.productService.approve(element.productId).subscribe(product => {
+      this.snackBar.open(`Successfully approved ${product.title}`);
+      this.refreshProducts();
+    })
   }
 
 }

@@ -1,33 +1,37 @@
 import { ProductAttributes, Product, ProductCreationAttributes } from '../models/product.model';
 
 export class ProductService {
-  public get(productId: string): Promise<ProductAttributes> {
+  public async get(productId: string) {
     return Product.findOne({
       where: {
         productId: productId,
       },
-    })
-      .then((product) => Promise.resolve(product))
-      .catch((err) => Promise.reject(err));
+    });
   }
 
-  public create(product: ProductCreationAttributes): Promise<ProductAttributes> {
-    return Product.create(product)
-      .then((inserted) => Promise.resolve(inserted))
-      .catch((err) => Promise.reject(err));
+  public async create(product: ProductCreationAttributes) {
+    delete product.status;
+    return Product.create(product);
   }
 
-  public getAll(): Promise<Product[]> {
+  public async approve(productId: string): Promise<Product> {
+    const product = await Product.findByPk(productId);
+    product.status = 'approved';
+    return product.save();
+  }
+
+  public async getAll() {
     return Product.findAll({
       where: {
-        approved: true,
+        status: 'approved',
       },
     });
   }
-  public getToBeApproved(): Promise<Product[]> {
+
+  public async getToBeApproved() {
     return Product.findAll({
       where: {
-        approved: false,
+        status: 'pending',
       },
     });
   }

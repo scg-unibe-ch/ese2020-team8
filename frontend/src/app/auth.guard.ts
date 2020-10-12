@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+import { CanActivate, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import {UserService} from './user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
-
+export class AuthGuard implements CanActivate {
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
-  canActivate(): boolean {
-    if (!this.userService) {
+
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (!this.userService.loggedIn) {
       this.router.navigate(['welcome']);
       return false;
     }
     return true;
   }
+
 }

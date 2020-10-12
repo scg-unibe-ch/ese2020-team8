@@ -1,11 +1,10 @@
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
-import { TodoList } from './todolist.model';
 
 export interface ProductAttributes {
     productId: number;
-    name: string;
-    price: number;
-    approved: boolean;
+    title: string;
+    description: string;
+    status: string;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -14,9 +13,9 @@ export interface ProductCreationAttributes extends Optional<Product, 'productId'
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
     productId!: number;
-    name!: string;
-    price!: number;
-    approved!: boolean;
+    title!: string;
+    description!: string;
+    status!: string;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -26,17 +25,20 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 autoIncrement: true,
                 primaryKey: true
             },
-            name: {
+            title: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            price: {
-                type: DataTypes.INTEGER,
+            description: {
+                type: DataTypes.STRING,
                 allowNull: false
             },
-            approved: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false
+            status: {
+                type: DataTypes.STRING,
+                defaultValue: 'pending',
+                validate: {
+                    isIn: [['pending', 'approved', 'inactive']],
+                }
             },
         },
         { sequelize, tableName: 'products' }

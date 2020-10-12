@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 // import { TabsComponent } from './tabs/tabs.component';
+import { HttpErrorInterceptor } from './helper/http-error.interceptor';
 
 import { UserModule } from './user/user.module';
 import { ProductsModule } from './products/products.module';
@@ -27,6 +28,7 @@ import { AdminModule } from './admin/admin.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -56,12 +58,18 @@ import { WelcomeComponent } from './welcome/welcome.component';
     ReactiveFormsModule,
     MatSidenavModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     }
   ],

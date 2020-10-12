@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
     public router: Router,
     private productService: ProductsService
   ) {
-    this.products = this.productService.getProductsWithoutApproval();
+    this.productService.getAll().subscribe( products => this.products = products);
     if (this.userService.loggedIn) {
       this.displayedColumns  = ['title', 'description', 'action'];
     } else {
