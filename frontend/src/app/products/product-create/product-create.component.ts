@@ -24,11 +24,12 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.productService.create(
         this.productForm.value
-    );
-    this.router.navigate(['products']);
+    ).subscribe( product => {
+      this.router.navigate(['products']);
+    })
   }
 
 }
