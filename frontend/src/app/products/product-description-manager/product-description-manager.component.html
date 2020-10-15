@@ -1,0 +1,61 @@
+<mat-card>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="title" placeholder="Product title" />
+        <mat-error *ngIf="productForm.get('price').invalid">
+          Product price is required and must be not negative
+        </mat-error>
+      </mat-form-field>
+  
+      
+  
+      <mat-form-field appearance="fill"> // dropdown menu to choose whether the ad is for a good or a service
+        <mat-label>Good or service?</mat-label>
+        <mat-select>
+          <mat-option value="good">Option</mat-option>
+          <mat-option value="service">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Please choose</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill"> // dropdown menu for goods - should hide if product is a service
+        <mat-label>Type</mat-label>
+        <mat-select>
+          <mat-option value="buy">Option</mat-option>
+          <mat-option value="rent">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Please choose</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill"> // dropdown menu to choose whether the product to rent/service is currently available
+        <mat-label>Currently available?</mat-label> // should hide if it's for a good to buy. Instead the number of available 
+        <mat-select> // instances of this product shall be displayed.
+          <mat-option value="available">Option</mat-option>
+          <mat-option value="inavailable">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Please choose</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" placeholder="Product location" />
+        <mat-error *ngIf="productForm.get('location').invalid">
+          Product location is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill"> // dropdown menu to choose whether delivery is possible.
+        <mat-label>Delivery?</mat-label> // should hide if it's for a service.
+        <mat-select>
+          <mat-option value="yes">Option</mat-option>
+          <mat-option value="no">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Please choose</mat-hint>
+      </mat-form-field>
+  
+      <button type="submit" color="primary" mat-flat-button>Submit</button>
+  
+    </form>
+  </mat-card>
