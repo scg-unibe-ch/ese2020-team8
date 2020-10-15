@@ -31,7 +31,7 @@ export class ProductsService {
   }
 }
 
-export interface IProduct { //types missing
+export interface IProduct { //types of product missing
   productId: number;
   title: string;
   description: string;
