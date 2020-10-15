@@ -25,9 +25,9 @@
         </mat-error>
       </mat-form-field>
   
-      <mat-form-field appearance="fill"> // dropdown menu to choose whether the ad is for a good or a service
+      <mat-form-field appearance="fill"> 
         <mat-label>Good or service?</mat-label>
-        <input matInput formControlName="productType" placeholder="Good or Service?" /> // copied from above
+        <input matInput formControlName="productType" placeholder="Good or Service?" /> 
         <mat-select>
           <mat-option value="good">Good</mat-option>
           <mat-option value="service">Service</mat-option>
@@ -35,9 +35,10 @@
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
   
-      <mat-form-field appearance="fill"> // dropdown menu for goods - should hide if product is a service
+      <!-- Dropdown menu for goods - should hide if product is a service -->
+      <mat-form-field appearance="fill"> 
         <mat-label>Type</mat-label>
-        <input matInput formControlName="purchaseType" placeholder="Buy or rent?" /> // copied from above
+        <input matInput formControlName="purchaseType" placeholder="Buy or rent?" />
         <mat-select>
           <mat-option value="buy">Buy</mat-option>
           <mat-option value="rent">Rent</mat-option>
@@ -45,10 +46,13 @@
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
   
-      <mat-form-field appearance="fill"> // dropdown menu to choose whether the product to rent/service is currently available
-        <mat-label>Currently available?</mat-label> // should hide if it's for a good to buy. Instead the number of available 
-        <input matInput formControlName="availability" placeholder="Availability" /> // copied from above
-        <mat-select> // instances of this product shall be displayed.
+      <!-- Dropdown menu to choose whether the product is currently available.
+      Should hide if it's for a good to buy, then the number of available instances of 
+      this product shall be entered. -->
+      <mat-form-field appearance="fill"> 
+        <mat-label>Currently available?</mat-label> 
+        <input matInput formControlName="availability" placeholder="Availability" />
+        <mat-select> 
           <mat-option value="true">available</mat-option>
           <mat-option value="false">inavailable</mat-option>
         </mat-select>
@@ -63,9 +67,11 @@
         </mat-error>
       </mat-form-field>
   
-      <mat-form-field appearance="fill"> // dropdown menu to choose whether delivery is possible.
-        <mat-label>Delivery?</mat-label> // should hide if it's for a service.
-        <input matInput formControlName="delivery" placeholder="Delivery" /> // copied from above
+      <!-- Dropdown menu to choose whether delivery is possible.
+      Should hide if it's for a service. -->
+      <mat-form-field appearance="fill"> 
+        <mat-label>Delivery?</mat-label> 
+        <input matInput formControlName="delivery" placeholder="Delivery" /> 
         <mat-select>
           <mat-option value="true">Yes</mat-option>
           <mat-option value="false">No</mat-option>
