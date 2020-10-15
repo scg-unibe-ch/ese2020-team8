@@ -6,6 +6,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductDescriptionManagerComponent } from './product-description-manager/product-description-manager.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,7 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [ProductListComponent, ProductCreateComponent],
+  declarations: [ProductListComponent, ProductCreateComponent, ProductDescriptionManagerComponent],
   imports: [
     CommonModule,
     FormsModule,
