@@ -1,5 +1,20 @@
 <mat-card>
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Product title</mat-label>
+      <input matInput formControlName="title" placeholder="Product title" />
+      <mat-error *ngIf="productForm.get('title').invalid">
+        Product name is required and must be longer than 3 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Product description</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="productForm.get('description').invalid">
+        Product name is required and must be longer than 3 characters
+      </mat-error>
+    </mat-form-field>
   
       <mat-form-field>
         <mat-label>Price</mat-label>
@@ -9,7 +24,7 @@
         </mat-error>
       </mat-form-field>
   
-      <!--<mat-form-field appearance="fill"> // dropdown menu to choose whether the ad is for a good or a service
+      <mat-form-field appearance="fill"> // dropdown menu to choose whether the ad is for a good or a service
         <mat-label>Good or service?</mat-label>
         <input matInput formControlName="productType" placeholder="Good or Service?" /> // copied from above
         <mat-select>
@@ -17,9 +32,9 @@
           <mat-option value="service">Service</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
-      </mat-form-field>-->
+      </mat-form-field>
   
-      <!--<mat-form-field appearance="fill"> // dropdown menu for goods - should hide if product is a service
+      <mat-form-field appearance="fill"> // dropdown menu for goods - should hide if product is a service
         <mat-label>Type</mat-label>
         <input matInput formControlName="purchaseType" placeholder="Buy or rent?" /> // copied from above
         <mat-select>
@@ -27,7 +42,7 @@
           <mat-option value="rent">Rent</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
-      </mat-form-field>-->
+      </mat-form-field>
   
       <mat-form-field appearance="fill"> // dropdown menu to choose whether the product to rent/service is currently available
         <mat-label>Currently available?</mat-label> // should hide if it's for a good to buy. Instead the number of available 
