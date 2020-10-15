@@ -9,12 +9,12 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './product-description-manager.component.html',
   styleUrls: ['./product-description-manager.component.css']
 })
-export class ProductDescriptionManager {
+export class ProductDescriptionManagerComponent {
     productDescription = this.fb.group({
-        price: '',
-        availability: '',
+        price: 0,
+        availability: true,
         location: '',
-        delivery: ''
+        delivery: false
     })
     constructor(
         private fb: FormBuilder,
