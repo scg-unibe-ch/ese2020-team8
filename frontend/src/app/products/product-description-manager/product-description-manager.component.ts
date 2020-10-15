@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  selector: 'app-product-description-manager',
+  templateUrl: './product-description-manager.component.html',
+  styleUrls: ['./product-description-manager.component.css']
 })
-export class ProductCreateComponent implements OnInit {
+export class ProductDescriptionManagerComponent implements OnInit {
 
   productForm = this.fb.group({
     title: '',
@@ -17,9 +17,9 @@ export class ProductCreateComponent implements OnInit {
     price: '',
     productType: '',
     purchaseType: '',
-    availability: true,
+    availability: '',
     location: '',
-    delivery: false
+    delivery: ''
   });
 
   constructor(
