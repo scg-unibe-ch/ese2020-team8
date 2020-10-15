@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {Form, FormBuilder} from '@angular/forms';
 import {ProductsService} from '../products.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -11,7 +11,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductDescriptionManagerComponent {
     productDescription = this.fb.group({
+        title: '',
+        description: '',
         price: 0,
+        productType: '',
+        purchaseType: '',
         availability: true,
         location: '',
         delivery: false
@@ -22,4 +26,8 @@ export class ProductDescriptionManagerComponent {
         //private router: Router,
         //private snackBar: MatSnackBar
       ) { }
-}
+    
+      getDescription() {
+        return this.productDescription;
+      }
+    }
