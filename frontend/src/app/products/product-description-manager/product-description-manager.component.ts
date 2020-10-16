@@ -11,6 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductDescriptionManagerComponent implements OnInit {
 
+  private bGood : boolean;
+  private bBuy : boolean;
+
   productForm = this.fb.group({
     title: '',
     description: '',
@@ -41,4 +44,33 @@ export class ProductDescriptionManagerComponent implements OnInit {
     });
   }
 
+  inputCheck(event): void {
+    switch (event.value) {
+      case 'good' : {
+        this.bGood = true;
+        break;
+      }
+      case 'service' : {
+        this.bGood = false;
+        break;
+      }
+      case 'buy' : {
+        this.bBuy = true;
+        break;
+      }
+      case 'rent' : {
+        this.bBuy = false;
+        break;
+      }
+      default : {
+        break;
+      }
+    }
+  }
+  getbGood() : boolean {
+    return this.bGood;
+  }
+  getbBuy() : boolean {
+    return this.bBuy;
+  }
 }

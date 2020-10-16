@@ -28,7 +28,7 @@
       <mat-form-field appearance="fill"> 
         <mat-label>Good or service?</mat-label>
         <input matInput formControlName="productType" placeholder="Good or Service?" /> 
-        <mat-select>
+        <mat-select (selectionChange)="inputCheck($event)">
           <mat-option value="good">Good</mat-option>
           <mat-option value="service">Service</mat-option>
         </mat-select>
@@ -36,10 +36,10 @@
       </mat-form-field>
   
       <!-- Dropdown menu for goods - should hide if product is a service -->
-      <mat-form-field appearance="fill"> 
+      <mat-form-field appearance="fill" *ngIf="getbGood()"> 
         <mat-label>Type</mat-label>
         <input matInput formControlName="purchaseType" placeholder="Buy or rent?" />
-        <mat-select>
+        <mat-select (selectionChange)="inputCheck($event)">
           <mat-option value="buy">Buy</mat-option>
           <mat-option value="rent">Rent</mat-option>
         </mat-select>
@@ -49,7 +49,7 @@
       <!-- Dropdown menu to choose whether the product is currently available.
       Should hide if it's for a good to buy, then the number of available instances of 
       this product shall be entered. -->
-      <mat-form-field appearance="fill"> 
+      <mat-form-field appearance="fill" *ngIf="!getbGood() || (getbGood() && !getbBuy())"> 
         <mat-label>Currently available?</mat-label> 
         <input matInput formControlName="availability" placeholder="Availability" />
         <mat-select> 
@@ -69,7 +69,7 @@
   
       <!-- Dropdown menu to choose whether delivery is possible.
       Should hide if it's for a service. -->
-      <mat-form-field appearance="fill"> 
+      <mat-form-field appearance="fill" *ngIf="getbGood()"> 
         <mat-label>Delivery?</mat-label> 
         <input matInput formControlName="delivery" placeholder="Delivery" /> 
         <mat-select>
