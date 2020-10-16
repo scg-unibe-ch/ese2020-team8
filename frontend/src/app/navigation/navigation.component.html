@@ -4,6 +4,7 @@
   </button>
   <a href="/" mat-button>ESE2020 Team8</a>
   <button mat-button aria-label="go to product list" routerLink="/products">Products</button>
+  <button *ngIf="userService.loggedIn" mat-icon-button aria-label="go to your product management dashboard" routerLink="/product-mgmt-dashboard">Your Products</button>
   <button *ngIf="userService.isAdmin" mat-icon-button aria-label="go to approve list" routerLink="/admin/approve">
       <mat-icon>admin_panel_settings</mat-icon>
       <span>Admin</span>
@@ -14,6 +15,9 @@
     <span [innerHTML]="userService.user"></span>
     <mat-icon>expand_more</mat-icon>
   </button>
+  
+
+
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="userService.logout()">
       <mat-icon>exit_to_app</mat-icon>
