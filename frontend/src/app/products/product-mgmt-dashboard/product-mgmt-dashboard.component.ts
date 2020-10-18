@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from 'src/app/user/user.service';
 import {Router} from '@angular/router';
 import {ProductsService} from '../products.service';
+import { products } from './products';
+
 
 @Component({
   selector: 'app-product-mgmt-dashboard',
@@ -10,14 +12,16 @@ import {ProductsService} from '../products.service';
 })
 export class ProductMgmtDashboardComponent implements OnInit {
   displayedColumns: string[];
-  products: any;
+//  products: any;
+  products = products;
+  
 
 
   constructor(
     public userService: UserService,
     private productService: ProductsService
   ) { 
-    this.productService.getAll().subscribe( products => this.products = products);
+    //this.productService.getAll().subscribe( products => this.products = products);
     if (this.userService.loggedIn) {
       this.displayedColumns  = ['title', 'description', 'action'];
     } else {
