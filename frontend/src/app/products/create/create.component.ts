@@ -5,14 +5,11 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-product-description-manager',
-  templateUrl: './product-description-manager.component.html',
-  styleUrls: ['./product-description-manager.component.css']
+  selector: 'app-product-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css']
 })
-export class ProductDescriptionManagerComponent implements OnInit {
-
-  private bGood : boolean;
-  private bBuy : boolean;
+export class CreateComponent implements OnInit {
 
   productForm = this.fb.group({
     title: '',
@@ -44,33 +41,10 @@ export class ProductDescriptionManagerComponent implements OnInit {
     });
   }
 
-  inputCheck(event): void {
-    switch (event.value) {
-      case 'good' : {
-        this.bGood = true;
-        break;
-      }
-      case 'service' : {
-        this.bGood = false;
-        break;
-      }
-      case 'buy' : {
-        this.bBuy = true;
-        break;
-      }
-      case 'rent' : {
-        this.bBuy = false;
-        break;
-      }
-      default : {
-        break;
-      }
-    }
+  showAvailability(): boolean {
+    return this.productForm.get('productType').value === 'service' ||
+      this.productForm.get('productType').value === 'good' &&
+      this.productForm.get('purchaseType').value  === 'rent';
   }
-  getbGood() : boolean {
-    return this.bGood;
-  }
-  getbBuy() : boolean {
-    return this.bBuy;
-  }
+
 }

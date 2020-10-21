@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ProductListComponent} from './product-list/product-list.component';
-import {ProductDescriptionManagerComponent} from './product-description-manager/product-description-manager.component';
+import {ListComponent} from './list/list.component';
+import {CreateComponent} from './create/create.component';
 import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
     path: 'products',
-    component: ProductListComponent,
+    component: ListComponent,
   },
   {
     path: 'products/create',
-    component: ProductDescriptionManagerComponent,
+    component: CreateComponent,
     canActivate: [AuthGuard]
   }
 ];

@@ -16,7 +16,7 @@
         Product name is required and must be longer than 3 characters
       </mat-error>
     </mat-form-field>
-  
+
       <mat-form-field>
         <mat-label>Price</mat-label>
         <input matInput formControlName="price" placeholder="Price" />
@@ -24,41 +24,39 @@
           Product price is required and must be not negative
         </mat-error>
       </mat-form-field>
-  
-      <mat-form-field appearance="fill"> 
+
+      <mat-form-field appearance="fill">
         <mat-label>Good or service?</mat-label>
-        <input matInput formControlName="productType" placeholder="Good or Service?" /> 
-        <mat-select (selectionChange)="inputCheck($event)">
+        <mat-select formControlName="productType" >
           <mat-option value="good">Good</mat-option>
           <mat-option value="service">Service</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
-  
+
       <!-- Dropdown menu for goods - should hide if product is a service -->
-      <mat-form-field appearance="fill" *ngIf="getbGood()"> 
+      <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
         <mat-label>Type</mat-label>
-        <input matInput formControlName="purchaseType" placeholder="Buy or rent?" />
-        <mat-select (selectionChange)="inputCheck($event)">
+        <mat-select formControlName="purchaseType">
           <mat-option value="buy">Buy</mat-option>
           <mat-option value="rent">Rent</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
-  
+
       <!-- Dropdown menu to choose whether the product is currently available.
-      Should hide if it's for a good to buy, then the number of available instances of 
+      Should hide if it's for a good to buy, then the number of available instances of
       this product shall be entered. -->
-      <mat-form-field appearance="fill" *ngIf="!getbGood() || (getbGood() && !getbBuy())"> 
-        <mat-label>Currently available?</mat-label> 
+      <mat-form-field appearance="fill" *ngIf="showAvailability()">
+        <mat-label>Currently available?</mat-label>
         <input matInput formControlName="availability" placeholder="Availability" />
-        <mat-select> 
+        <mat-select>
           <mat-option value="true">available</mat-option>
           <mat-option value="false">inavailable</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
-  
+
       <mat-form-field>
         <mat-label>Location</mat-label>
         <input matInput formControlName="location" placeholder="Product location" />
@@ -66,19 +64,19 @@
           Product location is required
         </mat-error>
       </mat-form-field>
-  
+
       <!-- Dropdown menu to choose whether delivery is possible.
       Should hide if it's for a service. -->
-      <mat-form-field appearance="fill" *ngIf="getbGood()"> 
-        <mat-label>Delivery?</mat-label> 
-        <input matInput formControlName="delivery" placeholder="Delivery" /> 
+      <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
+        <mat-label>Delivery?</mat-label>
+        <input matInput formControlName="delivery" placeholder="Delivery" />
         <mat-select>
           <mat-option value="true">Yes</mat-option>
           <mat-option value="false">No</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
-  
+
       <button type="submit" color="primary" mat-flat-button>Submit</button>
 
   </form>
