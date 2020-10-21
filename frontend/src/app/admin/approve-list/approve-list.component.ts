@@ -26,7 +26,7 @@ export class ApproveListComponent implements OnInit {
   }
 
   approve(element: IProduct) {
-    this.productService.approve(element.productId).subscribe(product => {
+    this.productService.approve(element.id).subscribe(product => {
       this.snackBar.open(`Successfully approved ${product.title}`);
       this.refreshProducts();
     })
