@@ -4,6 +4,12 @@ export interface ProductAttributes {
     productId: number;
     title: string;
     description: string;
+    price: string;
+    productType: string;
+    purchaseType: string;
+    availability: boolean;
+    location: string;
+    delivery: boolean;
     status: string;
 }
 
@@ -15,6 +21,12 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     productId!: number;
     title!: string;
     description!: string;
+    price!: string;
+    productType!: string;
+    purchaseType!: string;
+    availability!: boolean;
+    location!: string;
+    delivery!: boolean;
     status!: string;
 
 
@@ -31,6 +43,30 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             description: {
                 type: DataTypes.STRING,
+                allowNull: false
+            },
+            price: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            productType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            purchaseType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            availability: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false
+            },
+            location: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            delivery: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             },
             status: {
