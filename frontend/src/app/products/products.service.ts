@@ -40,7 +40,8 @@ export class ProductsService {
 }
 
 export interface IProduct {
-  productId: number;
+  id: number;
+  UserId: number;
   title: string;
   description: string;
   price: number;

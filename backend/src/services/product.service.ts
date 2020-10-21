@@ -4,12 +4,13 @@ export class ProductService {
   public async get(productId: string) {
     return Product.findOne({
       where: {
-        productId: productId,
+        id: productId,
       },
     });
   }
 
-  public async create(product: ProductCreationAttributes) {
+  public async create(product: ProductCreationAttributes, userId: number) {
+    product.UserId = userId;
     delete product.status;
     return Product.create(product);
   }
@@ -24,6 +25,14 @@ export class ProductService {
     return Product.findAll({
       where: {
         status: 'approved',
+      },
+    });
+  }
+
+  public async getMyProducts(userId: number) {
+    return Product.findAll({
+      where: {
+        UserId: userId,
       },
     });
   }
