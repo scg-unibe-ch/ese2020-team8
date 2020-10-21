@@ -32,7 +32,8 @@ export class ProductsService {
 }
 
 export interface IProduct { //types of product missing
-  productId: number;
+  id: number;
+  UserId: number;
   title: string;
   description: string;
   price: number;
