@@ -22,6 +22,14 @@ export class ProductsService {
     return this.http.get<IProduct[]>(this.url);
   }
 
+  get(productId: string): Observable<IProduct> {
+    return this.http.get<IProduct>(this.url + `/${productId}`);
+  }
+
+  getMyProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(this.url + '/me');
+  }
+
   getAllPending(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.url + '/pending');
   }
@@ -31,7 +39,7 @@ export class ProductsService {
   }
 }
 
-export interface IProduct { //types of product missing
+export interface IProduct {
   productId: number;
   title: string;
   description: string;
