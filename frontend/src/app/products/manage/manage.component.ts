@@ -25,7 +25,7 @@ export class ManageComponent implements OnInit {
     this.router.navigate(['products', 'manage', { id: productId }]);
   }
 
-  goToCreate(productId) {
+  goToCreate() {
     this.router.navigate(['products', 'create']);
   }
 }
