@@ -1,13 +1,14 @@
 <mat-card class="product-list">
 
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <!-- ToDo this button it should load all posted products -->
-  <button type="submit" color="primary" mat-flat-button>Active</button>
+    <mat-button-toggle value="Active">Active</mat-button-toggle>
+    <!-- ToDo this button it should load  products that have been lent by this user-->
+    <mat-button-toggle value="Lent">Lent</mat-button-toggle>
+    <!-- ToDo this button it should load  all products that have been sold by this user -->
+    <mat-button-toggle value="Sold">Sold</mat-button-toggle>
+  </mat-button-toggle-group>
 
- <!-- ToDo this button it should load  products that have been lent by this user-->
-  <button type="submit" color="primary" mat-flat-button>Lent</button>
-
-  <!-- ToDo this button it should load  all products that have been sold by this user -->
-  <button type="submit" color="primary" mat-flat-button>Sold</button><br>
 
   <!-- ToDo Button should only be shown if Active Products are shown -->
   <mat-card>
@@ -37,8 +38,9 @@
 
       </div>
 
+        <!-- ToDo these buttons should only appear if the user views his active Products-->
       <div id="right">
-        <button color="primary" mat-flat-button>edit</button>
+        <button color="primary" mat-flat-button routerLink="/products/edit-info">edit</button>
         <button>
           <mat-icon>delete</mat-icon>
         </button>

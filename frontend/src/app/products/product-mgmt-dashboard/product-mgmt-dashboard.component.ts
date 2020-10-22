@@ -19,6 +19,7 @@ export class ProductMgmtDashboardComponent implements OnInit {
 
   constructor(
     public userService: UserService,
+    public router: Router,
     private productService: ProductsService
   ) { 
     //this.productService.getAll().subscribe( products => this.products = products);
@@ -32,5 +33,10 @@ export class ProductMgmtDashboardComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
+  goToCreate(): void {
+    this.router.navigate(['products', 'create']);
+  }
+
 
 }

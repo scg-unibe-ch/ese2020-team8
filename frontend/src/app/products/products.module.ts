@@ -9,13 +9,17 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ProductMgmtDashboardComponent } from './product-mgmt-dashboard/product-mgmt-dashboard.component';
+import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.component';
+import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
 
 
 @NgModule({
-  declarations: [ProductListComponent, ProductCreateComponent, ProductMgmtDashboardComponent],
+  declarations: [ProductListComponent, ProductCreateComponent, ProductMgmtDashboardComponent, ProductEditInfoComponent, ProductEditImagesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +29,9 @@ import { ProductMgmtDashboardComponent } from './product-mgmt-dashboard/product-
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule,
+    MatButtonToggleModule
   ]
 })
 export class ProductsModule { }
