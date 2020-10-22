@@ -1,32 +1,51 @@
 <mat-card class="product-list">
-    <h1>Here are your products</h1>
-    <div *ngFor="let product of products; index as productId">
 
-      <h3>
-        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-          {{ product.title }}
-        </a>  
-      </h3>
-    
-      <p *ngIf="product.description">
-        Description: {{ product.description }}
-      </p>
+    <!-- ToDo this button it should load all posted products -->
+  <button type="submit" color="primary" mat-flat-button>Active</button>
 
-      <p *ngIf="product.availability">
-        availability: {{ product.availability }}
-      </p>
+ <!-- ToDo this button it should load  products that have been lent by this user-->
+  <button type="submit" color="primary" mat-flat-button>Lent</button>
 
-      <p *ngIf="product.status">
-        status: {{ product.status }}
-      </p>
+  <!-- ToDo this button it should load  all products that have been sold by this user -->
+  <button type="submit" color="primary" mat-flat-button>Sold</button><br>
 
-      <app-product-alerts
-        [product]="product" 
-        (notify)="onNotify()">
-      </app-product-alerts>
-    
+  <!-- ToDo Button should only be shown if Active Products are shown -->
+  <mat-card>
+  <button mat-fab color="primary" (click)="goToCreate()"><mat-icon>add</mat-icon></button>
+  <p>Create new Product</p>
+  </mat-card>
+
+  <mat-card>
+
+    <div id="wrapper" *ngFor="let product of products; index as productId">
+
+      <div id="left"> 
+        <img id="preview" src="/assets/angular.png" alt="Angular Logo" >
+      </div>
+      
+      <div id="middle">
+        <h3>
+          <a [title]="product.name" >
+            {{ product.title }}
+          </a>  
+        </h3>
+      
+        <p *ngIf="product.description">
+          Description: {{ product.description }}
+        </p>
+        <br>
+
+      </div>
+
+      <div id="right">
+        <button color="primary" mat-flat-button>edit</button>
+        <button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
     </div>
-    
+  </mat-card>  
 
  </mat-card>
   
