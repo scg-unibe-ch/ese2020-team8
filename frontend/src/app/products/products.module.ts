@@ -12,10 +12,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { ManageComponent } from './manage/manage.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
-  declarations: [ListComponent, CreateComponent],
+  declarations: [ListComponent, CreateComponent, ManageComponent, UpdateComponent],
   imports: [
     CommonModule,
     FormsModule,
