@@ -42,7 +42,13 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             },
             userName: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    notEmpty: {
+                        msg: 'Please enter a username'
+                    }
+                },
+                unique: true
             },
             password: {
                 type: DataTypes.STRING,
@@ -60,8 +66,14 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isEmail: true,
-                }
+                    notEmpty: {
+                        msg: 'Please enter an email'
+                    },
+                    isEmail: {
+                        msg: 'Please use valid format (e.g. team8@ese20.ch)',
+                    }
+                },
+                unique: true
             },
             firstName: {
                 type: DataTypes.STRING,
