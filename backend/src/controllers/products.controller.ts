@@ -59,4 +59,18 @@ productController.get(
   }
 );
 
+productController.delete(
+  '/:productId/delete',
+  verifyToken,
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.delete(productId);
+      res.send(product);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 export const ProductController: Router = productController;

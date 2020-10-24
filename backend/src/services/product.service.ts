@@ -20,6 +20,12 @@ export class ProductService {
     return product.save();
   }
 
+  public async delete(productId: string) {
+    const product = await Product.findByPk(productId);
+    product.status = 'deleted';
+    return product.destroy();
+  }
+
   public async getAll() {
     return Product.findAll({
       where: {
