@@ -18,6 +18,10 @@ export class ProductsService {
     return this.http.post<IProduct>(this.url, product);
   }
 
+  delete(productId: number): Observable<IProduct> {
+    return this.http.delete<IProduct>(this.url+ `/${productId}/delete`, {});
+  }
+
   getAll(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.url);
   }

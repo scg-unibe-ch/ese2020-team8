@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit {
   ) {
     this.productService.getAll().subscribe( products => this.products = products);
     if (this.userService.loggedIn) {
-      this.displayedColumns  = ['title', 'description', 'action'];
+      this.displayedColumns  = ['title', 'description', 'action', 'manage'];
     } else {
       this.displayedColumns  = ['title', 'description'];
     }
@@ -41,6 +41,10 @@ export class ProductListComponent implements OnInit {
 
   goToProductsAdmin(): void {
     this.router.navigate(['admin', 'approve']);
+  }
+
+  deplete(): void {
+    this.router.navigate(['/:productId/delete']); // evt. auch 'productId', 'delete' oder 'products', 'delete' ?
   }
 
 }
