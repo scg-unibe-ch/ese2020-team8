@@ -5,6 +5,7 @@ export interface ProductAttributes {
     title: string;
     description: string;
     status: string;
+    owner: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -16,6 +17,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     title!: string;
     description!: string;
     status!: string;
+    owner!: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -40,6 +42,10 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                     isIn: [['pending', 'approved', 'inactive']],
                 }
             },
+            owner: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            }
         },
         { sequelize, tableName: 'products' }
         );
