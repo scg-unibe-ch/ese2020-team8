@@ -1,29 +1,47 @@
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
+import {User} from './user.model';
 
 export interface ProductAttributes {
-    productId: number;
+    id: number;
     title: string;
     description: string;
+    price: string;
+    productType: string;
+    purchaseType: string;
+    availability: boolean;
+    location: string;
+    delivery: boolean;
     status: string;
+    UserId: number;
 }
 
 // tells sequelize that todoItemId is not a required field
-export interface ProductCreationAttributes extends Optional<Product, 'productId'> { }
+export interface ProductCreationAttributes extends Optional<Product, 'id'> { }
 
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
-    productId!: number;
+    id!: number;
     title!: string;
     description!: string;
+    price!: string;
+    productType!: string;
+    purchaseType!: string;
+    availability!: boolean;
+    location!: string;
+    delivery!: boolean;
     status!: string;
+    UserId!: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
         Product.init({
-            productId: {
+            id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
+            },
+            UserId: {
+                type: DataTypes.INTEGER,
             },
             title: {
                 type: DataTypes.STRING,
@@ -31,6 +49,30 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             description: {
                 type: DataTypes.STRING,
+                allowNull: false
+            },
+            price: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            productType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            purchaseType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            availability: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false
+            },
+            location: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            delivery: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             },
             status: {
@@ -45,13 +87,9 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
         );
 
     }
-    // public static createAssociations() {
-    //     Product.belongsTo(TodoList, {
-    //         targetKey: 'todoListId',
-    //         as: 'todoList',
-    //         onDelete: 'cascade',
-    //         foreignKey: 'todoListId'
-    //     });
-    // }
+
+    public static createAssociations() {
+        Product.belongsTo(User);
+    }
 
 }

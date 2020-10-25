@@ -20,17 +20,17 @@
 
     <div id="wrapper" *ngFor="let product of products; index as productId">
 
-      <div id="left"> 
+      <div id="left">
         <img id="preview" src="/assets/angular.png" alt="Angular Logo" >
       </div>
-      
+
       <div id="middle">
         <h3>
           <a [title]="product.name" >
             {{ product.title }}
-          </a>  
+          </a>
         </h3>
-      
+
         <p *ngIf="product.description">
           Description: {{ product.description }}
         </p>
@@ -47,7 +47,7 @@
       </div>
 
     </div>
-  </mat-card>  
+  </mat-card>
 
  </mat-card>
-  
+

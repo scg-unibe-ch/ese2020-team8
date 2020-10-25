@@ -6,14 +6,20 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css']
 })
-export class ProductCreateComponent implements OnInit {
+export class CreateComponent implements OnInit {
 
   productForm = this.fb.group({
     title: '',
-    description: ''
+    description: '',
+    price: '',
+    productType: '',
+    purchaseType: '',
+    availability: '',
+    location: '',
+    delivery: ''
   });
 
   constructor(
@@ -33,6 +39,12 @@ export class ProductCreateComponent implements OnInit {
       this.snackBar.open('Successfully created advertisement. Wait for an admin to approve it');
       this.router.navigate(['products']);
     });
+  }
+
+  showAvailability(): boolean {
+    return this.productForm.get('productType').value === 'service' ||
+      this.productForm.get('productType').value === 'good' &&
+      this.productForm.get('purchaseType').value  === 'rent';
   }
 
 }

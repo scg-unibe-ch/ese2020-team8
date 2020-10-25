@@ -1,15 +1,14 @@
-
 form>button {
     margin-left: 30px;
   }
-  
+
   #left {
     float: left;
     width: 20%;
     overflow: hidden;
     height: 80px;
   }
-  
+
   #middle {
     overflow: hidden;
     height: 80px;
@@ -19,7 +18,7 @@ form>button {
   }
 
   #right {
-    float: right;  
+    float: right;
     width: 20%;
     overflow: hidden;
     height: 80px;
