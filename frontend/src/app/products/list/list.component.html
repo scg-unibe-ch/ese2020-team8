@@ -1,0 +1,11 @@
+<mat-card class="product-list">
+  <h1>Product List</h1>
+
+
+
+  <div class="action-buttons">
+  <button *ngIf='userService.loggedIn' mat-fab color="primary" (click)="goToCreate()"><mat-icon>add</mat-icon></button>
+  <button *ngIf='userService.loggedIn' mat-flat-button color="primary" (click)="goToManage()">Manage My Products</button>
+  <button *ngIf='userService.loggedIn && userService.isAdmin' mat-button color="primary" (click)="goToProductsAdmin()">Approve Pending Products</button>
+  </div>
+</mat-card>

@@ -1,7 +1,8 @@
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
+import {Product} from './product.model';
 
 export interface UserAttributes {
-    userId: number;
+    id: number;
     userName: string;
     password: string;
     email: string;
@@ -16,10 +17,10 @@ export interface UserAttributes {
     country?: string;
 }
 
-export interface UserCreationAttributes extends Optional<UserAttributes, 'userId'> { }
+export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> { }
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-    userId!: number;
+    id!: number;
     userName!: string;
     password!: string;
     email: string;
@@ -35,14 +36,20 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 
     public static initialize(sequelize: Sequelize) {
         User.init({
-            userId: {
+            id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
             },
             userName: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    notEmpty: {
+                        msg: 'Please enter a username'
+                    }
+                },
+                unique: true
             },
             password: {
                 type: DataTypes.STRING,
@@ -60,8 +67,14 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isEmail: true,
-                }
+                    notEmpty: {
+                        msg: 'Please enter an email'
+                    },
+                    isEmail: {
+                        msg: 'Please use valid format (e.g. team8@ese20.ch)',
+                    }
+                },
+                unique: true
             },
             firstName: {
                 type: DataTypes.STRING,
@@ -99,5 +112,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 tableName: 'users'
             }
         );
+    }
+
+    public static createAssociations() {
+        User.hasMany(Product);
     }
 }

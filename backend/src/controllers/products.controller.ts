@@ -1,6 +1,6 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { ProductService } from '../services/product.service';
-import { verifyToken } from '../middlewares/checkAuth';
+import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import { checkIsOwner } from '../middlewares/checkIsOwner';
 
@@ -10,9 +10,10 @@ const productService = new ProductService();
 productController.post(
   '/',
   verifyToken,
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
-      const product = await productService.create(req.body);
+      const userId = req.user.userId;
+      const product = await productService.create(req.body, userId);
       res.send(product);
     } catch (err) {
       next(err);
@@ -39,6 +40,19 @@ productController.get(
   async (_req: Request, res: Response, next: NextFunction) => {
     try {
       const products = await productService.getAll();
+      res.send(products);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+productController.get(
+  '/me', // you can add middleware on specific requests like that
+  verifyToken,
+  async (req: IAuthRequest, res: Response, next: NextFunction) => {
+    try {
+      const products = await productService.getMyProducts(req.user.userId);
       res.send(products);
     } catch (err) {
       next(err);
