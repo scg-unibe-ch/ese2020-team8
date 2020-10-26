@@ -2,7 +2,7 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import { ProductService } from '../services/product.service';
 import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
-import { checkIsOwner } from '../middlewares/checkIsOwner';
+import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
 
 const productController: Router = express.Router();
 const productService = new ProductService();
@@ -77,7 +77,7 @@ productController.get(
 productController.delete(
   '/:productId/delete',
   verifyToken,
-  checkIsOwner,
+  checkProductAuthorization,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const productId = req.params.productId;
