@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ProductsService, IProduct} from '../products.service';
 import {UserService} from 'src/app/user/user.service';
-import { products } from './products';
 
 @Component({
   selector: 'app-products-manage',
@@ -12,8 +11,7 @@ import { products } from './products';
 export class ManageComponent implements OnInit {
 
   displayedColumns  = ['title', 'description', 'action'];
-  products2: IProduct[];
-  products: any[] = products;
+  products: Partial<IProduct>[];
 
   constructor(
     public userService: UserService,
@@ -22,7 +20,9 @@ export class ManageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productService.getMyProducts().subscribe( products => this.products2 = products);
+    this.productService.getMyProducts().subscribe( prods => {
+      this.products = prods;
+    });
   }
 
   goToCreate() {

@@ -40,12 +40,16 @@ export class ProductsService {
 }
 
 export interface IProduct {
-  id: number;
-  UserId: number;
-  title: string;
-  description: string;
-  price: number;
-  availability: boolean;
-  location: string;
-  delivery: boolean;
+    id: number;
+    title: string;
+    description: string;
+    price: string;
+    productType: string;
+    purchaseType: string;
+    availability: boolean;
+    location: string;
+    delivery: boolean;
+    status: string;
+    UserId: number;
+
 }

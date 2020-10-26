@@ -1,4 +1,4 @@
-import { ProductAttributes, Product, ProductCreationAttributes } from '../models/product.model';
+import { Product, ProductCreationAttributes } from '../models/product.model';
 
 export class ProductService {
   public async get(productId: string) {

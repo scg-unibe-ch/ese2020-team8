@@ -47,7 +47,7 @@ productController.get(
 );
 
 productController.get(
-  '/', // you can add middleware on specific requests like that
+  '/me', // you can add middleware on specific requests like that
   verifyToken,
   async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
