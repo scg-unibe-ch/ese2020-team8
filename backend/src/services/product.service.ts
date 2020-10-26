@@ -39,7 +39,11 @@ export class ProductService {
 
   public async delete(productId: string) {
     const product = await Product.findByPk(productId);
-    return product.destroy();
+    if (['approved', 'pending'].includes(product.status)) {
+      return product.destroy();
+    } else {
+      throw new Error('Referenced Product is not an active product');
+    }
   }
 
   public async getAll() {
