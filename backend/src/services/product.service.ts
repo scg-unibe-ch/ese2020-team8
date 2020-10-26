@@ -23,7 +23,6 @@ export class ProductService {
 
   public async delete(productId: string) {
     const product = await Product.findByPk(productId);
-    product.status = 'deleted';
     return product.destroy();
   }
 
