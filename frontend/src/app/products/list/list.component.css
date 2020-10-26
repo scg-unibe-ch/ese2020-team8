@@ -13,8 +13,7 @@
 
 .action-buttons {
   display: flex;
-  align-items: baseline;
 }
 .action-buttons>button {
-  margin: 0 12px;
+  margin: 0.4rem;
 }

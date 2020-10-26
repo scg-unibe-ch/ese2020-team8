@@ -7,7 +7,7 @@
     <p>Create new Product</p>
   </mat-card>
 
-  <h2>Product List</h2>
+  <h1>Product List</h1>
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <!-- ToDo this button it should load all posted products -->
@@ -24,10 +24,10 @@
     [product]="product"
   >
     <div class="action-buttons">
-      <button color="primary" mat-flat-button routerLink="/products/edit-info">
+      <button color="primary" mat-flat-button (click)="goToEdit(product)">
         edit
       </button>
-      <button>
+      <button (click)="delete(product)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
         this.productForm.value
     ).subscribe( product => {
       this.snackBar.open('Successfully created advertisement. Wait for an admin to approve it');
-      this.router.navigate(['products']);
+      this.router.navigate(['products', 'manage']);
     });
   }
 
