@@ -13,6 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.component';
@@ -21,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { ItemComponent } from './item/item.component';
     ProductEditInfoComponent,
     ProductEditImagesComponent,
     ItemComponent,
+    DeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { ItemComponent } from './item/item.component';
     MatProgressBarModule,
     MatButtonToggleModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ],
   exports: [
     ListComponent
