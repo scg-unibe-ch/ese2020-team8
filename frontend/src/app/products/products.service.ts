@@ -18,8 +18,12 @@ export class ProductsService {
     return this.http.post<IProduct>(this.url, product);
   }
 
-  delete(productId: number): Observable<IProduct> {
-    return this.http.delete<IProduct>(this.url+ `/${productId}/delete`, {});
+  update(productId: string, product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(this.url + `/${productId}`, product);
+  }
+
+  delete(product: IProduct): Observable<IProduct> {
+    return this.http.delete<IProduct>(this.url + `/${product.id}`);
   }
 
   getAll(): Observable<IProduct[]> {
@@ -38,13 +42,13 @@ export class ProductsService {
     return this.http.get<IProduct[]>(this.url + '/pending');
   }
 
-  approve(productId: number): Observable<IProduct> {
+  approve(productId: string): Observable<IProduct> {
     return this.http.put<IProduct>(this.url + `/${productId}/approve`, {});
   }
 }
 
 export interface IProduct {
-    id: number;
+    id: string;
     title: string;
     description: string;
     price: string;

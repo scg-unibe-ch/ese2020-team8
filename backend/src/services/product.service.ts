@@ -1,4 +1,8 @@
-import { Product, ProductCreationAttributes } from '../models/product.model';
+import {
+  Product,
+  ProductCreationAttributes,
+  ProductAttributes,
+} from '../models/product.model';
 
 export class ProductService {
   public async get(productId: string) {
@@ -13,6 +17,18 @@ export class ProductService {
     product.UserId = userId;
     delete product.status;
     return Product.create(product);
+  }
+
+  public async update(productId: string, productChanges: ProductAttributes) {
+    delete productChanges.id;
+    delete productChanges.UserId;
+    productChanges.status = 'pending';
+
+    return Product.update(productChanges, {
+      where: {
+        id: productId,
+      },
+    });
   }
 
   public async approve(productId: string): Promise<Product> {

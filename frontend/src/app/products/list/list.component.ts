@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from 'src/app/user/user.service';
 import {Router} from '@angular/router';
-import {ProductsService} from '../products.service';
+import {ProductsService, IProduct} from '../products.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +10,7 @@ import {ProductsService} from '../products.service';
 })
 export class ListComponent implements OnInit {
   displayedColumns: string[];
-  products: any;
+  products: IProduct[];
 
   constructor(
     public userService: UserService,
@@ -18,11 +18,6 @@ export class ListComponent implements OnInit {
     private productService: ProductsService
   ) {
     this.productService.getAll().subscribe( products => this.products = products);
-    if (this.userService.loggedIn) {
-      this.displayedColumns  = ['title', 'description', 'action', 'manage'];
-    } else {
-      this.displayedColumns  = ['title', 'description'];
-    }
   }
 
   ngOnInit(): void {
@@ -36,12 +31,12 @@ export class ListComponent implements OnInit {
     this.router.navigate(['products', 'manage']);
   }
 
-  goToProductsAdmin(): void {
-    this.router.navigate(['admin', 'approve']);
+  goToBuy(product: IProduct): void {
+    this.router.navigate(['products', 'buy', { productId: product.id}]);
   }
 
-  deplete(): void {
-    this.router.navigate(['/:productId/delete']); // evt. auch 'productId', 'delete' oder 'products', 'delete' ?
+  goToProductsAdmin(): void {
+    this.router.navigate(['admin', 'approve']);
   }
 
 }

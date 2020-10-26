@@ -20,6 +20,7 @@ productController.post(
     }
   }
 );
+
 productController.put(
   '/:productId/approve',
   verifyToken,
@@ -35,6 +36,8 @@ productController.put(
   }
 );
 
+
+
 productController.get(
   '/', // you can add middleware on specific requests like that
   async (_req: Request, res: Response, next: NextFunction) => {
@@ -46,6 +49,7 @@ productController.get(
     }
   }
 );
+
 
 productController.get(
   '/me', // you can add middleware on specific requests like that
@@ -75,7 +79,7 @@ productController.get(
 );
 
 productController.delete(
-  '/:productId/delete',
+  '/:productId',
   verifyToken,
   checkProductAuthorization,
   async (req: Request, res: Response, next: NextFunction) => {
@@ -85,6 +89,33 @@ productController.delete(
       res.send(product);
     } catch (err) {
       next(err);
+    }
+  }
+);
+
+productController.get(
+  '/:productId', // you can add middleware on specific requests like that
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const products = await productService.get(req.params.productId);
+      res.send(products);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+productController.put(
+  '/:productId',
+  verifyToken,
+  checkProductAuthorization,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.update(productId, req.body);
+      res.send(product);
+    } catch (err) {
+      return next(err);
     }
   }
 );

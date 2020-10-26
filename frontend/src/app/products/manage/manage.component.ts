@@ -17,15 +17,26 @@ export class ManageComponent implements OnInit {
     public userService: UserService,
     public router: Router,
     private productService: ProductsService
-  ) { }
-
-  ngOnInit(): void {
-    this.productService.getMyProducts().subscribe( prods => {
-      this.products = prods;
-    });
+  ) {
+    this.reloadProducts();
   }
 
-  goToCreate() {
+  ngOnInit(): void {
+  }
+
+  goToCreate(): void {
     this.router.navigate(['products', 'create']);
+  }
+
+  goToEdit(product: IProduct): void {
+    this.router.navigate(['products', product.id, 'update']);
+  }
+
+  delete(product: IProduct): void {
+    this.productService.delete(product).subscribe( () => this.reloadProducts());
+  }
+
+  reloadProducts(): void {
+    this.productService.getMyProducts().subscribe( prods => this.products = prods);
   }
 }
