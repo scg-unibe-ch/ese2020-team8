@@ -1,5 +1,7 @@
 
 .product-list {
+  margin-left: auto;
+  margin-right: auto;
   width: 100vw;
   box-sizing: border-box;
   max-width: 1200px;
@@ -7,4 +9,12 @@
 
 .product-list table {
   width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: baseline;
+}
+.action-buttons>button {
+  margin: 0 12px;
 }
