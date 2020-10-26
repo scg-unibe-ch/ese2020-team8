@@ -1,4 +1,8 @@
-import { Product, ProductCreationAttributes } from '../models/product.model';
+import {
+  Product,
+  ProductCreationAttributes,
+  ProductAttributes,
+} from '../models/product.model';
 
 export class ProductService {
   public async get(productId: string) {
@@ -15,10 +19,27 @@ export class ProductService {
     return Product.create(product);
   }
 
+  public async update(productId: string, productChanges: ProductAttributes) {
+    delete productChanges.id;
+    delete productChanges.UserId;
+    productChanges.status = 'pending';
+
+    return Product.update(productChanges, {
+      where: {
+        id: productId,
+      },
+    });
+  }
+
   public async approve(productId: string): Promise<Product> {
     const product = await Product.findByPk(productId);
     product.status = 'approved';
     return product.save();
+  }
+
+  public async delete(productId: string) {
+    const product = await Product.findByPk(productId);
+    return product.destroy();
   }
 
   public async getAll() {

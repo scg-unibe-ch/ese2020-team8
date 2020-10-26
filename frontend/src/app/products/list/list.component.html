@@ -1,11 +1,41 @@
 <mat-card class="product-list">
   <h1>Product List</h1>
 
-
-
   <div class="action-buttons">
-  <button *ngIf='userService.loggedIn' mat-fab color="primary" (click)="goToCreate()"><mat-icon>add</mat-icon></button>
-  <button *ngIf='userService.loggedIn' mat-flat-button color="primary" (click)="goToManage()">Manage My Products</button>
-  <button *ngIf='userService.loggedIn && userService.isAdmin' mat-button color="primary" (click)="goToProductsAdmin()">Approve Pending Products</button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-fab
+      color="primary"
+      (click)="goToCreate()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-flat-button
+      color="primary"
+      (click)="goToManage()"
+    >
+      Manage My Products
+    </button>
+    <button
+      *ngIf="userService.loggedIn && userService.isAdmin"
+      mat-button
+      color="primary"
+      (click)="goToProductsAdmin()"
+    >
+      Approve Pending Products
+    </button>
   </div>
+
+  <app-product-item
+    *ngFor="let product of products; index as productId"
+    [product]="product"
+  >
+    <div *ngIf="this.userService.loggedIn" class="action-buttons">
+      <button color="primary" mat-flat-button (click)="goToBuy(product)">
+        Buy
+      </button>
+    </div>
+  </app-product-item>
 </mat-card>

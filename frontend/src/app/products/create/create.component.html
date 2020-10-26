@@ -49,8 +49,7 @@
       this product shall be entered. -->
       <mat-form-field appearance="fill" *ngIf="showAvailability()">
         <mat-label>Currently available?</mat-label>
-        <input matInput formControlName="availability" placeholder="Availability" />
-        <mat-select>
+        <mat-select formControlName="availability">
           <mat-option value="true">available</mat-option>
           <mat-option value="false">inavailable</mat-option>
         </mat-select>
@@ -69,8 +68,7 @@
       Should hide if it's for a service. -->
       <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
         <mat-label>Delivery?</mat-label>
-        <input matInput formControlName="delivery" placeholder="Delivery" />
-        <mat-select>
+        <mat-select formControlName="delivery">
           <mat-option value="true">Yes</mat-option>
           <mat-option value="false">No</mat-option>
         </mat-select>
