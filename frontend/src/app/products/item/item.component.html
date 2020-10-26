@@ -1,0 +1,19 @@
+<mat-card class="product-card">
+  <img class="preview" src="/assets/angular.png" alt="Angular Logo" />
+
+  <section class="infos">
+    <header>
+      <h3>
+        {{ product.title }}
+      </h3>
+      <mat-chip-list>
+        <mat-chip *ngIf="product.status !== 'approved'">{{
+          product.status
+        }}</mat-chip>
+      </mat-chip-list>
+    </header>
+    <p *ngIf="product.description">Description: {{ product.description }}</p>
+  </section>
+
+  <ng-content></ng-content>
+</mat-card>

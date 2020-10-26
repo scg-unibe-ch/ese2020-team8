@@ -1,7 +1,8 @@
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
+import {Product} from './product.model';
 
 export interface UserAttributes {
-    userId: number;
+    id: number;
     userName: string;
     password: string;
     email: string;
@@ -16,10 +17,10 @@ export interface UserAttributes {
     country?: string;
 }
 
-export interface UserCreationAttributes extends Optional<UserAttributes, 'userId'> { }
+export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> { }
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-    userId!: number;
+    id!: number;
     userName!: string;
     password!: string;
     email: string;
@@ -35,7 +36,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 
     public static initialize(sequelize: Sequelize) {
         User.init({
-            userId: {
+            id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
@@ -111,5 +112,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 tableName: 'users'
             }
         );
+    }
+
+    public static createAssociations() {
+        User.hasMany(Product);
     }
 }
