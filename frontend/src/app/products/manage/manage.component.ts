@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ProductsService, IProduct} from '../products.service';
 import {UserService} from 'src/app/user/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-products-manage',
@@ -12,11 +14,13 @@ export class ManageComponent implements OnInit {
 
   displayedColumns  = ['title', 'description', 'action'];
   products: Partial<IProduct>[];
+  filteredProducts: Partial<IProduct>[];
 
   constructor(
     public userService: UserService,
     public router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    public dialog: MatDialog
   ) {
     this.reloadProducts();
   }
@@ -33,10 +37,25 @@ export class ManageComponent implements OnInit {
   }
 
   delete(product: IProduct): void {
-    this.productService.delete(product).subscribe( () => this.reloadProducts());
+    this.dialog.open(DeleteComponent).afterClosed().subscribe( result => {
+      if (result) {
+        this.productService.delete(product).subscribe( () => this.reloadProducts());
+      }
+    });
   }
 
   reloadProducts(): void {
-    this.productService.getMyProducts().subscribe( prods => this.products = prods);
+    this.productService.getMyProducts().subscribe( prods => {
+      this.products = prods;
+      this.filteredProducts = prods;
+    });
+  }
+
+  filterProducts(status: string): void {
+    if (status === 'active') {
+      this.filteredProducts = this.products.filter( product => ['approved', 'pending'].includes(product.status));
+    } else {
+      this.filteredProducts = [];
+    }
   }
 }

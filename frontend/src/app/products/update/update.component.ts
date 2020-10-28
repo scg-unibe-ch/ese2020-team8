@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductsService, IProduct} from '../products.service';
+import {ProductsService } from '../products.service';
 import {FormBuilder} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -51,7 +51,7 @@ export class UpdateComponent implements OnInit {
         this.productForm.value
     ).subscribe( () => {
       this.snackBar.open('Successfully updated advertisement. Wait for an admin to approve it');
-      this.router.navigate(['products']);
+      this.router.navigate(['products', 'manage']);
     });
   }
 

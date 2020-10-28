@@ -3,7 +3,7 @@
 
     <mat-form-field>
       <mat-label>Product title</mat-label>
-      <input matInput formControlName="title" placeholder="Product title" />
+      <input matInput disabled formControlName="title" placeholder="Product title" />
       <mat-error *ngIf="productForm.get('title').invalid">
         Product name is required and must be longer than 3 characters
       </mat-error>
@@ -27,7 +27,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Good or service?</mat-label>
-        <mat-select formControlName="productType" >
+        <mat-select disabled formControlName="productType" >
           <mat-option value="good">Good</mat-option>
           <mat-option value="service">Service</mat-option>
         </mat-select>
@@ -51,7 +51,7 @@
         <mat-label>Currently available?</mat-label>
         <mat-select formControlName="availability">
           <mat-option value="true">available</mat-option>
-          <mat-option value="false">inavailable</mat-option>
+          <mat-option value="false">unavailable</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
