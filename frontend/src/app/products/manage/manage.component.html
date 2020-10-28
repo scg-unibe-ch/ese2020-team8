@@ -11,16 +11,16 @@
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <!-- ToDo this button it should load all posted products -->
-    <mat-button-toggle value="Active">Active</mat-button-toggle>
+    <mat-button-toggle value="Active" (click)="filterProducts('active')">Active</mat-button-toggle>
     <!-- ToDo this button it should load  products that have been lent by this user-->
-    <mat-button-toggle value="Lent">Lent</mat-button-toggle>
+    <mat-button-toggle value="Lent" (click)="filterProducts('lent')">Lent</mat-button-toggle>
     <!-- ToDo this button it should load  all products that have been sold by this user -->
-    <mat-button-toggle value="Sold">Sold</mat-button-toggle>
+    <mat-button-toggle value="Sold" (click)="filterProducts('sold')">Sold</mat-button-toggle>
   </mat-button-toggle-group>
 
 
   <app-product-item
-    *ngFor="let product of products; index as productId"
+    *ngFor="let product of filteredProducts; index as productId"
     [product]="product"
   >
     <div class="action-buttons">

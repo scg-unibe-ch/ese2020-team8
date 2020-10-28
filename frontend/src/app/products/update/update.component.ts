@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductsService, IProduct} from '../products.service';
+import {ProductsService } from '../products.service';
 import {FormBuilder} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 

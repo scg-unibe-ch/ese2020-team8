@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 
 import { ProductsRoutingModule } from './products-routing.module';
-import { ListComponent } from './list/list.component';
+import { BrowseComponent } from './browse/browse.component';
 import { CreateComponent } from './create/create.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,25 +16,25 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.component';
 import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
   declarations: [
-    ListComponent,
+    BrowseComponent,
     CreateComponent,
     ManageComponent,
     UpdateComponent,
-    ProductEditInfoComponent,
     ProductEditImagesComponent,
     ItemComponent,
     DeleteComponent,
+    HistoryComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +53,7 @@ import { DeleteComponent } from './delete/delete.component';
     MatDialogModule
   ],
   exports: [
-    ListComponent
+    BrowseComponent
   ]
 })
 export class ProductsModule {}
