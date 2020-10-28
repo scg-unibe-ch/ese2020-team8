@@ -9,17 +9,18 @@ export async function checkProductAuthorization(req: IAuthRequest, res: Response
         }
         if (req.user.isAdmin) {
             next();
-        }
-        const product = await Product.findOne({
-            where: {
-                id: req.params.productId,
-                UserId: req.user.userId
-            }
-        });
-        if (product) {
-            next();
         } else {
-            res.status(403).send({ message: 'Unauthorized' });
+            const product = await Product.findOne({
+                where: {
+                    id: req.params.productId,
+                    UserId: req.user.userId
+                }
+            });
+            if (product) {
+                next();
+            } else {
+                res.status(403).send({ message: 'Unauthorized' });
+            }
         }
     } catch (err) {
        next(err);
