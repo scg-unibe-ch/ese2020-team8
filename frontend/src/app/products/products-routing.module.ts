@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.component';
 import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
-import { ListComponent } from './list/list.component';
+import { BrowseComponent } from './browse/browse.component';
 import { CreateComponent } from './create/create.component';
 import { AuthGuard } from '../auth.guard';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   {
     path: 'products',
-    component: ListComponent,
+    component: BrowseComponent,
+  },
+  {
+    path: 'products/history',
+    component: HistoryComponent,
   },
   {
     path: 'products/create',
@@ -26,11 +30,6 @@ const routes: Routes = [
   {
     path: 'products/manage',
     component: ManageComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'products/edit-info',
-    component: ProductEditInfoComponent,
     canActivate: [AuthGuard],
   },
   {

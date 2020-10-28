@@ -12,6 +12,7 @@ export class ManageComponent implements OnInit {
 
   displayedColumns  = ['title', 'description', 'action'];
   products: Partial<IProduct>[];
+  filteredProducts: Partial<IProduct>[];
 
   constructor(
     public userService: UserService,
@@ -37,6 +38,17 @@ export class ManageComponent implements OnInit {
   }
 
   reloadProducts(): void {
-    this.productService.getMyProducts().subscribe( prods => this.products = prods);
+    this.productService.getMyProducts().subscribe( prods => {
+      this.products = prods;
+      this.filteredProducts = prods;
+    });
+  }
+
+  filterProducts(status: string): void {
+    if (status === 'active') {
+      this.filteredProducts = this.products.filter( product => ['approved', 'pending'].includes(product.status));
+    } else {
+      this.filteredProducts = [];
+    }
   }
 }

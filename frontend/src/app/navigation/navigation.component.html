@@ -8,12 +8,13 @@
   </button>
   <a href="/" mat-button>ESE2020 Team8</a>
   <button
+    *ngIf="userService.loggedIn"
     mat-button
     aria-label="go to product list"
-    routerLink="/products"
+    routerLink="/products/history"
   >
     <mat-icon>storefront</mat-icon>
-    <span>Buy & Sell</span>
+    <span>Bought & Rent</span>
   </button>
   <button
     *ngIf="userService.loggedIn"
@@ -21,8 +22,8 @@
     aria-label="go to your product management dashboard"
     routerLink="/products/manage"
   >
-    <mat-icon>create</mat-icon>
-    <span>Product Manager</span>
+    <mat-icon>gavel</mat-icon>
+    <span>Sell & Lend</span>
   </button>
   <button
     *ngIf="userService.isAdmin"

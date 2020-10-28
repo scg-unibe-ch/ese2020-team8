@@ -1,0 +1,14 @@
+<mat-card class="product-list">
+  <h1>Product List</h1>
+
+  <app-product-item
+    *ngFor="let product of products; index as productId"
+    [product]="product"
+  >
+    <div *ngIf="this.userService.loggedIn" class="action-buttons">
+      <button color="primary" mat-flat-button (click)="goToBuy(product)">
+        Buy
+      </button>
+    </div>
+  </app-product-item>
+</mat-card>
