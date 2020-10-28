@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {ProductsService, IProduct} from '../products.service';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-product-browse',
+  templateUrl: './browse.component.html',
+  styleUrls: ['./browse.component.css']
 })
-export class ListComponent implements OnInit {
+export class BrowseComponent implements OnInit {
   displayedColumns: string[];
   products: IProduct[];
 

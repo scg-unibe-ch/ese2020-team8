@@ -23,6 +23,8 @@ export class ProductService {
     delete productChanges.id;
     delete productChanges.UserId;
     productChanges.status = 'pending';
+    delete productChanges.title;
+    delete productChanges.productType;
 
     return Product.update(productChanges, {
       where: {
