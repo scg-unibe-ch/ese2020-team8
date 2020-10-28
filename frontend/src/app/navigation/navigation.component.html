@@ -10,6 +10,15 @@
   <button
     *ngIf="userService.loggedIn"
     mat-button
+    aria-label="go to favorite products"
+    routerLink="/products/favorites"
+  >
+    <mat-icon style="color: #cf73a3;">favorite</mat-icon>
+    <span>Favorites</span>
+  </button>
+  <button
+    *ngIf="userService.loggedIn"
+    mat-button
     aria-label="go to product list"
     routerLink="/products/history"
   >
