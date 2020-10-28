@@ -51,7 +51,7 @@ export class UpdateComponent implements OnInit {
         this.productForm.value
     ).subscribe( () => {
       this.snackBar.open('Successfully updated advertisement. Wait for an admin to approve it');
-      this.router.navigate(['products']);
+      this.router.navigate(['products', 'manage']);
     });
   }
 

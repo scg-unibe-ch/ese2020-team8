@@ -27,7 +27,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Good or service?</mat-label>
-        <mat-select disabled="true" formControlName="productType" >
+        <mat-select disabled formControlName="productType" >
           <mat-option value="good">Good</mat-option>
           <mat-option value="service">Service</mat-option>
         </mat-select>
@@ -51,7 +51,7 @@
         <mat-label>Currently available?</mat-label>
         <mat-select formControlName="availability">
           <mat-option value="true">available</mat-option>
-          <mat-option value="false">inavailable</mat-option>
+          <mat-option value="false">unavailable</mat-option>
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
