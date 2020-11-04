@@ -19,7 +19,8 @@ export class CreateComponent implements OnInit {
     purchaseType: '',
     availability: '',
     location: '',
-    delivery: ''
+    delivery: '',
+    duration: ''
   });
 
   constructor(
