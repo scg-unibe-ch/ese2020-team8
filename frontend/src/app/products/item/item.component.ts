@@ -9,10 +9,12 @@ import {IProduct} from '../products.service';
 export class ItemComponent implements OnInit {
 
   @Input() product: IProduct;
+  defaultImage: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.defaultImage = this.product.Photos.length ? `/api/images/${this.product.Photos[0].fileName}`: '/assets/boat.png';
   }
 
 }
