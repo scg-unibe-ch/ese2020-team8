@@ -45,6 +45,7 @@ export class ProductsService {
   approve(productId: string): Observable<IProduct> {
     return this.http.put<IProduct>(this.url + `/${productId}/approve`, {});
   }
+
 }
 
 export interface IProduct {
@@ -59,5 +60,7 @@ export interface IProduct {
     delivery: boolean;
     status: string;
     UserId: number;
-
+    Photos: {
+      fileName: string;
+    }[];
 }
