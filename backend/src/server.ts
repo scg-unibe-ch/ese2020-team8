@@ -32,7 +32,7 @@ export class Server {
     }
 
     private configureServer(): Application {
-        options for cors middleware
+        // options for cors middleware
         const options: cors.CorsOptions = {
             allowedHeaders: [
                 'Origin',
