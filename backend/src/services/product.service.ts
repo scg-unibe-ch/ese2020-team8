@@ -3,6 +3,7 @@ import {
   ProductCreationAttributes,
   ProductAttributes,
 } from '../models/product.model';
+import {Photo} from '../models/photo.model';
 
 export class ProductService {
   public async get(productId: string) {
@@ -53,6 +54,7 @@ export class ProductService {
       where: {
         status: 'approved',
       },
+      include: Photo as any
     });
   }
 
@@ -61,6 +63,7 @@ export class ProductService {
       where: {
         UserId: userId,
       },
+      include: Photo as any
     });
   }
 
@@ -69,6 +72,7 @@ export class ProductService {
       where: {
         status: 'pending',
       },
+      include: Photo as any
     });
   }
 }
