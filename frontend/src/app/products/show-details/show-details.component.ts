@@ -11,6 +11,7 @@ import { ProductsService } from '../products.service';
 export class ShowDetailsComponent implements OnInit {
   
   productId: string;
+  photos: string[];
 
   @Input() product: IProduct;
 

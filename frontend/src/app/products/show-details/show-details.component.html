@@ -1,6 +1,9 @@
 <mat-card class="product-show-detail">
     <section class="photos">
         <!--Display all product pictures in a gallery-->
+        <li *ngFor="let photo of photos; index as i; first as isFirst">
+            <img [src] = "photo" alt="Product photo missing">
+          </li>
     </section>
     <section class="attributes">
         <!--Display all product attributes-->
