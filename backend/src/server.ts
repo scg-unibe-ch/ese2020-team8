@@ -1,10 +1,9 @@
 import express, { Application , Request, Response } from 'express';
 import morgan from 'morgan';
 import { Sequelize } from 'sequelize';
-import { TodoList } from './models/todolist.model';
-import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
 import {Product} from './models/product.model';
+import {Photo} from './models/photo.model';
 
 import cors from 'cors';
 import {ApiController} from './api';
@@ -18,14 +17,12 @@ export class Server {
         this.server = this.configureServer();
         this.sequelize = this.configureSequelize();
 
-        TodoItem.initialize(this.sequelize); // creates the tables if they dont exist
-        TodoList.initialize(this.sequelize);
-        TodoItem.createAssociations();
-        TodoList.createAssociations();
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
+        Photo.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
+        Photo.createAssociations();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port

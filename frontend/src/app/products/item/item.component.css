@@ -2,7 +2,7 @@
 .product-card {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: minmax(auto,25%) 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
     "img info"
@@ -14,6 +14,7 @@
 }
 .preview {
   grid-area: img;
+  max-width: 100%;
 }
 .action-buttons {
   grid-area: action;

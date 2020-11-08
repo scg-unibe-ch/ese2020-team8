@@ -4,27 +4,30 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {tap, finalize} from 'rxjs/operators';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { tap, finalize } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private snackBar: MatSnackBar) {}
 
-  constructor(
-    private snackBar: MatSnackBar
-  ) {
-  }
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     let error;
     return next.handle(request).pipe(
-      tap( null, (err: HttpErrorResponse) => error = err),
-      finalize(() => error ? this.snackBar.open(error.message) : null)
+      tap(null, (err: HttpErrorResponse) => (error = err)),
+      finalize(() =>
+        error
+          ? this.snackBar.open(error.message, 'close', {
+              duration: 5000,
+            })
+          : null
+      )
     );
-
-
   }
 }

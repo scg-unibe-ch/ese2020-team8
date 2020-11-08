@@ -4,6 +4,7 @@ import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
 
+
 const productController: Router = express.Router();
 const productService = new ProductService();
 
@@ -20,6 +21,7 @@ productController.post(
     }
   }
 );
+
 
 productController.put(
   '/:productId/approve',
@@ -105,6 +107,7 @@ productController.get(
   }
 );
 
+
 productController.put(
   '/:productId',
   verifyToken,
@@ -119,5 +122,6 @@ productController.put(
     }
   }
 );
+
 
 export const ProductController: Router = productController;
