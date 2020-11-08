@@ -39,11 +39,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     ItemComponent,
     DeleteComponent,
     HistoryComponent,
-<<<<<<< HEAD
     ShowDetailsComponent,
-=======
     UploadImageComponent,
->>>>>>> development
   ],
   imports: [
     CommonModule,
