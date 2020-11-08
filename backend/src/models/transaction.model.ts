@@ -17,25 +17,22 @@ export interface TransactionAttributes {
     ProductId: number;
     productType: string;
     purchaseType: string;
-    UserId: number;
+    buyerId: number;
     rentalDays: number;
 }
 
-export interface TransactionCreationAttributes extends Optional<Product, 'id'> { }
+export interface TransactionCreationAttributes extends Optional<TransactionAttributes, 'id'> { }
 
 export class Transaction
   extends Model<TransactionAttributes, TransactionCreationAttributes>
   implements TransactionAttributes {
 
-  public static associations: {
-    transaction: Association<Transaction, Product>;
-  };
   id!: number;
   price!: string;
   ProductId!: number;
   productType!: string;
   purchaseType!: string;
-  UserId!: number;
+  buyerId!: number;
   rentalDays!: number;
 
   // timestamps!
@@ -70,7 +67,7 @@ export class Transaction
           type: DataTypes.STRING,
           allowNull: false,
         },
-        UserId: {
+        buyerId: {
           type: DataTypes.INTEGER,
         },
         rentalDays: {
@@ -83,7 +80,7 @@ export class Transaction
   }
 
   public static createAssociations() {
-    Transaction.belongsTo(User);
+    Transaction.belongsTo(User, {foreignKey: 'buyerId'});
     User.hasMany(Transaction);
     Transaction.belongsTo(Product);
     Product.hasMany(Transaction);

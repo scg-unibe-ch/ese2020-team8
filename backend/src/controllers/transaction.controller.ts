@@ -47,4 +47,4 @@ transactionController.get(
   }
 );
 
-export const ProductController: Router = transactionController;
+export const TransactionController: Router = transactionController;

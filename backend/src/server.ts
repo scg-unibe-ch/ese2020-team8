@@ -11,7 +11,7 @@ import {ApiController} from './api';
 
 export class Server {
     private server: Application;
-    private sequelize: Sequelize;
+    public sequelize: Sequelize;
     private port = process.env.PORT || 3000;
 
     constructor() {
@@ -70,4 +70,5 @@ export class Server {
     }
 }
 
-const server = new Server(); // starts the server
+export const server = new Server(); // starts the server
+

@@ -1,8 +1,11 @@
+import { Product } from "../models/product.model";
 import {
   Transaction,
   TransactionCreationAttributes,
   TransactionAttributes,
-} from '../models/transaction.model';
+} from "../models/transaction.model";
+import { User } from "../models/user.model";
+import { server } from "../server";
 
 export class TransactionService {
   TransactionService = new TransactionService();
@@ -14,8 +17,43 @@ export class TransactionService {
     });
   }
 
-  public async create(transaction: TransactionCreationAttributes) {
-    return Transaction.create(transaction);
+  public async create(product: Product, buyerId: number, rentalDays: number) {
+    const transaction = {
+      price: product.price,
+      ProductId: product.id,
+      productType: product.productType,
+      purchaseType: product.productType,
+      buyerId: buyerId,
+      rentalDays: rentalDays,
+    };
+
+    const t = await server.sequelize.transaction();
+
+    try {
+      const buyer = await User.findOne({
+        where: {
+          id: buyerId,
+        },
+      });
+
+      const seller = await User.findOne({
+        where: {
+          id: product.UserId,
+        },
+      });
+      buyer.wallet -= product.price;
+      seller.wallet += product.price;
+
+      const transactionResult = await Transaction.create(transaction, {transaction: t});
+      // If the execution reaches this line, no errors were thrown.
+      // We commit the transaction.
+      await t.commit();
+      return transactionResult;
+    } catch (error) {
+      // If the execution reaches this line, an error was thrown.
+      // We rollback the transaction.
+      await t.rollback();
+    }
   }
 
   public async getProductTransactions(userId: number, productId: number) {
@@ -27,7 +65,6 @@ export class TransactionService {
       include: Transaction as any,
     });
   }
-
 
   public async getMyTransactions(userId: number) {
     return Transaction.findAll({
