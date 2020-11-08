@@ -23,7 +23,7 @@ export class ShowDetailsComponent implements OnInit {
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     this.productService.get(productId).subscribe( product  => {
-      this.productId = product.id;
+      this.product = product;
     });
   }
 
