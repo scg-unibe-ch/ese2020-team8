@@ -13,18 +13,19 @@ const PRODUCT1 = {
     id: 1,
     title: 'Baby Bed XXL',
     description: 'This Baby-bed suits the big babies and even small children',
-    price: '200',
+    price: 200,
     productType: 'good',
     purchaseType: 'buy',
     availability: true,
     location: '3012 Bern',
     delivery: true,
     status: 'approved',
-    UserId: 1
+    UserId: 1,
+    duration: 12
 };
 
 
 sequelize.sync().then( () => {
-    return Product.create(PRODUCT1 as Product).then(() => console.log("Baby Bed XXL created"));
+    return Product.create(PRODUCT1).then(() => console.log("Baby Bed XXL created"));
 })
 .catch( err => console.log(err));

@@ -18,7 +18,7 @@ export interface ProductAttributes {
 }
 
 // tells sequelize that todoItemId is not a required field
-export interface ProductCreationAttributes extends Optional<Product, 'id'> { }
+export interface ProductCreationAttributes extends Optional<ProductAttributes, 'id'> { }
 
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
