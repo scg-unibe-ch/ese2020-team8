@@ -1,63 +1,34 @@
 <mat-toolbar color="primary">
-  <button
-    mat-icon-button
-    aria-label="Example icon-button with menu icon"
-    (click)="drawer.toggle()"
-  >
+  <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <a href="/" mat-button>ESE2020 Team8</a>
-  <button
-    *ngIf="userService.loggedIn"
-    mat-button
-    aria-label="go to favorite products"
-    routerLink="/products/favorites"
-  >
+  <a href="/" mat-button>
+    <mat-icon>storefront</mat-icon>
+    <span>Marketplace</span>
+  </a>
+  <button *ngIf="userService.loggedIn" mat-button aria-label="go to favorite products" routerLink="/products/favorites">
     <mat-icon style="color: #cf73a3;">favorite</mat-icon>
     <span>Favorites</span>
   </button>
-  <button
-    *ngIf="userService.loggedIn"
-    mat-button
-    aria-label="go to product list"
-    routerLink="/products/history"
-  >
-    <mat-icon>storefront</mat-icon>
-    <span>Bought & Rent</span>
+  <button *ngIf="userService.loggedIn" mat-button aria-label="go to product list" routerLink="/products/history">
+    <mat-icon>shopping_basket</mat-icon>
+    <span>Sale</span>
   </button>
-  <button
-    *ngIf="userService.loggedIn"
-    mat-button
-    aria-label="go to your product management dashboard"
-    routerLink="/products/manage"
-  >
+  <button *ngIf="userService.loggedIn" mat-button aria-label="go to your product management dashboard"
+    routerLink="/products/manage">
     <mat-icon>gavel</mat-icon>
-    <span>Sell & Lend</span>
+    <span>Purchase</span>
   </button>
-  <button
-    *ngIf="userService.isAdmin"
-    mat-button
-    aria-label="go to approve list"
-    routerLink="/admin/approve"
-  >
+  <button *ngIf="userService.isAdmin" mat-button aria-label="go to approve list" routerLink="/admin/approve">
     <mat-icon>admin_panel_settings</mat-icon>
     <span>Admin</span>
   </button>
   <span class="spacer"></span>
-  <button
-    *ngIf="!userService.loggedIn"
-    mat-icon-button
-    aria-label="login button"
-    (click)="goToLogin()"
-  >
+  <button *ngIf="!userService.loggedIn" mat-icon-button aria-label="login button" (click)="goToLogin()">
     Login
   </button>
-  <button
-    *ngIf="userService.loggedIn"
-    mat-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
-  >
+  <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu">
     <span [innerHTML]="userService.user"></span>
     <mat-icon>expand_more</mat-icon>
   </button>

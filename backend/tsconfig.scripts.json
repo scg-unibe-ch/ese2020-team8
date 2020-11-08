@@ -10,6 +10,6 @@
   "preserveConstEnums": true,
   "sourceMap": true
 },
-"include": ["./scripts/createAdminUser.ts"],
+"include": ["./scripts/createAdminUser.ts", "./scripts/createDummyUser.ts", "./scripts/createDummyProducts.ts"],
 "exclude": ["node_modules", "**/*.spec.ts"]
 }
