@@ -23,6 +23,7 @@ import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { HistoryComponent } from './history/history.component';
     ItemComponent,
     DeleteComponent,
     HistoryComponent,
+    ShowDetailsComponent,
   ],
   imports: [
     CommonModule,

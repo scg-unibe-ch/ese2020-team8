@@ -1,0 +1,58 @@
+<mat-card class="product-show-detail">
+    <section class="photos">
+        <!--Display all product pictures in a gallery-->
+    </section>
+    <section class="attributes">
+        <!--Display all product attributes-->
+        <header>
+            <h1> {{ product.title }} </h1>
+        </header>
+        <div *ngIf="product.description">
+            <h2 >Description</h2>
+            <p>
+                {{ product.description }}
+            </p>
+        </div>
+        <div *ngIf="product.price">
+            <h2 >Price</h2>
+            <p *ngIf="(product.productType === 'service') || product.purchaseType === 'lend'">{{ product.price }} CHF/day</p>
+            <p *ngIf="(product.productType === 'good') && product.purchaseType === 'buy'">{{ product.price }} CHF</p>
+        </div>
+        <div *ngIf="product.productType">
+            <h2 >Type of product</h2>
+            <p>
+                {{ product.productType }}
+            </p>
+        </div>
+        <div *ngIf="product.purchaseType">
+            <h2 >Purchase type</h2>
+            <p>
+                {{ product.purchaseType }}
+            </p>
+        </div>
+        <div *ngIf="showAvailability()">
+            <h2 >Availability</h2>
+            <p *ngIf="product.availability === true">
+                available
+            </p>
+            <p *ngIf="product.availability === false">
+                unavailable
+            </p>
+        </div>
+        <div *ngIf="product.location">
+            <h2 >Location</h2>
+            <p>
+                {{ product.location }}
+            </p>
+        </div>
+        <div *ngIf="product.productType === 'good'">
+            <h2 >Delivery</h2>
+            <p *ngIf="product.delivery === true">
+                Delivery is possible
+            </p>
+            <p *ngIf="product.delivery === false">
+                No delivery possible
+            </p>
+        </div>
+    </section>
+</mat-card>

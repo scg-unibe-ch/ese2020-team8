@@ -7,6 +7,7 @@ import { AuthGuard } from '../auth.guard';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { HistoryComponent } from './history/history.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'products/history',
     component: HistoryComponent,
+  },
+  {
+    path: 'products/:id/show',
+    component: ShowDetailsComponent,
   },
   {
     path: 'products/create',
