@@ -14,6 +14,9 @@ export class TransactionService {
     });
   }
 
+  public async create(transaction: TransactionCreationAttributes) {
+    return Transaction.create(transaction);
+  }
 
   public async getProductTransactions(userId: number, productId: number) {
     return Transaction.findAll({
