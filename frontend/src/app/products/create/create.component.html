@@ -1,53 +1,22 @@
 <mat-card>
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <mat-horizontal-stepper linear="true" #stepper>
+    <mat-step [stepControl]="productForm" label="Create Product">
+      <form [formGroup]="productForm">
+        <mat-form-field>
+          <mat-label>Product title</mat-label>
+          <input matInput formControlName="title" placeholder="Product title" />
+          <mat-error *ngIf="productForm.get('title').invalid">
+            Product name is required and must be longer than 3 characters
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Product title</mat-label>
-      <input matInput formControlName="title" placeholder="Product title" />
-      <mat-error *ngIf="productForm.get('title').invalid">
-        Product name is required and must be longer than 3 characters
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Product Type?</mat-label>
-      <mat-select formControlName="productType" >
-        <mat-option value="good">Good</mat-option>
-        <mat-option value="service">Service</mat-option>
-      </mat-select>
-      <mat-hint align="end">Please choose</mat-hint>
-    </mat-form-field>
-
-      <!-- Dropdown menu for goods - should hide if product is a service -->
-      <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
-        <mat-label>Your Offer?</mat-label>
-        <mat-select formControlName="purchaseType">
-          <mat-option value="buy">Buy</mat-option>
-          <mat-option value="rent">Rent</mat-option>
-        </mat-select>
-        <mat-hint align="end">Please choose</mat-hint>
-      </mat-form-field>
-
-      <!-- Dropdown menu to choose whether the product is currently available.
-      Should hide if it's for a good to buy, then the number of available instances of
-      this product shall be entered. -->
-      <!--
-      <mat-form-field appearance="fill" *ngIf="showAvailability()">
-        <mat-label>Currently available?</mat-label>
-        <mat-select formControlName="availability">
-          <mat-option value="true">available</mat-option>
-          <mat-option value="false">unavailable</mat-option>
-        </mat-select>
-        <mat-hint align="end">Please choose</mat-hint>
-      </mat-form-field>
-      -->
-      <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='service'">
-        <mat-label>Rent Duration In Days</mat-label>
-        <input matInput type="number" min="0" step="1" oninput="validity.valid||(value='')" formControlName="duration" placeholder="Days" />
-        <mat-error *ngIf="productForm.get('duration').invalid">
-          Product price is required and must be not negative
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Product description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="productForm.get('description').invalid">
+            Product name is required and must be longer than 3 characters
+          </mat-error>
+        </mat-form-field>
 
       <mat-form-field>
         <mat-label>Price</mat-label>
@@ -57,6 +26,36 @@
         </mat-error>
       </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Product Type?</mat-label>
+      <mat-select formControlName="productType" >
+        <mat-option value="good">Good</mat-option>
+        <mat-option value="service">Service</mat-option>
+      </mat-select>
+      <mat-hint align="end">Please choose</mat-hint>
+    </mat-form-field>
+        
+<!-- Dropdown menu for goods - should hide if product is a service -->
+      <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
+        <mat-label>Your Offer?</mat-label>
+        <mat-select formControlName="purchaseType">
+          <mat-option value="buy">Buy</mat-option>
+          <mat-option value="rent">Rent</mat-option>
+        </mat-select>
+        <mat-hint align="end">Please choose</mat-hint>
+      </mat-form-field>
+        <!-- Dropdown menu to choose whether the product is currently available.
+      Should hide if it's for a good to buy, then the number of available instances of
+      this product shall be entered. -->
+        <mat-form-field appearance="fill" *ngIf="showAvailability()">
+          <mat-label>Currently available?</mat-label>
+          <mat-select formControlName="availability">
+            <mat-option value="true">available</mat-option>
+            <mat-option value="false">unavailable</mat-option>
+          </mat-select>
+          <mat-hint align="end">Please choose</mat-hint>
+        </mat-form-field>
+
       <mat-form-field>
         <mat-label>Pick Up Location</mat-label>
         <input matInput formControlName="location" placeholder="PLZ, City" />
@@ -64,9 +63,18 @@
           Product location is required
         </mat-error>
       </mat-form-field>
+        
+              <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='service'">
+        <mat-label>Rent Duration In Days</mat-label>
+        <input matInput type="number" min="0" step="1" oninput="validity.valid||(value='')" formControlName="duration" placeholder="Days" />
+        <mat-error *ngIf="productForm.get('duration').invalid">
+          Product price is required and must be not negative
+        </mat-error>
+      </mat-form-field>
 
-      <!-- Dropdown menu to choose whether delivery is possible.
+        <!-- Dropdown menu to choose whether delivery is possible.
       Should hide if it's for a service. -->
+
       <mat-form-field appearance="fill" *ngIf="productForm.get('productType').value==='good'">
         <mat-label>Delivery?</mat-label>
         <mat-select formControlName="delivery">
@@ -75,16 +83,25 @@
         </mat-select>
         <mat-hint align="end">Please choose</mat-hint>
       </mat-form-field>
-
-      <mat-form-field>
+          <mat-form-field>
         <mat-label>Product description</mat-label>
         <textarea matInput formControlName="description"></textarea>
         <mat-error *ngIf="productForm.get('description').invalid">
           Product name is required and must be longer than 3 characters
         </mat-error>
       </mat-form-field>
-
+        
       <button type="submit" color="primary" mat-flat-button>Submit</button>
-
-  </form>
+      </form>
+    </mat-step>
+    <mat-step label="upload an image">
+      <form>
+        <input type="file" multiple accept="image/*" (change)="onFileChange($event)">
+        <button mat-button (click)="submit()">Save</button>
+      </form>
+      <div class="image-container">
+        <img *ngFor="let img of previewImages" [src]="img.result">
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 </mat-card>

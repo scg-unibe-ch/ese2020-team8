@@ -1,5 +1,6 @@
-import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
+import { Optional, Model, Sequelize, DataTypes, HasManyGetAssociationsMixin } from 'sequelize';
 import {User} from './user.model';
+import {Photo} from './photo.model';
 
 export interface ProductAttributes {
     id: number;
@@ -33,6 +34,8 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     status!: string;
     UserId!: number;
     duration!: number;
+
+    public getPhotos!: HasManyGetAssociationsMixin<Photo>;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -96,6 +99,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
 
     public static createAssociations() {
         Product.belongsTo(User);
+        Product.hasMany(Photo);
     }
 
 }

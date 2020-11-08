@@ -13,6 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -23,6 +24,7 @@ import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { HistoryComponent } from './history/history.component';
     ItemComponent,
     DeleteComponent,
     HistoryComponent,
+    UploadImageComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +53,8 @@ import { HistoryComponent } from './history/history.component';
     MatButtonToggleModule,
     MatSelectModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   exports: [
     BrowseComponent
