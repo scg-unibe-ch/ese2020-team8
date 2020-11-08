@@ -13,7 +13,7 @@ import {Product} from './product.model';
 
 export interface TransactionAttributes {
     id: number;
-    price: string;
+    price: number;
     ProductId: number;
     productType: string;
     purchaseType: string;
@@ -28,7 +28,7 @@ export class Transaction
   implements TransactionAttributes {
 
   id!: number;
-  price!: string;
+  price!: number;
   ProductId!: number;
   productType!: string;
   purchaseType!: string;
@@ -53,7 +53,7 @@ export class Transaction
           primaryKey: true,
         },
         price: {
-          type: DataTypes.STRING,
+          type: DataTypes.DECIMAL(19, 2),
           allowNull: false,
         },
         ProductId: {

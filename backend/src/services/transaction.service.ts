@@ -1,14 +1,13 @@
-import { Product } from "../models/product.model";
+import { Product } from '../models/product.model';
 import {
   Transaction,
   TransactionCreationAttributes,
   TransactionAttributes,
-} from "../models/transaction.model";
-import { User } from "../models/user.model";
-import { server } from "../server";
+} from '../models/transaction.model';
+import { User } from '../models/user.model';
+import { server } from '../server';
 
 export class TransactionService {
-  TransactionService = new TransactionService();
   public async get(transactionId: string) {
     return Transaction.findOne({
       where: {
@@ -44,6 +43,9 @@ export class TransactionService {
       buyer.wallet -= product.price;
       seller.wallet += product.price;
 
+      buyer.save({ transaction: t });
+      seller.save({ transaction: t });
+
       const transactionResult = await Transaction.create(transaction, {transaction: t});
       // If the execution reaches this line, no errors were thrown.
       // We commit the transaction.
@@ -53,13 +55,14 @@ export class TransactionService {
       // If the execution reaches this line, an error was thrown.
       // We rollback the transaction.
       await t.rollback();
+      throw(error);
     }
   }
 
   public async getProductTransactions(userId: number, productId: number) {
     return Transaction.findAll({
       where: {
-        UserId: userId,
+        buyerId: userId,
         ProductId: productId,
       },
       include: Transaction as any,
@@ -69,7 +72,7 @@ export class TransactionService {
   public async getMyTransactions(userId: number) {
     return Transaction.findAll({
       where: {
-        UserId: userId,
+        buyerId: userId,
       },
       include: Transaction as any,
     });
