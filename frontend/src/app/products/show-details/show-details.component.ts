@@ -11,7 +11,7 @@ import { ProductsService } from '../products.service';
 export class ShowDetailsComponent implements OnInit {
   
   productId: string;
-  photos: string[];
+  photos: { fileName: string }[];
 
   @Input() product: IProduct;
 
@@ -25,6 +25,7 @@ export class ShowDetailsComponent implements OnInit {
     const productId = this.route.snapshot.paramMap.get('id');
     this.productService.get(productId).subscribe( product  => {
       this.product = product;
+      this.photos = product.Photos
     });
   }
 
