@@ -1,0 +1,1 @@
+{"parent":"5085c4d8-28ea-4192-9962-f36814455e9f","pid":41,"argv":["/usr/local/bin/node","/app/backend/node_modules/.bin/tsc"],"execArgv":[],"cwd":"/app/backend","time":1605142772331,"ppid":40,"coverageFilename":"/app/backend/.nyc_output/8349dcb4-df57-46d3-8d90-21d14b105b28.json","externalId":"","uuid":"8349dcb4-df57-46d3-8d90-21d14b105b28","files":[]}

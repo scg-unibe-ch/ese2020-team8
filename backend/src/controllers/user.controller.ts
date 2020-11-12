@@ -5,7 +5,7 @@ import { verifyToken } from '../middlewares/checkAuth';
 import {checkPasswordStrength} from '../middlewares/checkPasswordStrength';
 
 const userController: Router = express.Router();
-const userService = new UserService();
+export const userService = new UserService();
 
 userController.post('/register', checkPasswordStrength,
     (req: Request, res: Response) => {
