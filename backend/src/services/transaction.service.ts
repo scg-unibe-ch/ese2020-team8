@@ -1,11 +1,7 @@
 import { Product } from '../models/product.model';
-import {
-  Transaction,
-  TransactionCreationAttributes,
-  TransactionAttributes,
-} from '../models/transaction.model';
+import { Transaction } from '../models/transaction.model';
 import { User } from '../models/user.model';
-import { server } from '../server';
+import { server } from '../';
 
 export class TransactionService {
   public async get(transactionId: string) {

@@ -20,6 +20,11 @@ start: 		## Start backend and frontend in a container
 		#docker run -d --name $(shell basename $(PWD))-backend -v $(shell pwd):/app -w /app/backend node:12 npm run dev
 		#docker run -d --name $(shell basename $(PWD))-frontend -v $(shell pwd):/app -w /app/frontend node:12 npm start
 
+test: 		## Backend Tests
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run test
+coverage: 	## Backend Tests Code coverage
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run coverage
+
 stop: 		## Stop and remove the containers
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) down
 		# docker stop $(shell basename $(PWD))-backend

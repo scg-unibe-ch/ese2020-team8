@@ -25,7 +25,8 @@ const PRODUCT1 = {
 };
 
 
-sequelize.sync().then( () => {
-    return Product.create(PRODUCT1).then(() => console.log("Baby Bed XXL created"));
+sequelize.sync().then( async () => {
+    await Product.create(PRODUCT1);
+    console.log('Baby Bed XXL created');
 })
 .catch( err => console.log(err));
