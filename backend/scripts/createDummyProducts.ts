@@ -21,11 +21,12 @@ const PRODUCT1 = {
     delivery: true,
     status: 'approved',
     UserId: 1,
-    duration: 12
+    rentalDays: 365
 };
 
 
-sequelize.sync().then( () => {
-    return Product.create(PRODUCT1).then(() => console.log("Baby Bed XXL created"));
+sequelize.sync().then( async () => {
+    await Product.create(PRODUCT1);
+    console.log('Baby Bed XXL created');
 })
 .catch( err => console.log(err));
