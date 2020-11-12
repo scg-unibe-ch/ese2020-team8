@@ -89,7 +89,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             rentalDays: {
                 type: DataTypes.INTEGER,
-                allowNull: false
             },
         },
         { sequelize, tableName: 'products' }
