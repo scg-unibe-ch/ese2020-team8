@@ -1,4 +1,4 @@
-import express, { Application , Request, Response } from 'express';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import { Sequelize } from 'sequelize';
 import { User } from './models/user.model';
@@ -15,8 +15,10 @@ export class Server {
 
     constructor() {
         this.server = this.configureServer();
-        this.sequelize = this.configureSequelize();
+    }
 
+    public start() {
+        this.sequelize = this.configureSequelize();
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
         Photo.initialize(this.sequelize);
@@ -65,6 +67,9 @@ export class Server {
             logging: false // can be set to true for debugging
         });
     }
+
+    public getServer() {
+        return this.server;
+    }
 }
 
-const server = new Server(); // starts the server
