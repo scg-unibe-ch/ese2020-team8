@@ -14,7 +14,7 @@ export interface ProductAttributes {
     delivery: boolean;
     status: string;
     UserId: number;
-    rentalDays: number;
+    rentalDays?: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -33,7 +33,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     delivery!: boolean;
     status!: string;
     UserId!: number;
-    rentalDays!: number;
+    rentalDays?: number;
 
     public getPhotos!: HasManyGetAssociationsMixin<Photo>;
 
@@ -89,7 +89,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             rentalDays: {
                 type: DataTypes.INTEGER,
-                allowNull: false
             },
         },
         { sequelize, tableName: 'products' }
