@@ -50,7 +50,7 @@ photoController.get(
 );
 
 interface AuthFileRequest extends Request, IAuthRequest {
-    file: any;
+    files: any;
 }
 
 export const PhotoController: Router = photoController;

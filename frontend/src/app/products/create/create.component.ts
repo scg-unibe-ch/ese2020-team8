@@ -22,6 +22,7 @@ export class CreateComponent implements OnInit {
     availability: '',
     location: '',
     delivery: '',
+    duration: ''
   });
   previewImages: any[];
 
@@ -37,7 +38,7 @@ export class CreateComponent implements OnInit {
 
   submit(): void {
     this.productService.create(this.productForm.value).subscribe((product) => {
-      if (this.uploadImages.length) {
+      if (this.uploadImages && this.uploadImages.length) {
         this.imageService
           .upload(product.id, this.uploadImages)
           .subscribe((res) => {
@@ -62,7 +63,7 @@ export class CreateComponent implements OnInit {
 
   onFileChange(event): void {
     const files = event.target.files;
-    if (files) {
+    if (files && files.length) {
       this.uploadImages = files;
       this.createPreviews(files);
     }
