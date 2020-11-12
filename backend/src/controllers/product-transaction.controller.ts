@@ -1,9 +1,9 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { TransactionService } from '../services/transaction.service';
-import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
+import { IAuthRequest } from '../middlewares/checkAuth';
 import { ProductService } from '../services/product.service';
 
-const productTransactionController: Router = express.Router();
+const productTransactionController: Router = express.Router({ mergeParams: true});
 const transactionService = new TransactionService();
 const productService = new ProductService();
 
