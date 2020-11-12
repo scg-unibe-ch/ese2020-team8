@@ -4,13 +4,14 @@ import { Sequelize } from 'sequelize';
 import { User } from './models/user.model';
 import {Product} from './models/product.model';
 import {Photo} from './models/photo.model';
+import {Transaction} from './models/transaction.model';
 
 import cors from 'cors';
 import {ApiController} from './api';
 
 export class Server {
     private server: Application;
-    private sequelize: Sequelize;
+    public sequelize: Sequelize;
     private port = process.env.PORT || 3000;
 
     constructor() {
@@ -22,9 +23,11 @@ export class Server {
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
         Photo.initialize(this.sequelize);
+        Transaction.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
         Photo.createAssociations();
+        Transaction.createAssociations();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port
@@ -57,7 +60,7 @@ export class Server {
             .options('*', cors(options))
             .use(express.static('./src/public'))
             // this is the message you get if you open http://localhost:3000/ when the server is running
-            .get('/', (req, res) => res.send('<h1>Welcome to the ESE-2020 Backend Scaffolding <span style="font-size:50px">&#127881;</span></h1>'));
+            .get('/', (_req, res) => res.send('<h1>Welcome to the ESE-2020 Backend Scaffolding <span style="font-size:50px">&#127881;</span></h1>'));
     }
 
     private configureSequelize(): Sequelize {
