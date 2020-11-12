@@ -22,6 +22,7 @@ export class CreateComponent implements OnInit {
     availability: '',
     location: '',
     delivery: '',
+    duration: ''
   });
   previewImages: any[];
 

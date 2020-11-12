@@ -15,6 +15,12 @@ You should have installed [NodeJS and npm](https://nodejs.org/en/download/) (the
 - make sure that `scripts` typescript files are compiled `npm run build:scripts`
 - execute script `node ./scripts/build/scripts/createAdminUser.js`
 
+## Create dummy User's and Products
+- make sure that `scripts` typescript files are compiled `npm run build:scripts`
+- execute script `node ./scripts/build/scripts/createDummyUser.js`
+- execute script `node ./scripts/build/scripts/createDummyProducts.js`
+
+
 ## About
 This part of the repository serves as a template for common problems you will face as a backend developer during your project. It is by no means complete but should give you a broad overview over the frameworks, libraries and technologies used. Please refer to the [reading list](https://github.com/scg-unibe-ch/ese2020/wiki/Reading-list) for links and tutorials.
 

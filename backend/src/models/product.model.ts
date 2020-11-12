@@ -6,7 +6,7 @@ export interface ProductAttributes {
     id: number;
     title: string;
     description: string;
-    price: string;
+    price: number;
     productType: string;
     purchaseType: string;
     availability: boolean;
@@ -14,17 +14,18 @@ export interface ProductAttributes {
     delivery: boolean;
     status: string;
     UserId: number;
+    rentalDays?: number;
 }
 
 // tells sequelize that todoItemId is not a required field
-export interface ProductCreationAttributes extends Optional<Product, 'id'> { }
+export interface ProductCreationAttributes extends Optional<ProductAttributes, 'id'> { }
 
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
     id!: number;
     title!: string;
     description!: string;
-    price!: string;
+    price!: number;
     productType!: string;
     purchaseType!: string;
     availability!: boolean;
@@ -32,6 +33,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     delivery!: boolean;
     status!: string;
     UserId!: number;
+    rentalDays?: number;
 
     public getPhotos!: HasManyGetAssociationsMixin<Photo>;
 
@@ -55,7 +57,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 allowNull: false
             },
             price: {
-                type: DataTypes.STRING,
+                type: DataTypes.DECIMAL(19, 2),
                 allowNull: false
             },
             productType: {
@@ -84,7 +86,10 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 validate: {
                     isIn: [['pending', 'approved', 'inactive']],
                 }
-            }
+            },
+            rentalDays: {
+                type: DataTypes.INTEGER,
+            },
         },
         { sequelize, tableName: 'products' }
         );

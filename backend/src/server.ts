@@ -1,28 +1,33 @@
-import express, { Application , Request, Response } from 'express';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import { Sequelize } from 'sequelize';
 import { User } from './models/user.model';
 import {Product} from './models/product.model';
 import {Photo} from './models/photo.model';
+import {Transaction} from './models/transaction.model';
 
 import cors from 'cors';
 import {ApiController} from './api';
 
 export class Server {
     private server: Application;
-    private sequelize: Sequelize;
+    public sequelize: Sequelize;
     private port = process.env.PORT || 3000;
 
     constructor() {
         this.server = this.configureServer();
-        this.sequelize = this.configureSequelize();
+    }
 
+    public start() {
+        this.sequelize = this.configureSequelize();
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
         Photo.initialize(this.sequelize);
+        Transaction.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
         Photo.createAssociations();
+        Transaction.createAssociations();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port
@@ -55,7 +60,7 @@ export class Server {
             .options('*', cors(options))
             .use(express.static('./src/public'))
             // this is the message you get if you open http://localhost:3000/ when the server is running
-            .get('/', (req, res) => res.send('<h1>Welcome to the ESE-2020 Backend Scaffolding <span style="font-size:50px">&#127881;</span></h1>'));
+            .get('/', (_req, res) => res.send('<h1>Welcome to the ESE-2020 Backend Scaffolding <span style="font-size:50px">&#127881;</span></h1>'));
     }
 
     private configureSequelize(): Sequelize {
@@ -65,6 +70,9 @@ export class Server {
             logging: false // can be set to true for debugging
         });
     }
+
+    public getServer() {
+        return this.server;
+    }
 }
 
-const server = new Server(); // starts the server
