@@ -13,6 +13,9 @@
       </mat-chip-list>
     </header>
     <p *ngIf="product.description">Description: {{ product.description }}</p>
+    <button color="primary" mat-flat-button (click)="goToDetails(product)">
+      Details
+    </button>
   </section>
 
   <ng-content></ng-content>

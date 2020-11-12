@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import {IProduct} from '../products.service';
 
 @Component({
@@ -11,10 +12,15 @@ export class ItemComponent implements OnInit {
   @Input() product: IProduct;
   defaultImage: string;
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
     this.defaultImage = this.product.Photos.length ? `/api/images/${this.product.Photos[0].fileName}`: '/assets/boat.png';
   }
 
+  goToDetails(product: IProduct): void {
+    this.router.navigate(['products', product.id, 'show']);
+  }
 }
