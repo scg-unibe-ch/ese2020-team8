@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
+import { ProductTransactionController } from './product-transaction.controller';
 
 
 const productController: Router = express.Router();
@@ -121,6 +122,12 @@ productController.put(
       return next(err);
     }
   }
+);
+
+productController.use(
+  '/:productId/transactions',
+  verifyToken,
+  ProductTransactionController
 );
 
 

@@ -12,12 +12,12 @@
   </button>
   <button *ngIf="userService.loggedIn" mat-button aria-label="go to product list" routerLink="/products/history">
     <mat-icon>shopping_basket</mat-icon>
-    <span>Sale</span>
+    <span>Purchase</span>
   </button>
   <button *ngIf="userService.loggedIn" mat-button aria-label="go to your product management dashboard"
     routerLink="/products/manage">
     <mat-icon>gavel</mat-icon>
-    <span>Purchase</span>
+    <span>Sale</span>
   </button>
   <button *ngIf="userService.isAdmin" mat-button aria-label="go to approve list" routerLink="/admin/approve">
     <mat-icon>admin_panel_settings</mat-icon>

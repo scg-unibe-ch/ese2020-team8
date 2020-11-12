@@ -4,6 +4,8 @@ import {UserController} from './controllers/user.controller';
 import {SecuredController} from './controllers/secured.controller';
 import {ProductController} from './controllers/products.controller';
 import {PhotoController} from './controllers/photo.controller';
+import { TransactionController } from './controllers/transaction.controller';
+
 
 export const ApiController = Router();
 
@@ -13,5 +15,6 @@ ApiController
   .use('/images', PhotoController)
   .use('/user', UserController)
   .use('/secured', SecuredController)
+  .use('/transactions', TransactionController)
 ;
 

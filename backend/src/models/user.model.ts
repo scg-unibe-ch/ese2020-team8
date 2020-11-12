@@ -15,6 +15,7 @@ export interface UserAttributes {
     zip?: string;
     city?: string;
     country?: string;
+    wallet?: number;
 }
 
 export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> { }
@@ -33,6 +34,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     zip?: string;
     city?: string;
     country?: string;
+    wallet!: number;
 
     public static initialize(sequelize: Sequelize) {
         User.init({
@@ -105,6 +107,10 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             },
             country: {
                 type: DataTypes.STRING
+            },
+            wallet: {
+                type: DataTypes.DECIMAL(19, 2),
+                defaultValue: 500 // each user gets seed capital of 500
             }
         },
             {
