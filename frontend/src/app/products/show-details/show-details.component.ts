@@ -42,4 +42,12 @@ export class ShowDetailsComponent implements OnInit {
     this.product.purchaseType  === 'rent';
   }
 
+  goToBuy(product: IProduct): void {
+    this.router.navigate(['products', 'buy', { productId: product.id}]);
+  }
+
+  goBackToMarketplace(): void {
+    this.router.navigate(['products']);
+  }
+
 }
