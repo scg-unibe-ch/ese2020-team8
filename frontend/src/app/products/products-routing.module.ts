@@ -7,6 +7,7 @@ import { AuthGuard } from '../auth.guard';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'products/:id/buy',
     component: BuyComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products/pay',
+    component: PayComponent,
     canActivate: [AuthGuard],
   },
 

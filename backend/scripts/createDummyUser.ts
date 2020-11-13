@@ -12,10 +12,10 @@ User.initialize(sequelize);
 
 const DUMMY_USER = {
     email: 'dummy1@test.com',
-    userName: 'Dummy1',
+    userName: 'DummySeller',
     password: 'dummyTest_1',
     firstName: 'Sara',
-    lastName: 'Dummy',
+    lastName: 'DummySeller',
     isAdmin: false
 };
 
@@ -28,10 +28,10 @@ sequelize.sync().then( () => {
 
 const DUMMY2_USER = {
     email: 'dummy2@test.com',
-    userName: 'Dummy2',
+    userName: 'DummyBuyer',
     password: 'dummyTest_2',
     firstName: 'Flo',
-    lastName: 'Dummy',
+    lastName: 'DummyBuyer',
     isAdmin: false
 };
 

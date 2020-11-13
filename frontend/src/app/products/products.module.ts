@@ -26,6 +26,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { BuyComponent } from './buy/buy.component';
     HistoryComponent,
     UploadImageComponent,
     BuyComponent,
+    PayComponent,
   ],
   imports: [
     CommonModule,
