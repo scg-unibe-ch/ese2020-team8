@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
 import { ProductsService } from '../products.service';
 
@@ -11,7 +12,7 @@ import { ProductsService } from '../products.service';
 export class ShowDetailsComponent implements OnInit {
   
   productId: string;
-  photos: { fileName: string }[];
+  photos: { imageSource: string }[];
 
   @Input() product: IProduct;
 
@@ -25,7 +26,12 @@ export class ShowDetailsComponent implements OnInit {
     const productId = this.route.snapshot.paramMap.get('id');
     this.productService.get(productId).subscribe( product  => {
       this.product = product;
-      this.photos = product.Photos
+      this.photos = product.Photos.map(photo => {
+        const newPhoto = {
+          imageSource: `${environment.endpointURL}/images/${photo.fileName}`
+        };
+        return newPhoto
+      })
     });
   }
 

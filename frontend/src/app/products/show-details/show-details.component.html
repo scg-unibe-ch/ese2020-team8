@@ -1,8 +1,14 @@
 <mat-card class="product-show-detail">
+    <section class="title">
+        <header>
+            <h1> {{ product.title }} </h1>
+        </header>
+        <hr class="solid">
+    </section>
     <section class="photos">
         <!--Display all product pictures in a gallery-->
         <mat-card>
-            <img *ngFor="let photo of photos" [src]="photo.fileName" />
+            <img *ngFor="let photo of photos" [src]="photo.imageSource"/>
             <!--<li *ngFor="let photo in photos">
                 <p> {{ photo.fileName }} </p>
                 <img [src] = "photo.fileName" alt="Product photo">
@@ -11,10 +17,6 @@
     </section>
     <section class="attributes">
         <!--Display all product attributes-->
-        <header>
-            <h1> {{ product.title }} </h1>
-        </header>
-        <hr class="solid">
         <div *ngIf="product.description">
             <h2 >Description</h2>
             <p>

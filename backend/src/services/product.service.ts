@@ -11,6 +11,7 @@ export class ProductService {
       where: {
         id: productId,
       },
+      include: Photo as any
     });
   }
 
