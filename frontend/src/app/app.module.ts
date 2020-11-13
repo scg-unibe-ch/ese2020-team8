@@ -30,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     // TodoItemComponent,
     // TabsComponent,
     NavigationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
