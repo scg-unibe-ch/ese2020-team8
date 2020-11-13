@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
@@ -20,6 +21,7 @@ export class ShowDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductsService,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class ShowDetailsComponent implements OnInit {
 
   goBackToMarketplace(): void {
     this.router.navigate(['products']);
+  }
+
+  goBack() {
+    this.location.back(); // <-- go back to previous location 
   }
 
 }
