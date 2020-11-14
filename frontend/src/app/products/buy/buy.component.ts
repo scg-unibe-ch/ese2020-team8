@@ -11,6 +11,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { TransactionsService } from '../transactions.service';
 
 
 @Component({
@@ -47,6 +48,7 @@ export class BuyComponent implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     private productService: ProductsService,
+    private transactionService: TransactionsService
   ) { }
 
   
@@ -92,13 +94,18 @@ export class BuyComponent implements OnInit {
   }
 
   createTransaction(product: IProduct): void {
-    const transaction = {
+    this.transactionService.buy(product).subscribe(res => {
+      //debugger;
+      //ToDo Navigate to success page oder in history 
+      console.log(res);
+    });
+ /*    const transaction = {
       price: product.price,
       ProductId: this.productId,
       productType: product.productType,
       purchaseType: product.purchaseType,
     };
-    console.log(transaction);
+    console.log(transaction); */
   }
 
 

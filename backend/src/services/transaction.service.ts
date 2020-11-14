@@ -17,7 +17,7 @@ export class TransactionService {
       price: product.price,
       ProductId: product.id,
       productType: product.productType,
-      purchaseType: product.productType,
+      purchaseType: product.purchaseType,
       buyerId: buyerId,
       rentalDays: rentalDays,
     };
