@@ -2,6 +2,8 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import { TransactionService } from '../services/transaction.service';
 import { IAuthRequest } from '../middlewares/checkAuth';
 import { ProductService } from '../services/product.service';
+import {userService} from '../services/user.service';
+import {notificationService} from '../services/notification.service';
 
 const productTransactionController: Router = express.Router({ mergeParams: true});
 const transactionService = new TransactionService();
@@ -31,6 +33,8 @@ productTransactionController.post(
       const product = await productService.get(productId);
       const transactions = await transactionService.create(product, buyerId, rentalDays);
       res.send(transactions);
+      const user = await userService.getUserFromToken(req.user);
+      notificationService.transactionNotification(user.email, transactions, product);
     } catch (err) {
       next(err);
     }
