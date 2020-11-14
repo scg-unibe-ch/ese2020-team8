@@ -10,11 +10,13 @@ import {ProductsService, IProduct} from '../products/products.service';
 })
 export class FilterComponent implements OnInit{
 
-  title = 'angular-text-search-highlight';
+  title = 'Product Search / Filter';
   searchText = '';
+  product = [
+    { title: 'Babywagen', location: 'Luzern', price: '200.-' },
+  ];
   displayedColumns: string[];
   products: IProduct[];
-
   constructor(
     public userService: UserService,
     public router: Router,
@@ -22,7 +24,6 @@ export class FilterComponent implements OnInit{
   ) {
     this.productService.getAll().subscribe( products => this.products = products);
   }
-
   ngOnInit(): void {
   }
 }

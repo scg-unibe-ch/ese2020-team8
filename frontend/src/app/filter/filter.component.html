@@ -1,16 +1,57 @@
-<div class="content" role="main">
-    <div class="card">
-      <div class="form-group">
-        <label for="search-text">Search Product</label>
-        <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
-          [(ngModel)]="searchText" placeholder="Enter text to search" 
-          autofocus>
+<mat-card>
+<div class="products-filterable">
+  <div class="container text-center">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search for a Product / Service">
       </div>
-      <ul class="list-group list-group-flush">
-        <!-- results of ngFor is passed to appFilter with argument searchText -->
-        <li class="list-group-item" *ngFor="let c of products | appFilter: searchText">
-          {{c.title}}
-        </li>
-      </ul>
+      <mat-form-field>
+        <mat-label>Filter Location</mat-label>
+        <mat-select [(value)]="products">
+          <mat-option *ngFor="let p of products" [value]="p.location">
+            {{ p.location }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Price</mat-label>
+        <mat-select [(value)]="products">
+          <mat-option *ngFor="let p of products" [value]="p.price">
+            {{ p.price }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Delivery Option</mat-label>
+        <mat-select [(value)]="products">
+          <mat-option *ngFor="let p of products" [value]="p.delivery">
+            {{ p.delivery }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Product Title</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products | filter:searchText">
+          <td>{{product.title}}</td>
+          <td>{{product.price}}</td>
+          <td>
+        </td>
+          <td>{{product.location}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
+</mat-card>
