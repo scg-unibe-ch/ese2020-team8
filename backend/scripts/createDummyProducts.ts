@@ -24,14 +24,6 @@ const PRODUCT1 = {
     rentalDays: 365
 };
 
-sequelize.sync().then( async () => {
-    await Product.create(PRODUCT1);
-    console.log('Baby Bed XXL created');
-})
-.catch( err => console.log(err));
-
-
-Product.initialize(sequelize);
 
 const PRODUCT2 = {
     id: 2,
@@ -47,13 +39,6 @@ const PRODUCT2 = {
     UserId: 3,
     rentalDays: 365
 };
-
-sequelize.sync().then( async () => {
-    await Product.create(PRODUCT2);
-    console.log('Baby Bed Mini created');
-})
-.catch( err => console.log(err));
-
 
 const PRODUCT3 = {
     id: 3,
@@ -71,7 +56,12 @@ const PRODUCT3 = {
 };
 
 sequelize.sync().then( async () => {
+    await Product.create(PRODUCT1);
+    console.log('Baby Bed XXL created');
+    await Product.create(PRODUCT2);
+    console.log('Product 2 created');
     await Product.create(PRODUCT3);
-    console.log('1H Babysitting created');
+    console.log('Product 3 created');
+
 })
 .catch( err => console.log(err));
