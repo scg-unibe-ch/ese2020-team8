@@ -25,6 +25,7 @@ import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     DeleteComponent,
     HistoryComponent,
     UploadImageComponent,
+    NotificationsComponent,
   ],
   imports: [
     CommonModule,

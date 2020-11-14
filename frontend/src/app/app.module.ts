@@ -30,7 +30,6 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -41,7 +40,6 @@ import { NotificationComponent } from './notification/notification.component';
     // TabsComponent,
     NavigationComponent,
     WelcomeComponent,
-    NotificationComponent
   ],
   imports: [
     BrowserModule,

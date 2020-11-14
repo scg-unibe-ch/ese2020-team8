@@ -1,0 +1,34 @@
+<mat-card class="message" *ngFor="let notification of notifications; index as notificationId">
+    <p> created at: {{notification.creationDate}}</p>
+    <p> Product referred: {{notification.productTitle}}</p>
+    <br>
+    <h1>{{notification.notificationTitle}}</h1>
+    <br>
+    <p>{{notification.notificationMessage}}</p>
+    <a href="mailto:{{notification.buyerEmail}}">{{notification.buyerEmail}}</a>
+    <br>
+    
+    <br>
+    <h3 *ngIf="notification.delivery" >Delivery</h3>
+
+    <a *ngIf="notification.delivery" >
+        Please send the product to the following address:<br>
+        {{notification.firstName}} {{notification.lastName}}<br>
+        {{notification.streetNr}}<br>
+        {{notification.zip}} {{notification.city}}<br>
+    </a>
+
+</mat-card>
+
+<!-- 
+      productTitle: 'Baby Bett XL',
+      buyerEmail: '7-Guy@fakemail.com',
+      paymentAmount: '300',
+      delivery: true,
+      firstName: 'Hans',
+      lastName: 'Im Glück',
+      streetNr: 'Glückstrasse 2',
+      zip: 3000,
+      city: 'Bern',
+      rentalDays: null
+       -->

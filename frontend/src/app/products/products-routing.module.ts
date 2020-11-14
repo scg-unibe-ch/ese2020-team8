@@ -7,6 +7,7 @@ import { AuthGuard } from '../auth.guard';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { HistoryComponent } from './history/history.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: 'products/edit-images',
     component: ProductEditImagesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products/notifications',
+    component: NotificationsComponent,
     canActivate: [AuthGuard],
   },
 ];

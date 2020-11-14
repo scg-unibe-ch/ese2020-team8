@@ -18,6 +18,11 @@
     routerLink="/products/manage">
     <mat-icon>gavel</mat-icon>
     <span>Sale</span>
+  </button>  
+  <button *ngIf="userService.loggedIn" mat-button aria-label="go to your notifications"
+    routerLink="/products/notifications">
+    <mat-icon>message</mat-icon>
+    <span>Notifications</span>
   </button>
   <button *ngIf="userService.isAdmin" mat-button aria-label="go to approve list" routerLink="/admin/approve">
     <mat-icon>admin_panel_settings</mat-icon>
