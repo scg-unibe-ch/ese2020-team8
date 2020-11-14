@@ -3,6 +3,7 @@ import { LoginResponse, LoginRequest } from '../models/login.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import {Op} from 'sequelize';
+import {IUserToken} from '../middlewares/checkAuth';
 
 export class UserService {
 
@@ -36,5 +37,14 @@ export class UserService {
     public getAll(): Promise<User[]> {
         return User.findAll();
     }
+
+    public getUserFromToken(token: IUserToken): Promise<User> {
+        return User.findOne({
+            where: {
+                id: token.userId
+            }
+        });
+    }
 }
 
+export const userService = new UserService();
