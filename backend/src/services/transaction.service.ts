@@ -39,10 +39,23 @@ export class TransactionService {
       buyer.wallet -= product.price;
       seller.wallet += product.price;
 
+      // set product status to sold for good
+      if (product.productType === 'good' && product.purchaseType === 'buy') {
+        product.status = 'sold';
+        await product.save();
+      }
+      // set product status to inavailable meaning 'rent out' for good
+      if (product.productType === 'good' && product.purchaseType === 'rent') {
+        product.availability = false;
+        await product.save();
+      }
+
       buyer.save({ transaction: t });
       seller.save({ transaction: t });
 
-      const transactionResult = await Transaction.create(transaction, {transaction: t});
+      const transactionResult = await Transaction.create(transaction, {
+        transaction: t,
+      });
       // If the execution reaches this line, no errors were thrown.
       // We commit the transaction.
       await t.commit();
@@ -51,7 +64,7 @@ export class TransactionService {
       // If the execution reaches this line, an error was thrown.
       // We rollback the transaction.
       await t.rollback();
-      throw(error);
+      throw error;
     }
   }
 
