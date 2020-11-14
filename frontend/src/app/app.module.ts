@@ -30,6 +30,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { FilterPipe } from './filter.pipe';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     // TodoItemComponent,
     // TabsComponent,
     NavigationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FilterPipe,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
