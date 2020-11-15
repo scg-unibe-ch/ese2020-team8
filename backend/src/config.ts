@@ -3,10 +3,10 @@ export const config = {
     mailer: {
         host: process.env.MAIL_HOST || 'smtp.ethereal.email',
         port: process.env.MAIL_PORT || 587,
-        secure: process.env.MAIL_SECURE || false,
-        auth: {
+        secure: process.env.MAIL_SECURE === 'true',
+        auth: process.env.MAIL_USER ? {
             user: process.env.MAIL_USER || 'username',
-            password: process.env.MAIL_PASSWORD || 'password'
-        }
+            pass: process.env.MAIL_PASSWORD || 'password'
+        } : null
     }
 };
