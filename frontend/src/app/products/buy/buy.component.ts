@@ -59,7 +59,7 @@ export class BuyComponent implements OnInit {
       this.product = product;
     });
   }
-
+/* 
   calculatePrice(product: IProduct): void {
     const rentalDays = this.rentalDaysForm.value;
     console.log(rentalDays);
@@ -69,7 +69,7 @@ export class BuyComponent implements OnInit {
     const totalPrice = (parseInt(rentalDays)*parseInt(priceForCalc))
     const print = totalPrice;
     console.log(print);
-/* 
+
     const price:number = product.price;
     console.log(price);
     console.log(isNaN(price));    
@@ -79,10 +79,12 @@ export class BuyComponent implements OnInit {
     const rentalDaysAsInt = parseInt(rentalDays);
     console.log(typeof rentalDaysAsInt);  
     console.log( totalPrice )
- */
+
    //this.transactionPrice = (rentalDays)*(product.price);
   // console.log(this.transactionPrice);
   }
+
+   */
 
 /*   get totalPrice(product){
     return (product.price) * (pro.quantity) ;
@@ -93,26 +95,57 @@ export class BuyComponent implements OnInit {
     console.log(deliveryAddress);
   }
 
-  createTransaction(product: IProduct): void {
+  buy(product: IProduct): void {
+    const logInfo = 'Buy without delivery';
+    console.log(logInfo);
     this.transactionService.buy(product).subscribe(res => {
-      //debugger;
-      //ToDo Navigate to success page oder in history 
       console.log(res);
+      console.log('ToDo-Create a success page');
+      this.router.navigate(['products', 'history']);
     });
- /*    const transaction = {
-      price: product.price,
-      ProductId: this.productId,
-      productType: product.productType,
-      purchaseType: product.purchaseType,
-    };
-    console.log(transaction); */
   }
+
+  buyWithDelivery(product: IProduct): void {
+      const logInfo = 'Buy with delivery started';
+      console.log(logInfo);
+      const deliveryAddress = this.deliveryForm.value;
+      console.log(deliveryAddress);
+      this.transactionService.buy(product, deliveryAddress).subscribe(res => {
+        console.log(res);
+        console.log('ToDo-Create a success page');
+        this.router.navigate(['products', 'history']);
+      });
+    };
+
+  rent(product: IProduct): void {
+      const logInfo = 'Create transaction with rental days';
+      console.log(logInfo);
+      const rentalDays = this.rentalDaysForm.value;
+      console.log(rentalDays);
+      this.transactionService.buy(product, rentalDays).subscribe(res => {
+        console.log(res);
+        console.log('ToDo-Create a success page');
+        this.router.navigate(['products', 'history']);
+      });
+    };
+  
+
+  rentWithDelivery(product: IProduct): void {
+      const logInfo = 'Create transaction with rental days and delivery';
+      console.log(logInfo);
+      const deliveryAddress = this.deliveryForm.value;
+      console.log(deliveryAddress);
+      const rentalDays = this.rentalDaysForm.value;
+      console.log(rentalDays);
+      this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe(res => {
+        console.log(res);
+        console.log('ToDo-Create a success page');
+        this.router.navigate(['products', 'history']);
+      });
+    };
 
 
   goToPay(product: IProduct): void {
     this.router.navigate(['products', product.id, 'pay' ]);
   }
-
-
-
 }
