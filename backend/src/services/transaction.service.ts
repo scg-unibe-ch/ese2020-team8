@@ -38,9 +38,11 @@ export class TransactionService {
       });
       buyer.wallet -= product.price;
       seller.wallet += product.price;
+      product.status = product.purchaseType === 'buy' ? 'sold' : 'rent';
 
       buyer.save({ transaction: t });
       seller.save({ transaction: t });
+      product.save({ transaction: t });
 
       const transactionResult = await Transaction.create(transaction, {transaction: t});
       // If the execution reaches this line, no errors were thrown.

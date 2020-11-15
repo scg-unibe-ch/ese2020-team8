@@ -33,8 +33,10 @@ productTransactionController.post(
       const product = await productService.get(productId);
       const transactions = await transactionService.create(product, buyerId, rentalDays);
       res.send(transactions);
-      const user = await userService.getUserFromToken(req.user);
-      await notificationService.transactionNotification(user.email, transactions, product);
+      const buyer = await userService.getUserFromToken(req.user);
+      const seller = await userService.get(product.UserId);
+      await notificationService.transactionSellerNotification(seller.email, transactions, product);
+      await notificationService.transactionBuyerNotification(buyer.email, transactions, product);
     } catch (err) {
       next(err);
     }

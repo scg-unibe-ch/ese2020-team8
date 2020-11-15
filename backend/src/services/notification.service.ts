@@ -46,25 +46,36 @@ class NotificationService {
     }
   }
 
-  async transactionNotification(
+  async transactionBuyerNotification(
     receiver: string,
     transaction: TransactionAttributes,
     product: ProductAttributes
   ) {
-    try {
-      const message = {
-        text:
-          `Congrats you bought the item: ${product.title}\n` +
-          `The price of the product you payed was ${transaction.price}`,
-        html:
-          `Congrats you bought the item: <br>${product.title}</br>` +
-          `<p>The price of the product you payed was <br>${transaction.price}</br></p>`,
-      };
-      await this.sendMail(receiver, message);
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
+    const message = {
+      text:
+        `Congrats you ${product.purchaseType === 'buy' ? 'bought' : 'rent' } the item: ${product.title}\n` +
+        `The price of the product you payed was ${transaction.price}`,
+      html:
+        `Congrats you ${product.purchaseType === 'buy' ? 'bought' : 'rent' } the item: <br>${product.title}</br>` +
+        `<p>The price of the product was <br>${transaction.price}</br></p>`,
+    };
+    return this.sendMail(receiver, message);
+  }
+
+  async transactionSellerNotification(
+    receiver: string,
+    transaction: TransactionAttributes,
+    product: ProductAttributes
+  ) {
+    const message = {
+      text:
+        `Congrats you ${product.purchaseType === 'buy' ? 'sold' : 'rent' } the item: ${product.title}\n` +
+        `The price of the product you payed was ${transaction.price}`,
+      html:
+        `Congrats you ${product.purchaseType === 'buy' ? 'sold' : 'rent' } the item: <br>${product.title}</br>` +
+        `<p>The price of the product was <br>${transaction.price}</br></p>`,
+    };
+    return this.sendMail(receiver, message);
   }
 }
 

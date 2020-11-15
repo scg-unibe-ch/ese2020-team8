@@ -45,6 +45,13 @@ export class UserService {
             }
         });
     }
+    public get(userId: number): Promise<User> {
+        return User.findOne({
+            where: {
+                id: userId
+            }
+        });
+    }
 }
 
 export const userService = new UserService();
