@@ -4,15 +4,15 @@
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <!-- ToDo this button it should load all posted products -->
-    <mat-button-toggle value="Active">Bought</mat-button-toggle>
+    <mat-button-toggle value="Active"> Bought</mat-button-toggle>
     <!-- ToDo this button it should load  products that have been lent by this user-->
     <mat-button-toggle value="Rent">Rent</mat-button-toggle>
     <!-- ToDo this button it should load  all products that have been sold by this user -->
   </mat-button-toggle-group>
 
   <app-product-item
-    *ngFor="let product of products; index as productId"
-    [product]="product"
+    *ngFor="let transaction of transactions; index as productId"
+    [product]="transaction.Product"
   >
     <div class="action-buttons">
       <button color="primary" mat-flat-button>
