@@ -5,6 +5,7 @@ import { User } from './models/user.model';
 import {Product} from './models/product.model';
 import {Photo} from './models/photo.model';
 import {Transaction} from './models/transaction.model';
+import { notificationService } from './services/notification.service';
 
 import cors from 'cors';
 import {ApiController} from './api';
@@ -18,7 +19,7 @@ export class Server {
         this.server = this.configureServer();
     }
 
-    public start() {
+    public async start() {
         this.sequelize = this.configureSequelize();
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
@@ -28,6 +29,8 @@ export class Server {
         Product.createAssociations();
         Photo.createAssociations();
         Transaction.createAssociations();
+
+        await notificationService.prepareAccounts();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port

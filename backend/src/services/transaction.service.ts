@@ -38,6 +38,7 @@ export class TransactionService {
       });
       buyer.wallet -= product.price;
       seller.wallet += product.price;
+      product.status = product.purchaseType === 'buy' ? 'sold' : 'rent';
 
       // set product status to sold for good
       if (product.productType === 'good' && product.purchaseType === 'buy') {
@@ -52,6 +53,7 @@ export class TransactionService {
 
       buyer.save({ transaction: t });
       seller.save({ transaction: t });
+      product.save({ transaction: t });
 
       const transactionResult = await Transaction.create(transaction, {
         transaction: t,
