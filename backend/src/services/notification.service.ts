@@ -20,7 +20,6 @@ class NotificationService {
         pass: testAccount.pass, // generated ethereal password
       };
     }
-    console.log(transporterConfig);
     this.transporter = nodemailer.createTransport(transporterConfig);
   }
 
