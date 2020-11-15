@@ -22,24 +22,22 @@ export class TransactionsService {
 
   getMyTransactions() {
     return this.http.get<ITransaction[]>(`${this.transactionUrl}/me`);
-
   }
 
 }
 
-export interface ITransaction {
+export interface ITransaction extends ICreateTransactionRequestBody{
   id: number;
   price: number;
   ProductId: number;
   productType: string;
   purchaseType: string;
   buyerId: number;
-  rentalDays?: number;
   Product: IProduct;
 }
 
 export interface ICreateTransactionRequestBody {
-  rentalDays: number;
+  rentalDays?: number;
   address?: {
     firstName: string;
     lastName: string;
