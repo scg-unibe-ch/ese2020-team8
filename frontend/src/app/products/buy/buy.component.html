@@ -22,23 +22,21 @@
         </p>
 
         <mat-card class="rent-card"  *ngIf="product.purchaseType === 'rent'">
-            <p>Rental Days and Price Calculation</p>
-            <form [formGroup]="rentalDaysForm" (ngSubmit)="calculatePrice(product)">
-          
+            <p>For how many days do you want to rent the product</p>
+            <form [formGroup]="rentalDaysForm">   
                 <mat-form-field>
-                    <mat-label>For how many days do you want to rent the product</mat-label>
+                    <mat-label>Rental Days</mat-label>
                     <input matInput formControlName="rentalDays" placeholder="" />
                 </mat-form-field>
                 <br>         
-                <button color="primary" mat-flat-button [disabled]="!rentalDaysForm.valid">calculate Price</button>
-
+                <!-- <button color="primary" mat-flat-button [disabled]="!rentalDaysForm.valid">calculate Price</button> -->
             </form>
         </mat-card>
 
 
         <mat-card class="delivery-card"  *ngIf="product.delivery === true">
             <p>Delivery Address</p>
-            <form [formGroup]="deliveryForm" (ngSubmit)="createDeliveryAddress()">
+            <form [formGroup]="deliveryForm" >
           
                 <mat-form-field>
                     <mat-label>First name</mat-label>
@@ -66,8 +64,6 @@
                 </mat-form-field>
                 <br>
                 
-                <button color="primary" mat-flat-button [disabled]="!deliveryForm.valid">createDeliveryAddress</button>
-
             </form>
         </mat-card>
 
@@ -75,11 +71,25 @@
 <!--             <p>
                 Form Value: {{ deliveryForm.value | json }}
             </p> -->
+  
+        <button *ngIf="!product.delivery && product.purchaseType === 'buy'"
+            color="primary" mat-flat-button (click)="buy(product)">Create Test Transaction
+        </button>
 
+        <button *ngIf="product.delivery && product.purchaseType === 'buy'"
+            [disabled]="!deliveryForm.valid"
+            color="primary" mat-flat-button (click)="buyWithDelivery(product)">Create Test Transaction
+        </button>
 
-     
-        <button color="primary" mat-flat-button (click)="createTransaction(product)">Create Test Transaction</button>
+        <button *ngIf="!product.delivery && product.purchaseType === 'rent'"
+            [disabled]="!rentalDaysForm.valid"
+            color="primary" mat-flat-button (click)="rent(product)">Create Test Transaction
+        </button>
 
+        <button *ngIf="product.delivery && product.purchaseType === 'rent'"
+            [disabled]="!deliveryForm.valid || !rentalDaysForm.valid"
+            color="primary" mat-flat-button (click)="rentWithDelivery(product)">Create Test Transaction
+        </button>
 
         <button color="primary" mat-flat-button  routerLink="/products/pay">
             PAY
