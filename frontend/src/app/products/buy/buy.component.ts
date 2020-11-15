@@ -137,8 +137,9 @@ export class BuyComponent implements OnInit {
       console.log(deliveryAddress);
       const rentalDays = this.rentalDaysForm.value;
       console.log(rentalDays);
-      this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe(res => {
-        console.log(res);
+      //this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe(res => {
+      this.transactionService.buy(product, rentalDays).subscribe(res => {
+          console.log(res);
         console.log('ToDo-Create a success page');
         this.router.navigate(['products', 'history']);
       });
