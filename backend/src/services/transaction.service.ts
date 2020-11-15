@@ -2,6 +2,7 @@ import { Product } from '../models/product.model';
 import { Transaction } from '../models/transaction.model';
 import { User } from '../models/user.model';
 import { server } from '../';
+import { Photo } from '../models/photo.model';
 
 export class TransactionService {
   public async get(transactionId: string) {
@@ -38,17 +39,15 @@ export class TransactionService {
       });
       buyer.wallet -= product.price;
       seller.wallet += product.price;
-      product.status = product.purchaseType === 'buy' ? 'sold' : 'rent';
 
       // set product status to sold for good
       if (product.productType === 'good' && product.purchaseType === 'buy') {
         product.status = 'sold';
-        await product.save();
       }
       // set product status to inavailable meaning 'rent out' for good
       if (product.productType === 'good' && product.purchaseType === 'rent') {
         product.availability = false;
-        await product.save();
+        product.status = 'rent';
       }
 
       buyer.save({ transaction: t });
@@ -76,7 +75,7 @@ export class TransactionService {
         buyerId: userId,
         ProductId: productId,
       },
-      include: Transaction as any,
+      include: Product as any,
     });
   }
 
@@ -85,7 +84,10 @@ export class TransactionService {
       where: {
         buyerId: userId,
       },
-      include: Transaction as any,
+      include: {
+        model: Product as any,
+        include: Photo as any,
+      },
     });
   }
 }
