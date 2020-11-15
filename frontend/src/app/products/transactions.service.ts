@@ -8,7 +8,6 @@ import { IProduct } from './products.service';
   providedIn: 'root'
 })
 export class TransactionsService {
-
   private url = environment.endpointURL + '/products';
   private transactionUrl = environment.endpointURL + '/transactions';
 
@@ -19,7 +18,6 @@ export class TransactionsService {
   buy(product: IProduct, rentalDays?: number): Observable<IProduct> {
     return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, product);
   }
-
   getMyTransactions() {
     return this.http.get<ITransaction[]>(`${this.transactionUrl}/me`);
 
