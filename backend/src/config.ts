@@ -1,4 +1,4 @@
-export const config = {
+export const config = Object.freeze({
     uploadPath: process.env.UPLOAD_PATH || './uploads',
     mailer: {
         host: process.env.MAIL_HOST || 'smtp.ethereal.email',
@@ -9,4 +9,4 @@ export const config = {
             pass: process.env.MAIL_PASSWORD || 'password'
         } : null
     }
-};
+});
