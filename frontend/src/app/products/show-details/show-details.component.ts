@@ -45,7 +45,7 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   goToBuy(product: IProduct): void {
-    this.router.navigate(['products', 'buy', { productId: product.id}]);
+    this.router.navigate(['products', product.id, 'buy']);
   }
 
   goBackToMarketplace(): void {
