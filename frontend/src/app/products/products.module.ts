@@ -26,6 +26,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 
 
 
@@ -41,6 +43,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     HistoryComponent,
     ShowDetailsComponent,
     UploadImageComponent,
+    BuyComponent,
+    PayComponent,
   ],
   imports: [
     CommonModule,

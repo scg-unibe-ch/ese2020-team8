@@ -2,6 +2,7 @@ import { Product } from '../models/product.model';
 import { Transaction } from '../models/transaction.model';
 import { User } from '../models/user.model';
 import { server } from '../';
+import { Photo } from '../models/photo.model';
 
 export class TransactionService {
   public async get(transactionId: string) {
@@ -17,7 +18,7 @@ export class TransactionService {
       price: product.price,
       ProductId: product.id,
       productType: product.productType,
-      purchaseType: product.productType,
+      purchaseType: product.purchaseType,
       buyerId: buyerId,
       rentalDays: rentalDays,
     };
@@ -39,10 +40,23 @@ export class TransactionService {
       buyer.wallet -= product.price;
       seller.wallet += product.price;
 
+      // set product status to sold for good
+      if (product.productType === 'good' && product.purchaseType === 'buy') {
+        product.status = 'sold';
+      }
+      // set product status to inavailable meaning 'rent out' for good
+      if (product.productType === 'good' && product.purchaseType === 'rent') {
+        product.availability = false;
+        product.status = 'rent';
+      }
+
       buyer.save({ transaction: t });
       seller.save({ transaction: t });
+      product.save({ transaction: t });
 
-      const transactionResult = await Transaction.create(transaction, {transaction: t});
+      const transactionResult = await Transaction.create(transaction, {
+        transaction: t,
+      });
       // If the execution reaches this line, no errors were thrown.
       // We commit the transaction.
       await t.commit();
@@ -51,7 +65,7 @@ export class TransactionService {
       // If the execution reaches this line, an error was thrown.
       // We rollback the transaction.
       await t.rollback();
-      throw(error);
+      throw error;
     }
   }
 
@@ -61,7 +75,7 @@ export class TransactionService {
         buyerId: userId,
         ProductId: productId,
       },
-      include: Transaction as any,
+      include: Product as any,
     });
   }
 
@@ -70,7 +84,10 @@ export class TransactionService {
       where: {
         buyerId: userId,
       },
-      include: Transaction as any,
+      include: {
+        model: Product as any,
+        include: Photo as any,
+      },
     });
   }
 }
