@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from 'src/app/user/user.service';
 import {Router} from '@angular/router';
 import {ProductsService, IProduct} from '../products.service';
+import { IProductFilters } from '../pipes/product-filter.pipe';
 
 @Component({
   selector: 'app-product-browse',
@@ -9,15 +10,15 @@ import {ProductsService, IProduct} from '../products.service';
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
-  displayedColumns: string[];
-  products: IProduct[];
+  products: IProduct[] = [];
+  productFilters: IProductFilters = {};
 
   constructor(
     public userService: UserService,
     public router: Router,
     private productService: ProductsService
   ) {
-    this.productService.getAll().subscribe( products => this.products = products);
+    this.productService.getAll().subscribe( products => this.products = products );
   }
 
   ngOnInit(): void {
@@ -38,5 +39,5 @@ export class BrowseComponent implements OnInit {
   goToProductsAdmin(): void {
     this.router.navigate(['admin', 'approve']);
   }
-
 }
+

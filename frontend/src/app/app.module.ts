@@ -30,21 +30,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { FilterPipe } from './filter.pipe';
-import { FilterComponent } from './filter/filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // TodoListComponent,
-    // TodoItemComponent,
-    // TabsComponent,
     NavigationComponent,
     WelcomeComponent,
-    FilterPipe,
-    FilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,57 @@
+<mat-card>
+<div class="products-filterable">
+  <div class="container text-center">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <form [formGroup]="filterForm">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" formControlName="searchTerm" autocomplete="off" placeholder="Search for a Product / Service">
+      </div>
+      <mat-form-field>
+        <mat-label>Filter Location</mat-label>
+        <mat-select formControlName="location">
+          <mat-option *ngFor="let p of products" [value]="p.location">
+            {{ p.location }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Product Type</mat-label>
+        <mat-select formControlName="productType">
+          <mat-option *ngFor="let p of products" [value]="p.productType">
+            {{ p.productType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Product Type</mat-label>
+        <mat-select formControlName="purchaseType">
+          <mat-option *ngFor="let p of products" [value]="p.purchaseType">
+            {{ p.purchaseType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Price</mat-label>
+        <mat-select formControlName="price">
+          <mat-option *ngFor="let p of products" [value]="p.price">
+            {{ p.price }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter Delivery Option</mat-label>
+        <mat-select formControlName="delivery">
+          <mat-option *ngFor="let p of products" [value]="p.delivery">
+            {{ p.delivery }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-content></ng-content>
+      </form>
+    </div>
+  </div>
+</div>
+</mat-card>
