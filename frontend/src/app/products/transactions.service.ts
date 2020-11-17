@@ -15,13 +15,12 @@ export class TransactionsService {
     private http: HttpClient
   ) { }
 
-  pay(product: IProduct, rentalDays?: number, deliveryAddress?: any): Observable<IProduct> {
-    return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, product);
+  pay(product: IProduct, rentalDays?: number, deliveryAddress?: IDeliveryAddress): Observable<IProduct> {
+    return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, {
+      rentalDays,
+      deliveryAddress
+    });
   }
-
-  /* orderProduct(): Observable<ITransaction> {
-    return this.http.get<ITransaction>(`${this.url}/${product.id}/transactions`, product);
-  } */
 
   getMyTransactions() {
     return this.http.get<ITransaction[]>(`${this.transactionUrl}/me`);
@@ -41,11 +40,13 @@ export interface ITransaction extends ICreateTransactionRequestBody{
 
 export interface ICreateTransactionRequestBody {
   rentalDays?: number;
-  address?: {
-    firstName: string;
-    lastName: string;
-    streetNr: string;
-    zip: number;
-    city: string;
-  }
+  address?: IDeliveryAddress;
+}
+
+interface IDeliveryAddress {
+  firstName: string;
+  lastName: string;
+  streetNr: string;
+  zip: number;
+  city: string;
 }

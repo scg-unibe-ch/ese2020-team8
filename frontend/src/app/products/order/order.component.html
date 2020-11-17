@@ -4,6 +4,6 @@
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="goToBuy(this.product)">Pay</button>
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">Pay</button>
 </div>
