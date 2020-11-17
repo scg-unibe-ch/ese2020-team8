@@ -15,7 +15,7 @@ export class TransactionsService {
     private http: HttpClient
   ) { }
 
-  buy(product: IProduct, rentalDays?: number, deliveryAddress?: any): Observable<IProduct> {
+  pay(product: IProduct, rentalDays?: number, deliveryAddress?: any): Observable<IProduct> {
     return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, product);
   }
 

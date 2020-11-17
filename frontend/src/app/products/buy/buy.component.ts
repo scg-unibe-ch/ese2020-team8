@@ -12,13 +12,17 @@ import {
   Validators,
 } from '@angular/forms';
 import { TransactionsService } from '../transactions.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { stringify } from '@angular/compiler/src/util';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderComponent } from 'src/app/order/order.component';
 
 @Component({
   selector: 'app-buy',
   templateUrl: './buy.component.html',
   styleUrls: ['./buy.component.css'],
 })
-export class BuyComponent implements OnInit {
+export class BuyComponent extends OrderComponent implements OnInit  {
   productId: string;
   product: IProduct;
   transactionPrice: number;
@@ -44,8 +48,12 @@ export class BuyComponent implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     private productService: ProductsService,
-    private transactionService: TransactionsService
-  ) {}
+    private transactionService: TransactionsService,
+    public dialog: MatDialog,
+    private orderComponent: OrderComponent
+  ) {
+    super(dialog, router)
+  }
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
@@ -90,22 +98,34 @@ export class BuyComponent implements OnInit {
     console.log(deliveryAddress);
   } */
 
-  goToOrder(): void {
-    const product = this.product;
-    const deliveryAddress = this.deliveryForm.value;
-    const rentalDays = this.rentalDaysForm.value;
-    console.log("showing your order here: " + product.price + deliveryAddress.value + rentalDays.value)
+  confirmOrder(  ): void {
+    const order = {
+      product: this.product,
+      deliveryAddress: this.deliveryForm.value,
+      rentalDays: this.rentalDaysForm.value
+    }
+/*     product = this.product;
+    deliveryAddress = this.deliveryForm.value;
+    rentalDays = this.rentalDaysForm.value; */
+    this.orderComponent.openDialog(  );
+
+    //console.log("showing your order here: " + product.price + deliveryAddress.value + rentalDays.value)
+
     // hier soll eine Zusammenfassung der Bestellung inkl der angegebenen Lieferadresse angezeigt werden
     // über Button pay wird transaction erstellt
     // mit zurück können Angaben geändert werden
   }
 
+  // User press button 'pay' which then comes here and runs pay/transaction
   buy(): void {
     const product = this.product;
     const deliveryAddress = this.deliveryForm.value;
     const rentalDays = this.rentalDaysForm.value;
+    // order
     this.transactionService
-      .buy(product, rentalDays, deliveryAddress)
+      .pay(product, rentalDays, deliveryAddress)
       .subscribe((res) => {});
   }
 }
+
+

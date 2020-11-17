@@ -48,10 +48,10 @@ export class PayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buy(product: IProduct): void {
+  pay(product: IProduct): void {
     const logInfo = 'Buy without delivery';
     console.log(logInfo);
-    this.transactionService.buy(product).subscribe(res => {
+    this.transactionService.pay(product).subscribe(res => {
       console.log(res);
       console.log('ToDo-Create a success page');
       this.router.navigate(['products', 'history']);
@@ -63,7 +63,7 @@ export class PayComponent implements OnInit {
       console.log(logInfo);
       const deliveryAddress = this.deliveryForm.value;
       console.log(deliveryAddress);
-      this.transactionService.buy(product, deliveryAddress).subscribe(res => {
+      this.transactionService.pay(product, deliveryAddress).subscribe(res => {
         console.log(res);
         console.log('ToDo-Create a success page');
         this.router.navigate(['products', 'history']);
@@ -75,7 +75,7 @@ export class PayComponent implements OnInit {
       console.log(logInfo);
       const rentalDays = this.rentalDaysForm.value;
       console.log(rentalDays);
-      this.transactionService.buy(product, rentalDays).subscribe(res => {
+      this.transactionService.pay(product, rentalDays).subscribe(res => {
         console.log(res);
         console.log('ToDo-Create a success page');
         this.router.navigate(['products', 'history']);
@@ -91,7 +91,7 @@ export class PayComponent implements OnInit {
       const rentalDays = this.rentalDaysForm.value;
       console.log(rentalDays);
       //this.transactionService.buy(product, rentalDays).subscribe(res => {
-      this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe(res => {
+      this.transactionService.pay(product, rentalDays, deliveryAddress).subscribe(res => {
           console.log(res);
         console.log('ToDo-Create a success page');
         this.router.navigate(['products', 'history']);
