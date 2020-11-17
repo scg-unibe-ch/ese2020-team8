@@ -91,9 +91,10 @@ export class BuyComponent implements OnInit {
   } */
 
   goToOrder(): void {
-
-    console.log("showing your order here")
-    this.router.navigate(['products', this.productId, 'pay']);
+    const product = this.product;
+    const deliveryAddress = this.deliveryForm.value;
+    const rentalDays = this.rentalDaysForm.value;
+    console.log("showing your order here: " + product.price + deliveryAddress.value + rentalDays.value)
     // hier soll eine Zusammenfassung der Bestellung inkl der angegebenen Lieferadresse angezeigt werden
     // über Button pay wird transaction erstellt
     // mit zurück können Angaben geändert werden
