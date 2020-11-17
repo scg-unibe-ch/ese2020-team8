@@ -19,13 +19,6 @@ const DUMMY_USER = {
     isAdmin: false
 };
 
-sequelize.sync().then( () => {
-    const saltRounds = 12;
-    DUMMY_USER.password = bcrypt.hashSync(DUMMY_USER.password, saltRounds); // hashes the password, never store passwords as plaintext
-    return User.create(DUMMY_USER).then(() => console.log("dummy user created"));
-})
-.catch( err => console.log(err));
-
 const DUMMY2_USER = {
     email: 'dummy2@test.com',
     userName: 'DummyBuyer',
@@ -35,9 +28,11 @@ const DUMMY2_USER = {
     isAdmin: false
 };
 
-sequelize.sync().then( () => {
+sequelize.sync().then( async () => {
     const saltRounds = 12;
     DUMMY2_USER.password = bcrypt.hashSync(DUMMY2_USER.password, saltRounds); // hashes the password, never store passwords as plaintext
-    return User.create(DUMMY2_USER).then(() => console.log("dummy user 2 created"));
+    await User.create(DUMMY2_USER).then(() => console.log("dummy user 2 created"));
+    DUMMY_USER.password = bcrypt.hashSync(DUMMY_USER.password, saltRounds); // hashes the password, never store passwords as plaintext
+    return User.create(DUMMY_USER).then(() => console.log("dummy user created"));
 })
 .catch( err => console.log(err));
