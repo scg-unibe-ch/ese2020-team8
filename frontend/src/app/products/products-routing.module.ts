@@ -6,8 +6,10 @@ import { CreateComponent } from './create/create.component';
 import { AuthGuard } from '../auth.guard';
 import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
+import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,10 @@ const routes: Routes = [
   {
     path: 'products/history',
     component: HistoryComponent,
+  },
+  {
+    path: 'products/:id/show',
+    component: ShowDetailsComponent,
   },
   {
     path: 'products/create',
@@ -39,10 +45,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'products/notifications',
-    component: NotificationsComponent,
+    path: 'products/:id/buy',
+    component: BuyComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'products/pay',
+    component: PayComponent,
+    canActivate: [AuthGuard],
+  },
+
 ];
 
 @NgModule({

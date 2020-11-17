@@ -1,13 +1,17 @@
 <mat-card class="product-list">
   <h1>Product List</h1>
 
+  <app-products-filter *ngIf="products" [products]="products" [(filters)]="productFilters" [(searchTerm)]="searchTerm"></app-products-filter>
   <app-product-item
-    *ngFor="let product of products; index as productId"
+    *ngFor="let product of products | productFilter:productFilters |filter:searchTerm; index as productId "
     [product]="product"
   >
     <div *ngIf="this.userService.loggedIn" class="action-buttons">
       <button color="primary" mat-flat-button (click)="goToBuy(product)">
         Buy
+      </button>
+      <button color="primary" mat-flat-button (click)="goToDetails(product)">
+        Details
       </button>
     </div>
   </app-product-item>

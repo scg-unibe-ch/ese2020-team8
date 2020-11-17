@@ -21,8 +21,8 @@ export class CreateComponent implements OnInit {
     purchaseType: '',
     availability: '',
     location: '',
-    delivery: '',
-    duration: ''
+    duration: '',
+    delivery: ''
   });
   previewImages: any[];
 

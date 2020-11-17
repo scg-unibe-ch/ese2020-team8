@@ -5,7 +5,7 @@ export interface IAuthRequest extends Request {
   user: IUserToken;
 }
 
-interface IUserToken {
+export interface IUserToken {
   userName: string;
   userId: number;
   isAdmin: boolean;

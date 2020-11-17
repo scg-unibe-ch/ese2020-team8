@@ -1,0 +1,10 @@
+.photos {
+    display: flex;
+}
+
+mat-card {
+    width: 90vw;
+    max-width: 1200px;
+    padding: 12px;
+    box-sizing: border-box;
+  }
