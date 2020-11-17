@@ -29,7 +29,8 @@ import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import {FilterComponent} from './filter/filter.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
     BuyComponent,
     PayComponent,
     FilterComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -62,10 +63,15 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    Ng2SearchPipeModule,
+    MatBadgeModule
   ],
   exports: [
     BrowseComponent
+  ],
+  providers: [
+    ProductFilterPipe
   ]
 })
 export class ProductsModule {}

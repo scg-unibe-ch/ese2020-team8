@@ -1,9 +1,9 @@
 <mat-card class="product-list">
   <h1>Product List</h1>
 
-  <app-products-filter *ngIf="products" [products]="products" [(filters)]="productFilters"></app-products-filter>
+  <app-products-filter *ngIf="products" [products]="products" [(filters)]="productFilters" [(searchTerm)]="searchTerm"></app-products-filter>
   <app-product-item
-    *ngFor="let product of products | productFilter: productFilters; index as productId "
+    *ngFor="let product of products | productFilter:productFilters |filter:searchTerm; index as productId "
     [product]="product"
   >
     <div *ngIf="this.userService.loggedIn" class="action-buttons">

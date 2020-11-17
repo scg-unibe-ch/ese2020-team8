@@ -31,7 +31,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -62,7 +61,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatSnackBarModule,
     MatProgressBarModule,
     MatSelectModule,
-    Ng2SearchPipeModule
   ],
   providers: [
     {

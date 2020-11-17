@@ -12,6 +12,7 @@ import { IProductFilters } from '../pipes/product-filter.pipe';
 export class BrowseComponent implements OnInit {
   products: IProduct[] = [];
   productFilters: IProductFilters = {};
+  searchTerm: string;
 
   constructor(
     public userService: UserService,
