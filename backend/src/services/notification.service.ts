@@ -1,7 +1,11 @@
 import nodemailer from 'nodemailer';
 import { config } from '../config';
-import { TransactionAttributes } from '../models/transaction.model';
-import { ProductAttributes } from '../models/product.model';
+import {
+  TransactionAttributes,
+  Transaction,
+} from '../models/transaction.model';
+import { ProductAttributes, Product } from '../models/product.model';
+import { Notification } from '../models/notification.model';
 
 class NotificationService {
   transporter: any;
@@ -53,10 +57,14 @@ class NotificationService {
   ) {
     const message = {
       text:
-        `Congrats you ${product.purchaseType === 'buy' ? 'bought' : 'rent' } the item: ${product.title}\n` +
+        `Congrats you ${
+          product.purchaseType === 'buy' ? 'bought' : 'rent'
+        } the item: ${product.title}\n` +
         `The price of the product you payed was ${transaction.price}`,
       html:
-        `Congrats you ${product.purchaseType === 'buy' ? 'bought' : 'rent' } the item: <br>${product.title}</br>` +
+        `Congrats you ${
+          product.purchaseType === 'buy' ? 'bought' : 'rent'
+        } the item: <br>${product.title}</br>` +
         `<p>The price of the product was <br>${transaction.price}</br></p>`,
     };
     return this.sendMail(receiver, message);
@@ -69,13 +77,36 @@ class NotificationService {
   ) {
     const message = {
       text:
-        `Congrats you ${product.purchaseType === 'buy' ? 'sold' : 'rent' } the item: ${product.title}\n` +
+        `Congrats you ${
+          product.purchaseType === 'buy' ? 'sold' : 'rent'
+        } the item: ${product.title}\n` +
         `The price of the product you payed was ${transaction.price}`,
       html:
-        `Congrats you ${product.purchaseType === 'buy' ? 'sold' : 'rent' } the item: <br>${product.title}</br>` +
+        `Congrats you ${
+          product.purchaseType === 'buy' ? 'sold' : 'rent'
+        } the item: <br>${product.title}</br>` +
         `<p>The price of the product was <br>${transaction.price}</br></p>`,
     };
     return this.sendMail(receiver, message);
+  }
+
+  async getMyNotifications(userId: number) {
+    return Notification.findAll({
+      where: {
+        UserId: userId,
+      },
+      include: {
+        model: Transaction as any,
+        include: Product as any,
+      },
+    });
+  }
+  async addNotification(userId: number, transactionId: number, notificationType: string) {
+      Notification.create({
+          UserId: userId,
+          TransactionId: transactionId,
+          notificationType,
+      });
   }
 }
 
