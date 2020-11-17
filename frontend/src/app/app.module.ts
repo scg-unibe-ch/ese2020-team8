@@ -30,16 +30,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // TodoListComponent,
-    // TodoItemComponent,
-    // TabsComponent,
     NavigationComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +59,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatIconModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule,
   ],
   providers: [
     {
