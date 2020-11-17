@@ -37,6 +37,10 @@ export class BrowseComponent implements OnInit {
     this.router.navigate(['products', product.id, 'buy' ]);
   }
 
+  goToDetails(product: IProduct): void {
+    this.router.navigate(['products', product.id, 'show']);
+  }
+
   goToProductsAdmin(): void {
     this.router.navigate(['admin', 'approve']);
   }

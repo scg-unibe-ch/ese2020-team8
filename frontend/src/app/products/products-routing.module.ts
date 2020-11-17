@@ -9,6 +9,7 @@ import { UpdateComponent } from './update/update.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'products/history',
     component: HistoryComponent,
+  },
+  {
+    path: 'products/:id/show',
+    component: ShowDetailsComponent,
   },
   {
     path: 'products/create',

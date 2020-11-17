@@ -24,6 +24,7 @@ import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
@@ -31,6 +32,7 @@ import {FilterComponent} from './filter/filter.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     ItemComponent,
     DeleteComponent,
     HistoryComponent,
+    ShowDetailsComponent,
     UploadImageComponent,
     BuyComponent,
     PayComponent,

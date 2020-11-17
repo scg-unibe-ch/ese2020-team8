@@ -5,6 +5,8 @@ import {SecuredController} from './controllers/secured.controller';
 import {ProductController} from './controllers/products.controller';
 import {PhotoController} from './controllers/photo.controller';
 import { TransactionController } from './controllers/transaction.controller';
+import {verifyToken} from './middlewares/checkAuth';
+import {NotificationController} from './controllers/notification.controller';
 
 
 export const ApiController = Router();
@@ -16,5 +18,6 @@ ApiController
   .use('/user', UserController)
   .use('/secured', SecuredController)
   .use('/transactions', TransactionController)
+  .use('/notifications', verifyToken, NotificationController)
 ;
 
