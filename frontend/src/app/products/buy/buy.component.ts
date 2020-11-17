@@ -24,7 +24,6 @@ export class BuyComponent implements OnInit {
   product: IProduct;
   transactionPrice: number;
 
-
   deliveryForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -35,8 +34,8 @@ export class BuyComponent implements OnInit {
       Validators.maxLength(4),
     ]),
     city: new FormControl('')
-  });  
-  
+  });
+
   rentalDaysForm = new FormGroup({
     rentalDays: new FormControl('', [
       Validators.required
@@ -51,7 +50,7 @@ export class BuyComponent implements OnInit {
     private transactionService: TransactionsService
   ) { }
 
-  
+
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     this.productService.get(productId).subscribe( product  => {
@@ -59,7 +58,7 @@ export class BuyComponent implements OnInit {
       this.product = product;
     });
   }
-/* 
+/*
   calculatePrice(product: IProduct): void {
     const rentalDays = this.rentalDaysForm.value;
     console.log(rentalDays);
@@ -72,12 +71,12 @@ export class BuyComponent implements OnInit {
 
     const price:number = product.price;
     console.log(price);
-    console.log(isNaN(price));    
-    console.log(isNaN(rentalDays));    
-    console.log(typeof price);  
-    console.log(typeof rentalDays);  
+    console.log(isNaN(price));
+    console.log(isNaN(rentalDays));
+    console.log(typeof price);
+    console.log(typeof rentalDays);
     const rentalDaysAsInt = parseInt(rentalDays);
-    console.log(typeof rentalDaysAsInt);  
+    console.log(typeof rentalDaysAsInt);
     console.log( totalPrice )
 
    //this.transactionPrice = (rentalDays)*(product.price);
@@ -90,63 +89,23 @@ export class BuyComponent implements OnInit {
     return (product.price) * (pro.quantity) ;
   } */
 
-  createDeliveryAddress(): void {
+  /* createDeliveryAddress(): void {
     const deliveryAddress = this.deliveryForm.value;
     console.log(deliveryAddress);
-  }
+  } */
 
-  buy(product: IProduct): void {
-    const logInfo = 'Buy without delivery';
-    console.log(logInfo);
-    this.transactionService.buy(product).subscribe(res => {
-      console.log(res);
-      console.log('ToDo-Create a success page');
-      this.router.navigate(['products', 'history']);
-    });
-  }
+  orderProduct(): void {
+    // hier irgendwie weiter zu pay
+    // Lieferadresse speichern
 
-  buyWithDelivery(product: IProduct): void {
-      const logInfo = 'Buy with delivery started';
-      console.log(logInfo);
+    };
+
+    buy(): void {
+      const product = this.product;
       const deliveryAddress = this.deliveryForm.value;
-      console.log(deliveryAddress);
-      this.transactionService.buy(product, deliveryAddress).subscribe(res => {
-        console.log(res);
-        console.log('ToDo-Create a success page');
-        this.router.navigate(['products', 'history']);
-      });
-    };
-
-  rent(product: IProduct): void {
-      const logInfo = 'Create transaction with rental days';
-      console.log(logInfo);
       const rentalDays = this.rentalDaysForm.value;
-      console.log(rentalDays);
-      this.transactionService.buy(product, rentalDays).subscribe(res => {
-        console.log(res);
-        console.log('ToDo-Create a success page');
-        this.router.navigate(['products', 'history']);
+      this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe( res  => {
       });
-    };
-  
-
-  rentWithDelivery(product: IProduct): void {
-      const logInfo = 'Create transaction with rental days and delivery';
-      console.log(logInfo);
-      const deliveryAddress = this.deliveryForm.value;
-      console.log(deliveryAddress);
-      const rentalDays = this.rentalDaysForm.value;
-      console.log(rentalDays);
-      //this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe(res => {
-      this.transactionService.buy(product, rentalDays).subscribe(res => {
-          console.log(res);
-        console.log('ToDo-Create a success page');
-        this.router.navigate(['products', 'history']);
-      });
-    };
-
-
-  goToPay(product: IProduct): void {
-    this.router.navigate(['products', product.id, 'pay' ]);
   }
+
 }

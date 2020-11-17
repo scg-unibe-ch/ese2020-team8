@@ -10,25 +10,25 @@
         <p>PurchaseType: {{ this.product.purchaseType }}</p>
 
         <p *ngIf="product.productType === 'service'">
-            Once the transaction is complete, you may exchange 
+            Once the transaction is complete, you may exchange
             information with the seller, about when and where exactly the service
-            shell be provided. 
+            shell be provided.
         </p>
 
         <p *ngIf="product.delivery === false">
-            Delivery Options: for this Product, delivery is not possible. 
-            When the transaction is complete, the seller will contact you to 
+            Delivery Options: for this Product, delivery is not possible.
+            When the transaction is complete, the seller will contact you to
             define where to exchange the product.
         </p>
 
         <mat-card class="rent-card"  *ngIf="product.purchaseType === 'rent'">
             <p>For how many days do you want to rent the product</p>
-            <form [formGroup]="rentalDaysForm">   
+            <form [formGroup]="rentalDaysForm">
                 <mat-form-field>
                     <mat-label>Rental Days</mat-label>
                     <input matInput formControlName="rentalDays" placeholder="" />
                 </mat-form-field>
-                <br>         
+                <br>
                 <!-- <button color="primary" mat-flat-button [disabled]="!rentalDaysForm.valid">calculate Price</button> -->
             </form>
         </mat-card>
@@ -37,7 +37,7 @@
         <mat-card class="delivery-card"  *ngIf="product.delivery === true">
             <p>Delivery Address</p>
             <form [formGroup]="deliveryForm" >
-          
+
                 <mat-form-field>
                     <mat-label>First name</mat-label>
                     <input matInput formControlName="firstName" placeholder="First name" />
@@ -63,7 +63,7 @@
                     <input matInput formControlName="city" placeholder="City" />
                 </mat-form-field>
                 <br>
-                
+
             </form>
         </mat-card>
 
@@ -71,30 +71,11 @@
 <!--             <p>
                 Form Value: {{ deliveryForm.value | json }}
             </p> -->
-  
-        <button *ngIf="!product.delivery && product.purchaseType === 'buy'"
-            color="primary" mat-flat-button (click)="buy(product)">Create Test Transaction
+
+        <button
+            color="primary" mat-flat-button (click)="orderProduct(product)">Order
         </button>
 
-        <button *ngIf="product.delivery && product.purchaseType === 'buy'"
-            [disabled]="!deliveryForm.valid"
-            color="primary" mat-flat-button (click)="buyWithDelivery(product)">Create Test Transaction
-        </button>
-
-        <button *ngIf="!product.delivery && product.purchaseType === 'rent'"
-            [disabled]="!rentalDaysForm.valid"
-            color="primary" mat-flat-button (click)="rent(product)">Create Test Transaction
-        </button>
-
-        <button *ngIf="product.delivery && product.purchaseType === 'rent'"
-            [disabled]="!deliveryForm.valid || !rentalDaysForm.valid"
-            color="primary" mat-flat-button (click)="rentWithDelivery(product)">Create Test Transaction
-        </button>
-
-        <button color="primary" mat-flat-button  routerLink="/products/pay">
-            PAY
-        </button>
-        
 
 </mat-card>
 
