@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProductsService, IProduct} from '../products.service';
-import {UserService} from 'src/app/user/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService, IProduct } from '../products.service';
+import { UserService } from 'src/app/user/user.service';
 import * as core from '@angular/core';
 import {
   FormControl,
@@ -13,11 +13,10 @@ import {
 } from '@angular/forms';
 import { TransactionsService } from '../transactions.service';
 
-
 @Component({
   selector: 'app-buy',
   templateUrl: './buy.component.html',
-  styleUrls: ['./buy.component.css']
+  styleUrls: ['./buy.component.css'],
 })
 export class BuyComponent implements OnInit {
   productId: string;
@@ -33,13 +32,11 @@ export class BuyComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(4),
     ]),
-    city: new FormControl('')
+    city: new FormControl(''),
   });
 
   rentalDaysForm = new FormGroup({
-    rentalDays: new FormControl('', [
-      Validators.required
-    ]),
+    rentalDays: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -48,17 +45,16 @@ export class BuyComponent implements OnInit {
     public router: Router,
     private productService: ProductsService,
     private transactionService: TransactionsService
-  ) { }
-
+  ) {}
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.productService.get(productId).subscribe( product  => {
+    this.productService.get(productId).subscribe((product) => {
       this.productId = product.id;
       this.product = product;
     });
   }
-/*
+  /*
   calculatePrice(product: IProduct): void {
     const rentalDays = this.rentalDaysForm.value;
     console.log(rentalDays);
@@ -85,7 +81,7 @@ export class BuyComponent implements OnInit {
 
    */
 
-/*   get totalPrice(product){
+  /*   get totalPrice(product){
     return (product.price) * (pro.quantity) ;
   } */
 
@@ -94,18 +90,21 @@ export class BuyComponent implements OnInit {
     console.log(deliveryAddress);
   } */
 
-  orderProduct(): void {
-    // hier irgendwie weiter zu pay
-    // Lieferadresse speichern
+  goToOrder(): void {
 
-    };
-
-    buy(): void {
-      const product = this.product;
-      const deliveryAddress = this.deliveryForm.value;
-      const rentalDays = this.rentalDaysForm.value;
-      this.transactionService.buy(product, rentalDays, deliveryAddress).subscribe( res  => {
-      });
+    console.log("showing your order here")
+    this.router.navigate(['products', this.productId, 'pay']);
+    // hier soll eine Zusammenfassung der Bestellung inkl der angegebenen Lieferadresse angezeigt werden
+    // über Button pay wird transaction erstellt
+    // mit zurück können Angaben geändert werden
   }
 
+  buy(): void {
+    const product = this.product;
+    const deliveryAddress = this.deliveryForm.value;
+    const rentalDays = this.rentalDaysForm.value;
+    this.transactionService
+      .buy(product, rentalDays, deliveryAddress)
+      .subscribe((res) => {});
+  }
 }
