@@ -30,8 +30,9 @@ productTransactionController.post(
       const buyerId = req.user.userId;
       const rentalDays = req.body.rentalDays;
       const productId = req.params.productId;
+      const deliveryAddress = req.params.deliveryAddress;
       const product = await productService.get(productId);
-      const transactions = await transactionService.create(product, buyerId, rentalDays);
+      const transactions = await transactionService.create(product, buyerId, rentalDays, deliveryAddress);
       res.send(transactions);
       const buyer = await userService.getUserFromToken(req.user);
       const seller = await userService.get(product.UserId);

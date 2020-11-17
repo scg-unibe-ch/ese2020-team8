@@ -15,29 +15,32 @@ export class TransactionsService {
     private http: HttpClient
   ) { }
 
-  buy(product: IProduct, rentalDays?: number): Observable<IProduct> {
+  buy(product: IProduct, rentalDays?: number, deliveryAddress?: any): Observable<IProduct> {
     return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, product);
   }
+
+  /* orderProduct(): Observable<ITransaction> {
+    return this.http.get<ITransaction>(`${this.url}/${product.id}/transactions`, product);
+  } */
+
   getMyTransactions() {
     return this.http.get<ITransaction[]>(`${this.transactionUrl}/me`);
-
   }
 
 }
 
-export interface ITransaction {
+export interface ITransaction extends ICreateTransactionRequestBody{
   id: number;
   price: number;
   ProductId: number;
   productType: string;
   purchaseType: string;
   buyerId: number;
-  rentalDays?: number;
   Product: IProduct;
 }
 
 export interface ICreateTransactionRequestBody {
-  rentalDays: number;
+  rentalDays?: number;
   address?: {
     firstName: string;
     lastName: string;

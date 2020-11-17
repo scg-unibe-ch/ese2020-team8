@@ -13,7 +13,7 @@ export class TransactionService {
     });
   }
 
-  public async create(product: Product, buyerId: number, rentalDays: number) {
+  public async create(product: Product, buyerId: number, rentalDays: number, deliveryAddress: any) {
     const transaction = {
       price: product.price,
       ProductId: product.id,
@@ -21,6 +21,7 @@ export class TransactionService {
       purchaseType: product.purchaseType,
       buyerId: buyerId,
       rentalDays: rentalDays,
+      deliveryAddress: deliveryAddress
     };
 
     const t = await server.sequelize.transaction();
