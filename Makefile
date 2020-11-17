@@ -36,6 +36,10 @@ createAdmin:    ## creates an admin user
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createAdminUser.js
 
+createUsers:    ## dummyProduct
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createDummyUser.js
+
 createProduct:    ## dummyProduct
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createDummyProducts.js

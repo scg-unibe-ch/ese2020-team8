@@ -5,6 +5,8 @@ services:
     image: node:12
     working_dir: "/app/backend"
     user: node
+    env_file:
+      - "env"
     ports:
       - "3000:3000"
       - "9229:9229"
@@ -22,3 +24,8 @@ services:
     volumes:
       - "../../:/app"
     command: "npm run docker:dev"
+
+  mailer:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"

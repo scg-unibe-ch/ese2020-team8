@@ -25,7 +25,12 @@ import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
-
+import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
+import {FilterComponent} from './filter/filter.component';
+import { ProductFilterPipe } from './pipes/product-filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,10 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     DeleteComponent,
     HistoryComponent,
     UploadImageComponent,
+    BuyComponent,
+    PayComponent,
+    FilterComponent,
+    ProductFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -54,10 +63,15 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    Ng2SearchPipeModule,
+    MatBadgeModule
   ],
   exports: [
     BrowseComponent
+  ],
+  providers: [
+    ProductFilterPipe
   ]
 })
 export class ProductsModule {}

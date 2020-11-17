@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductsService, IProduct} from '../products.service';
+import {TransactionsService, ITransaction} from '../transactions.service';
 
 @Component({
   selector: 'app-history',
@@ -8,18 +8,18 @@ import {ProductsService, IProduct} from '../products.service';
 })
 export class HistoryComponent implements OnInit {
 
-  products: IProduct[];
+  transactions: ITransaction[];
 
   constructor(
-    private productService: ProductsService
+    private transactionsService: TransactionsService
   )  {
-    this.reloadProducts();
+    this.reloadTransactions();
   }
 
   ngOnInit(): void {
   }
 
-  reloadProducts(): void {
-    this.productService.getMyProducts().subscribe( prods => this.products = prods);
+  reloadTransactions(): void {
+    this.transactionsService.getMyTransactions().subscribe( prods => this.transactions = prods);
   }
 }
