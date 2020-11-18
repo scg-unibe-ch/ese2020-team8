@@ -11,10 +11,12 @@
 
 .infos {
   grid-area: info;
+  cursor: pointer;
 }
 .preview {
   grid-area: img;
   max-width: 100%;
+  cursor: pointer;
 }
 .action-buttons {
   grid-area: action;

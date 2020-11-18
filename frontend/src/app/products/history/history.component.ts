@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService, ITransaction } from '../transactions.service';
+import {IProductFilters} from '../pipes/product-filter.pipe';
+import {IProduct} from '../products.service';
 
 @Component({
   selector: 'app-history',
@@ -8,7 +10,8 @@ import { TransactionsService, ITransaction } from '../transactions.service';
 })
 export class HistoryComponent implements OnInit {
   transactions: ITransaction[];
-  filteredTransactions: Partial<ITransaction>[];
+  filters: IProductFilters = {};
+  products: IProduct[];
 
   constructor(private transactionsService: TransactionsService) {
     this.reloadTransactions();
@@ -18,28 +21,17 @@ export class HistoryComponent implements OnInit {
 
   reloadTransactions(): void {
     this.transactionsService.getMyTransactions().subscribe((trans) => {
-      this.transactions = trans;
-      this.filteredTransactions = trans
+      this.products = trans.map( t => t.Product );
     });
   }
 
-  filterSoldHistory(status: string): void {
-    if (status === 'sold') {
-      this.filteredTransactions = this.transactions.filter((transactions) =>
-        ['sold'].includes(transactions.Product.status)
-      );
-    } else {
-      this.filteredTransactions = [];
-    }
+  setPurchaseTypeFilter(status: string): void {
+    this.filters = {
+      purchaseType: status
+    };
   }
 
-  filterRentHistory(status: string): void {
-    if (status === 'rent') {
-      this.filteredTransactions = this.transactions.filter((transactions) =>
-        ['rent'].includes(transactions.Product.status)
-      );
-    } else {
-      this.filteredTransactions = [];
-    }
+  resetFilter(): void {
+    this.filters = {};
   }
 }

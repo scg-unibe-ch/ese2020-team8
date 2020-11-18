@@ -1,7 +1,11 @@
 <mat-card class="product-card">
-  <img class="preview" [src]="defaultImage" alt="Angular Logo" />
-
-  <section class="infos">
+  <img
+    class="preview"
+    [src]="defaultImage"
+    alt="Angular Logo"
+    (click)="goToDetails(product)"
+  />
+  <section class="infos" (click)="goToDetails(product)">
     <header>
       <h3>
         {{ product.title }}
