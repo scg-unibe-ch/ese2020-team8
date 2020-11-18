@@ -2,8 +2,8 @@
   <mat-accordion>
     <mat-expansion-panel
       *ngFor="let notification of notifications; index as notificationId"
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
+      (opened)="notification.panelOpenState = true"
+      (closed)="notification.panelOpenState = false"
     >
       <mat-expansion-panel-header>
         <mat-panel-title [ngSwitch]="notification.notificationType">
