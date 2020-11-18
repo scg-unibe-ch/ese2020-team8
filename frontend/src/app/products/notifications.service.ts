@@ -31,5 +31,6 @@ export interface INotification {
   createdAt: string;
   updatedAt?: string;
   Transaction: ITransaction;
+  contactEmail: string;
 }
 
