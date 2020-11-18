@@ -32,6 +32,12 @@ stop: 		## Stop and remove the containers
 		# docker rm $(shell basename $(PWD))-backend
 		# docker rm $(shell basename $(PWD))-frontend
 
+createAll:  	  ## create all dummy stuff
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createAdminUser.js
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createDummyUser.js
+		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createDummyProducts.js
+
 createAdmin:    ## creates an admin user
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createAdminUser.js
