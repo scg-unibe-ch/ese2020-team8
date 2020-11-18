@@ -33,7 +33,6 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './order/order.component';
-import { NotificationComponent } from './notification/notification.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
@@ -53,7 +52,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FilterComponent,
     ProductFilterPipe,
     OrderComponent,
-    NotificationComponent
   ],
   imports: [
     CommonModule,

@@ -32,7 +32,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { WalletComponent } from './wallet/wallet.component';
+import {NotificationComponent} from './notification/notification.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { WalletComponent } from './wallet/wallet.component';
     NavigationComponent,
     WelcomeComponent,
     WalletComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ import { WalletComponent } from './wallet/wallet.component';
     MatSnackBarModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatExpansionModule,
+    MatChipsModule
   ],
   providers: [
     {
