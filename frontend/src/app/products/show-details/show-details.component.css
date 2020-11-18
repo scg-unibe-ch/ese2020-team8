@@ -8,3 +8,17 @@ mat-card {
     padding: 12px;
     box-sizing: border-box;
   }
+
+.photo-div {
+    max-height: 320px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+img {
+    white-space: nowrap;
+    margin-right: 5px;
+    max-height: 300px;
+}

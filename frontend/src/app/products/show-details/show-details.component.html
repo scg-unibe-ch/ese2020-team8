@@ -7,13 +7,13 @@
     </section>
     <section class="photos">
         <!--Display all product pictures in a gallery-->
-        <mat-card>
+        <div class="photo-div">
             <img *ngFor="let photo of photos" [src]="photo.imageSource"/>
-            <!--<li *ngFor="let photo in photos">
-                <p> {{ photo.fileName }} </p>
-                <img [src] = "photo.fileName" alt="Product photo">
-            </li>-->
-        </mat-card>
+        <!--<li *ngFor="let photo in photos">
+            <p> {{ photo.fileName }} </p>
+            <img [src] = "photo.fileName" alt="Product photo">
+        </li>-->
+        </div>
     </section>
     <section class="attributes">
         <!--Display all product attributes-->
