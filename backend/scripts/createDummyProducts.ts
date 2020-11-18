@@ -25,9 +25,9 @@ const PRODUCT1 = {
 
 
 const PRODUCT2 = {
-    title: 'Baby Bed Mini',
+    title: 'Baby Bed Mini for Rental',
     description: 'This Baby-bed suits the small children',
-    price: 200,
+    price: 2,
     productType: 'good',
     purchaseType: 'rent',
     availability: true,
@@ -41,7 +41,7 @@ const PRODUCT2 = {
 const PRODUCT3 = {
     title: '1H Babysitting',
     description: 'I am the perfect Nanny for children at age 2 to 6',
-    price: 200,
+    price: 15,
     productType: 'service',
     purchaseType: 'buy',
     availability: true,
