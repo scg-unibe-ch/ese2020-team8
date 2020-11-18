@@ -15,34 +15,38 @@ export class TransactionsService {
     private http: HttpClient
   ) { }
 
-  buy(product: IProduct, rentalDays?: number): Observable<IProduct> {
-    return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, product);
+  pay(product: IProduct, rentalDays?: number, deliveryAddress?: IDeliveryAddress): Observable<IProduct> {
+    return this.http.post<IProduct>(`${this.url}/${product.id}/transactions`, {
+      rentalDays,
+      deliveryAddress
+    });
   }
+
   getMyTransactions() {
     return this.http.get<ITransaction[]>(`${this.transactionUrl}/me`);
-
   }
 
 }
 
-export interface ITransaction {
+export interface ITransaction extends ICreateTransactionRequestBody{
   id: number;
   price: number;
   ProductId: number;
   productType: string;
   purchaseType: string;
   buyerId: number;
-  rentalDays?: number;
   Product: IProduct;
 }
 
 export interface ICreateTransactionRequestBody {
-  rentalDays: number;
-  address?: {
-    firstName: string;
-    lastName: string;
-    streetNr: string;
-    zip: number;
-    city: string;
-  }
+  rentalDays?: number;
+  address?: IDeliveryAddress;
+}
+
+interface IDeliveryAddress {
+  firstName: string;
+  lastName: string;
+  streetNr: string;
+  zip: number;
+  city: string;
 }
