@@ -15,6 +15,7 @@ export class ShowDetailsComponent implements OnInit {
 
   productId: string;
   photos: { imageSource: string }[];
+  slides: { image: string }[]; //Array of images
 
   @Input() product: IProduct;
 
@@ -36,6 +37,7 @@ export class ShowDetailsComponent implements OnInit {
         };
         return newPhoto
       })
+      this.slides = this.photos.map( photo => ({ image: photo.imageSource }));
     });
   }
 
