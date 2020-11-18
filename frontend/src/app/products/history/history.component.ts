@@ -24,9 +24,9 @@ export class HistoryComponent implements OnInit {
   }
 
   filterSoldHistory(status: string): void {
-    if (status === 'sold') {
+    if (status === 'buy') {
       this.filteredTransactions = this.transactions.filter((transactions) =>
-        ['sold'].includes(transactions.Product.status)
+        ['buy'].includes(transactions.productType)
       );
     } else {
       this.filteredTransactions = [];
@@ -36,7 +36,7 @@ export class HistoryComponent implements OnInit {
   filterRentHistory(status: string): void {
     if (status === 'rent') {
       this.filteredTransactions = this.transactions.filter((transactions) =>
-        ['rent'].includes(transactions.Product.status)
+        ['rent'].includes(transactions.productType)
       );
     } else {
       this.filteredTransactions = [];
