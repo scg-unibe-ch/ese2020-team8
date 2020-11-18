@@ -59,15 +59,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Filter Price</mat-label>
-        <mat-select formControlName="price">
-          <mat-option>all</mat-option>
-          <mat-option *ngFor="let p of products" [value]="p.price">
-            {{ p.price }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div formGroupName="price">
+        Price:
+        <mat-form-field class="price-field">
+          <input matInput formControlName="min" type=number placeholder="min">
+        </mat-form-field>
+        <mat-form-field class="price-field">
+          <input matInput formControlName="max" type=number placeholder="max">
+        </mat-form-field>
+      </div>
       <section class="checkbox-section">
         <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
       </section>

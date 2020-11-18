@@ -31,7 +31,10 @@ export class FilterComponent implements OnInit, OnChanges {
 
   filterForm = this.fb.group({
     location: '',
-    price: '',
+    price: this.fb.group({
+      min: 0,
+      max: 1000,
+    }),
     delivery: '',
     productType: '',
     purchaseType: '',
@@ -47,15 +50,24 @@ export class FilterComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+    // This adds automatically a filter for every form element, be careful to exclude form elements with specific filter
     this.filterForm.valueChanges.subscribe((values) => {
       Object.entries(values).forEach(([columnName, value]) => {
         if (value) {
-          this.filters[columnName] = { value: value as string };
+          if (typeof value === 'string') {
+            this.filters[columnName] = value;
+          }
         } else {
           delete this.filters[columnName];
         }
       });
       this.updateOptionCounters();
+    });
+    this.filterForm.get('price').valueChanges.subscribe((priceValues) => {
+      this.filters.price = {
+        type: 'isBetween',
+        value: priceValues,
+      };
     });
   }
 
@@ -70,6 +82,11 @@ export class FilterComponent implements OnInit, OnChanges {
       purchaseType: this.createOption((p) => p.purchaseType),
     };
     this.productOptions = options;
+
+    this.filterForm
+      .get('price')
+      .get('max')
+      .patchValue(Math.max(...this.products.map((p) => p.price)));
   }
 
   private createOption(
