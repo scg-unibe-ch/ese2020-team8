@@ -38,7 +38,6 @@ export class ShowDetailsComponent implements OnInit {
         return newPhoto
       })
       this.slides = this.photos.map( photo => ({ image: photo.imageSource }));
-      console.log(this.slides);
     });
   }
 
