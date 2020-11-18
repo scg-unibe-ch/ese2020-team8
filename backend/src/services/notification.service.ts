@@ -101,14 +101,15 @@ class NotificationService {
       },
     });
   }
-  async addNotification(userId: number, transactionId: number, notificationType: string) {
+  async addNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
       Notification.create({
           UserId: userId,
           TransactionId: transactionId,
           notificationType,
+          contactEmail
       });
   }
-  async seenNotification(notificationId: number) {
+  async seenNotification(notificationId: string) {
       const notification = await Notification.findOne({
           where: {
               id: notificationId
