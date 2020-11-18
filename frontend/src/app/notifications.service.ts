@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { interval, Observable, merge } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { ITransaction } from './transactions.service';
+import { environment } from '../environments/environment';
+import { ITransaction } from './products/transactions.service';
 import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,10 @@ export class NotificationsService {
 
   getMyNotifications(): Observable<INotification[]> {
     return this.http.get<INotification[]>(`${this.url}/me`);
+  }
+
+  seenNotification(notificationId: number): Observable<INotification> {
+    return this.http.put<INotification>(`${this.url}/${notificationId}/seen`, {});
   }
 }
 

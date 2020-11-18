@@ -8,10 +8,8 @@ import { ManageComponent } from './manage/manage.component';
 import { UpdateComponent } from './update/update.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
-import { NotificationComponent } from './notification/notification.component';
 import { HistoryComponent } from './history/history.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
-import { Notification } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -56,12 +54,6 @@ const routes: Routes = [
     component: PayComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'products/notification',
-    component: NotificationComponent,
-    canActivate: [AuthGuard],
-  },
-
 ];
 
 @NgModule({
