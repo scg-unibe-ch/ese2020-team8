@@ -32,8 +32,8 @@ import {FilterComponent} from './filter/filter.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
+import { OrderComponent } from './order/order.component';
 import { NotificationComponent } from './notification/notification.component';
-
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { NotificationComponent } from './notification/notification.component';
     PayComponent,
     FilterComponent,
     ProductFilterPipe,
-    NotificationComponent,
+    OrderComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -74,6 +75,9 @@ import { NotificationComponent } from './notification/notification.component';
   ],
   exports: [
     BrowseComponent
+  ],
+  entryComponents: [
+    OrderComponent
   ],
   providers: [
     ProductFilterPipe

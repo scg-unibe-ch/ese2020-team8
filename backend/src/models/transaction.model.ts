@@ -19,6 +19,11 @@ export interface TransactionAttributes {
     purchaseType: string;
     buyerId: number;
     rentalDays?: number;
+    firstName?: string;
+    lastName?: string;
+    streetNr?: string;
+    zip?: number;
+    city?: string;
 }
 
 export interface TransactionCreationAttributes extends Optional<TransactionAttributes, 'id'> { }
@@ -34,6 +39,11 @@ export class Transaction
   purchaseType!: string;
   buyerId!: number;
   rentalDays?: number;
+  firstName?: string;
+  lastName?: string;
+  streetNr?: string;
+  zip?: number;
+  city?: string;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -75,6 +85,21 @@ export class Transaction
         rentalDays: {
           type: DataTypes.INTEGER,
         },
+        firstName: {
+          type: DataTypes.STRING,
+        },
+        lastName: {
+          type: DataTypes.STRING,
+        },
+        streetNr: {
+          type: DataTypes.STRING,
+        },
+        zip: {
+          type: DataTypes.INTEGER,
+        },
+        city: {
+          type: DataTypes.STRING,
+        }
       },
       { sequelize, tableName: 'transactions' }
     );
