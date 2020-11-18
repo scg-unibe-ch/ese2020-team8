@@ -34,6 +34,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './order/order.component';
 import { NotificationComponent } from './notification/notification.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { NotificationComponent } from './notification/notification.component';
     MatDialogModule,
     MatStepperModule,
     Ng2SearchPipeModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
   ],
   exports: [
     BrowseComponent

@@ -32,12 +32,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
+import { WalletComponent } from './wallet/wallet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     WelcomeComponent,
+    WalletComponent,
   ],
   imports: [
     BrowserModule,

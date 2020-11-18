@@ -3,3 +3,16 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.checkbox-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 56px;
+}
+
+.price-field {
+  width: 90px;
+  margin-right: 12px;
+  margin-left: 12px;
+}

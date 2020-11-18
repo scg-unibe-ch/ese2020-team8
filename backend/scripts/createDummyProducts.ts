@@ -10,7 +10,6 @@ const sequelize = new Sequelize({
 Product.initialize(sequelize);
 
 const PRODUCT1 = {
-    id: 1,
     title: 'Baby Bed XXL',
     description: 'This Baby-bed suits the big babies and even small children',
     price: 200,
@@ -26,7 +25,6 @@ const PRODUCT1 = {
 
 
 const PRODUCT2 = {
-    id: 2,
     title: 'Baby Bed Mini',
     description: 'This Baby-bed suits the small children',
     price: 200,
@@ -41,7 +39,6 @@ const PRODUCT2 = {
 };
 
 const PRODUCT3 = {
-    id: 3,
     title: '1H Babysitting',
     description: 'I am the perfect Nanny for children at age 2 to 6',
     price: 200,

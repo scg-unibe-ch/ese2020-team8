@@ -30,7 +30,7 @@ notificationController.get(
     }
 );
 
-notificationController.post(
+notificationController.put(
     '/:notificationId/seen',
     async (req: IAuthRequest, res: Response, next: NextFunction) => {
         try {

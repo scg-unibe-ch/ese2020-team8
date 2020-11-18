@@ -1,8 +1,9 @@
 
-import express, { Router, Request, Response } from 'express';
+import express, { Router, Request, Response, NextFunction } from 'express';
 import { UserService } from '../services/user.service';
-import { verifyToken } from '../middlewares/checkAuth';
+import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import {checkPasswordStrength} from '../middlewares/checkPasswordStrength';
+import {checkIsAdmin} from '../middlewares/checkIsAdmin';
 
 const userController: Router = express.Router();
 export const userService = new UserService();
@@ -20,9 +21,27 @@ userController.post('/login',
     }
 );
 
-userController.get('/', verifyToken, // you can add middleware on specific requests like that
-    (req: Request, res: Response) => {
-        userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
+userController.get('/me',
+    verifyToken, // you can add middleware on specific requests like that
+    async (req: IAuthRequest, res: Response, next: NextFunction) => {
+        try {
+            const user = await userService.get(req.user.userId);
+            res.send(user);
+        } catch (err) {
+            next(err);
+        }
+    }
+);
+
+userController.get('/',
+    verifyToken, // you can add middleware on specific requests like that
+    checkIsAdmin,
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            return userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
+        } catch (err) {
+            next(err);
+        }
     }
 );
 
