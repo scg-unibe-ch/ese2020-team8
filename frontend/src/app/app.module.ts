@@ -31,6 +31,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatProgressBarModule,
     MatSelectModule,
+    MatBadgeModule
   ],
   providers: [
     {

@@ -1,23 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { interval, Observable, merge } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { IProduct } from './products.service';
 import { ITransaction } from './transactions.service';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class NotificationsService {
   private url = environment.endpointURL + '/notifications';
 
+  public myNewNotifications = merge(
+    this.http.get<{ count: number }>(`${this.url}/new`),
+    interval(10000).pipe(
+      switchMap(() => this.http.get<{ count: number }>(`${this.url}/new`))
+    )
+  );
 
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  getMyNotifications() {
+  getMyNotifications(): Observable<INotification[]> {
     return this.http.get<INotification[]>(`${this.url}/me`);
   }
 }
@@ -33,4 +35,3 @@ export interface INotification {
   Transaction: ITransaction;
   contactEmail: string;
 }
-
