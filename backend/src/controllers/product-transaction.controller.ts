@@ -41,8 +41,8 @@ productTransactionController.post(
 
       await notificationService.transactionSellerNotification(seller.email, transactions, product);
       await notificationService.transactionBuyerNotification(buyer.email, transactions, product);
-      await notificationService.addNotification(seller.id, transactions.id, 'sellerNotification');
-      await notificationService.addNotification(buyer.id, transactions.id, 'buyerNotification');
+      await notificationService.addNotification(seller.id, transactions.id, 'sellerNotification', buyer.email);
+      await notificationService.addNotification(buyer.id, transactions.id, 'buyerNotification', seller.email);
 
     } catch (err) {
       next(err);

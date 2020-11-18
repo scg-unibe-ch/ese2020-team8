@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
-import { INotification, NotificationsService } from '../notifications.service'
+import { INotification, NotificationsService } from '../notifications.service';
 
 
 @Component({
@@ -16,14 +16,8 @@ export class NotificationComponent implements OnInit {
     public userService: UserService,
     public router: Router,
     private notificationService: NotificationsService
-  ) { 
-    this.notificationService.getMyNotifications().subscribe( notifications => 
-      {
-      //debugger
-      this.notifications = notifications.reverse();
-      //this.notifications = this.notifications.reverse();
-    }
-    );
+  ) {
+    this.notificationService.getMyNotifications().subscribe( notifications => this.notifications = notifications.reverse());
   }
 
   ngOnInit(): void {

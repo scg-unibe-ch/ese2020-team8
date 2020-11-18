@@ -8,6 +8,7 @@ export interface NotificationAttributes {
     notificationType: string;
     TransactionId: number;
     status?: string;
+    contactEmail: string;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -20,6 +21,7 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
     notificationType!: string;
     TransactionId!: number;
     status!: string;
+    contactEmail!: string;
 
     // public getPhotos!: HasManyGetAssociationsMixin<Photo>;
 
@@ -43,6 +45,9 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
             },
             TransactionId: {
                 type: DataTypes.INTEGER,
+            },
+            contactEmail: {
+                type: DataTypes.STRING,
             },
             status: {
                 type: DataTypes.STRING,

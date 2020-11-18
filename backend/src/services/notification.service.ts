@@ -101,12 +101,32 @@ class NotificationService {
       },
     });
   }
-  async addNotification(userId: number, transactionId: number, notificationType: string) {
+
+  async getMyNewNotifications(userId: number) {
+    return Notification.count({
+      where: {
+        UserId: userId,
+        status: 'new'
+      },
+    });
+  }
+
+  async addNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
       Notification.create({
           UserId: userId,
           TransactionId: transactionId,
           notificationType,
+          contactEmail
       });
+  }
+  async seenNotification(notificationId: string) {
+      const notification = await Notification.findOne({
+          where: {
+              id: notificationId
+          }
+      });
+      notification.status = 'seen';
+      return notification.save();
   }
 }
 
