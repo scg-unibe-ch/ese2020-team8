@@ -3,6 +3,7 @@ import { Transaction } from '../models/transaction.model';
 import { User } from '../models/user.model';
 import { server } from '../';
 import { Photo } from '../models/photo.model';
+import { IDeliveryAddress } from '../controllers/product-transaction.controller';
 
 export class TransactionService {
   public async get(transactionId: string) {
@@ -13,7 +14,7 @@ export class TransactionService {
     });
   }
 
-  public async create(product: Product, buyerId: number, rentalDays: number) {
+  public async create(product: Product, buyerId: number, rentalDays: number, deliveryAddress: IDeliveryAddress) {
     const transaction = {
       price: product.price,
       ProductId: product.id,
@@ -21,6 +22,7 @@ export class TransactionService {
       purchaseType: product.purchaseType,
       buyerId: buyerId,
       rentalDays: rentalDays,
+      ...deliveryAddress
     };
 
     const t = await server.sequelize.transaction();

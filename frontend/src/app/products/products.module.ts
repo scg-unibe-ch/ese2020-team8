@@ -32,6 +32,7 @@ import {FilterComponent} from './filter/filter.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     PayComponent,
     FilterComponent,
     ProductFilterPipe,
+    OrderComponent
   ],
   imports: [
     CommonModule,
@@ -72,6 +74,9 @@ import {MatBadgeModule} from '@angular/material/badge';
   ],
   exports: [
     BrowseComponent
+  ],
+  entryComponents: [
+    OrderComponent
   ],
   providers: [
     ProductFilterPipe
