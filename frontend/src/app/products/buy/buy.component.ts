@@ -2,18 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService, IProduct } from '../products.service';
 import { UserService } from 'src/app/user/user.service';
-import * as core from '@angular/core';
+import { Location } from '@angular/common';
 import {
   FormControl,
-  ValidatorFn,
-  AbstractControl,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { TransactionsService } from '../transactions.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { stringify } from '@angular/compiler/src/util';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderComponent } from '../order/order.component';
 
@@ -49,7 +44,8 @@ export class BuyComponent implements OnInit {
     public router: Router,
     private productService: ProductsService,
     private transactionService: TransactionsService,
-    public dialog: MatDialog //private orderComponent: OrderComponent
+    public dialog: MatDialog, //private orderComponent: OrderComponent
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +56,6 @@ export class BuyComponent implements OnInit {
     });
   }
 
-
   confirmOrder(): void {
     const order = {
       product: this.product,
@@ -68,17 +63,18 @@ export class BuyComponent implements OnInit {
       rentalDays: this.rentalDaysForm.value,
     };
 
-
-    this.dialog.open(OrderComponent, {
-      height: '400px',
-      width: '600px',
-      data: order,
-    }).afterClosed().subscribe(result => {
-      if (result) {
-        this.buy();
-      }
-    });
-
+    this.dialog
+      .open(OrderComponent, {
+        height: '400px',
+        width: '600px',
+        data: order,
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.buy();
+        }
+      });
   }
 
   // User press button 'pay' which then comes here and runs pay/transaction
@@ -92,5 +88,9 @@ export class BuyComponent implements OnInit {
       .subscribe((res) => {
         this.router.navigate(['products', 'history']);
       });
+  }
+
+  goBack() {
+    this.location.back(); // <-- go back to previous location
   }
 }

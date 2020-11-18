@@ -3,11 +3,9 @@
   <h1>My Product History</h1>
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <!-- ToDo this button it should load all posted products -->
-    <mat-button-toggle value="Active"> Bought</mat-button-toggle>
-    <!-- ToDo this button it should load  products that have been lent by this user-->
-    <mat-button-toggle value="Rent">Rent</mat-button-toggle>
-    <!-- ToDo this button it should load  all products that have been sold by this user -->
+    <mat-button-toggle (click)="reloadTransactions()">All</mat-button-toggle>
+    <mat-button-toggle value="Sold" (click)="filterSoldHistory('sold')">Bought</mat-button-toggle>
+    <mat-button-toggle value="Rent" (click)="filterRentHistory('rent')">Rent</mat-button-toggle>
   </mat-button-toggle-group>
 
   <app-product-item
