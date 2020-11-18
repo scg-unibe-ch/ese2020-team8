@@ -31,12 +31,14 @@
   <button *ngIf="!userService.loggedIn" mat-icon-button aria-label="login button" (click)="goToLogin()">
     Login
   </button>
+  <span *ngIf="userService.loggedIn">
+    <app-wallet-icon></app-wallet-icon>
+  </span>
   <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu"
     aria-label="Example icon-button with a menu">
     <span [innerHTML]="userService.user"></span>
     <mat-icon>expand_more</mat-icon>
   </button>
-
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="userService.logout()">
       <mat-icon>exit_to_app</mat-icon>
