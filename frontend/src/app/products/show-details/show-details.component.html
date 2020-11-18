@@ -18,10 +18,13 @@
     <section class="attributes">
         <!--Display all product attributes-->
         <div *ngIf="product.description">
+            <br>
             <h2 >Description</h2>
-            <p>
+            <mat-card class="description-text-div">
+                <pre>
                 {{ product.description }}
-            </p>
+                </pre>
+            </mat-card>
         </div>
         <div *ngIf="product.price">
             <h2 >Price</h2>
