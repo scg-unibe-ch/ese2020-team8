@@ -4,7 +4,7 @@
 
 .description-text-div {
     width: 100%;
-    max-height: 400px;
+    max-height: 50vh;
     overflow: auto;
 }
 

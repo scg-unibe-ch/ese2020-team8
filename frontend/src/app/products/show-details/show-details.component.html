@@ -21,9 +21,7 @@
             <br>
             <h2 >Description</h2>
             <mat-card class="description-text-div">
-                <pre>
-                {{ product.description }}
-                </pre>
+                <pre>{{ product.description }}</pre> <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
             </mat-card>
         </div>
         <div *ngIf="product.price">
