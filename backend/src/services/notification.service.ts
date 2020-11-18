@@ -108,6 +108,15 @@ class NotificationService {
           notificationType,
       });
   }
+  async seenNotification(notificationId: number) {
+      const notification = await Notification.findOne({
+          where: {
+              id: notificationId
+          }
+      });
+      notification.status = 'seen';
+      return notification.save();
+  }
 }
 
 interface IMessage {

@@ -16,4 +16,16 @@ notificationController.get(
     }
 );
 
+notificationController.post(
+    '/:notificationId/seen',
+    async (req: IAuthRequest, res: Response, next: NextFunction) => {
+        try {
+          const notifications = await notificationService.seenNotification(req.params.notificationId);
+          res.send(notifications);
+        } catch (err) {
+          next(err);
+        }
+    }
+);
+
 export const NotificationController = notificationController;
