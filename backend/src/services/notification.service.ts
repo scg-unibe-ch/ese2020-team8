@@ -101,6 +101,16 @@ class NotificationService {
       },
     });
   }
+
+  async getMyNewNotifications(userId: number) {
+    return Notification.count({
+      where: {
+        UserId: userId,
+        status: 'new'
+      },
+    });
+  }
+
   async addNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
       Notification.create({
           UserId: userId,
