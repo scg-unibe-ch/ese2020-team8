@@ -68,20 +68,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Filter Delivery Option</mat-label>
-        <mat-select formControlName="delivery">
-          <mat-option>all</mat-option>
-          <mat-option
-            *ngFor="let delivery of productOptions.delivery"
-            [value]="delivery.value"
-          >
-            <span [matBadge]="delivery.counter" matBadgeOverlap="false">
-              {{ delivery.value }}
-            </span>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <section class="checkbox-section">
+        <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
+      </section>
     </div>
   </form>
 </mat-card>

@@ -8,7 +8,7 @@ import {IProduct} from '../products.service';
 export class ProductFilterPipe implements PipeTransform {
 
   private assertions = {
-    match: (value, compareValue) => value === compareValue.value
+    match: (value, compareValue) => value === compareValue.value,
   };
 
   transform(products: IProduct[], filters: IProductFilters, filterType = 'match'): IProduct[] {

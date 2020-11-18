@@ -68,7 +68,6 @@ export class FilterComponent implements OnInit, OnChanges {
       location: this.createOption((p) => p.location),
       productType: this.createOption((p) => p.productType),
       purchaseType: this.createOption((p) => p.purchaseType),
-      delivery: ['true', 'false'],
     };
     this.productOptions = options;
   }
