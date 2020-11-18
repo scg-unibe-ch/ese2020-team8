@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
 import { ProductsService } from '../products.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-show-details',
@@ -11,7 +12,7 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
-  
+
   productId: string;
   photos: { imageSource: string }[];
 
@@ -22,6 +23,7 @@ export class ShowDetailsComponent implements OnInit {
     private router: Router,
     private productService: ProductsService,
     private location: Location,
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   goToBuy(product: IProduct): void {
+    debugger;
     this.router.navigate(['products', product.id, 'buy']);
   }
 
@@ -53,7 +56,7 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back(); // <-- go back to previous location 
+    this.location.back(); // <-- go back to previous location
   }
 
 }
