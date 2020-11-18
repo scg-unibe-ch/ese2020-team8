@@ -17,6 +17,8 @@ export class UserService {
   loggedIn: boolean;
   isAdmin: boolean;
 
+  walletInfo$ = this.http.get<UserProfile>(`${this.url}/me`).pipe( map(user => user.wallet));
+
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
     this.checkUserStatus();
   }
@@ -108,4 +110,9 @@ export class UserService {
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');
   }
+
+}
+
+interface UserProfile {
+  wallet: number;
 }

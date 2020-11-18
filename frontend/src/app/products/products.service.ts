@@ -52,7 +52,7 @@ export interface IProduct {
     id: string;
     title: string;
     description: string;
-    price: string;
+    price: number;
     productType: string;
     purchaseType: string;
     availability: boolean;

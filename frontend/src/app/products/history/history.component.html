@@ -1,18 +1,16 @@
-<mat-card class="product-list">
+<mat-card class="product-list" *ngIf="products">
   <!-- ToDo Button should only be shown if Active Products are shown -->
   <h1>My Product History</h1>
 
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <!-- ToDo this button it should load all posted products -->
-    <mat-button-toggle value="Active"> Bought</mat-button-toggle>
-    <!-- ToDo this button it should load  products that have been lent by this user-->
-    <mat-button-toggle value="Rent">Rent</mat-button-toggle>
-    <!-- ToDo this button it should load  all products that have been sold by this user -->
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value="All">
+    <mat-button-toggle value="All" (click)="resetFilter()">All</mat-button-toggle>
+    <mat-button-toggle value="Buy" (click)="setPurchaseTypeFilter('buy')">Bought</mat-button-toggle>
+    <mat-button-toggle value="Rent" (click)="setPurchaseTypeFilter('rent')">Rent</mat-button-toggle>
   </mat-button-toggle-group>
 
   <app-product-item
-    *ngFor="let transaction of transactions; index as productId"
-    [product]="transaction.Product"
+    *ngFor="let product of products | productFilter: filters; index as productId"
+    [product]="product"
   >
     <div class="action-buttons">
       <button color="primary" mat-flat-button>

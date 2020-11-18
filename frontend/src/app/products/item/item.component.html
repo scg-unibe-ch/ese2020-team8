@@ -1,7 +1,11 @@
 <mat-card class="product-card">
-  <img class="preview" [src]="defaultImage" alt="Angular Logo" />
-
-  <section class="infos">
+  <img
+    class="preview"
+    [src]="defaultImage"
+    alt="Angular Logo"
+    (click)="goToDetails(product)"
+  />
+  <section class="infos" (click)="goToDetails(product)">
     <header>
       <h3>
         {{ product.title }}
@@ -14,8 +18,5 @@
     </header>
     <p *ngIf="product.description">Description: {{ product.description }}</p>
   </section>
-  <button color="primary" mat-flat-button (click)="goToDetails(product)">
-    Details
-  </button>
   <ng-content></ng-content>
 </mat-card>

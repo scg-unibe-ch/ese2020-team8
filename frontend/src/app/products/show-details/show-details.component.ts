@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
 import { ProductsService } from '../products.service';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-show-details',
@@ -12,7 +12,7 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
-  
+
   productId: string;
   photos: { imageSource: string }[];
   slides: { image: string }[]; //Array of images
@@ -24,6 +24,7 @@ export class ShowDetailsComponent implements OnInit {
     private router: Router,
     private productService: ProductsService,
     private location: Location,
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back(); // <-- go back to previous location 
+    this.location.back();
   }
 
 }
