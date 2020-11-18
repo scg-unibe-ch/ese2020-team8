@@ -1,0 +1,23 @@
+:host {
+    width: 100%;
+    max-width: 1200px;
+  }
+
+mat-panel-title {
+  font-weight: bold;
+}
+
+mat-panel-description {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-chip-list {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+mat-chip {
+  height: 20px;
+  min-height: 20px;
+}

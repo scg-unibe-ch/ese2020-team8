@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
-import { NotificationsService } from '../products/notifications.service';
+import { NotificationsService } from '../notifications.service';
 import {Observable} from 'rxjs';
 
 @Component({
