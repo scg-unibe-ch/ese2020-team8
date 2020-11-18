@@ -1,0 +1,82 @@
+<mat-card class="message" *ngFor="let notification of notifications; index as notificationId">
+    <p> created at: {{notification.createdAt}}</p>
+    <p> Product referred: {{notification.Transaction.Product.title}}</p>
+    
+    <br>
+    <div *ngIf="notification.notificationType === 'buyerNotification'"> 
+        <h1 *ngIf="notification.Transaction.purchaseType === 'buy'">
+            Oh yeah! You successfully bought a product
+        </h1>
+        <h1 *ngIf="notification.Transaction.purchaseType === 'rent'">
+            Cool! You successfully rent a product
+        </h1>
+        <p>You may get in touch with the seller to define where and how you may exchange the product.<br>
+            TODO: Add seller's contact information here
+            <a href="mailto:fake@mail-address.com">fake@mail-address.com</a>
+        </p>
+
+    </div>
+
+    <div *ngIf="notification.notificationType === 'sellerNotification'">
+        <h1 *ngIf="notification.Transaction.purchaseType === 'buy'">
+            Nice! Someone bought one of your products!
+        </h1>
+        <h1 *ngIf="notification.Transaction.purchaseType === 'rent'">
+            Bazinga! Someone just rent one of your products!
+        </h1>
+        
+        <a *ngIf="!notification.Transaction.Product.delivery" >
+            <p>You may get in touch with the buyer to define where and how you may exchange the product.<br>
+                TODO: Add buyers's contact information here
+                <a href="mailto:fake@mail-address.com">fake@mail-address.com</a>
+            </p>
+        </a>
+
+        
+        <a *ngIf="notification.Transaction.Product.delivery" >
+            Please send the product to the following address:<br>
+            TODO: ADD ADDRESS HERE
+        </a>
+
+    </div>    
+    
+    <br>
+    <a href="mailto:{{notification.buyerEmail}}">{{notification.buyerEmail}}</a>
+    <br>
+    
+</mat-card>
+
+<!-- 
+"id": 2,
+"UserId": 1,
+"notificationType": "buyerNotification",
+"TransactionId": 1,
+"status": "new",
+"createdAt": "2020-11-17T17:47:16.912Z",
+"updatedAt": "2020-11-17T17:47:16.912Z",
+"Transaction": {
+    "id": 1,
+    "price": 200,
+    "ProductId": 1,
+    "productType": "good",
+    "purchaseType": "buy",
+    "buyerId": 1,
+    "rentalDays": 12,
+    "createdAt": "2020-11-17T17:47:16.856Z",
+    "updatedAt": "2020-11-17T17:47:16.856Z",
+    "UserId": null,
+    "Product": {
+        "id": 1,
+        "UserId": 3,
+        "title": "Baby Bed XXL",
+        "description": "This Baby-bed suits the big babies and even small children",
+        "price": 200,
+        "productType": "good",
+        "purchaseType": "buy",
+        "availability": true,
+        "location": "3012 Bern",
+        "delivery": true,
+        "status": "sold",
+        "rentalDays": 365,
+        "createdAt": "2020-11-16T15:11:41.035Z",
+        "updatedAt": "2020-11-17T17:47:16.855Z" -->

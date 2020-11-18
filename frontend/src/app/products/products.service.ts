@@ -57,6 +57,7 @@ export interface IProduct {
     purchaseType: string;
     availability: boolean;
     location: string;
+    duration: number;
     delivery: boolean;
     status: string;
     UserId: number;
