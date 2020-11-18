@@ -75,9 +75,9 @@ export class ManageComponent implements OnInit {
   }
 
   filterLentProducts(status: string): void {
-    if (status === 'sold') {
+    if (status === 'rent') {
       this.filteredProducts = this.products.filter((product) =>
-        ['sold'].includes(product.status)
+        ['rent'].includes(product.status)
       );
     } else {
       this.filteredProducts = [];
