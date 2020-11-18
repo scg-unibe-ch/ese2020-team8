@@ -2,9 +2,39 @@
     display: flex;
 }
 
+.description-text-div {
+    width: 100%;
+    max-height: 50vh;
+    overflow: auto;
+}
+
+pre {
+    text-align: justify;
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+button {
+    margin-right: 7px;
+}
+
 mat-card {
     width: 90vw;
     max-width: 1200px;
     padding: 12px;
     box-sizing: border-box;
   }
+
+.photo-div {
+    max-height: 320px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+img {
+    white-space: nowrap;
+    margin-right: 5px;
+    max-height: 300px;
+}

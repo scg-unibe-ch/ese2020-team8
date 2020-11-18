@@ -7,21 +7,18 @@
     </section>
     <section class="photos">
         <!--Display all product pictures in a gallery-->
-        <mat-card>
+        <div class="photo-div">
             <img *ngFor="let photo of photos" [src]="photo.imageSource"/>
-            <!--<li *ngFor="let photo in photos">
-                <p> {{ photo.fileName }} </p>
-                <img [src] = "photo.fileName" alt="Product photo">
-            </li>-->
-        </mat-card>
+        </div>
     </section>
     <section class="attributes">
         <!--Display all product attributes-->
         <div *ngIf="product.description">
+            <br>
             <h2 >Description</h2>
-            <p>
-                {{ product.description }}
-            </p>
+            <mat-card class="description-text-div">
+                <pre>{{ product.description }}</pre> <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
+            </mat-card>
         </div>
         <div *ngIf="product.price">
             <h2 >Price</h2>
