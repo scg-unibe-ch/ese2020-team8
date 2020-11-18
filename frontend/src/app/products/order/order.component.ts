@@ -18,9 +18,7 @@ export class OrderComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
-  ngOnInit(): void {
-    debugger;
-  }
+  ngOnInit(): void {}
 
   onNoClick(): void {
     this.dialog.closeAll();

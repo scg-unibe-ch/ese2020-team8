@@ -74,7 +74,6 @@ export class BuyComponent implements OnInit {
       width: '600px',
       data: order,
     }).afterClosed().subscribe(result => {
-      debugger
       if (result) {
         this.buy();
       }
@@ -86,7 +85,7 @@ export class BuyComponent implements OnInit {
   buy(): void {
     const product = this.product;
     const deliveryAddress = this.deliveryForm.value;
-    const rentalDays = this.rentalDaysForm.value;
+    const rentalDays = this.rentalDaysForm.get('rentalDays').value;
     // order
     this.transactionService
       .pay(product, rentalDays, deliveryAddress)

@@ -28,9 +28,11 @@ productTransactionController.post(
   async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
       const buyerId = req.user.userId;
-      const rentalDays = req.body.rentalDays;
+
+      const rentalDays: number = req.body.rentalDays;
+      const deliveryAddress: IDeliveryAddress = req.body.deliveryAddress;
+
       const productId = req.params.productId;
-      const deliveryAddress = req.params.deliveryAddress;
       const product = await productService.get(productId);
       const transactions = await transactionService.create(product, buyerId, rentalDays, deliveryAddress);
       res.send(transactions);
@@ -43,5 +45,19 @@ productTransactionController.post(
     }
   }
 );
+
+interface ICreateTransactionRequestBody {
+  rentalDays?: number;
+  address?: IDeliveryAddress;
+}
+
+export interface IDeliveryAddress {
+  firstName: string;
+  lastName: string;
+  streetNr: string;
+  zip: number;
+  city: string;
+}
+
 
 export const ProductTransactionController: Router = productTransactionController;
