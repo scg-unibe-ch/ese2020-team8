@@ -30,7 +30,7 @@ import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import {FilterComponent} from './filter/filter.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipeModule, Ng2SearchPipe } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './order/order.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -80,7 +80,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     OrderComponent
   ],
   providers: [
-    ProductFilterPipe
+    ProductFilterPipe,
+    Ng2SearchPipe,
   ]
 })
 export class ProductsModule {}
