@@ -41,6 +41,23 @@ productController.put(
 
 
 
+productController.put(
+  '/:productId/reject',
+  verifyToken,
+  checkIsAdmin,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.reject(productId);
+      res.send(product);
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+
+
 productController.get(
   '/', // you can add middleware on specific requests like that
   async (_req: Request, res: Response, next: NextFunction) => {

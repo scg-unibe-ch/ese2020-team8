@@ -25,7 +25,12 @@
 .infos>header {
   display: flex;
 }
+
 .infos>header>h3 {
   margin-right: 12px;
+}
+
+.warn-chip {
+  color: 'warn';
 }
 

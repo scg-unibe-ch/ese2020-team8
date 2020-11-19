@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService, IProduct } from '../../products/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { ProductsRoutingModule } from '../../products/products-routing.module';
 
 @Component({
   selector: 'app-approve-list',
@@ -13,6 +15,8 @@ export class ApproveListComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
+    private productRouter: ProductsRoutingModule,
+    private router: Router,
     private snackBar: MatSnackBar
   ) {
     this.refreshProducts();
@@ -25,11 +29,22 @@ export class ApproveListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToDetails(element: IProduct): void {
+    this.productRouter.navigate(['products', element.id, 'show']); //TODO: implement proper routing
+  }
+
   approve(element: IProduct) {
     this.productService.approve(element.id).subscribe(product => {
       this.snackBar.open(`Successfully approved ${product.title}`);
       this.refreshProducts();
     })
+  }
+
+  reject(element: IProduct) {
+    this.productService.reject(element.id).subscribe(product => {
+      this.snackBar.open(`Product rejected: ${product.title}`);
+      this.refreshProducts();
+    })    
   }
 
 }
