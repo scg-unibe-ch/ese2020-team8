@@ -30,7 +30,7 @@ export class ApproveListComponent implements OnInit {
   }
 
   goToDetails(element: IProduct): void {
-    this.productRouter.navigate(['products', element.id, 'show']); //TODO: implement proper routing
+    this.router.navigate(['products', element.id, 'show']); //TODO: implement proper routing
   }
 
   approve(element: IProduct) {

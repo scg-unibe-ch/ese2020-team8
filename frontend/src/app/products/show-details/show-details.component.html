@@ -61,11 +61,6 @@
                 No delivery possible
             </p>
         </div>
-        <button *ngIf="userService.loggedIn" color="primary" mat-flat-button (click)="goToBuy(product)">
-            Buy
-        </button>
-        <button color="primary" mat-flat-button (click)="goBack()">
-            Back
-        </button>
+        <app-action-buttons></app-action-buttons>
     </section>
 </mat-card>

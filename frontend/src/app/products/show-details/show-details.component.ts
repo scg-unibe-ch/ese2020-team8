@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
@@ -21,9 +20,7 @@ export class ShowDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private productService: ProductsService,
-    private location: Location,
     public userService: UserService
   ) { }
 
@@ -47,17 +44,4 @@ export class ShowDetailsComponent implements OnInit {
     this.product.productType === 'good' &&
     this.product.purchaseType  === 'rent';
   }
-
-  goToBuy(product: IProduct): void {
-    this.router.navigate(['products', product.id, 'buy']);
-  }
-
-  goBackToMarketplace(): void {
-    this.router.navigate(['products']);
-  }
-
-  goBack() {
-    this.location.back();
-  }
-
 }
