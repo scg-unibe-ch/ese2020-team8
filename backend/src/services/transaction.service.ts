@@ -39,8 +39,8 @@ export class TransactionService {
           id: product.UserId,
         },
       });
-      buyer.wallet -= product.price;
-      seller.wallet += product.price;
+      buyer.wallet -= product.rentalDays ? product.price * product.rentalDays : product.price;
+      seller.wallet += product.rentalDays ? product.price * product.rentalDays : product.price;
 
       // set product status to sold for good
       if (product.productType === 'good' && product.purchaseType === 'buy') {
