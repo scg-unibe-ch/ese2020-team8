@@ -14,6 +14,7 @@ import {
   IProductFilters,
   ProductFilterPipe,
 } from '../pipes/product-filter.pipe';
+import { Ng2SearchPipe } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-products-filter',
@@ -46,7 +47,8 @@ export class FilterComponent implements OnInit, OnChanges {
     private fb: FormBuilder,
     public userService: UserService,
     public router: Router,
-    private productFilter: ProductFilterPipe
+    private productFilter: ProductFilterPipe,
+    private searchFilter: Ng2SearchPipe
   ) {}
 
   ngOnInit(): void {
@@ -116,9 +118,9 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   private updateOptionCounters(): void {
-    this.filteredProducts = this.productFilter.transform(
-      this.products,
-      this.filters
+    this.filteredProducts = this.searchFilter.transform(
+      this.productFilter.transform(this.products, this.filters),
+      this.searchTerm
     );
     Object.entries(this.productOptions).forEach(([columnName, options]) =>
       this.updateOptionCounter(columnName, options)
