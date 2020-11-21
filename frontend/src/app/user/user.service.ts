@@ -64,7 +64,7 @@ export class UserService {
     localStorage.removeItem('userName');
 
     this.checkUserStatus();
-    location.replace('http://localhost:4200/'); //TODO: Correct url to make relative to base url
+    this.router.navigate(["/"])
   }
 
   checkUserStatus(): void {
