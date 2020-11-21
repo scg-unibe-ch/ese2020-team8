@@ -25,6 +25,10 @@ const routes: Routes = [
     component: ShowDetailsComponent,
   },
   {
+    path: 'products/:id/show-approval',
+    component: ShowDetailsComponent,
+  },
+  {
     path: 'products/create',
     component: CreateComponent,
     canActivate: [AuthGuard],

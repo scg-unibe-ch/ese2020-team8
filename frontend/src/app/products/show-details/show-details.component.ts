@@ -15,17 +15,21 @@ export class ShowDetailsComponent implements OnInit {
   productId: string;
   photos: { imageSource: string }[];
   slides: { image: string }[]; //Array of images
+  pageType: string;
 
   @Input() product: IProduct;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductsService,
     public userService: UserService
   ) { }
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
+    const pageType =  this.router.url.split('/').pop();
+    this.pageType = pageType;
     this.productService.get(productId).subscribe( product  => {
       this.product = product;
       this.photos = product.Photos.map(photo => {

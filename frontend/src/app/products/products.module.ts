@@ -35,6 +35,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './order/order.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ActionButtonsComponent } from './show-details/action-buttons/action-buttons.component';
+import { ApprovalButtonsComponent } from './show-details/approval-buttons/approval-buttons.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ActionButtonsComponent } from './show-details/action-buttons/action-but
     ProductFilterPipe,
     OrderComponent,
     ActionButtonsComponent,
+    ApprovalButtonsComponent,
   ],
   imports: [
     CommonModule,
