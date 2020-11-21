@@ -43,7 +43,13 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isIn: [['buyerNotification', 'sellerNotification', 'pendingNotification', 'approvalNotification']],
+                    isIn: [[
+                        'buyerNotification',
+                        'sellerNotification',
+                        'pendingNotification',
+                        'approvalNotification',
+                        'rejectionNotification'
+                    ]],
                 }
             },
             TransactionId: {

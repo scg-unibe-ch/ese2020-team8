@@ -11,6 +11,7 @@
           <span *ngSwitchCase="'buyerNotification'">Bought/Rent Item</span>
           <span *ngSwitchCase="'pendingNotification'">Item Pending</span>
           <span *ngSwitchCase="'approvalNotification'">Item Approved</span>
+          <span *ngSwitchCase="'rejectionNotification'">Item Rejected</span>
           <span *ngSwitchDefault>Notification</span>
           <mat-chip-list *ngIf="notification.status === 'new'">
             <mat-chip color="warn" selected>new</mat-chip>
@@ -93,6 +94,11 @@
       <div *ngIf="notification.notificationType === 'approvalNotification'">
         <h1>Your Item "{{notification.Product.title}}" has been approved</h1>
         <p>Your item is now active on the marketplace.</p>
+      </div>
+
+      <div *ngIf="notification.notificationType === 'rejectionNotification'">
+        <h1>Your Item "{{notification.Product.title}}" has been rejected</h1>
+        <p>Sorry your item has been rejected. Maybe try selling it in the darknet;-)</p>
       </div>
 
     </mat-expansion-panel>

@@ -53,7 +53,9 @@ productController.put(
     try {
       const productId = req.params.productId;
       const product = await productService.reject(productId);
+      const userId = product.UserId;
       res.send(product);
+      await notificationService.addStatusNotification(userId, product.id, 'rejectionNotification', );
     } catch (err) {
       return next(err);
     }
