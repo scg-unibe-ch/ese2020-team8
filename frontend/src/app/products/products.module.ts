@@ -34,6 +34,9 @@ import { Ng2SearchPipeModule, Ng2SearchPipe } from 'ng2-search-filter';
 import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './order/order.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { QuestionFormComponent } from './question/question-form/question-form.component';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FilterComponent,
     ProductFilterPipe,
     OrderComponent,
+    QuestionFormComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +75,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatStepperModule,
     Ng2SearchPipeModule,
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   exports: [
     BrowseComponent

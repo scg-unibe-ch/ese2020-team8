@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IProduct } from '../products.service';
 import { ProductsService } from '../products.service';
+import { IQuestion, QuestionsService } from '../questions.service';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -16,6 +17,10 @@ export class ShowDetailsComponent implements OnInit {
   productId: string;
   photos: { imageSource: string }[];
   slides: { image: string }[]; //Array of images
+  panelOpenState = false;
+  questions: IQuestion[] = [];
+
+
 
   @Input() product: IProduct;
 
@@ -24,11 +29,14 @@ export class ShowDetailsComponent implements OnInit {
     private router: Router,
     private productService: ProductsService,
     private location: Location,
-    public userService: UserService
-  ) { }
+    public userService: UserService,
+    private questionService: QuestionsService,
+  ) {  }
 
+  
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
+    this.questionService.getQuestionsPerProduct(productId).subscribe( questions => this.questions = questions );
     this.productService.get(productId).subscribe( product  => {
       this.product = product;
       this.photos = product.Photos.map(photo => {
@@ -50,6 +58,10 @@ export class ShowDetailsComponent implements OnInit {
 
   goToBuy(product: IProduct): void {
     this.router.navigate(['products', product.id, 'buy']);
+  }
+
+  goToQuestion(product: IProduct): void {
+    this.router.navigate(['products', product.id, 'question-form']);
   }
 
   goBackToMarketplace(): void {

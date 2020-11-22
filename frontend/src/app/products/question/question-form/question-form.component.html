@@ -1,0 +1,13 @@
+<p>question-form works!</p>
+<mat-card class="question-form">
+    <p>Post your question here</p>
+    <form [formGroup]="questionForm">
+      <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <input matInput formControlName="text" placeholder="" />
+      </mat-form-field>
+    </form>
+    <button color="primary" mat-flat-button (click)="askQuestion()">
+        Submit
+    </button>
+</mat-card>

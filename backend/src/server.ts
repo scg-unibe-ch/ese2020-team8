@@ -7,6 +7,8 @@ import {Photo} from './models/photo.model';
 import {Transaction} from './models/transaction.model';
 import {Notification} from './models/notification.model';
 import { notificationService } from './services/notification.service';
+import { Question } from './models/question.model';
+
 
 import cors from 'cors';
 import {ApiController} from './api';
@@ -27,11 +29,13 @@ export class Server {
         Photo.initialize(this.sequelize);
         Transaction.initialize(this.sequelize);
         Notification.initialize(this.sequelize);
+        Question.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
         Photo.createAssociations();
         Transaction.createAssociations();
         Notification.createAssociations();
+        Question.createAssociations();
 
         await notificationService.prepareAccounts();
 

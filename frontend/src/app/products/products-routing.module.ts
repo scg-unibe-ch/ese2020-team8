@@ -10,6 +10,7 @@ import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
+import { QuestionFormComponent } from './question/question-form/question-form.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path: 'products/pay',
     component: PayComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products/:id/question-form',
+    component: QuestionFormComponent,
     canActivate: [AuthGuard],
   },
 ];
