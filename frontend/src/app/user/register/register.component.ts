@@ -105,15 +105,3 @@ const passwordStrengthValidator = (
 
 };
 
-export interface IRegister {
-    gender: '';
-    firstname: '';
-    lastname: '';
-    username: '';
-    password: '';
-    phone: '';
-    street: '';
-    zip: '';
-    city: '';
-    country: '';
-}

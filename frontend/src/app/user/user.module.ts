@@ -11,11 +11,13 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import {EditComponent} from './edit/edit.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,

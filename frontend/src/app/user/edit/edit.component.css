@@ -1,0 +1,14 @@
+
+
+.user-auth-card>form {
+  display:flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  margin: 10px 0;
+}
+
+form>button {
+  margin-bottom: 20px;
+}
