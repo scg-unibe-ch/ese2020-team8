@@ -44,7 +44,8 @@ userController.get('/',
     }
 );
 
-userController.put('/me/profile',
+// error here...
+userController.put('/me',
     verifyToken,
     async (req: IAuthRequest, res: Response, next: NextFunction) => {
         try {

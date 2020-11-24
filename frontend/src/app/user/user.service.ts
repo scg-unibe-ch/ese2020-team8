@@ -61,6 +61,14 @@ export class UserService {
     this.checkUserStatus();
   }
 
+  update(user: User): Observable<User> {
+    return this.http.put<User>(this.url + '/me', user);
+  }
+
+  getProfile(): Observable<User> {
+    return this.http.get<User>(this.url + '/me');
+  }
+
   checkUserStatus(): void {
     // Get user data from local storage
     this.token = localStorage.getItem('userToken');
