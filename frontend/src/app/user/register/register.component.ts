@@ -102,4 +102,18 @@ const passwordStrengthValidator = (
         'Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters.',
     };
   }
+
 };
+
+export interface IRegister {
+    gender: '';
+    firstname: '';
+    lastname: '';
+    username: '';
+    password: '';
+    phone: '';
+    street: '';
+    zip: '';
+    city: '';
+    country: '';
+}
