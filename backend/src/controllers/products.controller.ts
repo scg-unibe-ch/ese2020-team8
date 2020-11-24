@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
+import {checkProductAuthorizationInverted} from '../middlewares/checkProductAuthorizationInverted';
 import { ProductTransactionController } from './product-transaction.controller';
 
 
@@ -127,6 +128,7 @@ productController.put(
 productController.use(
   '/:productId/transactions',
   verifyToken,
+  checkProductAuthorizationInverted,
   ProductTransactionController
 );
 
