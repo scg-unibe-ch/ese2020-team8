@@ -5,6 +5,7 @@ import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
 import {checkProductAuthorizationInverted} from '../middlewares/checkProductAuthorizationInverted';
 import { ProductTransactionController } from './product-transaction.controller';
+import { notificationService } from '../services/notification.service';
 
 
 const productController: Router = express.Router();
@@ -18,6 +19,7 @@ productController.post(
       const userId = req.user.userId;
       const product = await productService.create(req.body, userId);
       res.send(product);
+      await notificationService.addStatusNotification(userId, product.id, 'pendingNotification', );
     } catch (err) {
       next(err);
     }
@@ -33,7 +35,28 @@ productController.put(
     try {
       const productId = req.params.productId;
       const product = await productService.approve(productId);
+      const userId = product.UserId;
       res.send(product);
+      await notificationService.addStatusNotification(userId, product.id, 'approvalNotification', );
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+
+
+productController.put(
+  '/:productId/reject',
+  verifyToken,
+  checkIsAdmin,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.reject(productId);
+      const userId = product.UserId;
+      res.send(product);
+      await notificationService.addStatusNotification(userId, product.id, 'rejectionNotification', );
     } catch (err) {
       return next(err);
     }
