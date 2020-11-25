@@ -13,7 +13,55 @@
     </section>
     <section class="attributes">
 
-
+               <!--Display all product attributes-->
+            <div *ngIf="product.description">
+                <br>
+                <h2 >Description</h2>
+                <mat-card class="description-text-div">
+                    <pre>{{ product.description }}</pre> <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
+                </mat-card>
+            </div>
+            <div *ngIf="product.price">
+                <h2 >Price</h2>
+                <p *ngIf="(product.productType === 'service') || product.purchaseType === 'lend'">{{ product.price }} CHF/day</p>
+                <p *ngIf="(product.productType === 'good') && product.purchaseType === 'buy'">{{ product.price }} CHF</p>
+            </div>
+            <div *ngIf="product.productType">
+                <h2 >Type of product</h2>
+                <p>
+                    {{ product.productType }}
+                </p>
+            </div>
+            <div *ngIf="product.purchaseType">
+                <h2 >Purchase type</h2>
+                <p>
+                    {{ product.purchaseType }}
+                </p>
+            </div>
+            <div *ngIf="showAvailability()">
+                <h2 >Availability</h2>
+                <p *ngIf="product.availability === true">
+                    available
+                </p>
+                <p *ngIf="product.availability === false">
+                    unavailable
+                </p>
+            </div>
+            <div *ngIf="product.location">
+                <h2 >Location</h2>
+                <p>
+                    {{ product.location }}
+                </p>
+            </div>
+            <div *ngIf="product.productType === 'good'">
+                <h2 >Delivery</h2>
+                <p *ngIf="product.delivery === true">
+                    Delivery is possible
+                </p>
+                <p *ngIf="product.delivery === false">
+                    No delivery possible
+                </p>
+            </div>
 
         <mat-accordion>
             <mat-expansion-panel>
@@ -36,15 +84,10 @@
                       {{panelOpenState ? 'Hide Questions' : 'Show Questions'}}
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                    
+        
                     <mat-card *ngFor="let question of questions; index as questionId" class="question">
                         {{ question.text }}
                     </mat-card>
-
-                
-
-
-
 
                   <button color="primary" mat-flat-button (click)="goToQuestion(product)">
                     Post a Question
@@ -52,62 +95,6 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-
-        <button *ngIf="userService.loggedIn" color="primary" mat-flat-button (click)="goToBuy(product)">
-            Buy
-        </button>
-        <button color="primary" mat-flat-button (click)="goBack()">
-            Back
-        </button>
-        <!--Display all product attributes-->
-        <div *ngIf="product.description">
-            <br>
-            <h2 >Description</h2>
-            <mat-card class="description-text-div">
-                <pre>{{ product.description }}</pre> <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
-            </mat-card>
-        </div>
-        <div *ngIf="product.price">
-            <h2 >Price</h2>
-            <p *ngIf="(product.productType === 'service') || product.purchaseType === 'lend'">{{ product.price }} CHF/day</p>
-            <p *ngIf="(product.productType === 'good') && product.purchaseType === 'buy'">{{ product.price }} CHF</p>
-        </div>
-        <div *ngIf="product.productType">
-            <h2 >Type of product</h2>
-            <p>
-                {{ product.productType }}
-            </p>
-        </div>
-        <div *ngIf="product.purchaseType">
-            <h2 >Purchase type</h2>
-            <p>
-                {{ product.purchaseType }}
-            </p>
-        </div>
-        <div *ngIf="showAvailability()">
-            <h2 >Availability</h2>
-            <p *ngIf="product.availability === true">
-                available
-            </p>
-            <p *ngIf="product.availability === false">
-                unavailable
-            </p>
-        </div>
-        <div *ngIf="product.location">
-            <h2 >Location</h2>
-            <p>
-                {{ product.location }}
-            </p>
-        </div>
-        <div *ngIf="product.productType === 'good'">
-            <h2 >Delivery</h2>
-            <p *ngIf="product.delivery === true">
-                Delivery is possible
-            </p>
-            <p *ngIf="product.delivery === false">
-                No delivery possible
-            </p>
-        </div>
         <ng-content></ng-content>
         <app-approval-buttons *ngIf="pageType === 'show-approval'"></app-approval-buttons>
     </section>
