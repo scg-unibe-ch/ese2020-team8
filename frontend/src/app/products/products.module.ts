@@ -24,7 +24,7 @@ import { UpdateComponent } from './update/update.component';
 import { ItemComponent } from './item/item.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HistoryComponent } from './history/history.component';
-import { ShowDetailsComponent } from './show-details/show-details.component';
+import { ShowComponent } from './show/show.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
@@ -36,7 +36,8 @@ import { OrderComponent } from './order/order.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
-
+import { DetailsComponent } from './details/details.component';
+import { ApproveComponent } from './approve/approve.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { QuestionFormComponent } from './question/question-form/question-form.co
     ItemComponent,
     DeleteComponent,
     HistoryComponent,
-    ShowDetailsComponent,
+    ShowComponent,
     UploadImageComponent,
     BuyComponent,
     PayComponent,
@@ -56,6 +57,8 @@ import { QuestionFormComponent } from './question/question-form/question-form.co
     ProductFilterPipe,
     OrderComponent,
     QuestionFormComponent,
+    DetailsComponent,
+    ApproveComponent,
   ],
   imports: [
     CommonModule,

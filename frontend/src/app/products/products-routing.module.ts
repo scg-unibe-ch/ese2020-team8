@@ -9,8 +9,10 @@ import { UpdateComponent } from './update/update.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
-import { ShowDetailsComponent } from './show-details/show-details.component';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
+import { DetailsComponent } from './details/details.component';
+import {RoleGuard} from '../admin/role.guard';
+import {ApproveComponent} from './approve/approve.component';
 
 const routes: Routes = [
   {
@@ -23,7 +25,12 @@ const routes: Routes = [
   },
   {
     path: 'products/:id/show',
-    component: ShowDetailsComponent,
+    component: DetailsComponent,
+  },
+  {
+    path: 'products/:id/show-approval',
+    component: ApproveComponent,
+    canActivate: [RoleGuard]
   },
   {
     path: 'products/create',

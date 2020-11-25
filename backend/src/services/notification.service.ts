@@ -95,10 +95,15 @@ class NotificationService {
       where: {
         UserId: userId,
       },
-      include: {
-        model: Transaction as any,
-        include: Product as any,
-      },
+      include: [
+        {
+          model: Transaction as any,
+          include: Product as any,
+        },
+        {
+          model: Product as any
+        }
+      ]
     });
   }
 
@@ -119,6 +124,17 @@ class NotificationService {
           contactEmail
       });
   }
+
+  async addStatusNotification(userId: number, productId: number, notificationType: string) {
+    Notification.create({
+        UserId: userId,
+        ProductId: productId,
+        notificationType
+    });
+  }
+
+
+
   async seenNotification(notificationId: string) {
       const notification = await Notification.findOne({
           where: {

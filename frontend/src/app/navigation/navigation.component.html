@@ -19,7 +19,7 @@
     <mat-icon>gavel</mat-icon>
     <span>Sale</span>
   </button>
-  <button *ngIf="userService.isAdmin" mat-button aria-label="go to approve list" routerLink="/admin/approve">
+  <button *ngIf="(userService.isAdmin && userService.loggedIn)" mat-button aria-label="go to approve list" routerLink="/admin/approve">
     <mat-icon>admin_panel_settings</mat-icon>
     <span>Admin</span>
   </button>
