@@ -36,8 +36,7 @@ export class QuestionFormComponent implements OnInit {
     const text = this.questionForm.get('text').value;
     const productId = this.product.id;
     this.questionService.ask(productId, text).subscribe((res) => {
-      console.log(res);
-      //this.router.navigate(['products', product.id, 'show']);
+      this.router.navigate(['products', productId, 'show']);
     }) 
   }
 }
