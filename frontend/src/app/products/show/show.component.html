@@ -61,7 +61,7 @@
                 No delivery possible
             </p>
         </div>
-        <app-action-buttons *ngIf="pageType === 'show'"></app-action-buttons>
+        <ng-content></ng-content>
         <app-approval-buttons *ngIf="pageType === 'show-approval'"></app-approval-buttons>
     </section>
 </mat-card>

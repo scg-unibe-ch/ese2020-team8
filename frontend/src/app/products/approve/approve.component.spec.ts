@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApprovalButtonsComponent } from './approval-buttons.component';
+import { ApproveComponent } from './approve.component';
 
-describe('ApprovalButtonsComponent', () => {
-  let component: ApprovalButtonsComponent;
-  let fixture: ComponentFixture<ApprovalButtonsComponent>;
+describe('ApproveComponent', () => {
+  let component: ApproveComponent;
+  let fixture: ComponentFixture<ApproveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApprovalButtonsComponent ]
+      declarations: [ ApproveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ApprovalButtonsComponent);
+    fixture = TestBed.createComponent(ApproveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
