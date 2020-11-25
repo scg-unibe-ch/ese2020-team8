@@ -4,10 +4,12 @@ import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
 import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
 import { ProductTransactionController } from './product-transaction.controller';
+import { FavoriteService } from '../services/favorite.service';
 
 
 const productController: Router = express.Router();
 const productService = new ProductService();
+const favoriteService = new FavoriteService();
 
 productController.post(
   '/',
@@ -128,6 +130,19 @@ productController.use(
   '/:productId/transactions',
   verifyToken,
   ProductTransactionController
+);
+
+productController.post(
+  '/:productId/favorites',
+  verifyToken,
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const favorites = await favoriteService.create(req.body);
+      res.send(favorites);
+    } catch (err) {
+      next(err);
+    }
+  }
 );
 
 

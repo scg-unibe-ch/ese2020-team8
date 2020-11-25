@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { WalletComponent } from './wallet/wallet.component';
+import { FavoritesComponent } from './products/favorites/favorites.component';
 import {NotificationComponent} from './notification/notification.component';
 import {MatChipsModule} from '@angular/material/chips';
 
@@ -43,7 +44,8 @@ import {MatChipsModule} from '@angular/material/chips';
     NavigationComponent,
     WelcomeComponent,
     WalletComponent,
-    NotificationComponent
+    NotificationComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
