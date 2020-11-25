@@ -1,14 +1,16 @@
 import { Optional, Model, Sequelize, DataTypes, HasManyGetAssociationsMixin } from 'sequelize';
 import {User} from './user.model';
 import {Transaction} from './transaction.model';
+import { Product } from './product.model';
 
 export interface NotificationAttributes {
     id: number;
     UserId: number;
     notificationType: string;
-    TransactionId: number;
+    TransactionId?: number;
+    ProductId?: number;
     status?: string;
-    contactEmail: string;
+    contactEmail?: string;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -20,6 +22,7 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
     UserId!: number;
     notificationType!: string;
     TransactionId!: number;
+    ProductId!: number;
     status!: string;
     contactEmail!: string;
 
@@ -40,10 +43,19 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isIn: [['buyerNotification', 'sellerNotification']],
+                    isIn: [[
+                        'buyerNotification',
+                        'sellerNotification',
+                        'pendingNotification',
+                        'approvalNotification',
+                        'rejectionNotification'
+                    ]],
                 }
             },
             TransactionId: {
+                type: DataTypes.INTEGER,
+            },
+            ProductId: {
                 type: DataTypes.INTEGER,
             },
             contactEmail: {
@@ -70,6 +82,10 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
             foreignKey: 'TransactionId'
         });
         Transaction.hasMany(Notification);
+        Notification.belongsTo(Product, {
+            foreignKey: 'ProductId'
+        });
+        Product.hasOne(Notification);
     }
 
 }

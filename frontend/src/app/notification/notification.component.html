@@ -8,14 +8,18 @@
       <mat-expansion-panel-header>
         <mat-panel-title [ngSwitch]="notification.notificationType">
           <span *ngSwitchCase="'sellerNotification'">Sold Item</span>
-          <span *ngSwitchCase="'buyerNotification'">Bought Item</span>
+          <span *ngSwitchCase="'buyerNotification'">Bought/Rent Item</span>
+          <span *ngSwitchCase="'pendingNotification'">Item Pending</span>
+          <span *ngSwitchCase="'approvalNotification'">Item Approved</span>
+          <span *ngSwitchCase="'rejectionNotification'">Item Rejected</span>
           <span *ngSwitchDefault>Notification</span>
           <mat-chip-list *ngIf="notification.status === 'new'">
             <mat-chip color="warn" selected>new</mat-chip>
           </mat-chip-list>
         </mat-panel-title>
         <mat-panel-description>
-          <span>{{ notification.Transaction.Product.title}}</span>
+          <span *ngIf="notification.Transaction">{{ notification.Transaction.Product.title}}</span>
+          <span *ngIf="!notification.Transaction">{{ notification.Product.title}}</span>
             <span>{{ notification.createdAt|date:'short'}}</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
@@ -81,6 +85,22 @@
           </p>
         </div>
       </div>
+
+      <div *ngIf="notification.notificationType === 'pendingNotification'">
+        <h1>Your Item "{{notification.Product.title}}" is waiting for approval</h1>
+        <p>You will be notified as soon as your item has been approved.</p>
+      </div>
+
+      <div *ngIf="notification.notificationType === 'approvalNotification'">
+        <h1>Your Item "{{notification.Product.title}}" has been approved</h1>
+        <p>Your item is now active on the marketplace.</p>
+      </div>
+
+      <div *ngIf="notification.notificationType === 'rejectionNotification'">
+        <h1>Your Item "{{notification.Product.title}}" has been rejected</h1>
+        <p>Sorry your item has been rejected. Maybe try selling it in the darknet;-)</p>
+      </div>
+
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
