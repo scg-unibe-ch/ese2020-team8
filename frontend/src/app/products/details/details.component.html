@@ -1,0 +1,8 @@
+<app-product-show *ngIf="product" [product]="product">
+  <button color="primary" mat-flat-button (click)="goBack()">
+    Back
+  </button>
+  <button *ngIf="userService.loggedIn" color="primary" mat-flat-button (click)="goToBuy(product)">
+    Buy
+  </button>
+</app-product-show>

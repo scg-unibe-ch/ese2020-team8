@@ -61,11 +61,7 @@
                 No delivery possible
             </p>
         </div>
-        <button *ngIf="userService.loggedIn" color="primary" mat-flat-button (click)="goToBuy(product)">
-            Buy
-        </button>
-        <button color="primary" mat-flat-button (click)="goBack()">
-            Back
-        </button>
+        <ng-content></ng-content>
+        <app-approval-buttons *ngIf="pageType === 'show-approval'"></app-approval-buttons>
     </section>
 </mat-card>

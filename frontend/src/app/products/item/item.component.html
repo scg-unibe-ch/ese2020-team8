@@ -1,17 +1,15 @@
 <mat-card class="product-card">
-  <img
-    class="preview"
-    [src]="defaultImage"
-    alt="Angular Logo"
-    (click)="goToDetails(product)"
-  />
+  <img class="preview" [src]="defaultImage" alt="Angular Logo" (click)="goToDetails(product)" />
   <section class="infos" (click)="goToDetails(product)">
     <header>
       <h3>
         {{ product.title }}
       </h3>
       <mat-chip-list>
-        <mat-chip *ngIf="product.status !== 'approved'">{{
+        <mat-chip *ngIf="product.status !== 'approved' && product.status !== 'rejected'">{{
+          product.status
+        }}</mat-chip>
+        <mat-chip class="warn-chip" *ngIf="product.status == 'rejected'">{{
           product.status
         }}</mat-chip>
       </mat-chip-list>
