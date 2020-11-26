@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,11 @@ export class UserService {
 
   walletInfo$ = this.http.get<UserProfile>(`${this.url}/me`).pipe( map(user => user.wallet));
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
+  constructor(
+    private http: HttpClient, 
+    private _snackBar: MatSnackBar,
+    private router: Router
+    ) {
     this.checkUserStatus();
   }
 
@@ -59,6 +64,7 @@ export class UserService {
     localStorage.removeItem('userName');
 
     this.checkUserStatus();
+    this.router.navigate(["/"])
   }
 
   update(user: User): Observable<User> {
