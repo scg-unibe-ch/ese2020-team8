@@ -86,12 +86,17 @@
                   </mat-expansion-panel-header>
         
                     <mat-card *ngFor="let question of questions; index as questionId" class="question">
-                        {{ question.text }}
+                        {{ question.createdAt|date:'short' }}<br>
+                        Question: {{ question.text }}
+                        <mat-card *ngIf="question.Answer" class="answer">
+                            {{ question.Answer.createdAt|date:'short' }}<br>
+                            Answer: {{ question.Answer.text }}
+                        </mat-card>
                     </mat-card>
 
-                  <button color="primary" mat-flat-button (click)="goToQuestion(product)">
-                    Post a Question
-                </button>
+                    <button color="primary" mat-flat-button (click)="goToQuestion(product)">
+                        Post a Question
+                    </button>
             </mat-expansion-panel>
         </mat-accordion>
 

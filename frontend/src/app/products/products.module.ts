@@ -38,6 +38,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
 import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
+import { AnswerFormComponent } from './question/answer-form/answer-form.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ApproveComponent } from './approve/approve.component';
     QuestionFormComponent,
     DetailsComponent,
     ApproveComponent,
+    AnswerFormComponent,
   ],
   imports: [
     CommonModule,

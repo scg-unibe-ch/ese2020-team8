@@ -40,5 +40,9 @@ export class NotificationComponent implements OnInit {
     }, 5000);
   }
 
+  answerQuestion(questionId): void {
+    this.router.navigate(['questions', questionId, 'answer-form']);
+  }
+
   ngOnInit(): void {}
 }

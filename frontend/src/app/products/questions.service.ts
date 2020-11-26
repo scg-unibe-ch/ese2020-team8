@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class QuestionsService {
   private url = environment.endpointURL + '/questions';
+  private answerUrl = this.url + '/answer';
 
   constructor(
     private http: HttpClient
@@ -22,15 +23,37 @@ export class QuestionsService {
     );
   }
 
-  getQuestionsPerProduct(productId): Observable<IQuestion[]> {
-    return this.http.get<IQuestion[]>(`${this.url}/${productId}`);
+  answer(questionId: string, text: string): Observable<IAnswer> {
+    console.log('frontend service entered')
+    return this.http.post<IAnswer>(this.answerUrl, 
+      {
+      questionId,
+      text
+    }
+    );
   }
+
+  getQuestionsPerProduct(productId): Observable<IQuestion[]> {
+    return this.http.get<IQuestion[]>(`${this.url}/prod/${productId}`);
+  }
+
+  get(questionId: string): Observable<IQuestion> {
+    return this.http.get<IQuestion>(this.url + `/${questionId}`);
+  }
+
 }
 
 
 export interface IQuestion {
   id: string;
-  UserId: number;
+  UserId: string;
   ProductId: string;
+  text: string;
+}
+
+export interface IAnswer {
+  id: string;
+  UserId: string;
+  QuestionId: string;
   text: string;
 }
