@@ -111,9 +111,14 @@
       <div *ngIf="notification.notificationType === 'questionNotification'">
         <h1>A question has been posted referring to your product: "{{notification.Product.title}}"</h1>
         <p>Question: {{notification.Question.text}}</p>       
-        <button color="primary" mat-flat-button (click)="answerQuestion(notification.Question.id)">
+        <button *ngIf="!notification.Question.Answer" color="primary" mat-flat-button (click)="answerQuestion(notification.Question.id)">
           Answer this question
-      </button>
+        </button>
+        <p *ngIf="notification.Question.Answer.id">
+          You have already answered this Question: <br>
+          {{notification.Question.Answer.text}}
+        </p>
+
       </div>
       <div *ngIf="notification.notificationType === 'answerNotification'">
         <h1>Your Question has been answered</h1>
