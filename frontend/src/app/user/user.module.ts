@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
 import {EditComponent} from './edit/edit.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {EditComponent} from './edit/edit.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class UserModule { }

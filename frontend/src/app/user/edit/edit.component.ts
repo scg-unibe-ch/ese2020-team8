@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import {passwordRepeatValidator} from '../register/register.component';
+import { passwordRepeatValidator } from '../register/register.component';
 
 @Component({
   selector: 'app-user-edit',
@@ -11,7 +11,7 @@ import {passwordRepeatValidator} from '../register/register.component';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-
+  visible: boolean;
 
   userForm = this.fb.group({
     gender: '',
@@ -50,5 +50,9 @@ export class EditComponent implements OnInit {
     //   this.snackBar.open('Successfully updated your profile.');
     //   this.router.navigate(['user', 'profile']);
     // });
+  }
+
+  toggle() {
+    this.visible = !this.visible;
   }
 }

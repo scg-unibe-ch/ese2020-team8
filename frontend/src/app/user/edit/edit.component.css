@@ -1,4 +1,14 @@
 
+:host {
+  width: 100%;
+
+}
+
+.user-auth-card {
+  margin-right: auto;
+  margin-left: auto;
+  width: 25%;
+}
 
 .user-auth-card>form {
   display:flex;
@@ -11,4 +21,8 @@ mat-form-field {
 
 form>button {
   margin-bottom: 20px;
+}
+
+mat-form-field mat-icon {
+  cursor: pointer;
 }

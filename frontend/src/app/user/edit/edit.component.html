@@ -1,6 +1,5 @@
 <mat-card class="user-auth-card">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
     <mat-form-field>
       <mat-label>First name</mat-label>
       <input matInput formControlName="firstName" placeholder="First Name" />
@@ -40,18 +39,19 @@
 
     <mat-form-field>
       <mat-label>Password</mat-label>
+
       <input
         matInput
-        type="password"
+        [type]="visible ? 'text' : 'password'"
         formControlName="password"
         placeholder="Password"
       />
+      <mat-icon matSuffix (click)="visible = !visible">{{ visible ? 'visibility_off' : 'visibility' }}</mat-icon>
+
       <mat-error *ngIf="userForm.get('password').hasError('minlength')">
         Password must contain at least 7 characters
       </mat-error>
-      <mat-error
-        *ngIf="userForm.get('password').hasError('passwordStrength')"
-      >
+      <mat-error *ngIf="userForm.get('password').hasError('passwordStrength')">
         The password must contain capital and small letters, numbers, and
         special characters
       </mat-error>
@@ -61,14 +61,12 @@
       <mat-label>Password (repeat)</mat-label>
       <input
         matInput
-        type="password"
+        [type]="visible ? 'text' : 'password'"
         formControlName="passwordConfirm"
         placeholder="Password (repeat)"
       />
       <mat-error
-        *ngIf="
-          userForm.get('passwordConfirm').hasError('passwordsDoNotMatch')
-        "
+        *ngIf="userForm.get('passwordConfirm').hasError('passwordsDoNotMatch')"
       >
         Passwords do not match
       </mat-error>
@@ -87,15 +85,11 @@
       </mat-error>
     </mat-form-field>
 
-    <hr>
+    <hr />
 
     <mat-form-field>
       <mat-label>Street</mat-label>
-      <input
-        matInput
-        formControlName="street"
-        placeholder="Street"
-      />
+      <input matInput formControlName="street" placeholder="Street" />
       <mat-error *ngIf="userForm.get('street').invalid">
         Street is invalid
       </mat-error>
@@ -103,11 +97,7 @@
 
     <mat-form-field>
       <mat-label>Zip Code</mat-label>
-      <input
-        matInput
-        formControlName="zip"
-        placeholder="Zip Code"
-      />
+      <input matInput formControlName="zip" placeholder="Zip Code" />
       <mat-error *ngIf="userForm.get('zip').invalid">
         Zip is invalid
       </mat-error>
@@ -115,11 +105,7 @@
 
     <mat-form-field>
       <mat-label>City</mat-label>
-      <input
-        matInput
-        formControlName="city"
-        placeholder="City"
-      />
+      <input matInput formControlName="city" placeholder="City" />
       <mat-error *ngIf="userForm.get('city').invalid">
         City is invalid
       </mat-error>
@@ -127,41 +113,12 @@
 
     <mat-form-field>
       <mat-label>Country</mat-label>
-      <input
-        matInput
-        formControlName="country"
-        placeholder="Country"
-      />
+      <input matInput formControlName="country" placeholder="Country" />
       <mat-error *ngIf="userForm.get('country').invalid">
         Country is invalid
       </mat-error>
     </mat-form-field>
 
-    <!-- <mat&#45;form&#45;field appearance="fill"> -->
-    <!--   <mat&#45;label>Gender</mat&#45;label> -->
-    <!--   <mat&#45;select formControlName="gender"> -->
-    <!--     <mat&#45;option *ngFor="let gender of genders" [value]="gender.value"> -->
-    <!--       {{ gender }} -->
-    <!--     </mat&#45;option> -->
-    <!--   </mat&#45;select> -->
-    <!-- </mat&#45;form&#45;field> -->
-
-    <!-- <dl> -->
-    <!--   <dt>Gender:</dt> -->
-    <!--   <dd>{{userForm.get('gender').value}}</dd> -->
-    <!--   <dt>Street:</dt> -->
-    <!--   <dd>{{userForm.get('street').value}}</dd> -->
-    <!--   <dt>City:</dt> -->
-    <!--   <dd>{{userForm.get('city').value}}</dd> -->
-    <!--   <dt>Country:</dt> -->
-    <!--   <dd>{{userForm.get('country').value}}</dd> -->
-    <!-- </dl> -->
-
-    <button type="submit" color="primary" mat-flat-button>Register</button>
-
-    <a routerLink="/user/login"
-      >Already registered? Switch to login.</a
-    >
+    <button type="submit" color="primary" mat-flat-button>Edit Profile</button>
   </form>
 </mat-card>
-
