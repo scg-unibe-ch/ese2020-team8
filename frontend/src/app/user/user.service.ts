@@ -102,7 +102,9 @@ export class UserService {
       );
       this._snackBar.open(
         `Backend returned error: ${error.error.errors[0].message} `
-      );
+        , 'close', {
+          duration: 5000,
+        })
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
@@ -111,7 +113,9 @@ export class UserService {
       );
       this._snackBar.open(
         `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
+        , 'close', {
+          duration: 5000,
+        })
     }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');

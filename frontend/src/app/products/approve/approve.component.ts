@@ -37,7 +37,9 @@ export class ApproveComponent implements OnInit {
 
   reject(element: IProduct): void {
     this.productService.reject(element.id).subscribe(product => {
-      this.snackBar.open(`Product rejected: ${product.title}`);
+      this.snackBar.open(`Product rejected: ${product.title}`, 'close', {
+        duration: 5000,
+      })
       this.goBack();
     });
   }
