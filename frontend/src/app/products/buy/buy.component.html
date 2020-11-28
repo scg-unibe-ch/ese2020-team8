@@ -7,10 +7,13 @@
   </h1>
   <h1 *ngIf="product.productType === 'service'">Buy Service</h1>
 
-  <h3>{{ this.product.title }}</h3>
-  <p>{{ this.product.description }}</p>
-  <p>Price: {{ this.product.price }}</p>
-  <p>PurchaseType: {{ this.product.purchaseType }}</p>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ product.title }}</mat-panel-title>
+      <mat-panel-description>{{ product.price }}</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-product-show [product]="product"></app-product-show>
+  </mat-expansion-panel>
 
   <p *ngIf="product.productType === 'service'">
     Once the transaction is complete, you may exchange information with the
@@ -70,8 +73,8 @@
                 Form Value: {{ deliveryForm.value | json }}
             </p> -->
 
-  <button color="primary" mat-flat-button (click)="confirmOrder()">
+  <button color="primary" mat-button (click)="goBack()">Back</button>
+  <button color="primary" mat-raised-button (click)="confirmOrder()">
     Order
   </button>
-  <button color="primary" mat-flat-button (click)="goBack()">Back</button>
 </mat-card>

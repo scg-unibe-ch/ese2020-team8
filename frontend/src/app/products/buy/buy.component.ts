@@ -65,7 +65,6 @@ export class BuyComponent implements OnInit {
 
     this.dialog
       .open(OrderComponent, {
-        height: '400px',
         width: '600px',
         data: order,
       })
