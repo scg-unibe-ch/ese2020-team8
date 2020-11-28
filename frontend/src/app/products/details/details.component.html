@@ -1,12 +1,20 @@
+<mat-card>
+  <app-product-show *ngIf="product" [product]="product">
+    <app-product-question-answers
+      *ngIf="userService.loggedIn && questions"
+      [isOwnProduct]="isOwnProduct"
+      [questions]="questions"
+      (goToEvent)="goToQuestion()"
+    ></app-product-question-answers>
 
-<app-product-show *ngIf="product" [product]="product">
-
-  <app-product-question-answers *ngIf="userService.loggedIn && questions" [isOwnProduct]="isOwnProduct" [questions]="questions" (goToEvent)="goToQuestion()"></app-product-question-answers>
-
-  <button color="primary" mat-flat-button (click)="goBack()">
-    Back
-  </button>
-  <button *ngIf="userService.loggedIn && !isOwnProduct" color="primary" mat-flat-button (click)="goToBuy(product)">
-    Buy
-  </button>
-</app-product-show>
+    <button mat-button (click)="goBack()">Back</button>
+    <button
+      *ngIf="userService.loggedIn && !isOwnProduct"
+      color="primary"
+      mat-raised-button
+      (click)="goToBuy(product)"
+    >
+      Buy
+    </button>
+  </app-product-show>
+</mat-card>
