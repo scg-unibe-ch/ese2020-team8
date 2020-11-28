@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
     const productId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.productService.get(productId).subscribe((product) => {
       this.product = product;
-      this.isOwnProduct = this.userService.user.userId === product.id;
+      this.isOwnProduct = this.userService.loggedIn ? this.userService.user.userId === product.UserId : false;
     });
     this.questionService.getQuestionsPerProduct(productId).subscribe( questions => {
       this.questions = questions;
