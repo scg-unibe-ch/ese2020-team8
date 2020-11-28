@@ -50,7 +50,8 @@ export class Favorite
 
   public static createAssociations() {
     Favorite.belongsTo(User, {foreignKey: 'userId'});
-    Favorite.hasMany(Product);
-    Product.belongsToMany(Favorite, {through: 'productId'});
+    User.hasMany(Favorite);
+    Favorite.belongsTo(Product,  {foreignKey: 'productId'});
+    Product.hasMany(Favorite, );
   }
 }

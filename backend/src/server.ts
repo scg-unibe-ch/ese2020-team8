@@ -10,6 +10,7 @@ import { notificationService } from './services/notification.service';
 
 import cors from 'cors';
 import {ApiController} from './api';
+import { Favorite } from './models/favorite.model';
 
 export class Server {
     private server: Application;
@@ -27,11 +28,13 @@ export class Server {
         Photo.initialize(this.sequelize);
         Transaction.initialize(this.sequelize);
         Notification.initialize(this.sequelize);
+        Favorite.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
         Photo.createAssociations();
         Transaction.createAssociations();
         Notification.createAssociations();
+        Favorite.createAssociations();
 
         await notificationService.prepareAccounts();
 
