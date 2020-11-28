@@ -14,14 +14,14 @@ export class UserService {
   url = environment.endpointURL + '/user';
 
   token: string;
-  user: string;
+  user: UserToken;
   loggedIn: boolean;
   isAdmin: boolean;
 
   walletInfo$ = this.http.get<UserProfile>(`${this.url}/me`).pipe( map(user => user.wallet));
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private _snackBar: MatSnackBar,
     private router: Router
     ) {
@@ -64,7 +64,7 @@ export class UserService {
     localStorage.removeItem('userName');
 
     this.checkUserStatus();
-    this.router.navigate(["/"])
+    this.router.navigate(['/']);
   }
 
   checkUserStatus(): void {
@@ -72,9 +72,9 @@ export class UserService {
     this.token = localStorage.getItem('userToken');
 
     if (this.token) {
-      const user = JSON.parse(atob(this.token.split('.')[1]));
+      const user: UserToken = JSON.parse(atob(this.token.split('.')[1]));
 
-      this.user = user.userName;
+      this.user = user;
       this.isAdmin = user.isAdmin;
     }
 
@@ -122,3 +122,10 @@ export class UserService {
 interface UserProfile {
   wallet: number;
 }
+
+export interface UserToken {
+  userName: string;
+  userId: number;
+  isAdmin: boolean;
+}
+

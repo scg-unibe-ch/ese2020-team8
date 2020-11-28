@@ -14,7 +14,7 @@ export class ImageService {
     private http: HttpClient
   ) { }
 
-  upload(productId: string, files: FileList): Observable<any> {
+  upload(productId: number, files: FileList): Observable<any> {
     const formData = new FormData();
     Array.from(files).forEach( file => formData.append('images', file));
     return this.http.post(this.url + `/${productId}`, formData);

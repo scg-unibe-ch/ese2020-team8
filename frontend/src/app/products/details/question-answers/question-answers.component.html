@@ -1,0 +1,29 @@
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Q&A </mat-panel-title>
+      <mat-panel-description>
+        {{ panelOpenState ? "Hide Questions" : "Show Questions" }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-card
+      *ngFor="let question of questions; index as questionId"
+      class="question"
+    >
+      {{ question.createdAt | date: "short" }}<br />
+      Question: {{ question.text }}
+      <mat-card *ngIf="question.Answer" class="answer">
+        {{ question.Answer.createdAt | date: "short" }}<br />
+        Answer: {{ question.Answer.text }}
+      </mat-card>
+    </mat-card>
+
+    <button color="primary" *ngIf="!isOwnProduct" mat-flat-button (click)="goToEvent.emit()">
+      Post a Question
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -6,6 +6,8 @@ import {
 } from '../models/transaction.model';
 import { ProductAttributes, Product } from '../models/product.model';
 import { Notification } from '../models/notification.model';
+import { Question } from '../models/question.model';
+import { Answer } from '../models/answer.model';
 
 class NotificationService {
   transporter: any;
@@ -102,6 +104,10 @@ class NotificationService {
         },
         {
           model: Product as any
+        },
+        {
+          model: Question as any,
+          include: Answer as any
         }
       ]
     });
@@ -116,7 +122,7 @@ class NotificationService {
     });
   }
 
-  async addNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
+  async addTransactionNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
       Notification.create({
           UserId: userId,
           TransactionId: transactionId,
@@ -133,7 +139,22 @@ class NotificationService {
     });
   }
 
+  async addQuestionNotification(userId: number, productId: number, questionId: number, notificationType: string) {
+    Notification.create({
+        UserId: userId,
+        ProductId: productId,
+        QuestionId: questionId,
+        notificationType
+    });
+  }
 
+  async addAnswerNotification(userId: number, questionId: number, notificationType: string) {
+    Notification.create({
+        UserId: userId,
+        QuestionId: questionId,
+        notificationType
+    });
+  }
 
   async seenNotification(notificationId: string) {
       const notification = await Notification.findOne({

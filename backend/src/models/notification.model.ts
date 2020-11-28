@@ -2,6 +2,7 @@ import { Optional, Model, Sequelize, DataTypes, HasManyGetAssociationsMixin } fr
 import {User} from './user.model';
 import {Transaction} from './transaction.model';
 import { Product } from './product.model';
+import { Question } from './question.model';
 
 export interface NotificationAttributes {
     id: number;
@@ -9,6 +10,7 @@ export interface NotificationAttributes {
     notificationType: string;
     TransactionId?: number;
     ProductId?: number;
+    QuestionId?: number;
     status?: string;
     contactEmail?: string;
 }
@@ -23,6 +25,7 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
     notificationType!: string;
     TransactionId!: number;
     ProductId!: number;
+    QuestionId!: number;
     status!: string;
     contactEmail!: string;
 
@@ -48,7 +51,9 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
                         'sellerNotification',
                         'pendingNotification',
                         'approvalNotification',
-                        'rejectionNotification'
+                        'rejectionNotification',
+                        'questionNotification',
+                        'answerNotification'
                     ]],
                 }
             },
@@ -56,6 +61,9 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
                 type: DataTypes.INTEGER,
             },
             ProductId: {
+                type: DataTypes.INTEGER,
+            },
+            QuestionId: {
                 type: DataTypes.INTEGER,
             },
             contactEmail: {
@@ -86,6 +94,10 @@ export class Notification extends Model<NotificationAttributes, NotificationCrea
             foreignKey: 'ProductId'
         });
         Product.hasOne(Notification);
+        Notification.belongsTo(Question, {
+            foreignKey: 'QuestionId'
+        });
+        Question.hasOne(Notification);
     }
 
 }
