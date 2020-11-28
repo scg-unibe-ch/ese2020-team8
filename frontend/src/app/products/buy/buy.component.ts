@@ -18,7 +18,7 @@ import { OrderComponent } from '../order/order.component';
   styleUrls: ['./buy.component.css'],
 })
 export class BuyComponent implements OnInit {
-  productId: string;
+  productId: number;
   product: IProduct;
   transactionPrice: number;
 
@@ -50,7 +50,7 @@ export class BuyComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.productService.get(productId).subscribe((product) => {
+    this.productService.get(parseInt(productId, 10)).subscribe((product) => {
       this.productId = product.id;
       this.product = product;
     });

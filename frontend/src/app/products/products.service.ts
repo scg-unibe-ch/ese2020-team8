@@ -18,7 +18,7 @@ export class ProductsService {
     return this.http.post<IProduct>(this.url, product);
   }
 
-  update(productId: string, product: IProduct): Observable<IProduct> {
+  update(productId: number, product: IProduct): Observable<IProduct> {
     return this.http.put<IProduct>(this.url + `/${productId}`, product);
   }
 
@@ -30,7 +30,7 @@ export class ProductsService {
     return this.http.get<IProduct[]>(this.url);
   }
 
-  get(productId: string): Observable<IProduct> {
+  get(productId: number): Observable<IProduct> {
     return this.http.get<IProduct>(this.url + `/${productId}`);
   }
 
@@ -42,18 +42,18 @@ export class ProductsService {
     return this.http.get<IProduct[]>(this.url + '/pending');
   }
 
-  approve(productId: string): Observable<IProduct> {
+  approve(productId: number): Observable<IProduct> {
     return this.http.put<IProduct>(this.url + `/${productId}/approve`, {});
   }
 
-  reject(productId: string): Observable<IProduct> {
+  reject(productId: number): Observable<IProduct> {
     return this.http.put<IProduct>(this.url + `/${productId}/reject`, {});
   }
 
 }
 
 export interface IProduct {
-    id: string;
+    id: number;
     title: string;
     description: string;
     price: number;

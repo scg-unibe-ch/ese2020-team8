@@ -39,6 +39,7 @@ import { QuestionFormComponent } from './question/question-form/question-form.co
 import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
 import { AnswerFormComponent } from './question/answer-form/answer-form.component';
+import { QuestionAnswersComponent } from './details/question-answers/question-answers.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AnswerFormComponent } from './question/answer-form/answer-form.componen
     DetailsComponent,
     ApproveComponent,
     AnswerFormComponent,
+    QuestionAnswersComponent,
   ],
   imports: [
     CommonModule,

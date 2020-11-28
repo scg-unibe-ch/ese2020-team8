@@ -26,10 +26,10 @@ export class QuestionFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.productService.get(productId).subscribe( product  => {
       this.product = product;
-    })
+    });
   }
 
   askQuestion(): void {
@@ -37,7 +37,7 @@ export class QuestionFormComponent implements OnInit {
     const productId = this.product.id;
     this.questionService.ask(productId, text).subscribe((res) => {
       this.router.navigate(['products', productId, 'show']);
-    }) 
+    })
   }
 }
 

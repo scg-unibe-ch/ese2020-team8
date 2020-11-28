@@ -3,6 +3,7 @@ import { ProductsService, IProduct } from '../products.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {UserService} from 'src/app/user/user.service';
+import {QuestionsService} from '../questions.service';
 
 @Component({
   selector: 'app-product-details',
@@ -12,17 +13,25 @@ import {UserService} from 'src/app/user/user.service';
 export class DetailsComponent implements OnInit {
   productId: string;
   product: IProduct;
+  questions: any;
+
+  isOwnProduct: boolean;
 
   constructor(
     private productService: ProductsService,
     public userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private questionService: QuestionsService,
   ) {
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.productService.get(productId).subscribe((product) => {
       this.product = product;
+      this.isOwnProduct = this.userService.user.userId === product.id;
+    });
+    this.questionService.getQuestionsPerProduct(productId).subscribe( questions => {
+      this.questions = questions;
     });
   }
 
@@ -31,7 +40,12 @@ export class DetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  goToBuy(product: IProduct): void {
-    this.router.navigate(['products', product.id, 'buy']);
+  goToBuy(): void {
+    this.router.navigate(['products', this.product.id, 'buy']);
   }
+
+  goToQuestion(): void {
+    this.router.navigate(['products', this.product.id, 'question-form']);
+  }
+
 }
