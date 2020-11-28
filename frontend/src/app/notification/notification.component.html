@@ -114,7 +114,7 @@
         <button *ngIf="!notification.Question.Answer" color="primary" mat-flat-button (click)="answerQuestion(notification.Question.id)">
           Answer this question
         </button>
-        <p *ngIf="notification.Question.Answer.id">
+        <p *ngIf="notification.Question.Answer">
           You have already answered this Question: <br>
           {{notification.Question.Answer.text}}
         </p>
