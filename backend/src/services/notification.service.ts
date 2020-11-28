@@ -122,7 +122,7 @@ class NotificationService {
     });
   }
 
-  async addNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
+  async addTransactionNotification(userId: number, transactionId: number, notificationType: string, contactEmail: string) {
       Notification.create({
           UserId: userId,
           TransactionId: transactionId,

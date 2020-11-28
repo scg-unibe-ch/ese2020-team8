@@ -26,6 +26,7 @@ userController.get('/me',
     async (req: IAuthRequest, res: Response, next: NextFunction) => {
         try {
             const user = await userService.get(req.user.userId);
+            delete user.password;
             res.send(user);
         } catch (err) {
             next(err);

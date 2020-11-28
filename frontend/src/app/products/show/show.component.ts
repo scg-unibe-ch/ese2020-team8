@@ -31,7 +31,6 @@ export class ShowComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsService,
     private location: Location,
     public userService: UserService,
     private questionService: QuestionsService,
@@ -41,8 +40,8 @@ export class ShowComponent implements OnInit {
   ngOnInit(): void {
       const productId = this.route.snapshot.paramMap.get('id');
       this.questionService.getQuestionsPerProduct(productId).subscribe( questions => {
-        this.questions = questions
-      } );
+        this.questions = questions;
+      });
       this.photos = this.product.Photos.map((photo) => {
         const newPhoto = {
           imageSource: `${environment.endpointURL}/images/${photo.fileName}`,

@@ -27,7 +27,7 @@
           <span *ngSwitchCase="'rejectionNotification'">{{ notification.Product.title}}</span>
           <span *ngSwitchCase="'questionNotification'">{{ notification.Product.title}}</span>
           <span *ngSwitchCase="'answerNotification'">See answer</span>
-            <span>{{ notification.createdAt|date:'short'}}</span>
+          <span>{{ notification.createdAt|date:'short'}}</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <br />
@@ -110,7 +110,7 @@
 
       <div *ngIf="notification.notificationType === 'questionNotification'">
         <h1>A question has been posted referring to your product: "{{notification.Product.title}}"</h1>
-        <p>Question: {{notification.Question.text}}</p>       
+        <p>Question: {{notification.Question.text}}</p>
         <button *ngIf="!notification.Question.Answer" color="primary" mat-flat-button (click)="answerQuestion(notification.Question.id)">
           Answer this question
         </button>
@@ -122,8 +122,8 @@
       </div>
       <div *ngIf="notification.notificationType === 'answerNotification'">
         <h1>Your Question has been answered</h1>
-        <p>Question: {{notification.Question.text}}</p>       
-        <p>Answer: {{notification.Question.Answer.text}}</p>       
+        <p>Question: {{notification.Question.text}}</p>
+        <p>Answer: {{notification.Question.Answer.text}}</p>
       </div>
 
     </mat-expansion-panel>
