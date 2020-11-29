@@ -21,6 +21,7 @@ export class BuyComponent implements OnInit {
   productId: number;
   product: IProduct;
   transactionPrice: number;
+  isChecked = false;
 
   deliveryForm = new FormGroup({
     firstName: new FormControl(''),

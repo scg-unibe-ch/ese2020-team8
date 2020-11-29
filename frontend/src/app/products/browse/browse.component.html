@@ -1,6 +1,3 @@
-<mat-card class="product-list">
-  <h1>Product List</h1>
-
   <app-products-filter
     *ngIf="products"
     [products]="products"
@@ -16,13 +13,9 @@
     "
     [product]="product"
   >
-    <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
-      <button color="primary" mat-flat-button (click)="goToBuy(product)">
-        Buy
+    <div class="action-buttons">
+      <button color="primary" mat-flat-button (click)="goToDetails(product)">
+        More information
       </button>
     </div>
-<!--     <button color="primary" mat-flat-button (click)="goToDetails(product)">
-      Details
-    </button> -->
   </app-product-item>
-</mat-card>

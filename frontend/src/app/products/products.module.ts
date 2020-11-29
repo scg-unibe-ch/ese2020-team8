@@ -17,6 +17,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ManageComponent } from './manage/manage.component';
@@ -76,6 +77,7 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     MatCardModule,
     MatProgressBarModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,

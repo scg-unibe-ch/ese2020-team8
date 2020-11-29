@@ -1,7 +1,8 @@
+
 .photos {
   display: flex;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 27px;
+  margin-bottom: 20px;
 }
 
 .description-text-div {
@@ -14,13 +15,6 @@ pre {
   text-align: justify;
   white-space: pre-wrap;
   font-family: inherit;
-}
-
-mat-card {
-  padding: 12px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .photo-div {
