@@ -1,7 +1,21 @@
 :host {
   width: 100%;
-  max-width: 1200px;
 }
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+
+
+.create-button{
+  justify-content: center;
+  text-align:center;
+}
+
+.buttonLabel {
+  padding-top: 12px;
+}
+
 
 .action-buttons {
   display: flex;
