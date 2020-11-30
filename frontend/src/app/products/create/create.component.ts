@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,15 +14,15 @@ export class CreateComponent implements OnInit {
   uploadImages: FileList;
 
   productForm = this.fb.group({
-    title: '',
+    title: ['', Validators.required ],
     description: '',
-    price: '',
-    productType: '',
+    price: ['', Validators.required ],
+    productType: ['', Validators.required ],
     purchaseType: '',
     availability: '',
-    location: '',
+    location: ['', Validators.required ],
     duration: '',
-    delivery: ''
+    delivery: ['', Validators.required ],
   });
   previewImages: any[];
 
