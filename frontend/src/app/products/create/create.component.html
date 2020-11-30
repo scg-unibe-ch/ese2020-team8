@@ -1,4 +1,10 @@
-<mat-card>
+<div class="banner">
+  <div class="slogan">
+    <h1>My Sales</h1>
+  </div>
+</div>
+
+<mat-card class="main">
   <mat-horizontal-stepper linear="true" #stepper>
     <mat-step [stepControl]="productForm" label="Create Product">
       <form [formGroup]="productForm">

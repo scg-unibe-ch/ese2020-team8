@@ -1,10 +1,16 @@
-mat-card {
-  width: 90vw;
-  max-width: 1200px;
+:host {
+  width: 100%;
+}
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+
+/* mat-card {
   padding: 12px;
   box-sizing: border-box;
 }
-
+ */
 mat-form-field {
   margin: 10px 0;
 }
