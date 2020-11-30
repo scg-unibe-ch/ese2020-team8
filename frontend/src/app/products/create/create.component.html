@@ -10,23 +10,6 @@
           </mat-error>
         </mat-form-field>
 
-
-        <mat-form-field>
-          <mat-label>Price</mat-label>
-          <input
-            matInput
-            type="number"
-            min="0"
-            step="0.01"
-            oninput="validity.valid||(value='')"
-            formControlName="price"
-            placeholder="Price"
-          />
-          <mat-error *ngIf="productForm.get('price').invalid">
-            Product price is required and must be not negative
-          </mat-error>
-        </mat-form-field>
-
         <mat-form-field appearance="fill">
           <mat-label>Product Type?</mat-label>
           <mat-select formControlName="productType">
@@ -48,6 +31,29 @@
           </mat-select>
           <mat-hint align="end">Please choose</mat-hint>
         </mat-form-field>
+
+        <mat-form-field>
+          <div *ngIf="productForm.get('purchaseType').value === 'rent'; else elseBlock">
+            <mat-label>Price per day (in $)</mat-label>
+          </div>
+          <ng-template #elseBlock>
+            <mat-label>Price (in $)</mat-label>
+          </ng-template>
+          <input
+            matInput
+            type="number"
+            min="0"
+            step="0.01"
+            oninput="validity.valid||(value='')"
+            formControlName="price"
+            placeholder=""
+          />
+          <mat-error *ngIf="productForm.get('price').invalid">
+            Product Price must be a number from 0 to 1'000'000'000
+          </mat-error>
+        </mat-form-field>
+
+
         <!-- Dropdown menu to choose whether the product is currently available.
       Should hide if it's for a good to buy, then the number of available instances of
       this product shall be entered. -->
@@ -68,7 +74,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field
+<!--         <mat-form-field
           appearance="fill"
           *ngIf="productForm.get('productType').value === 'service'"
         >
@@ -85,7 +91,7 @@
           <mat-error *ngIf="productForm.get('duration').invalid">
             Product price is required and must be not negative
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
 
         <!-- Dropdown menu to choose whether delivery is possible.
       Should hide if it's for a service. -->

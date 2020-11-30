@@ -14,15 +14,17 @@ export class CreateComponent implements OnInit {
   uploadImages: FileList;
 
   productForm = this.fb.group({
-    title: ['', Validators.required ],
+    title: ['', Validators.required],
     description: '',
-    price: ['', Validators.required ],
-    productType: ['', Validators.required ],
+    price: (['',
+      [Validators.required, Validators.min(0), Validators.max(1000000000)]
+    ]),
+    productType: ['', Validators.required],
     purchaseType: '',
     availability: '',
-    location: ['', Validators.required ],
+    location: ['', Validators.required],
     duration: '',
-    delivery: ['', Validators.required ],
+    delivery: ['', Validators.required],
   });
   previewImages: any[];
 
@@ -32,9 +34,9 @@ export class CreateComponent implements OnInit {
     private imageService: ImageService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   submit(): void {
     this.productService.create(this.productForm.value).subscribe((product) => {
@@ -44,8 +46,8 @@ export class CreateComponent implements OnInit {
           .subscribe((res) => {
             this.snackBar.open(
               'Successfully created advertisement. Wait for an admin to approve it', 'close', {
-                duration: 5000,
-              })
+              duration: 5000,
+            })
             this.router.navigate(['products', 'manage']);
           });
       } else {
