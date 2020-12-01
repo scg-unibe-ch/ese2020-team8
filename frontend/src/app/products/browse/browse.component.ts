@@ -13,6 +13,7 @@ export class BrowseComponent implements OnInit {
   products: IProduct[] = [];
   productFilters: IProductFilters = {};
   searchTerm: string;
+  isFavorite = false;
 
   constructor(
     public userService: UserService,
