@@ -14,6 +14,7 @@ export class EditComponent implements OnInit {
   visible: boolean;
 
   userForm = this.fb.group({
+    id: '',
     gender: '',
     firstName: '',
     lastName: '',
@@ -41,15 +42,12 @@ export class EditComponent implements OnInit {
     });
   }
 
-  setProfile() {
-    // this.firstname.update(user);
-  }
-
   onSubmit(): void {
-    // this.userService.update(user).subscribe(() => {
-    //   this.snackBar.open('Successfully updated your profile.');
-    //   this.router.navigate(['user', 'profile']);
-    // });
+    const user = this.userForm.value;
+      this.userService.update(user).subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['user', 'login']);
+      });
   }
 
   toggle() {
