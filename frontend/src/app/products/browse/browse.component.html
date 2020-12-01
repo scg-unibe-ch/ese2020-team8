@@ -20,8 +20,11 @@
       <button color="primary" mat-flat-button (click)="goToBuy(product)">
         Buy
       </button>
-      <mat-icon matSuffix (click)="isFavorite = !isFavorite">{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+      <section class="favorite-section">
+      <mat-icon matSuffix (click)="toggle(); goToFavorites()">{{
+        isFavorite ? "favorite" : "favorite_border"
+      }}</mat-icon>
+    </section>
     </div>
-
   </app-product-item>
 </mat-card>
