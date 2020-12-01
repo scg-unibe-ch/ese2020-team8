@@ -33,18 +33,6 @@ userController.get('/me',
     }
 );
 
-userController.get('/me/favorites',
-    verifyToken, // you can add middleware on specific requests like that
-    async (req: IAuthRequest, res: Response, next: NextFunction) => {
-        try {
-            const favorites = await userService.get(req.user.userId);
-            res.send(favorites);
-        } catch (err) {
-            next(err);
-        }
-    }
-);
-
 userController.get('/',
     verifyToken, // you can add middleware on specific requests like that
     checkIsAdmin,

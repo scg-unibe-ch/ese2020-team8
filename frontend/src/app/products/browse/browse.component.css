@@ -17,3 +17,10 @@
 .action-buttons>button {
   margin: 0.4rem;
 }
+
+.favorite-section {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  color:  #cf73a3;
+}

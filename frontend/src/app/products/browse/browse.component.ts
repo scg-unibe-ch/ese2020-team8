@@ -45,5 +45,13 @@ export class BrowseComponent implements OnInit {
   goToProductsAdmin(): void {
     this.router.navigate(['admin', 'approve']);
   }
+
+  goToFavorites(product: IProduct): void {
+    this.router.navigate(['favorites', product.id ]);
+  }
+
+  toggle() {
+    this.isFavorite = !this.isFavorite;
+  }
 }
 
