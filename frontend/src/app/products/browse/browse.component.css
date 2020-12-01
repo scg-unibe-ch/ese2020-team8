@@ -5,6 +5,7 @@
   width: 100vw;
   box-sizing: border-box;
   max-width: 1200px;
+  cursor: pointer;
 }
 
 .product-list table {
