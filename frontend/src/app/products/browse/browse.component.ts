@@ -3,6 +3,7 @@ import {UserService} from 'src/app/user/user.service';
 import {Router} from '@angular/router';
 import {ProductsService, IProduct} from '../products.service';
 import { IProductFilters } from '../pipes/product-filter.pipe';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-product-browse',
@@ -18,7 +19,8 @@ export class BrowseComponent implements OnInit {
   constructor(
     public userService: UserService,
     public router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private favoriteService: FavoritesService
   ) {
     this.productService.getAll().subscribe( products => this.products = products );
   }
@@ -46,12 +48,8 @@ export class BrowseComponent implements OnInit {
     this.router.navigate(['admin', 'approve']);
   }
 
-  goToFavorites(product: IProduct): void {
-    this.router.navigate(['favorites', product.id ]);
-  }
-
-  toggle() {
-    this.isFavorite = !this.isFavorite;
+  addToFavorites(productId): void {
+    this.favoriteService.create( productId ).subscribe();
   }
 }
 

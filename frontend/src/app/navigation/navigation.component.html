@@ -6,7 +6,7 @@
     <mat-icon>storefront</mat-icon>
     <span>Marketplace</span>
   </a>
-  <button *ngIf="userService.loggedIn" mat-button aria-label="go to favorite products" routerLink="/products/favorites">
+  <button *ngIf="userService.loggedIn" mat-button aria-label="go to favorite products" (click)="goToFavorites()">
     <mat-icon style="color: #cf73a3;">favorite</mat-icon>
     <span>Favorites</span>
   </button>

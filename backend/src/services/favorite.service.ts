@@ -2,7 +2,6 @@ import { Favorite, FavoriteAttributes } from '../models/favorite.model';
 import { Product } from '../models/product.model';
 
 export class FavoriteService {
-
   public async get(favoriteId: string) {
     return Favorite.findOne({
       where: {
@@ -11,8 +10,16 @@ export class FavoriteService {
     });
   }
 
-  public async create(favorite: FavoriteAttributes) {
-    return Favorite.create(favorite);
+  public async create(userId: number, productId: number) {
+    return Favorite.create({ userId, productId });
+  }
+
+  public async delete(favoriteId: string) {
+    return Favorite.destroy({
+      where: {
+        id: favoriteId,
+      },
+    });
   }
 
   public async getMyFavorites(userId: number) {
@@ -26,3 +33,5 @@ export class FavoriteService {
     });
   }
 }
+
+export const favoriteService = new FavoriteService();

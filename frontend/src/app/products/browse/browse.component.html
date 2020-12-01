@@ -21,7 +21,7 @@
         Buy
       </button>
       <section class="favorite-section">
-      <mat-icon matSuffix (click)="toggle(); goToFavorites()">{{
+      <mat-icon matSuffix (click)="addToFavorites(product.id)">{{
         isFavorite ? "favorite" : "favorite_border"
       }}</mat-icon>
     </section>

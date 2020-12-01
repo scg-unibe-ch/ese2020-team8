@@ -36,6 +36,7 @@ import { OrderComponent } from './order/order.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ApproveComponent } from './approve/approve.component';
     OrderComponent,
     DetailsComponent,
     ApproveComponent,
+    FavoritesComponent,
   ],
   imports: [
     CommonModule,

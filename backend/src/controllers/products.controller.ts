@@ -160,9 +160,11 @@ productController.use(
 productController.post(
   '/:productId/favorites',
   verifyToken,
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
-      const favorites = await favoriteService.create(req.body);
+      const userId = req.user.userId;
+      const productId = req.body.productId;
+      const favorites = await favoriteService.create(userId, productId);
       res.send(favorites);
     } catch (err) {
       next(err);

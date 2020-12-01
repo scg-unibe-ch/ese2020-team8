@@ -12,6 +12,7 @@ import { HistoryComponent } from './history/history.component';
 import { DetailsComponent } from './details/details.component';
 import {RoleGuard} from '../admin/role.guard';
 import {ApproveComponent} from './approve/approve.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
   {
     path: 'products/pay',
     component: PayComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products/favorites',
+    component: FavoritesComponent,
     canActivate: [AuthGuard],
   },
 ];

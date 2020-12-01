@@ -2,10 +2,7 @@ import {
   Model,
   Sequelize,
   DataTypes,
-  HasManyGetAssociationsMixin,
-  HasManyAddAssociationMixin,
-  HasManyHasAssociationMixin,
-  Association,
+  Optional,
 } from 'sequelize';
 import {User} from './user.model';
 import {Product} from './product.model';
@@ -16,8 +13,10 @@ export interface FavoriteAttributes {
     productId: number;
 }
 
+export interface FavoriteCreationAttributes extends Optional<FavoriteAttributes, 'id'> { }
+
 export class Favorite
-  extends Model<FavoriteAttributes>
+  extends Model<FavoriteAttributes, FavoriteCreationAttributes>
   implements FavoriteAttributes {
 
   id!: number;
@@ -49,7 +48,9 @@ export class Favorite
   }
 
   public static createAssociations() {
-    Favorite.belongsToMany(User, {through: 'userId'});
-    User.belongsToMany(Product,  {through: 'productId'});
+    Favorite.belongsTo(User, {foreignKey: 'userId'});
+    Favorite.belongsTo(Product, {foreignKey: 'productId'});
+    Product.hasMany(Favorite);
+    User.hasMany(Favorite);
   }
 }
