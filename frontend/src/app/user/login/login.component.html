@@ -1,32 +1,27 @@
 <mat-card class="user-auth-card">
-  <form>
-    <div *ngIf="!loggedIn" class="login-input-group">
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="User Name or Email"
-          [(ngModel)]="userName"
-          name="userName"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Password"
-          [(ngModel)]="password"
-          name="password"
-          type="password"
-        />
-      </mat-form-field>
-      <span class="alert" *ngIf="loginErrorMessage">
-        {{ loginErrorMessage }}
-      </span>
-      <button mat-flat-button color="primary" (click)="login()">Login</button>
-      <a routerLink="/user/register"
-        >New here? Create an account.
-      </a>
-    </div>
-
+  <form *ngIf="!loggedIn">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="User Name or Email"
+        [(ngModel)]="userName"
+        name="userName"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+      />
+    </mat-form-field>
+    <span class="alert" *ngIf="loginErrorMessage">
+      {{ loginErrorMessage }}
+    </span>
+    <button mat-flat-button color="primary" (click)="login()">Login</button>
+    <a routerLink="/user/register">New here? Create an account. </a>
 
     <div *ngIf="userService.loggedIn">
       <button mat-flat-button color="warn" (click)="logout()">Logout</button>
@@ -34,4 +29,17 @@
     </div>
   </form>
 </mat-card>
-
+<div class="image-credit">
+  <span
+    >Photo by
+    <a
+      href="https://unsplash.com/@jonathanborba?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+      >Jonathan Borba</a
+    >
+    on
+    <a
+      href="https://unsplash.com/s/photos/baby?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+      >Unsplash</a
+    ></span
+  >
+</div>
