@@ -61,6 +61,9 @@ export class UserService {
   public async update(userId: number, userChanges: UserAttributes) {
     delete userChanges.id; // id should not be changed!
 
+    const saltRounds = 12;
+    userChanges.password = bcrypt.hashSync(userChanges.password, saltRounds);
+
     return User.update(userChanges, {
       where: {
         id: userId,
