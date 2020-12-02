@@ -17,12 +17,12 @@
     [product]="product"
   >
     <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
-      <button color="primary" mat-flat-button (click)="goToBuy(product)">
+      <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-flat-button (click)="goToBuy(product)">
         Buy
       </button>
+      <button *ngIf="product.purchaseType === 'rent'" color="primary" mat-flat-button (click)="goToBuy(product)">
+        Rent
+      </button>
     </div>
-<!--     <button color="primary" mat-flat-button (click)="goToDetails(product)">
-      Details
-    </button> -->
   </app-product-item>
 </mat-card>
