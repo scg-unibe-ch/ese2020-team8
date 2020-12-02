@@ -45,12 +45,11 @@ userController.get('/',
     }
 );
 
-// error here...
-userController.put('/me',
-    verifyToken,
+userController.put('/edit',
+    verifyToken, checkPasswordStrength,
     async (req: IAuthRequest, res: Response, next: NextFunction) => {
         try {
-            const userId = req.params.userId;
+            const userId = req.user.userId;
             const user = await userService.update(userId, req.body);
             res.send(user);
         } catch (err) {

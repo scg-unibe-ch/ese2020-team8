@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { passwordRepeatValidator } from '../register/register.component';
+import { passwordRepeatValidator, passwordStrengthValidator } from '../register/register.component';
 
 @Component({
   selector: 'app-user-edit',
@@ -11,16 +11,16 @@ import { passwordRepeatValidator } from '../register/register.component';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
+  userId: number;
   visible: boolean;
 
   userForm = this.fb.group({
-    id: '',
     gender: '',
-    firstName: '',
-    lastName: '',
-    userName: '',
-    email: '',
-    password: '',
+    firstName: [ '', [ Validators.required, Validators.minLength(3) ] ],
+    lastName: [ '', [ Validators.required, Validators.minLength(3) ] ],
+    userName: [ '', [ Validators.required, Validators.minLength(3) ] ],
+    email: [ '', [ Validators.required, Validators.email ] ],
+    password: [ '', [ Validators.required, Validators.minLength(7), passwordStrengthValidator ] ],
     phone: '',
     street: '',
     zip: '',
@@ -37,17 +37,19 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe((user) => {
-      this.userForm.patchValue(user);
+    this.userService.getProfile().subscribe((userId) => {
+      this.userForm.patchValue(userId);
     });
   }
 
   onSubmit(): void {
     const user = this.userForm.value;
-      this.userService.update(user).subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['user', 'login']);
-      });
+    this.userService.update(user).subscribe(() => {
+      this.snackBar.open(
+        'Successfully updated your profile.'
+      );
+      this.router.navigate(['']);
+    });
   }
 
   toggle() {

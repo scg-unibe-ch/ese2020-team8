@@ -58,7 +58,7 @@ export class UserService {
     });
   }
 
-  public async update(userId: string, userChanges: UserAttributes) {
+  public async update(userId: number, userChanges: UserAttributes) {
     delete userChanges.id; // id should not be changed!
 
     return User.update(userChanges, {

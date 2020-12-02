@@ -79,7 +79,7 @@ export function passwordRepeatValidator(fcSelector: string): ValidatorFn {
   };
 }
 
-const passwordStrengthValidator = (
+export const passwordStrengthValidator = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const value: string = control.value || '';
