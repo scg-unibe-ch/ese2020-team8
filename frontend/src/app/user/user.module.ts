@@ -11,11 +11,14 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import {EditComponent} from './edit/edit.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class UserModule { }

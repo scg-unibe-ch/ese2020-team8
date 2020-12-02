@@ -14,8 +14,10 @@
         placeholder="Password"
         [(ngModel)]="password"
         name="password"
-        type="password"
+        [type]="visible ? 'text' : 'password'"
       />
+      <mat-icon matSuffix (click)="visible = !visible">{{ visible ? 'visibility_off' : 'visibility' }}</mat-icon>
+
     </mat-form-field>
     <span class="alert" *ngIf="loginErrorMessage">
       {{ loginErrorMessage }}
