@@ -8,6 +8,6 @@ export function checkIsAdmin(req: IAuthRequest, res: Response, next: NextFunctio
             next();
         }
     } else {
-        res.status(403).send({ message: 'Unauthorized. You have to be admin to perform this action.' });
+        res.status(403).send({ message: 'Unauthorized. You have to be admin to perform this action.', type: 'NotAdmin'});
     }
 }

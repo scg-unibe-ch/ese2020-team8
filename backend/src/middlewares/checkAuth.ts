@@ -20,12 +20,12 @@ export function verifyToken(req: IAuthRequest, res: Response, next: any) {
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwt.verify(token, secret);
     if (decoded == null) {
-      res.status(403).send({ message: 'Unauthorized. Please Log-in first.' });
+      res.status(403).send({ message: 'Unauthorized. Please Log-in first.', type: 'NotLoggedIn' });
     }
     // adds the field "tokenPayload" to the request enabling following functions to use data from the token
     req.user = decoded as IUserToken;
     next();
   } catch (err) {
-    res.status(403).send({ message: 'Unauthorized. Please Log-in first.' });
+    res.status(403).send({ message: 'Unauthorized. Please Log-in first.' , type: 'NotLoggedIn' });
   }
 }
