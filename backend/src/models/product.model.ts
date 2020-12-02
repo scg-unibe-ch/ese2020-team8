@@ -62,11 +62,17 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             productType: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    isIn: [['good', 'service']],
+                }
             },
             purchaseType: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    isIn: [['rent', 'buy']],
+                }
             },
             availability: {
                 type: DataTypes.BOOLEAN,

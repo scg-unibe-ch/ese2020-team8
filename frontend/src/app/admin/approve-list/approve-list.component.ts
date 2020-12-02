@@ -33,14 +33,18 @@ export class ApproveListComponent implements OnInit {
 
   approve(element: IProduct) {
     this.productService.approve(element.id).subscribe(product => {
-      this.snackBar.open(`Successfully approved ${product.title}`);
+      this.snackBar.open(`Successfully approved ${product.title}`, 'close', {
+        duration: 5000,
+      })
       this.refreshProducts();
     })
   }
 
   reject(element: IProduct) {
     this.productService.reject(element.id).subscribe(product => {
-      this.snackBar.open(`Product rejected: ${product.title}`);
+      this.snackBar.open(`Product rejected: ${product.title}`, 'close', {
+        duration: 5000,
+      })
       this.refreshProducts();
     })
   }

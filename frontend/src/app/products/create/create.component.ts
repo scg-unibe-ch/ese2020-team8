@@ -43,8 +43,9 @@ export class CreateComponent implements OnInit {
           .upload(product.id, this.uploadImages)
           .subscribe((res) => {
             this.snackBar.open(
-              'Successfully created advertisement. Wait for an admin to approve it'
-            );
+              'Successfully created advertisement. Wait for an admin to approve it', 'close', {
+                duration: 5000,
+              })
             this.router.navigate(['products', 'manage']);
           });
       } else {

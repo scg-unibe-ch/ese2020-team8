@@ -18,7 +18,7 @@ export class ApproveComponent implements OnInit {
     private snackBar: MatSnackBar,
     private location: Location,
   ) {
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.productService.get(productId).subscribe((product) => {
       this.product = product;
     });
@@ -28,18 +28,20 @@ export class ApproveComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  approve(element: IProduct) {
+  approve(element: IProduct): void {
     this.productService.approve(element.id).subscribe(product => {
       this.snackBar.open(`Successfully approved ${product.title}`);
       this.goBack();
-    })
+    });
   }
 
-  reject(element: IProduct) {
+  reject(element: IProduct): void {
     this.productService.reject(element.id).subscribe(product => {
-      this.snackBar.open(`Product rejected: ${product.title}`);
+      this.snackBar.open(`Product rejected: ${product.title}`, 'close', {
+        duration: 5000,
+      })
       this.goBack();
-    })
+    });
   }
 
   goBack() {

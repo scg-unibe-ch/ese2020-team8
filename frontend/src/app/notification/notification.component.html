@@ -12,15 +12,22 @@
           <span *ngSwitchCase="'pendingNotification'">Item Pending</span>
           <span *ngSwitchCase="'approvalNotification'">Item Approved</span>
           <span *ngSwitchCase="'rejectionNotification'">Item Rejected</span>
+          <span *ngSwitchCase="'questionNotification'">Question asked</span>
+          <span *ngSwitchCase="'answerNotification'">Question answered</span>
           <span *ngSwitchDefault>Notification</span>
           <mat-chip-list *ngIf="notification.status === 'new'">
             <mat-chip color="warn" selected>new</mat-chip>
           </mat-chip-list>
         </mat-panel-title>
-        <mat-panel-description>
-          <span *ngIf="notification.Transaction">{{ notification.Transaction.Product.title}}</span>
-          <span *ngIf="!notification.Transaction">{{ notification.Product.title}}</span>
-            <span>{{ notification.createdAt|date:'short'}}</span>
+        <mat-panel-description [ngSwitch]="notification.notificationType">
+          <span *ngSwitchCase="'sellerNotification'">{{ notification.Transaction.Product.title}}</span>
+          <span *ngSwitchCase="'buyerNotification'">{{ notification.Transaction.Product.title}}</span>
+          <span *ngSwitchCase="'pendingNotification'">{{ notification.Product.title}}</span>
+          <span *ngSwitchCase="'approvalNotification'">{{ notification.Product.title}}</span>
+          <span *ngSwitchCase="'rejectionNotification'">{{ notification.Product.title}}</span>
+          <span *ngSwitchCase="'questionNotification'">{{ notification.Product.title}}</span>
+          <span *ngSwitchCase="'answerNotification'">See answer</span>
+          <span>{{ notification.createdAt|date:'short'}}</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <br />
@@ -99,6 +106,24 @@
       <div *ngIf="notification.notificationType === 'rejectionNotification'">
         <h1>Your Item "{{notification.Product.title}}" has been rejected</h1>
         <p>Sorry your item has been rejected. Maybe try selling it in the darknet;-)</p>
+      </div>
+
+      <div *ngIf="notification.notificationType === 'questionNotification'">
+        <h1>A question has been posted referring to your product: "{{notification.Product.title}}"</h1>
+        <p>Question: {{notification.Question.text}}</p>
+        <button *ngIf="!notification.Question.Answer" color="primary" mat-flat-button (click)="answerQuestion(notification.Question.id)">
+          Answer this question
+        </button>
+        <p *ngIf="notification.Question.Answer">
+          You have already answered this Question: <br>
+          {{notification.Question.Answer.text}}
+        </p>
+
+      </div>
+      <div *ngIf="notification.notificationType === 'answerNotification'">
+        <h1>Your Question has been answered</h1>
+        <p>Question: {{notification.Question.text}}</p>
+        <p>Answer: {{notification.Question.Answer.text}}</p>
       </div>
 
     </mat-expansion-panel>

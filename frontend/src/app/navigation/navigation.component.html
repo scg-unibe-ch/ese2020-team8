@@ -36,7 +36,7 @@
   </span>
   <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu"
     aria-label="Example icon-button with a menu">
-    <span [innerHTML]="userService.user"></span>
+    <span [innerHTML]="userService.user.userName"></span>
     <mat-icon>expand_more</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
