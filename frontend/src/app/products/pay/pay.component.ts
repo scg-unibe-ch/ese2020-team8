@@ -41,14 +41,15 @@ export class PayComponent implements OnInit {
 
   rentalDaysForm = new FormGroup({
     rentalDays: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(1)
     ]),
   });
 
   ngOnInit(): void {
   }
 
-  pay(product: IProduct): void {
+/*   pay(product: IProduct): void {
     const logInfo = 'Buy without delivery';
     console.log(logInfo);
     this.transactionService.pay(product).subscribe(res => {
@@ -97,7 +98,7 @@ export class PayComponent implements OnInit {
         this.router.navigate(['products', 'history']);
       });
     };
-
+ */
 
   goToPay(product: IProduct): void {
     this.router.navigate(['products', product.id, 'pay' ]);

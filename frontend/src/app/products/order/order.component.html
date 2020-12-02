@@ -1,9 +1,19 @@
 <h1 mat-dialog-title>Your order</h1>
-<div mat-dialog-content>
-  <p>By clicking 'pay' you will accept the following conditions:</p>
+  <mat-dialog-content>
+    By clicking 'pay' you will accept the following conditions:
 
-</div>
-<div mat-dialog-actions>
+    Price per day: {{data.product.price}}
+    Rent duration in days: {{data.rentalDays}}
+    Total price: {{data.total}}
+
+    Delivered to the following address:
+    {{ data.deliveryAddress }}
+
+  </mat-dialog-content>
+
+
+
+<mat-dialog-actions>
   <button mat-button mat-dialog-close>No Thanks</button>
   <button mat-flat-button color="primary" [mat-dialog-close]="true">Pay</button>
-</div>
+</mat-dialog-actions>

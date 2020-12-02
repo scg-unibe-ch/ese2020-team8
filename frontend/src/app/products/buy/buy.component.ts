@@ -57,16 +57,14 @@ export class BuyComponent implements OnInit {
   }
 
   confirmOrder(): void {
-    const order = {
-      product: this.product,
-      deliveryAddress: this.deliveryForm.value,
-      rentalDays: this.rentalDaysForm.value,
-    };
-
     this.dialog
       .open(OrderComponent, {
         width: '600px',
-        data: order,
+        data: {
+          product: this.product,
+          deliveryAddress: this.deliveryForm.value,
+          rentalDays: this.rentalDaysForm.value,
+        }
       })
       .afterClosed()
       .subscribe((result) => {
