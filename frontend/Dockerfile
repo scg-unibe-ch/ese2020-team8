@@ -17,6 +17,7 @@ FROM nginx:alpine
 
 # copy artifact build from the 'build environment'
 COPY --from=builder /app/dist/frontend /usr/share/nginx/html
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80
