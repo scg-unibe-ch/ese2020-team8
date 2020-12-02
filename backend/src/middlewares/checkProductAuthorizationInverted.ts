@@ -14,7 +14,7 @@ export async function checkProductAuthorizationInverted(req: IAuthRequest, res: 
             }
         });
         if (product) {
-            res.status(403).send({ message: 'You can\'t buy your own product!', type: 'BuyOwnProduct' });
+            res.status(403).send({ message: 'You can\'t buy your own product!', name: 'BuyOwnProduct' });
         } else {
             next();
         }
