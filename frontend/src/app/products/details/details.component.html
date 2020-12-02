@@ -1,7 +1,7 @@
 <mat-card>
   <app-product-show *ngIf="product" [product]="product">
     <app-product-question-answers
-      *ngIf="userService.loggedIn && questions"
+      *ngIf="userService.loggedIn && questions && !isOwnProduct && product.status === 'approved'"
       [isOwnProduct]="isOwnProduct"
       [questions]="questions"
       (goToEvent)="goToQuestion()"
@@ -9,7 +9,7 @@
 
     <button mat-button (click)="goBack()">Back</button>
     <button
-      *ngIf="userService.loggedIn && !isOwnProduct"
+      *ngIf="userService.loggedIn && !isOwnProduct && product.status === 'approved'"
       color="primary"
       mat-raised-button
       (click)="goToBuy(product)"
