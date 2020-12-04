@@ -12,6 +12,8 @@ import { ImageService } from '../../shared/image.service';
 })
 export class CreateComponent implements OnInit {
   uploadImages: FileList;
+  mobile: boolean;
+  help: boolean;
 
   productForm = this.fb.group({
     title: ['', Validators.required],
@@ -36,7 +38,12 @@ export class CreateComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.help = false;
+    if (window.screen.width === 360) { // 768px portrait
+      this.mobile = true;
+    }
+  }
 
   submit(): void {
     this.productService.create(this.productForm.value).subscribe((product) => {
