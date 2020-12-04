@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,15 +14,17 @@ export class CreateComponent implements OnInit {
   uploadImages: FileList;
 
   productForm = this.fb.group({
-    title: '',
+    title: ['', Validators.required],
     description: '',
-    price: '',
-    productType: '',
+    price: (['',
+      [Validators.required, Validators.min(0), Validators.max(1000000000)]
+    ]),
+    productType: ['', Validators.required],
     purchaseType: '',
     availability: '',
-    location: '',
+    location: ['', Validators.required],
     duration: '',
-    delivery: ''
+    delivery: ['', Validators.required],
   });
   previewImages: any[];
 
@@ -32,9 +34,9 @@ export class CreateComponent implements OnInit {
     private imageService: ImageService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   submit(): void {
     this.productService.create(this.productForm.value).subscribe((product) => {
@@ -44,8 +46,8 @@ export class CreateComponent implements OnInit {
           .subscribe((res) => {
             this.snackBar.open(
               'Successfully created advertisement. Wait for an admin to approve it', 'close', {
-                duration: 5000,
-              })
+              duration: 5000,
+            })
             this.router.navigate(['products', 'manage']);
           });
       } else {

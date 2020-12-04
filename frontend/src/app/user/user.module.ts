@@ -11,8 +11,9 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {EditComponent} from './edit/edit.component';
-import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     MatMenuModule,
+    MatIconModule,
+    MatTooltipModule,
     MatIconModule
   ]
 })
