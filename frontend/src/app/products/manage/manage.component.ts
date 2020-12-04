@@ -4,6 +4,7 @@ import { ProductsService, IProduct } from '../products.service';
 import { UserService } from 'src/app/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from '../delete/delete.component';
+import { ReturnComponent } from '../return/return.component';
 
 @Component({
   selector: 'app-products-manage',
@@ -47,6 +48,20 @@ export class ManageComponent implements OnInit {
       });
   }
 
+  return(product: IProduct): void {
+    this.dialog
+      .open(ReturnComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.productService
+            .return(product.id)
+            .subscribe(() => this.reloadProducts());
+        }
+      });
+  }
+
+
   reloadProducts(): void {
     this.productService.getMyProducts().subscribe((prods) => {
       this.products = prods;
@@ -77,7 +92,7 @@ export class ManageComponent implements OnInit {
   filterLentProducts(status: string): void {
     if (status === 'rent') {
       this.filteredProducts = this.products.filter((product) =>
-        ['rent'].includes(product.status)
+        ['rent', 'returned'].includes(product.status)
       );
     } else {
       this.filteredProducts = [];
