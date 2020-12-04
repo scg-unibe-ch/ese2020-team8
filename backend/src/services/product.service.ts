@@ -47,6 +47,18 @@ export class ProductService {
     return product.save();
   }
 
+  public async enable(productId: string): Promise<Product> {
+    const product = await Product.findByPk(productId);
+    product.availability = true;
+    return product.save();
+  }
+
+  public async disable(productId: string): Promise<Product> {
+    const product = await Product.findByPk(productId);
+    product.availability = false;
+    return product.save();
+  }
+
   public async return(productId: string): Promise<Product> {
     const product = await Product.findByPk(productId);
     product.status = 'returned';
@@ -66,6 +78,7 @@ export class ProductService {
     return Product.findAll({
       where: {
         status: 'approved',
+        availability: true,
       },
       include: Photo as any
     });
