@@ -47,6 +47,12 @@ export class ProductService {
     return product.save();
   }
 
+  public async return(productId: string): Promise<Product> {
+    const product = await Product.findByPk(productId);
+    product.status = 'returned';
+    return product.save();
+  }
+
   public async delete(productId: string) {
     const product = await Product.findByPk(productId);
     if (['approved', 'pending'].includes(product.status)) {

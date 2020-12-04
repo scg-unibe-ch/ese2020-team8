@@ -63,6 +63,20 @@ productController.put(
   }
 );
 
+productController.put(
+  '/:productId/return',
+  verifyToken,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const returnedProduct = await productService.return(productId);
+      res.send(returnedProduct);
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
 
 
 productController.get(
