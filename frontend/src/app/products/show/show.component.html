@@ -15,11 +15,11 @@
     <section class="attributes">
       <!--Display all product attributes-->
       <span>Price</span>
-      <p *ngIf="product.purchaseType === 'lend'; else elseBlock">
-        {{ product.price }} CHF/day
+      <p *ngIf="product.purchaseType === 'rent'; else elseBlock">
+        {{ product.price }} $ (per rental day)
       </p>
       <ng-template #elseBlock>
-        <p>{{ product.price }} CHF</p>
+        <p>{{ product.price }} $</p>
       </ng-template>
       <span>Type of product</span>
       <p>
