@@ -41,6 +41,8 @@ import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
 import { AnswerFormComponent } from './question/answer-form/answer-form.component';
 import { QuestionAnswersComponent } from './details/question-answers/question-answers.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReturnComponent } from './return/return.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     ApproveComponent,
     AnswerFormComponent,
     QuestionAnswersComponent,
+    ReturnComponent,
   ],
   imports: [
     CommonModule,
@@ -85,7 +88,8 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     Ng2SearchPipeModule,
     MatBadgeModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule,
   ],
   exports: [
     BrowseComponent
