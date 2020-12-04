@@ -35,7 +35,7 @@ export class UserService {
           return Promise.reject({ message: 'not authorized' });
         }
       })
-      .catch((err) => Promise.reject({ message: err }));
+      .catch((err) => Promise.reject({ message: 'Login failed. Are username and password correct?', type: 'LoginFailed' }));
   }
 
   public getAll(): Promise<User[]> {
