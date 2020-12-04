@@ -113,7 +113,7 @@
           accept="image/*"
           (change)="onFileChange($event)"
         />
-        <button mat-button (click)="submit()">Save</button>
+        <button mat-raised-button class="submit-button" color="primary" (click)="submit()">Save</button>
       </form>
       <div class="image-container">
         <img *ngFor="let img of previewImages" [src]="img.result" />

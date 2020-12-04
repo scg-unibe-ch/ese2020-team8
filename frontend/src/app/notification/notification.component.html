@@ -86,7 +86,8 @@
           Transaction Price: {{ notification.Transaction.price }}<br />
         </p>
 
-        <div *ngIf="notification.Transaction.Product.delivery">
+        <!--Here the second condition is there to avoid to display unnecessarily the "Please send ..." phrase-->
+        <div *ngIf="notification.Transaction.Product.delivery && notification.Transaction.firstName">
           <br />
           <h3>Please send the product to the following address:</h3>
           <p>
@@ -111,7 +112,7 @@
 
       <div *ngIf="notification.notificationType === 'rejectionNotification'">
         <h2>Your Item "{{notification.Product.title}}" has been rejected</h2>
-        <p>Sorry your item has been rejected. Maybe try selling it in the darknet;-)</p>
+        <p>Sorry that your item has been rejected. Maybe try selling it in the darknet ;-)</p>
       </div>
 
       <div *ngIf="notification.notificationType === 'questionNotification'">
