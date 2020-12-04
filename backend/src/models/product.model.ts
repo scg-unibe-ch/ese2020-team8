@@ -62,11 +62,17 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             productType: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    isIn: [['good', 'service']],
+                }
             },
             purchaseType: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    isIn: [['rent', 'buy']],
+                }
             },
             availability: {
                 type: DataTypes.BOOLEAN,
@@ -84,7 +90,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 type: DataTypes.STRING,
                 defaultValue: 'pending',
                 validate: {
-                    isIn: [['pending', 'approved', 'rejected', 'inactive', 'sold', 'rent']],
+                    isIn: [['pending', 'approved', 'rejected', 'returned', 'inactive', 'sold', 'rent']],
                 }
             },
             rentalDays: {

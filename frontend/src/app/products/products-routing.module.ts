@@ -9,6 +9,7 @@ import { UpdateComponent } from './update/update.component';
 import { BuyComponent } from './buy/buy.component';
 import { PayComponent } from './pay/pay.component';
 import { HistoryComponent } from './history/history.component';
+import { QuestionFormComponent } from './question/question-form/question-form.component';
 import { DetailsComponent } from './details/details.component';
 import {RoleGuard} from '../admin/role.guard';
 import {ApproveComponent} from './approve/approve.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'products/favorites',
     component: FavoritesComponent,
+  },
+  {
+    path: 'products/:id/question-form',
+    component: QuestionFormComponent,
     canActivate: [AuthGuard],
   },
 ];

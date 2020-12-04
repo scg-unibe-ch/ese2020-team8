@@ -1,67 +1,49 @@
-<mat-card class="product-show-detail">
-    <section class="title">
-        <header>
-            <h1> {{ product.title }} </h1>
-        </header>
-        <hr class="solid">
-    </section>
+
+<mat-card>
+    <h2>{{ product.title }}</h2>
     <section class="photos">
-        <!--Display all product pictures in a gallery-->
-        <div class="photo-div">
-            <img *ngFor="let photo of photos" [src]="photo.imageSource"/>
-        </div>
+      <!--Display all product pictures in a gallery-->
+      <div *ngIf="photos.length" class="photo-div">
+        <img *ngFor="let photo of photos" [src]="photo.imageSource" />
+      </div>
+      <img *ngIf="!photos.length" src="assets/boat.png" />
+    </section>
+    <section *ngIf="product.description">
+      <pre>{{ product.description }}</pre>
+      <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
     </section>
     <section class="attributes">
-        <!--Display all product attributes-->
-        <div *ngIf="product.description">
-            <br>
-            <h2 >Description</h2>
-            <mat-card class="description-text-div">
-                <pre>{{ product.description }}</pre> <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
-            </mat-card>
-        </div>
-        <div *ngIf="product.price">
-            <h2 >Price</h2>
-            <p *ngIf="(product.productType === 'service') || product.purchaseType === 'lend'">{{ product.price }} CHF/day</p>
-            <p *ngIf="(product.productType === 'good') && product.purchaseType === 'buy'">{{ product.price }} CHF</p>
-        </div>
-        <div *ngIf="product.productType">
-            <h2 >Type of product</h2>
-            <p>
-                {{ product.productType }}
-            </p>
-        </div>
-        <div *ngIf="product.purchaseType">
-            <h2 >Purchase type</h2>
-            <p>
-                {{ product.purchaseType }}
-            </p>
-        </div>
-        <div *ngIf="showAvailability()">
-            <h2 >Availability</h2>
-            <p *ngIf="product.availability === true">
-                available
-            </p>
-            <p *ngIf="product.availability === false">
-                unavailable
-            </p>
-        </div>
-        <div *ngIf="product.location">
-            <h2 >Location</h2>
-            <p>
-                {{ product.location }}
-            </p>
-        </div>
-        <div *ngIf="product.productType === 'good'">
-            <h2 >Delivery</h2>
-            <p *ngIf="product.delivery === true">
-                Delivery is possible
-            </p>
-            <p *ngIf="product.delivery === false">
-                No delivery possible
-            </p>
-        </div>
-        <ng-content></ng-content>
-        <app-approval-buttons *ngIf="pageType === 'show-approval'"></app-approval-buttons>
+      <!--Display all product attributes-->
+      <span>Price</span>
+      <p *ngIf="product.purchaseType === 'rent'; else elseBlock">
+        {{ product.price }} $ (per rental day)
+      </p>
+      <ng-template #elseBlock>
+        <p>{{ product.price }} $</p>
+      </ng-template>
+      <span>Type of product</span>
+      <p>
+        {{ product.productType }}
+      </p>
+      <span>Purchase type</span>
+      <p>
+        {{ product.purchaseType }}
+      </p>
+      <span *ngIf="showAvailability()">Availability</span>
+      <p *ngIf="showAvailability()">
+        {{ product.availability ? "available" : "unavailable" }}
+      </p>
+      <span>Location</span>
+      <p>
+        {{ product.location }}
+      </p>
+      <span *ngIf="product.productType === 'good'">Delivery</span>
+      <p *ngIf="product.productType === 'good'">
+        {{ product.delivery ? "Delivery is possible" : "No Delivery possible" }}
+      </p>
     </section>
+    <ng-content></ng-content>
+  <mat-card-actions>
+    <ng-content select="button"></ng-content>
+  </mat-card-actions>
 </mat-card>

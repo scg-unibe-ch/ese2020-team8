@@ -1,0 +1,26 @@
+:host {
+  width: 100%;
+}
+
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+
+mat-form-field {
+  width: 100%;
+  min-height: 100px;
+}
+  
+  button {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 7px;
+  }
+  
+  .question-form>form {
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  

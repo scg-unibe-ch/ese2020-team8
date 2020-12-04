@@ -1,8 +1,26 @@
-<app-product-show *ngIf="product" [product]="product">
-  <button color="primary" mat-flat-button (click)="goBack()">
-    Back
-  </button>
-  <button *ngIf="userService.loggedIn" color="primary" mat-flat-button (click)="goToBuy(product)">
-    Buy
-  </button>
-</app-product-show>
+<div class="banner">
+  <div class="slogan">
+    <h1>Marketplace</h1>
+  </div>
+</div>
+
+<mat-card class="main">
+  <app-product-show *ngIf="product" [product]="product">
+    <app-product-question-answers
+      *ngIf="userService.loggedIn && questions"
+      [isOwnProduct]="isOwnProduct"
+      [questions]="questions"
+      (goToEvent)="goToQuestion()"
+    ></app-product-question-answers>
+
+    <button mat-button (click)="goBack()">Back</button>
+    <button
+      *ngIf="userService.loggedIn && !isOwnProduct"
+      color="primary"
+      mat-raised-button
+      (click)="goToBuy(product)"
+    >
+      Buy
+    </button>
+  </app-product-show>
+</mat-card>

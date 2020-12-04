@@ -1,21 +1,15 @@
 <div class="banner">
   <div class="slogan">
-    <span>Babies</span><img src="/assets/heart.png"><span>it</span>
+    <h1>Babies<img src="/assets/heart.png">it</h1>
   </div>
 </div>
 
-<section class="products">
-  <app-product-browse></app-product-browse>
-</section>
-
-<mat-card *ngIf="userService.loggedIn">
-  <button *ngIf="!secureEndpointResponse" mat-flat-button color="primary" (click)="accessSecuredEndpoint()">
-    Access Secure Endpoint (only for logged in users)
-  </button>
-  {{ secureEndpointResponse }}
-</mat-card>
-
-<section class="register-box">
+<section *ngIf="!userService.loggedIn" class="register-box">
   <span>Not registered yet? You're missing all the nice deals on Baby gadgets</span>
   <button mat-flat-button color="primary" routerLink="/user/register">Register</button>
 </section>
+
+<mat-card class="main">
+  <app-product-browse></app-product-browse>
+</mat-card>
+

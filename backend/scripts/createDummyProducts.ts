@@ -27,7 +27,7 @@ const PRODUCT1 = {
 const PRODUCT2 = {
     title: 'Baby Bed Mini',
     description: 'This Baby-bed suits the small children',
-    price: 200,
+    price: 2,
     productType: 'good',
     purchaseType: 'rent',
     availability: true,

@@ -18,9 +18,10 @@ import { OrderComponent } from '../order/order.component';
   styleUrls: ['./buy.component.css'],
 })
 export class BuyComponent implements OnInit {
-  productId: string;
+  productId: number;
   product: IProduct;
   transactionPrice: number;
+  isChecked = false;
 
   deliveryForm = new FormGroup({
     firstName: new FormControl(''),
@@ -50,7 +51,7 @@ export class BuyComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.productService.get(productId).subscribe((product) => {
+    this.productService.get(parseInt(productId, 10)).subscribe((product) => {
       this.productId = product.id;
       this.product = product;
     });
@@ -65,7 +66,6 @@ export class BuyComponent implements OnInit {
 
     this.dialog
       .open(OrderComponent, {
-        height: '400px',
         width: '600px',
         data: order,
       })

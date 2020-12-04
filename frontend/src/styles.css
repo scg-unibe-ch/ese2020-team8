@@ -11,3 +11,35 @@ body {
 .mat-card {
   margin: 20px 0;
 }
+:host {
+  width: 100%;
+}
+.banner {
+  width: 100%;
+  height: 30vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+.slogan {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20vh;
+  display: flex;
+  align-items: baseline;
+  max-height: 50%;
+}
+.slogan>h1>img {
+  width: 5%;
+}
+
+.slogan h1 {
+  font-size: 4rem;
+  color: #ffffff98;
+  margin-left: -16px;
+}
+.main {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}

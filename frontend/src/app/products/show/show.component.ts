@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../products.service';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-product-show',
   templateUrl: './show.component.html',
@@ -10,13 +11,16 @@ import { environment } from 'src/environments/environment';
 export class ShowComponent implements OnInit {
 
   pageType: string;
+  productId: string;
+  panelOpenState = false;
+
 
   @Input() product: IProduct;
   photos: {imageSource: string; }[];
   slides: {image: string; }[];
 
-  constructor(
-  ) { }
+  constructor() {}
+
 
   ngOnInit(): void {
       this.photos = this.product.Photos.map((photo) => {
@@ -33,4 +37,5 @@ export class ShowComponent implements OnInit {
     this.product.productType === 'good' &&
     this.product.purchaseType  === 'rent';
   }
+
 }

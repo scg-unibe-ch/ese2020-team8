@@ -4,6 +4,15 @@
   flex-wrap: wrap;
 }
 
+.search {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inherit;
+  margin-top: 50px;
+  margin-bottom: 73px;
+}
+
 .checkbox-section {
   display: flex;
   align-content: center;

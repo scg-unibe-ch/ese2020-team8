@@ -10,7 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-  productId: string;
+  productId: number;
 
   productForm = this.fb.group({
     title: '',
@@ -33,7 +33,7 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.productService.get(productId).subscribe( product  => {
+    this.productService.get(parseInt(productId, 10)).subscribe( product  => {
       this.productId = product.id;
       this.productForm.patchValue(product);
     });
@@ -50,7 +50,9 @@ export class UpdateComponent implements OnInit {
         this.productId,
         this.productForm.value
     ).subscribe( () => {
-      this.snackBar.open('Successfully updated advertisement. Wait for an admin to approve it');
+      this.snackBar.open('Successfully updated advertisement. Wait for an admin to approve it', 'close', {
+        duration: 5000,
+      })
       this.router.navigate(['products', 'manage']);
     });
   }

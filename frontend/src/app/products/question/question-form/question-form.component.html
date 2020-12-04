@@ -1,0 +1,23 @@
+<div class="banner">
+  <div class="slogan">
+    <h1>Marketplace</h1>
+  </div>
+</div>
+
+<mat-card class="main">
+  <h2>Ask a Question</h2>
+  <mat-card class="question-Form" (keyup.enter)="askQuestion()">
+    <p>Your question</p>
+    <form [formGroup]="questionForm">
+      <mat-form-field>
+        <mat-label></mat-label>
+        <input matInput formControlName="text" placeholder="" />
+      </mat-form-field>
+    </form>
+    <button color="primary" mat-button (click)="goBack()">Back</button>
+    <button color="primary" mat-flat-button (click)="askQuestion()">
+      Submit
+    </button>
+  </mat-card>
+
+</mat-card>

@@ -14,14 +14,14 @@ export class UserService {
   url = environment.endpointURL + '/user';
 
   token: string;
-  user: string;
+  user: UserToken;
   loggedIn: boolean;
   isAdmin: boolean;
 
   walletInfo$ = this.http.get<UserProfile>(`${this.url}/me`).pipe( map(user => user.wallet));
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private _snackBar: MatSnackBar,
     private router: Router
     ) {
@@ -64,7 +64,15 @@ export class UserService {
     localStorage.removeItem('userName');
 
     this.checkUserStatus();
-    this.router.navigate(["/"])
+    this.router.navigate(['/']);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(this.url + '/edit', user);
+  }
+
+  getProfile(): Observable<User> {
+    return this.http.get<User>(this.url + '/me');
   }
 
   checkUserStatus(): void {
@@ -72,9 +80,9 @@ export class UserService {
     this.token = localStorage.getItem('userToken');
 
     if (this.token) {
-      const user = JSON.parse(atob(this.token.split('.')[1]));
+      const user: UserToken = JSON.parse(atob(this.token.split('.')[1]));
 
-      this.user = user.userName;
+      this.user = user;
       this.isAdmin = user.isAdmin;
     }
 
@@ -102,7 +110,9 @@ export class UserService {
       );
       this._snackBar.open(
         `Backend returned error: ${error.error.errors[0].message} `
-      );
+        , 'close', {
+          duration: 5000,
+        })
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
@@ -111,7 +121,9 @@ export class UserService {
       );
       this._snackBar.open(
         `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
+        , 'close', {
+          duration: 5000,
+        })
     }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');
@@ -122,3 +134,10 @@ export class UserService {
 interface UserProfile {
   wallet: number;
 }
+
+export interface UserToken {
+  userName: string;
+  userId: number;
+  isAdmin: boolean;
+}
+

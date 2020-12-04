@@ -19,7 +19,7 @@ export async function checkProductAuthorization(req: IAuthRequest, res: Response
             if (product) {
                 next();
             } else {
-                res.status(403).send({ message: 'Unauthorized' });
+                res.status(403).send({ message: 'Unauthorized. This product doesn\'t belong to your account.', name: 'NotYourProduct' });
             }
         }
     } catch (err) {
