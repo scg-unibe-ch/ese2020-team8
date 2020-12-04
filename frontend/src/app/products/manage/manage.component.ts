@@ -20,7 +20,7 @@ export class ManageComponent implements OnInit {
     public userService: UserService,
     public router: Router,
     private productService: ProductsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.reloadProducts();
   }
@@ -46,6 +46,14 @@ export class ManageComponent implements OnInit {
             .subscribe(() => this.reloadProducts());
         }
       });
+  }
+
+  disable(product: IProduct): void {
+    this.productService.disable(product.id).subscribe(() => this.reloadProducts());
+  }
+
+  enable(product: IProduct): void {
+    this.productService.enable(product.id).subscribe(() => this.reloadProducts());
   }
 
   return(product: IProduct): void {
