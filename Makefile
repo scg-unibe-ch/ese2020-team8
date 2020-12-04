@@ -49,3 +49,9 @@ createUsers:    ## dummyProduct
 createProduct:    ## dummyProduct
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend npm run build:scripts
 		docker-compose -f docker/dev/docker-compose.yml -p $(project_name) run --rm backend node ./scripts/build/scripts/createDummyProducts.js
+
+build:
+	  docker build -t jandietrich/ese2020-team8 backend
+		docker build -t jandietrich/ese2020-team8-frontend frontend
+		docker push jandietrich/ese2020-team8
+		docker push jandietrich/ese2020-team8-frontend
