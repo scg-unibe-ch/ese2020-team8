@@ -1,13 +1,9 @@
-<mat-card class="product-list">
-  <!-- ToDo Button should only be shown if Active Products are shown -->
-  <mat-card>
-    <button mat-fab color="primary" (click)="goToCreate()">
-      <mat-icon>add</mat-icon>
-    </button>
-    <p>Create new Product</p>
-  </mat-card>
-
-  <h1>My Sales</h1>
+<div class="banner">
+  <div class="slogan">
+    <h1>My Sales</h1>
+  </div>
+</div>
+<mat-card class="main">
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value="All">
     <mat-button-toggle value="All" (click)="reloadProducts()">All</mat-button-toggle>
@@ -16,6 +12,16 @@
     <mat-button-toggle value="Sold"  (click)="filterSoldProducts('sold')">Sold</mat-button-toggle>
   </mat-button-toggle-group>
 
+    <!-- ToDo Button should only be shown if Active Products are shown -->
+    <mat-card>
+      <div class="create-button">
+        <button mat-fab color="primary" (click)="goToCreate()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <p class="buttonLabel">Create new Product</p>
+      </div>
+    </mat-card>
+  
 
   <app-product-item
     *ngFor="let product of filteredProducts; index as productId"

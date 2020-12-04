@@ -1,30 +1,40 @@
-<mat-card>
+<div class="banner">
+  <div class="slogan">
+    <h1>Marketplace</h1>
+  </div>
+</div>
+
+<mat-card class="main">
   <h1 *ngIf="product.productType === 'good' && product.purchaseType === 'buy'">
-    Buy Good
+    Buy "{{product.title}}"
   </h1>
   <h1 *ngIf="product.productType === 'good' && product.purchaseType === 'rent'">
-    Rent Good
+    Rent "{{product.title}}"
   </h1>
-  <h1 *ngIf="product.productType === 'service'">Buy Service</h1>
+  <h1 *ngIf="product.productType === 'service'">Buy "{{product.title}}"</h1>
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>{{ product.title }}</mat-panel-title>
-      <mat-panel-description>{{ product.price }}</mat-panel-description>
+      <mat-panel-title>Product Details</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
     </mat-expansion-panel-header>
     <app-product-show [product]="product"></app-product-show>
   </mat-expansion-panel>
 
-  <p *ngIf="product.productType === 'service'">
-    Once the transaction is complete, you may exchange information with the
-    seller, about when and where exactly the service shell be provided.
-  </p>
+  <mat-card *ngIf="product.productType === 'service' || product.delivery === false">
+    <p *ngIf="product.productType === 'service'">
+      Once the transaction is complete, you may exchange information with the
+      seller, about when and where exactly the service shall be provided.
+    </p>
+  
+    <p *ngIf="product.delivery === false">
+      Delivery Options:<br>
+      for this Product, delivery is not possible. When the
+      transaction is complete, the seller will contact you to define where to
+      exchange the product.
+    </p>
+  </mat-card>
 
-  <p *ngIf="product.delivery === false">
-    Delivery Options: for this Product, delivery is not possible. When the
-    transaction is complete, the seller will contact you to define where to
-    exchange the product.
-  </p>
 
   <mat-card class="rent-card" *ngIf="product.purchaseType === 'rent'">
     <p>For how many days do you want to rent the product</p>
@@ -37,41 +47,39 @@
       <!-- <button color="primary" mat-flat-button [disabled]="!rentalDaysForm.valid">calculate Price</button> -->
     </form>
   </mat-card>
-
-  <mat-card class="delivery-card" *ngIf="product.delivery === true">
-    <p>Delivery Address</p>
-    <form [formGroup]="deliveryForm">
-      <mat-form-field>
-        <mat-label>First name</mat-label>
-        <input matInput formControlName="firstName" placeholder="First name" />
-      </mat-form-field>
-      <br />
-      <mat-form-field>
-        <mat-label>Last name</mat-label>
-        <input matInput formControlName="lastName" placeholder="Last name" />
-      </mat-form-field>
-      <br />
-      <mat-form-field>
-        <mat-label>Street + Nr.</mat-label>
-        <input matInput formControlName="streetNr" placeholder="Street Nr" />
-      </mat-form-field>
-      <br />
-      <mat-form-field>
-        <mat-label>ZIP Code</mat-label>
-        <input matInput formControlName="zip" placeholder="ZIP Code" />
-      </mat-form-field>
-      <br />
-      <mat-form-field>
-        <mat-label>City</mat-label>
-        <input matInput formControlName="city" placeholder="City" />
-      </mat-form-field>
-      <br />
-    </form>
-  </mat-card>
-
-  <!--             <p>
-                Form Value: {{ deliveryForm.value | json }}
-            </p> -->
+  <div *ngIf="product.delivery === true">
+    <mat-slide-toggle class="deliveryToggle" [(ngModel)]="isChecked">Do you wish delivery?</mat-slide-toggle>
+    <mat-card class="delivery-card" *ngIf="isChecked">
+      <p>Delivery Address</p>
+      <form [formGroup]="deliveryForm">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName" placeholder="First name" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last name" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Street + Nr.</mat-label>
+          <input matInput formControlName="streetNr" placeholder="Street Nr" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>ZIP Code</mat-label>
+          <input matInput formControlName="zip" placeholder="ZIP Code" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" placeholder="City" />
+        </mat-form-field>
+        <br />
+      </form>
+    </mat-card>
+  </div>
 
   <button color="primary" mat-button (click)="goBack()">Back</button>
   <button color="primary" mat-raised-button (click)="confirmOrder()">

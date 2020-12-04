@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct, ProductsService } from '../../products.service';
 import { QuestionsService } from '../../questions.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-question-form',
@@ -22,6 +24,7 @@ export class QuestionFormComponent implements OnInit {
     public router: Router,
     private route: ActivatedRoute,
     private productService: ProductsService,
+    private location: Location,
   ) { }
 
 
@@ -38,6 +41,10 @@ export class QuestionFormComponent implements OnInit {
     this.questionService.ask(productId, text).subscribe((res) => {
       this.router.navigate(['products', productId, 'show']);
     })
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
 

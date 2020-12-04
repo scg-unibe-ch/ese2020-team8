@@ -1,9 +1,12 @@
+:host {
+  width: 100%;
+}
+
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+
 button {
     margin-right: 7px;
-}
-mat-card {
-  width: 90vw;
-  max-width: 1200px;
-  padding: 12px;
-  box-sizing: border-box;
 }

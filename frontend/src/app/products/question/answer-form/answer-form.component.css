@@ -3,24 +3,26 @@
     height: 100%;
   }
 
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+  
+
 .answer-form {
     width: 25%;
     margin: 10vh auto 0 auto;
     padding: 2rem;
   }
   
-  mat-form-field {
-    width: 100%;
-  }
+mat-form-field {
+  width: 100%;
+}
   
-  button {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+button {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 7px;
+}
   
-  .answer-form>form {
-    display:flex;
-    flex-direction: column;
-    align-items: start;
-  }
-  
+

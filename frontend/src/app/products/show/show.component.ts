@@ -19,8 +19,7 @@ export class ShowComponent implements OnInit {
   photos: {imageSource: string; }[];
   slides: {image: string; }[];
 
-  constructor(
-  ) {}
+  constructor() {}
 
 
   ngOnInit(): void {
