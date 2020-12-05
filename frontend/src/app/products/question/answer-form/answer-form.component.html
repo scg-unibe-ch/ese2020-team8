@@ -5,20 +5,27 @@
 </div>
 
 <mat-card class="main">
-  <h2>Give an answer</h2>
-  <p>Your answer</p>
-  <mat-card class="question-Form" (keyup.enter)="answerQuestion()">
-    <form [formGroup]="answerForm">
-      <mat-form-field>
-        <mat-label></mat-label>
-        <input matInput formControlName="text" placeholder="" />
-      </mat-form-field>
-    </form>
-    <button color="primary" mat-button (click)="goBack()">Back</button>
-    <button color="primary" mat-flat-button (click)="answerQuestion()">
+  <ng-container *ngIf="question">
+    <h2>Your Answer to Question about "{{question.Product.title}}"</h2>
+    <mat-card>
+      <h3>Question</h3>
+      <p>{{question.text}}</p>
+      
+    </mat-card>
+    <mat-card class="question-Form" (keyup.enter)="answerQuestion()">
+      <p>Your answer</p>
+      <form [formGroup]="answerForm">
+        <mat-form-field>
+          <mat-label></mat-label>
+          <textarea matInput formControlName="text" placeholder=""></textarea>
+        </mat-form-field>
+      </form>
+      <button color="primary" mat-button (click)="goBack()">Back</button>
+      <button color="primary" mat-flat-button (click)="answerQuestion()">
         Submit
-    </button>
-  </mat-card>
+      </button>
+    </mat-card>
+
+  </ng-container>
+
 </mat-card>
-
-
