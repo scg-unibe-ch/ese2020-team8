@@ -26,9 +26,9 @@ export class BuyComponent implements OnInit {
   isChecked = false;
 
   deliveryForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    streetNr: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    streetNr: new FormControl('', [Validators.required]),
     zip: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
@@ -38,7 +38,7 @@ export class BuyComponent implements OnInit {
   });
 
   rentalDaysForm = new FormGroup({
-    rentalDays: new FormControl('', [Validators.required]),
+    rentalDays: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000000000)]),
   });
 
   constructor(

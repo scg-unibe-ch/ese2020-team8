@@ -36,7 +36,7 @@ export class PayComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(4),
     ]),
-    city: new FormControl('')
+    city: new FormControl('', [Validators.required])
   });
 
   rentalDaysForm = new FormGroup({

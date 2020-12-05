@@ -41,7 +41,8 @@
     <form [formGroup]="rentalDaysForm">
       <mat-form-field>
         <mat-label>Rental Days</mat-label>
-        <input required matInput formControlName="rentalDays" placeholder="" />
+        <input required  matInput type="number" formControlName="rentalDays" placeholder="" />
+        <mat-error *ngIf="rentalDaysForm.get('rentalDays').invalid"></mat-error>
       </mat-form-field>
       <br />
       <!-- <button color="primary" mat-flat-button [disabled]="!rentalDaysForm.valid">calculate Price</button> -->
@@ -54,27 +55,32 @@
       <form [formGroup]="deliveryForm">
         <mat-form-field>
           <mat-label>First name</mat-label>
-          <input matInput formControlName="firstName" placeholder="First name" />
+          <input matInput required formControlName="firstName" placeholder="First name" />
+          <mat-error *ngIf="deliveryForm.get('firstName').invalid"></mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>Last name</mat-label>
-          <input matInput formControlName="lastName" placeholder="Last name" />
+          <input matInput required formControlName="lastName" placeholder="Last name" />
+          <mat-error *ngIf="deliveryForm.get('lastName').invalid"></mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>Street + Nr.</mat-label>
-          <input matInput formControlName="streetNr" placeholder="Street Nr" />
+          <input matInput required formControlName="streetNr" placeholder="Street Nr" />
+          <mat-error *ngIf="deliveryForm.get('streetNr').invalid"></mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>ZIP Code</mat-label>
-          <input matInput formControlName="zip" placeholder="ZIP Code" />
+          <input matInput required formControlName="zip" placeholder="ZIP Code" />
+          <mat-error *ngIf="deliveryForm.get('zip').invalid"></mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>City</mat-label>
-          <input matInput formControlName="city" placeholder="City" />
+          <input matInput required formControlName="city" placeholder="City" />
+          <mat-error *ngIf="deliveryForm.get('city').invalid"></mat-error>
         </mat-form-field>
         <br />
       </form>
@@ -82,6 +88,7 @@
   </div>
 
   <button color="primary" mat-button (click)="goBack()">Back</button>
+  <button *ngIf=" isChecked && deliveryForm.invalid" mat-raised-button disabled> Order </button>
   <button *ngIf="product.purchaseType === 'buy' || (product.purchaseType === 'rent' && rentalDaysForm.valid)" color="primary" mat-raised-button (click)="confirmOrder()">
     Order
   </button>
