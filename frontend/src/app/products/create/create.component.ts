@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
     availability: '',
     location: ['', Validators.required],
     duration: '',
-    delivery: ['', Validators.required],
+    delivery: '',
   });
   previewImages: any[];
 
@@ -39,7 +39,12 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void { }
 
   submit(): void {
-    this.productService.create(this.productForm.value).subscribe((product) => {
+    const product = this.productForm.value;
+    if (!product.purchaseType){
+      product.purchaseType = 'buy';
+    }
+    this.productService.create(product).subscribe((product) => {
+      console.log(product)
       if (this.uploadImages && this.uploadImages.length) {
         this.imageService
           .upload(product.id, this.uploadImages)
