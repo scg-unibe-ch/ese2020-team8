@@ -8,10 +8,17 @@
       Total: {{totalPrice}}$
     </li>
   </ul>
+</div>
 
-  <ul *ngIf="data.product.delivery">
+<div *ngIf="!data.deliveryAddress.valid" mat-dialog-content style=display:none>
+  <ul >
     <li>
-      Address: {{data.deliveryAddress.firstName}}, {{data.deliveryAddress.lastName}}, {{data.deliveryAddress.streetNr}}, {{data.deliveryAddress.zip}}, {{data.deliveryAddress.city}}
+      Address: <br />
+      {{data.deliveryAddress.firstName}}<br />
+      {{data.deliveryAddress.lastName}}<br />
+      {{data.deliveryAddress.streetNr}}<br />
+      {{data.deliveryAddress.zip}}<br />
+      {{data.deliveryAddress.city}}
     </li>
   </ul>
 </div>
