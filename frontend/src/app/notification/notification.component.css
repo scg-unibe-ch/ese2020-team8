@@ -1,8 +1,12 @@
 :host {
     width: 100%;
-    max-width: 1200px;
   }
 
+.banner {
+   background: url('/assets/banner.jpeg');
+   background-size: contain;
+}
+  
 mat-panel-title {
   font-weight: bold;
 }

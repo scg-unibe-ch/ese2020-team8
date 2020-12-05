@@ -11,6 +11,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class LoginComponent implements OnInit {
   userName = '';
   password = '';
+  visible: boolean;
 
   userToken: string;
   loggedIn = false;
@@ -40,5 +41,9 @@ export class LoginComponent implements OnInit {
 
   logout(): void {
     this.userService.logout();
+  }
+
+  toggle() {
+    this.visible = !this.visible;
   }
 }

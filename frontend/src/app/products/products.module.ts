@@ -17,6 +17,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ManageComponent } from './manage/manage.component';
@@ -40,6 +41,8 @@ import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
 import { AnswerFormComponent } from './question/answer-form/answer-form.component';
 import { QuestionAnswersComponent } from './details/question-answers/question-answers.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReturnComponent } from './return/return.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,7 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     ApproveComponent,
     AnswerFormComponent,
     QuestionAnswersComponent,
+    ReturnComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +80,7 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     MatCardModule,
     MatProgressBarModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
@@ -83,7 +88,8 @@ import { QuestionAnswersComponent } from './details/question-answers/question-an
     Ng2SearchPipeModule,
     MatBadgeModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule,
   ],
   exports: [
     BrowseComponent

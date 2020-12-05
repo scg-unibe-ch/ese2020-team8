@@ -1,30 +1,20 @@
-<mat-card>
-  <h2>Filter</h2>
-  <form [formGroup]="filterForm">
-    <mat-form-field>
-      <mat-label>Search for a Product / Service</mat-label>
-      <input
-        matInput
-        class="form-control"
-        type="text"
-        name="search"
-        [ngModel]="searchTerm"
-        (ngModelChange)="searchTermChange.emit($event)"
-        [ngModelOptions]="{ standalone: true }"
-        autocomplete="off"
-        placeholder="Search for a Product / Service"
-      />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+<form [formGroup]="filterForm">
+  <mat-form-field class="search">
+    <mat-label>Search for a Product / Service</mat-label>
+    <input matInput class="form-control" type="text" name="search" [ngModel]="searchTerm"
+      (ngModelChange)="searchTermChange.emit($event)" [ngModelOptions]="{ standalone: true }" autocomplete="off"
+      placeholder="Search for a Product / Service" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>
+<form [formGroup]="filterForm">
+  <mat-card>
     <div class="filter-group">
       <mat-form-field>
         <mat-label>Filter Location</mat-label>
         <mat-select formControlName="location">
           <mat-option>all</mat-option>
-          <mat-option
-            *ngFor="let location of productOptions.location"
-            [value]="location.value"
-          >
+          <mat-option *ngFor="let location of productOptions.location" [value]="location.value">
             <span [matBadge]="location.counter" matBadgeOverlap="false">
               {{ location.value }}
             </span>
@@ -35,10 +25,7 @@
         <mat-label>Filter Product Type</mat-label>
         <mat-select formControlName="productType">
           <mat-option>all</mat-option>
-          <mat-option
-            *ngFor="let productType of productOptions.productType"
-            [value]="productType.value"
-          >
+          <mat-option *ngFor="let productType of productOptions.productType" [value]="productType.value">
             <span [matBadge]="productType.counter" matBadgeOverlap="false">
               {{ productType.value }}
             </span>
@@ -49,10 +36,7 @@
         <mat-label>Filter Purchase Type</mat-label>
         <mat-select formControlName="purchaseType">
           <mat-option>all</mat-option>
-          <mat-option
-            *ngFor="let purchaseType of productOptions.purchaseType"
-            [value]="purchaseType.value"
-          >
+          <mat-option *ngFor="let purchaseType of productOptions.purchaseType" [value]="purchaseType.value">
             <span [matBadge]="purchaseType.counter" matBadgeOverlap="false">
               {{ purchaseType.value }}
             </span>
@@ -72,5 +56,5 @@
         <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
       </section>
     </div>
-  </form>
-</mat-card>
+  </mat-card>
+</form>

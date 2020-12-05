@@ -45,4 +45,8 @@ export class AnswerFormComponent implements OnInit {
       this.location.back();
     }) 
   }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

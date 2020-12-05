@@ -50,7 +50,7 @@ export class RegisterComponent implements core.OnInit {
     zip: new FormControl(''),
     city: new FormControl(''),
     country: new FormControl(''),
-    passwordConfirm: new FormControl('', passwordRepeatValidator('password')),
+    passwordConfirm: new FormControl('', [ Validators.required, passwordRepeatValidator('password')]),
   });
 
   constructor(private router: Router, private userService: UserService) {}
@@ -79,7 +79,7 @@ export function passwordRepeatValidator(fcSelector: string): ValidatorFn {
   };
 }
 
-const passwordStrengthValidator = (
+export const passwordStrengthValidator = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const value: string = control.value || '';
@@ -102,4 +102,6 @@ const passwordStrengthValidator = (
         'Password must contain at least two of the following: numbers, lowercase letters, uppercase letters, or special characters.',
     };
   }
+
 };
+

@@ -90,7 +90,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 type: DataTypes.STRING,
                 defaultValue: 'pending',
                 validate: {
-                    isIn: [['pending', 'approved', 'rejected', 'inactive', 'sold', 'rent']],
+                    isIn: [['pending', 'approved', 'rejected', 'returned', 'inactive', 'sold', 'rent']],
                 }
             },
             rentalDays: {

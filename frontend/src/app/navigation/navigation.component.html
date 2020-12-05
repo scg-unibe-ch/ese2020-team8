@@ -2,22 +2,22 @@
   <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <a href="/" mat-button>
+  <button mat-button aria-label="go to marketplace" routerLink="/">
     <mat-icon>storefront</mat-icon>
     <span>Marketplace</span>
-  </a>
+  </button>
   <button *ngIf="userService.loggedIn" mat-button aria-label="go to favorite products" routerLink="/products/favorites">
     <mat-icon style="color: #cf73a3;">favorite</mat-icon>
     <span>Favorites</span>
   </button>
   <button *ngIf="userService.loggedIn" mat-button aria-label="go to product list" routerLink="/products/history">
     <mat-icon>shopping_basket</mat-icon>
-    <span>Purchase</span>
+    <span>Purchase History</span>
   </button>
   <button *ngIf="userService.loggedIn" mat-button aria-label="go to your product management dashboard"
     routerLink="/products/manage">
     <mat-icon>gavel</mat-icon>
-    <span>Sale</span>
+    <span>My Sales</span>
   </button>
   <button *ngIf="(userService.isAdmin && userService.loggedIn)" mat-button aria-label="go to approve list" routerLink="/admin/approve">
     <mat-icon>admin_panel_settings</mat-icon>
@@ -40,6 +40,10 @@
     <mat-icon>expand_more</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/user/edit">
+      <mat-icon>face</mat-icon>
+      <span>Profile</span>
+    </button>
     <button mat-menu-item (click)="userService.logout()">
       <mat-icon>exit_to_app</mat-icon>
       <span>Logout</span>

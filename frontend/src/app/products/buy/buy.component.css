@@ -1,23 +1,26 @@
+:host {
+  width: 100%;
+}
+
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
 
 .delivery-card {
-  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .rent-card {
-  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-mat-card {
-    width: 90vw;
-    max-width: 1200px;
-    padding: 12px;
-    box-sizing: border-box;
-  }
- 
 
-  mat-form-field {
-    margin: 10px 0;
-  }
+mat-card>button {
+  margin-top: 12px;
+}
 
-  form>button {
-    margin-bottom: 20px;
-  }
+.deliveryToggle {
+  margin-top: 12px;
+}

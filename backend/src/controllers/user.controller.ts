@@ -16,7 +16,6 @@ userController.post('/register', checkPasswordStrength,
 
 userController.post('/login',
     (req: Request, res: Response) => {
-        console.log(req.body);
         userService.login(req.body).then(login => res.send(login)).catch(err => res.status(403).send(err));
     }
 );
@@ -40,6 +39,19 @@ userController.get('/',
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             return userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
+        } catch (err) {
+            next(err);
+        }
+    }
+);
+
+userController.put('/edit',
+    verifyToken, checkPasswordStrength,
+    async (req: IAuthRequest, res: Response, next: NextFunction) => {
+        try {
+            const userId = req.user.userId;
+            const user = await userService.update(userId, req.body);
+            res.send(user);
         } catch (err) {
             next(err);
         }

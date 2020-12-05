@@ -1,6 +1,10 @@
-<mat-card class="product-list" *ngIf="products">
+<div class="banner">
+  <div class="slogan">
+    <h1>My Product History</h1>
+  </div>
+</div>
+<mat-card class="main" *ngIf="products">
   <!-- ToDo Button should only be shown if Active Products are shown -->
-  <h1>My Product History</h1>
 
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value="All">
     <mat-button-toggle value="All" (click)="resetFilter()">All</mat-button-toggle>

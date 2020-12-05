@@ -1,10 +1,6 @@
+
 <mat-card>
-  <mat-card-title>{{ product.title }}</mat-card-title>
-  <mat-card-content>
-    <section *ngIf="product.description">
-      <pre>{{ product.description }}</pre>
-      <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
-    </section>
+    <h2>{{ product.title }}</h2>
     <section class="photos">
       <!--Display all product pictures in a gallery-->
       <div *ngIf="photos.length" class="photo-div">
@@ -12,14 +8,18 @@
       </div>
       <img *ngIf="!photos.length" src="assets/boat.png" />
     </section>
+    <section *ngIf="product.description">
+      <pre>{{ product.description }}</pre>
+      <!--This has to be like this (on one line), else it inserts unnecessary carriage returns-->
+    </section>
     <section class="attributes">
       <!--Display all product attributes-->
       <span>Price</span>
-      <p *ngIf="product.purchaseType === 'lend'; else elseBlock">
-        {{ product.price }} CHF/day
+      <p *ngIf="product.purchaseType === 'rent'; else elseBlock">
+        {{ product.price }} $ (per rental day)
       </p>
       <ng-template #elseBlock>
-        <p>{{ product.price }} CHF</p>
+        <p>{{ product.price }} $</p>
       </ng-template>
       <span>Type of product</span>
       <p>
@@ -43,7 +43,6 @@
       </p>
     </section>
     <ng-content></ng-content>
-  </mat-card-content>
   <mat-card-actions>
     <ng-content select="button"></ng-content>
   </mat-card-actions>

@@ -110,7 +110,10 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             },
             wallet: {
                 type: DataTypes.DECIMAL(19, 2),
-                defaultValue: 500 // each user gets seed capital of 500
+                defaultValue: 500, // each user gets seed capital of 500
+                validate: {
+                    min: 0
+                }
             }
         },
             {

@@ -1,0 +1,28 @@
+
+:host {
+  width: 100%;
+
+}
+
+.user-auth-card {
+  margin-right: auto;
+  margin-left: auto;
+  width: 25%;
+}
+
+.user-auth-card>form {
+  display:flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  margin: 10px 0;
+}
+
+form>button {
+  margin-bottom: 20px;
+}
+
+mat-form-field mat-icon {
+  cursor: pointer;
+}
