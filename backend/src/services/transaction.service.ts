@@ -14,7 +14,7 @@ export class TransactionService {
     });
   }
 
-  public async create(product: Product, buyerId: number, rentalDays: number, deliveryAddress: IDeliveryAddress) {
+  public async create(product: Product, buyerId: number, rentalDays: number, totalPrice: number, deliveryAddress: IDeliveryAddress) {
     const transaction = {
       price: product.price,
       ProductId: product.id,
@@ -22,6 +22,7 @@ export class TransactionService {
       purchaseType: product.purchaseType,
       buyerId: buyerId,
       rentalDays: rentalDays,
+      totalPrice: totalPrice,
       ...deliveryAddress
     };
 
@@ -39,8 +40,8 @@ export class TransactionService {
           id: product.UserId,
         },
       });
-      buyer.wallet -= product.rentalDays ? product.price * product.rentalDays : product.price;
-      seller.wallet += product.rentalDays ? product.price * product.rentalDays : product.price;
+      buyer.wallet -= totalPrice;
+      seller.wallet += totalPrice;
 
       // set product status to sold for good
       if (product.productType === 'good' && product.purchaseType === 'buy') {

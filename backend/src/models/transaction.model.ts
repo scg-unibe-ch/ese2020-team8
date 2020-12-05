@@ -19,6 +19,7 @@ export interface TransactionAttributes {
     purchaseType: string;
     buyerId: number;
     rentalDays?: number;
+    totalPrice?: number;
     firstName?: string;
     lastName?: string;
     streetNr?: string;
@@ -39,6 +40,7 @@ export class Transaction
   purchaseType!: string;
   buyerId!: number;
   rentalDays?: number;
+  totalPrice?: number;
   firstName?: string;
   lastName?: string;
   streetNr?: string;
@@ -83,6 +85,9 @@ export class Transaction
           allowNull: false
         },
         rentalDays: {
+          type: DataTypes.INTEGER,
+        },
+        totalPrice: {
           type: DataTypes.INTEGER,
         },
         firstName: {
