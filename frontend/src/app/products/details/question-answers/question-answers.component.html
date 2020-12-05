@@ -11,13 +11,13 @@
       <div class="date">
         {{ question.createdAt | date: "short" }}
       </div>
-        <h3>Question</h3>
+        <h3>Question by "{{question.User.userName}}"</h3>
         <p>{{ question.text }}</p>
       <mat-card *ngIf="question.Answer" class="answer">
         <div class="date">
           {{ question.Answer.createdAt | date: "short" }}
         </div>
-        <h3>Answer</h3>
+        <h3>Answer by "{{question.Answer.User.userName}}"</h3>
         <p>{{ question.Answer.text }}</p>
       </mat-card>
     </mat-card>

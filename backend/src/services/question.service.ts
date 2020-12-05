@@ -1,6 +1,7 @@
 import { Answer } from '../models/answer.model';
 import { ProductAttributes, Product} from '../models/product.model';
 import { Question } from '../models/question.model';
+import { User } from '../models/user.model';
 
 class QuestionService {
   transporter: any;
@@ -14,7 +15,11 @@ class QuestionService {
       },
       include: [
         {
+          model: User as any
+        },
+        {
           model: Answer as any,
+          include: User as any,
         },
         {
           model: Product as any
@@ -28,7 +33,18 @@ class QuestionService {
       where: {
         ProductId: productId
       },
-      include: Answer as any
+      include: [
+        {
+          model: User as any
+        },
+        {
+          model: Answer as any,
+          include: User as any,
+        },
+        {
+          model: Product as any
+        }
+      ]
     });
   }
 
