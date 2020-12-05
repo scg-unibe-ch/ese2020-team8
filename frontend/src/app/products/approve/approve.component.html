@@ -1,7 +1,15 @@
-<app-product-show *ngIf="product" [product]="product">
-  <button color="primary" mat-flat-button (click)="goBack()">
-    Back
-  </button>
-  <button mat-flat-button color="primary" (click)="approve(product)">Approve</button>
-  <button mat-flat-button color="warn" (click)="reject(product)">Reject</button>
-</app-product-show>
+<div class="banner">
+  <div class="slogan">
+    <h1>Admin</h1>
+  </div>
+</div>
+
+<mat-card class="main">
+  <app-product-show *ngIf="product" [product]="product">
+    <button mat-flat-button (click)="goBack()">
+      Back
+    </button>
+    <button mat-flat-button color="primary" (click)="approve(product)">Approve</button>
+    <button mat-flat-button color="warn" (click)="reject(product)">Reject</button>
+  </app-product-show>
+</mat-card>
