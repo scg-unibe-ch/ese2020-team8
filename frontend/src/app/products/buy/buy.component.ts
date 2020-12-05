@@ -69,7 +69,7 @@ export class BuyComponent implements OnInit {
             data: {
               product: this.product,
               deliveryAddress: this.deliveryForm.value,
-              rentalDays: this.rentalDaysForm.value,
+              rentalDays: this.rentalDaysForm.get('rentalDays').value,
             },
           })
           .afterClosed()

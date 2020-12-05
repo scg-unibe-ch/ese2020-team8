@@ -1,20 +1,20 @@
 <h1 mat-dialog-title>Your order</h1>
-<!-- <div mat-dialog-content>
-  blabla:
+<div mat-dialog-content>
   <ul>
     <li>
       Price: {{data.product.price}}$
     </li>
     <li>
-      Total: {{data.totalPrice}}$
+      Total: {{totalPrice}}$
     </li>
   </ul>
 
-
+  <ul *ngIf="data.product.delivery">
+    <li>
+      Address: {{data.deliveryAddress.firstName}}, {{data.deliveryAddress.lastName}}, {{data.deliveryAddress.streetNr}}, {{data.deliveryAddress.zip}}, {{data.deliveryAddress.city}}
+    </li>
+  </ul>
 </div>
-
-  <h2 mat-dialog-title *ngIf="product.delivery">Delivery address:</h2>
-  <mat-dialog-content>{{ data.deliveryAddress }}</mat-dialog-content> -->
 
 
 <mat-dialog-actions>
