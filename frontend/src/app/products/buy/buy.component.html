@@ -73,7 +73,7 @@
         <br />
         <mat-form-field>
           <mat-label>ZIP Code</mat-label>
-          <input matInput required formControlName="zip" placeholder="ZIP Code" />
+          <input matInput required type="number" formControlName="zip" placeholder="ZIP Code" />
           <mat-error *ngIf="deliveryForm.get('zip').invalid"></mat-error>
         </mat-form-field>
         <br />
@@ -88,8 +88,15 @@
   </div>
 
   <button color="primary" mat-button (click)="goBack()">Back</button>
-  <button *ngIf=" isChecked && deliveryForm.invalid" mat-raised-button disabled> Order </button>
-  <button *ngIf="product.purchaseType === 'buy' || (product.purchaseType === 'rent' && rentalDaysForm.valid)" color="primary" mat-raised-button (click)="confirmOrder()">
-    Order
-  </button>
+  <div *ngIf="product.delivery && isChecked; else elseBlock">
+    <button *ngIf=" isChecked" mat-raised-button color="primary" [disabled]="deliveryForm.invalid" (click)="confirmOrder()"> Order </button>
+  </div>
+  <ng-template #elseBlock>
+    <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-raised-button (click)="confirmOrder()">
+      Order
+    </button>
+    <button *ngIf="product.purchaseType === 'rent'" [disabled]="rentalDaysForm.invalid" color="primary" mat-raised-button (click)="confirmOrder()">
+      Order
+    </button>
+  </ng-template>
 </mat-card>
