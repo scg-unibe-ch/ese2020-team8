@@ -81,7 +81,7 @@ export class BuyComponent implements OnInit {
       } else {
         this.snackbar.open(`You don't have enough money.`, 'close', {
           duration: 5000,
-        })
+        });
       }
     });
   }
@@ -104,10 +104,12 @@ export class BuyComponent implements OnInit {
   }
 
   checkBudget() {
-    const total = this.rentalDaysForm.value * this.product.price;
+    const total = this.rentalDaysForm.get('rentalDays').value
+      ? this.rentalDaysForm.get('rentalDays').value * this.product.price
+      : this.product.price;
     const hasEnoughMoney = this.userService
       .getProfile()
-      .pipe(map((profile) => profile.wallet <= total));
+      .pipe(map((profile) => profile.wallet >= total));
     return hasEnoughMoney;
   }
 }
