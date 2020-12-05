@@ -1,15 +1,32 @@
-
-.product-list {
-  width: 100vw;
-  box-sizing: border-box;
-  max-width: 1200px;
+:host {
+  width: 100%;
 }
 
-.product-list table {
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
+
+.mat-column-action{
+  width: 40%;
+}
+
+.mat-column-description{
+  text-align: left;
+  width: 20%;
+
+}
+.mat-column-title{
+  text-align: left;
+  width: 40%;
+}
+
+.main table {
   width: 100%;
 }
 
 button {
   margin-right: 7px;
+  margin-top: 4px;
 }
 
