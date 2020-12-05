@@ -1,9 +1,10 @@
+:host {
+  width: 100%;
+}
 
-mat-card {
-  width: 90vw;
-  max-width: 1200px;
-  padding: 12px;
-  box-sizing: border-box;
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
 }
 
 mat-form-field {
