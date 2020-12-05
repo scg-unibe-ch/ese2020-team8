@@ -12,7 +12,14 @@ class QuestionService {
       where: {
         id: questionId,
       },
-      include: Answer as any
+      include: [
+        {
+          model: Answer as any,
+        },
+        {
+          model: Product as any
+        }
+      ]
     });
   }
 
