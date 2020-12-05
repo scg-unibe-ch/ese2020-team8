@@ -82,7 +82,7 @@
   </div>
 
   <button color="primary" mat-button (click)="goBack()">Back</button>
-  <button *ngIf="product.productType === 'service' || (product.purchaseType === 'rent' && rentalDaysForm.valid)" color="primary" mat-raised-button (click)="confirmOrder()">
+  <button *ngIf="product.purchaseType === 'buy' || (product.purchaseType === 'rent' && rentalDaysForm.valid)" color="primary" mat-raised-button (click)="confirmOrder()">
     Order
   </button>
 </mat-card>
