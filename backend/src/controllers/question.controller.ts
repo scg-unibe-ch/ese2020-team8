@@ -15,7 +15,7 @@ questionController.get(
   '/:questionId',
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const question = await productService.get(req.params.questionId);
+      const question = await questionService.get(req.params.questionId);
       res.send(question);
     } catch (err) {
       next(err);
