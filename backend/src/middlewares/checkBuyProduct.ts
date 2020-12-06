@@ -1,6 +1,7 @@
 import { Response, NextFunction } from 'express';
 import {IAuthRequest} from './checkAuth';
 import {Product} from '../models/product.model';
+import {Op} from 'sequelize/types';
 
 export async function checkBuyProduct(req: IAuthRequest, res: Response, next: NextFunction) {
     try {
@@ -11,7 +12,9 @@ export async function checkBuyProduct(req: IAuthRequest, res: Response, next: Ne
             where: {
                 id: req.params.productId,
                 UserId: req.user.userId,
-                status: !'approved'
+                status: {
+                    [Op.not]: 'approved'
+                }
             }
         });
         if (product) {
