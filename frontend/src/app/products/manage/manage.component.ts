@@ -64,8 +64,10 @@ export class ManageComponent implements OnInit {
         if (result) {
           this.productService
             .return(product.id)
-            .subscribe(() => this.reloadProducts());
-        }
+            .subscribe(() => {
+              this.reloadProducts();
+              window.location.reload();
+            })}
       });
   }
 
