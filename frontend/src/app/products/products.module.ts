@@ -17,7 +17,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ProductEditImagesComponent } from './product-edit-images/product-edit-images.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ManageComponent } from './manage/manage.component';
@@ -39,6 +39,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
 import { DetailsComponent } from './details/details.component';
 import { ApproveComponent } from './approve/approve.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 import { AnswerFormComponent } from './question/answer-form/answer-form.component';
 import { QuestionAnswersComponent } from './details/question-answers/question-answers.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -64,6 +65,7 @@ import { ReturnComponent } from './return/return.component';
     QuestionFormComponent,
     DetailsComponent,
     ApproveComponent,
+    FavoritesComponent,
     AnswerFormComponent,
     QuestionAnswersComponent,
     ReturnComponent,

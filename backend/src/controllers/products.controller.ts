@@ -1,15 +1,20 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { ProductService } from '../services/product.service';
-import { verifyToken, IAuthRequest } from '../middlewares/checkAuth';
+import {
+  verifyToken,
+  IAuthRequest,
+  parseToken,
+} from '../middlewares/checkAuth';
 import { checkIsAdmin } from '../middlewares/checkIsAdmin';
-import {checkProductAuthorization} from '../middlewares/checkProductAuthorization';
-import {checkBuyProduct} from '../middlewares/checkBuyProduct';
+import { checkProductAuthorization } from '../middlewares/checkProductAuthorization';
+import { checkBuyProduct } from '../middlewares/checkBuyProduct';
 import { ProductTransactionController } from './product-transaction.controller';
+import { FavoriteService } from '../services/favorite.service';
 import { notificationService } from '../services/notification.service';
-
 
 const productController: Router = express.Router();
 const productService = new ProductService();
+const favoriteService = new FavoriteService();
 
 productController.post(
   '/',
@@ -19,44 +24,61 @@ productController.post(
       const userId = req.user.userId;
       const product = await productService.create(req.body, userId);
       res.send(product);
-      await notificationService.addStatusNotification(userId, product.id, 'pendingNotification', );
+      await notificationService.addStatusNotification(
+        userId,
+        product.id,
+        'pendingNotification'
+      );
     } catch (err) {
       next(err);
     }
   }
 );
 
-
 productController.put(
   '/:productId/approve',
   verifyToken,
   checkIsAdmin,
-  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+  async (
+    req: Request<{ productId: string }>,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const productId = req.params.productId;
       const product = await productService.approve(productId);
       const userId = product.UserId;
       res.send(product);
-      await notificationService.addStatusNotification(userId, product.id, 'approvalNotification', );
+      await notificationService.addStatusNotification(
+        userId,
+        product.id,
+        'approvalNotification'
+      );
     } catch (err) {
       return next(err);
     }
   }
 );
 
-
-
 productController.put(
   '/:productId/reject',
   verifyToken,
   checkIsAdmin,
-  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+  async (
+    req: Request<{ productId: string }>,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const productId = req.params.productId;
       const product = await productService.reject(productId);
       const userId = product.UserId;
       res.send(product);
-      await notificationService.addStatusNotification(userId, product.id, 'rejectionNotification', );
+      await notificationService.addStatusNotification(
+        userId,
+        product.id,
+        'rejectionNotification'
+      );
     } catch (err) {
       return next(err);
     }
@@ -66,7 +88,11 @@ productController.put(
 productController.put(
   '/:productId/return',
   verifyToken,
-  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+  async (
+    req: Request<{ productId: string }>,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const productId = req.params.productId;
       const returnedProduct = await productService.return(productId);
@@ -77,20 +103,20 @@ productController.put(
   }
 );
 
-
-
 productController.get(
-  '/', // you can add middleware on specific requests like that
-  async (_req: Request, res: Response, next: NextFunction) => {
+  '/',
+  parseToken,
+  async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
-      const products = await productService.getAll();
+      const products = req.user
+        ? await productService.getAllWithFavorite(req.user.userId)
+        : await productService.getAll();
       res.send(products);
     } catch (err) {
       next(err);
     }
   }
 );
-
 
 productController.get(
   '/me', // you can add middleware on specific requests like that
@@ -113,7 +139,7 @@ productController.get(
     try {
       const products = await productService.getToBeApproved();
       res.send(products);
-    } catch (err)  {
+    } catch (err) {
       next(err);
     }
   }
@@ -146,12 +172,15 @@ productController.get(
   }
 );
 
-
 productController.put(
   '/:productId',
   verifyToken,
   checkProductAuthorization,
-  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+  async (
+    req: Request<{ productId: string }>,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const productId = req.params.productId;
       const product = await productService.update(productId, req.body);
@@ -169,5 +198,19 @@ productController.use(
   ProductTransactionController
 );
 
+productController.put(
+  '/:productId/favorites',
+  verifyToken,
+  async (req: IAuthRequest, res: Response, next: NextFunction) => {
+    try {
+      const userId = req.user.userId;
+      const productId = parseInt(req.params.productId, 10);
+      const favorites = await favoriteService.create(userId, productId);
+      res.send(favorites);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 export const ProductController: Router = productController;

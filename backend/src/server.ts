@@ -13,6 +13,7 @@ import { Answer } from './models/answer.model';
 
 import cors from 'cors';
 import {ApiController} from './api';
+import { Favorite } from './models/favorite.model';
 
 export class Server {
     private server: Application;
@@ -30,6 +31,7 @@ export class Server {
         Photo.initialize(this.sequelize);
         Transaction.initialize(this.sequelize);
         Notification.initialize(this.sequelize);
+        Favorite.initialize(this.sequelize);
         Question.initialize(this.sequelize);
         Answer.initialize(this.sequelize);
         User.createAssociations();
@@ -37,6 +39,7 @@ export class Server {
         Photo.createAssociations();
         Transaction.createAssociations();
         Notification.createAssociations();
+        Favorite.createAssociations();
         Question.createAssociations();
         Answer.createAssociations();
 

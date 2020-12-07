@@ -25,4 +25,9 @@ export class NavigationComponent implements OnInit {
   goToLogin(): void {
     this.router.navigate(['user', 'login']);
   }
+
+  goToFavorites(): void {
+    this.router.navigate(['user', 'favorites']);
+  }
+
 }

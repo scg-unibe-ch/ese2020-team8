@@ -7,6 +7,7 @@ import {PhotoController} from './controllers/photo.controller';
 import { TransactionController } from './controllers/transaction.controller';
 import {verifyToken} from './middlewares/checkAuth';
 import {NotificationController} from './controllers/notification.controller';
+import { FavoriteController } from './controllers/favorites.controller';
 import {QuestionController} from './controllers/question.controller';
 
 
@@ -20,6 +21,7 @@ ApiController
   .use('/secured', SecuredController)
   .use('/transactions', TransactionController)
   .use('/notifications', verifyToken, NotificationController)
+  .use('/favorites', verifyToken, FavoriteController)
   .use('/questions', QuestionController)
 ;
 
