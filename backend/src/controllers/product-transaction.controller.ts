@@ -34,7 +34,12 @@ productTransactionController.post(
 
       const productId = req.params.productId;
       const product = await productService.get(productId);
-      const transactions = await transactionService.create(product, buyerId, rentalDays, deliveryAddress);
+      let totalPrice = product.price;
+      if (product.purchaseType === 'rent') {
+        totalPrice = rentalDays * product.price;
+      }
+
+      const transactions = await transactionService.create(product, buyerId, rentalDays, totalPrice, deliveryAddress);
       res.send(transactions);
       const buyer = await userService.getUserFromToken(req.user);
       const seller = await userService.get(product.UserId);

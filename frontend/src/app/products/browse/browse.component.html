@@ -14,6 +14,14 @@
   [product]="product"
 >
   <div class="action-buttons">
+    <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
+      <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-flat-button (click)="goToBuy(product)">
+        Buy
+      </button>
+      <button *ngIf="product.purchaseType === 'rent'" color="primary" mat-flat-button (click)="goToBuy(product)">
+        Rent
+      </button>
+    </div>
     <button color="primary" mat-flat-button (click)="goToDetails(product)">
       More information
     </button>
