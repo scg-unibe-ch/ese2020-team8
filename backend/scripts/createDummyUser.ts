@@ -12,7 +12,7 @@ User.initialize(sequelize);
 
 const DUMMY_USER = {
     email: 'dummy1@test.com',
-    userName: 'DummySeller',
+    userName: 'seller',
     password: 'dummyTest_1',
     firstName: 'Sara',
     lastName: 'DummySeller',
@@ -21,7 +21,7 @@ const DUMMY_USER = {
 
 const DUMMY2_USER = {
     email: 'dummy2@test.com',
-    userName: 'DummyBuyer',
+    userName: 'buyer',
     password: 'dummyTest_2',
     firstName: 'Flo',
     lastName: 'DummyBuyer',
