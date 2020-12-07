@@ -86,6 +86,34 @@ productController.put(
 );
 
 productController.put(
+  '/:productId/enable',
+  verifyToken,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.enable(productId);
+      res.send(product);
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+productController.put(
+  '/:productId/disable',
+  verifyToken,
+  async (req: Request<{productId: string}>, res: Response, next: NextFunction) => {
+    try {
+      const productId = req.params.productId;
+      const product = await productService.disable(productId);
+      res.send(product);
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+productController.put(
   '/:productId/return',
   verifyToken,
   async (

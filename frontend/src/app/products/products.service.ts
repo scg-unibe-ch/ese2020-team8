@@ -55,6 +55,15 @@ export class ProductsService {
     return this.http.put<IProduct>(this.url + `/${productId}/reject`, {});
   }
 
+  enable(productId: number): Observable<IProduct> {
+    return this.http.put<IProduct>(this.url + `/${productId}/enable`, {});
+  }
+
+  disable(productId: number): Observable<IProduct> {
+    return this.http.put<IProduct>(this.url + `/${productId}/disable`, {});
+  }
+
+
 }
 
 export interface IProduct {
