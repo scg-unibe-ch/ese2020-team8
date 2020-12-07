@@ -9,8 +9,8 @@
   margin-left: auto;
   margin-right: auto;
   display: inherit;
-  margin-top: 50px;
-  margin-bottom: 73px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checkbox-section {
@@ -24,4 +24,8 @@
   width: 90px;
   margin-right: 12px;
   margin-left: 12px;
+}
+.price {
+  margin-right: auto;
+  margin-left: auto;
 }

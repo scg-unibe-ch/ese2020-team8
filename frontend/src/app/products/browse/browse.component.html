@@ -22,9 +22,6 @@
         Rent
       </button>
     </div>
-    <button color="primary" mat-flat-button (click)="goToDetails(product)">
-      More information
-    </button>
     <section *ngIf="userService.loggedIn" class="favorite-section">
       <mat-icon matSuffix (click)="toggleFavorites(product)">{{
         product.Favorites && product.Favorites.length ? "favorite" : "favorite_border"
@@ -32,3 +29,4 @@
     </section>
   </div>
 </app-product-item>
+

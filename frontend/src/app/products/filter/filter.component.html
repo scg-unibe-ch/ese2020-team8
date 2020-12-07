@@ -1,12 +1,14 @@
-<form [formGroup]="filterForm">
-  <mat-form-field class="search">
-    <mat-label>Search for a Product / Service</mat-label>
-    <input matInput class="form-control" type="text" name="search" [ngModel]="searchTerm"
-      (ngModelChange)="searchTermChange.emit($event)" [ngModelOptions]="{ standalone: true }" autocomplete="off"
-      placeholder="Search for a Product / Service" />
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-</form>
+<mat-card>
+  <form [formGroup]="filterForm">
+    <mat-form-field class="search">
+      <mat-label>Search for a Product / Service</mat-label>
+      <input matInput class="form-control" type="text" name="search" [ngModel]="searchTerm"
+        (ngModelChange)="searchTermChange.emit($event)" [ngModelOptions]="{ standalone: true }" autocomplete="off"
+        placeholder="Search for a Product / Service" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-card>
 <form [formGroup]="filterForm">
   <mat-card>
     <div class="filter-group">
@@ -43,7 +45,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div formGroupName="price">
+      <section class="checkbox-section">
+        <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
+      </section>
+      <div class="price">
         Price:
         <mat-form-field class="price-field">
           <input matInput formControlName="min" type=number placeholder="min">
@@ -52,9 +57,6 @@
           <input matInput formControlName="max" type=number placeholder="max">
         </mat-form-field>
       </div>
-      <section class="checkbox-section">
-        <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
-      </section>
     </div>
   </mat-card>
 </form>
