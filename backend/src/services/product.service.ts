@@ -3,7 +3,8 @@ import {
   ProductCreationAttributes,
   ProductAttributes,
 } from '../models/product.model';
-import {Photo} from '../models/photo.model';
+import { Photo } from '../models/photo.model';
+import { Favorite } from '../models/favorite.model';
 
 export class ProductService {
   public async get(productId: string) {
@@ -11,7 +12,7 @@ export class ProductService {
       where: {
         id: productId,
       },
-      include: Photo as any
+      include: Photo as any,
     });
   }
 
@@ -80,7 +81,27 @@ export class ProductService {
         status: 'approved',
         availability: true,
       },
-      include: Photo as any
+      include: Photo as any,
+    });
+  }
+
+  public async getAllWithFavorite(userId: number) {
+    return Product.findAll({
+      where: {
+        status: 'approved',
+      },
+      include: [
+        {
+          model: Favorite as any,
+          where: {
+            UserId: userId,
+          },
+          required: false
+        },
+        {
+          model: Photo as any,
+        },
+      ],
     });
   }
 
@@ -89,7 +110,7 @@ export class ProductService {
       where: {
         UserId: userId,
       },
-      include: Photo as any
+      include: Photo as any,
     });
   }
 
@@ -98,7 +119,7 @@ export class ProductService {
       where: {
         status: 'pending',
       },
-      include: Photo as any
+      include: Photo as any,
     });
   }
 }

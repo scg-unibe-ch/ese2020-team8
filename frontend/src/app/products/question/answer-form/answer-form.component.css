@@ -7,7 +7,14 @@
   background: url('/assets/banner.jpeg');
   background-size: contain;
 }
-  
+
+
+textarea {
+  min-height: 150px;
+  height: auto;
+  max-height: 400px;
+}
+
 
 .answer-form {
     width: 25%;

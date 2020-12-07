@@ -27,7 +27,7 @@
     <div class="action-buttons">
       <button *ngIf="product.status === 'approved'" color="primary" mat-flat-button (click)="goToEdit(product)"
         matTooltip="edit product">
-        EDIT
+        <mat-icon>edit</mat-icon>
       </button>
       <button *ngIf="product.status === 'approved'" mat-mini-fab color="primary" (click)="delete(product)"
         matTooltip="delete product">

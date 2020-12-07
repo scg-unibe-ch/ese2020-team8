@@ -19,23 +19,21 @@ const PRODUCT1 = {
     location: '3012 Bern',
     delivery: true,
     status: 'approved',
-    UserId: 3,
-    rentalDays: 365
+    UserId: 3
 };
 
 
 const PRODUCT2 = {
     title: 'Baby Bed Mini',
     description: 'This Baby-bed suits the small children',
-    price: 2,
+    price: 12,
     productType: 'good',
     purchaseType: 'rent',
     availability: true,
     location: '3012 Bern',
     delivery: false,
     status: 'approved',
-    UserId: 3,
-    rentalDays: 365
+    UserId: 3
 };
 
 const PRODUCT3 = {
@@ -48,8 +46,7 @@ const PRODUCT3 = {
     location: '3012 Bern',
     delivery: false,
     status: 'approved',
-    UserId: 3,
-    rentalDays: 365
+    UserId: 3
 };
 
 sequelize.sync().then( async () => {

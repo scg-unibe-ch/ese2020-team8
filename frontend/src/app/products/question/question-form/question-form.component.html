@@ -5,13 +5,23 @@
 </div>
 
 <mat-card class="main">
-  <h2>Ask a Question</h2>
+  <h2>Your question about "{{product.title}}"</h2>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>See Product Details</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-product-show [product]="product"></app-product-show>
+  </mat-expansion-panel>
+
+
   <mat-card class="question-Form" (keyup.enter)="askQuestion()">
-    <p>Your question</p>
+    <p>What's your question to the seller?</p>
     <form [formGroup]="questionForm">
       <mat-form-field>
         <mat-label></mat-label>
-        <input matInput formControlName="text" placeholder="" />
+        <textarea matInput formControlName="text" placeholder="Your Question"></textarea>
       </mat-form-field>
     </form>
     <button color="primary" mat-button (click)="goBack()">Back</button>
