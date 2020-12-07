@@ -1,3 +1,10 @@
+:host {
+  width: 100%;
+}
+.banner {
+  background: url('/assets/banner.jpeg');
+  background-size: contain;
+}
 
 .action-buttons {
   display: flex;
