@@ -13,7 +13,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./answer-form.component.css']
 })
 export class AnswerFormComponent implements OnInit {
-
   answerForm = new FormGroup({
     text: new FormControl('', [Validators.required]),
   });
@@ -37,11 +36,9 @@ export class AnswerFormComponent implements OnInit {
   }
 
   answerQuestion(): void {
-    console.log('answerQuestion call entered')
     const text = this.answerForm.get('text').value;
     const questionId =  this.question.id; 
     this.questionService.answer(questionId, text).subscribe((res) => {
-      console.log(res)
       this.location.back();
     }) 
   }

@@ -11,12 +11,19 @@ mat-form-field {
   width: 100%;
   min-height: 100px;
 }
-  
-  button {
+
+
+textarea {
+  min-height: 150px;
+  height: auto;
+  max-height: 400px;
+}
+
+button {
     margin-top: 12px;
     margin-bottom: 12px;
     margin-right: 7px;
-  }
+}
   
   .question-form>form {
     display:flex;

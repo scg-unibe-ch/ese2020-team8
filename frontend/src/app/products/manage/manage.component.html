@@ -28,11 +28,11 @@
     [product]="product"
   >
     <div class="action-buttons">
-      <button color="primary" 
+      <button mat-mini-fab color="primary" 
         mat-flat-button 
         (click)="goToEdit(product)"
         matTooltip="edit product">
-        EDIT
+        <mat-icon>edit</mat-icon>
       </button>
       <button mat-mini-fab color="primary" 
         (click)="delete(product)"
