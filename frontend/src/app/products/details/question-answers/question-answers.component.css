@@ -3,3 +3,11 @@
     color: rgba(0, 0, 0, 0.54);
   }
   
+.question>p {
+  font-style: italic;
+}
+
+.answer>p {
+  font-style: italic;
+}
+

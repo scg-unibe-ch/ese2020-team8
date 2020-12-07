@@ -16,6 +16,7 @@ export interface UserAttributes {
     city?: string;
     country?: string;
     wallet?: number;
+    favoriteListId?: number;
 }
 
 export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> { }
@@ -35,6 +36,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     city?: string;
     country?: string;
     wallet!: number;
+    favoriteListId?: number;
 
     public static initialize(sequelize: Sequelize) {
         User.init({

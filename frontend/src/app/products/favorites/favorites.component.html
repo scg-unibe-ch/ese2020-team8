@@ -1,0 +1,21 @@
+<mat-card class="product-list">
+  <h1>My Favorites</h1>
+
+  <app-product-item
+    *ngFor="
+      let favorite of favorites
+    "
+    [product]="favorite.Product"
+  >
+    <div *ngIf="this.userService.loggedIn" class="action-buttons">
+      <button color="primary" mat-flat-button (click)="goToBuy(favorite.Product)">
+        Buy
+      </button>
+      <section class="favorite-section">
+      <mat-icon matSuffix (click)="remove(favorite)">{{
+        favorite.deleted ? "favorite_border" : "favorite"
+      }}</mat-icon>
+    </section>
+    </div>
+  </app-product-item>
+</mat-card>

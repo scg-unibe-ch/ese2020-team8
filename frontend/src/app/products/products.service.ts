@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {Observable} from 'rxjs';
+import {IFavorite} from './favorites.service';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,7 @@ export interface IProduct {
     delivery: boolean;
     status: string;
     UserId: number;
+    Favorites?: IFavorite[];
     Photos: {
       fileName: string;
     }[];

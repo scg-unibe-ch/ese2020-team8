@@ -41,3 +41,7 @@ img {
 .attributes>span {
   font-weight: bold;
 }
+
+.mat-card-actions {
+  margin-top: 36px; 
+}
