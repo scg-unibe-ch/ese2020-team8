@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="mobile-only" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ng-content select=".nav-buttons"></ng-content>
+</mat-toolbar>
+
+<mat-sidenav-container class="main-container">
+  <mat-sidenav #drawer mode="side">
+    <ng-content select=".nav-buttons"></ng-content>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
