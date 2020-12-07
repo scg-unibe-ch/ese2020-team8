@@ -21,6 +21,7 @@
 
 .favorite-section {
   display: flex;
+  cursor: pointer;
   align-items: center;
   height: 56px;
   color:  #cf73a3;

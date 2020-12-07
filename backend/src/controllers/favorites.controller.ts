@@ -10,7 +10,7 @@ favoriteController.delete(
   async (req: IAuthRequest, res: Response, next: NextFunction) => {
     try {
       const favorites = await favoriteService.delete(req.params.favoriteId);
-      res.send(favorites);
+      res.send({ deleted: favorites });
     } catch (err) {
       next(err);
     }

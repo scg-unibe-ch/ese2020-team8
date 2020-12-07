@@ -1,5 +1,6 @@
-import { Favorite, FavoriteAttributes } from '../models/favorite.model';
+import { Favorite } from '../models/favorite.model';
 import { Product } from '../models/product.model';
+import {Photo} from '../models/photo.model';
 
 export class FavoriteService {
   public async get(favoriteId: string) {
@@ -11,7 +12,7 @@ export class FavoriteService {
   }
 
   public async create(userId: number, productId: number) {
-    return Favorite.create({ userId, productId });
+    return Favorite.create({ UserId: userId, ProductId: productId });
   }
 
   public async delete(favoriteId: string) {
@@ -25,10 +26,11 @@ export class FavoriteService {
   public async getMyFavorites(userId: number) {
     return Favorite.findAll({
       where: {
-        userId: userId,
+        UserId: userId,
       },
       include: {
         model: Product as any,
+        include: Photo as any
       },
     });
   }

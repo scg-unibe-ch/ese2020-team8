@@ -8,12 +8,12 @@ import { IProduct } from './products.service';
   providedIn: 'root',
 })
 export class FavoritesService {
-  private url = environment.endpointURL + '/products/favorites';
+  private url = environment.endpointURL + '/favorites';
 
   constructor(private http: HttpClient) {}
 
   create(productId: number): Observable<IFavorite> {
-    return this.http.post<IFavorite>(this.url, { productId });
+    return this.http.put<IFavorite>(`${environment.endpointURL}/products/${ productId }/favorites`, {});
   }
 
   getMyFavorites(): Observable<IFavorite[]> {
@@ -27,6 +27,7 @@ export class FavoritesService {
 
 export interface IFavorite {
   id: number;
-  userId: number;
-  productId: IProduct;
+  UserId: number;
+  ProductId: number;
+  Product?: IProduct;
 }

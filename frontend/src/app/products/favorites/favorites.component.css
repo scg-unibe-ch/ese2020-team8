@@ -1,0 +1,14 @@
+
+.action-buttons {
+  display: flex;
+}
+.action-buttons>button {
+  margin: 0.4rem;
+}
+.favorite-section {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  height: 56px;
+  color:  #cf73a3;
+}

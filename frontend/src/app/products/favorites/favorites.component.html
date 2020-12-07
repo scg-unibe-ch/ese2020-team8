@@ -5,10 +5,10 @@
     *ngFor="
       let favorite of favorites
     "
-    [product]="favorite.productId"
+    [product]="favorite.Product"
   >
     <div *ngIf="this.userService.loggedIn" class="action-buttons">
-      <button color="primary" mat-flat-button (click)="goToBuy(favorite.productId)">
+      <button color="primary" mat-flat-button (click)="goToBuy(favorite.Product)">
         Buy
       </button>
       <section class="favorite-section">

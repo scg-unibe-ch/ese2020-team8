@@ -9,8 +9,8 @@ import {Product} from './product.model';
 
 export interface FavoriteAttributes {
     id: number;
-    userId: number;
-    productId: number;
+    UserId: number;
+    ProductId: number;
 }
 
 export interface FavoriteCreationAttributes extends Optional<FavoriteAttributes, 'id'> { }
@@ -20,8 +20,8 @@ export class Favorite
   implements FavoriteAttributes {
 
   id!: number;
-  userId!: number;
-  productId!: number;
+  UserId!: number;
+  ProductId!: number;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -34,11 +34,11 @@ export class Favorite
           autoIncrement: true,
           primaryKey: true,
         },
-        userId: {
+        UserId: {
           type: DataTypes.INTEGER,
           allowNull: false
         },
-        productId: {
+        ProductId: {
           type: DataTypes.INTEGER,
           allowNull: false
         },
@@ -48,8 +48,8 @@ export class Favorite
   }
 
   public static createAssociations() {
-    Favorite.belongsTo(User, {foreignKey: 'userId'});
-    Favorite.belongsTo(Product, {foreignKey: 'productId'});
+    Favorite.belongsTo(User, {foreignKey: 'UserId'});
+    Favorite.belongsTo(Product, {foreignKey: 'ProductId'});
     Product.hasMany(Favorite);
     User.hasMany(Favorite);
   }
