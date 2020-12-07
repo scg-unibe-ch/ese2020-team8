@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {Observable} from 'rxjs';
+import {IFavorite} from './favorites.service';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,15 @@ export class ProductsService {
     return this.http.put<IProduct>(this.url + `/${productId}/reject`, {});
   }
 
+  enable(productId: number): Observable<IProduct> {
+    return this.http.put<IProduct>(this.url + `/${productId}/enable`, {});
+  }
+
+  disable(productId: number): Observable<IProduct> {
+    return this.http.put<IProduct>(this.url + `/${productId}/disable`, {});
+  }
+
+
 }
 
 export interface IProduct {
@@ -69,6 +79,7 @@ export interface IProduct {
     delivery: boolean;
     status: string;
     UserId: number;
+    Favorites?: IFavorite[];
     Photos: {
       fileName: string;
     }[];

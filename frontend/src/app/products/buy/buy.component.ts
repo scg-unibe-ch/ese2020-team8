@@ -11,6 +11,8 @@ import {
 import { TransactionsService } from '../transactions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderComponent } from '../order/order.component';
+import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-buy',
@@ -24,9 +26,9 @@ export class BuyComponent implements OnInit {
   isChecked = false;
 
   deliveryForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    streetNr: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    streetNr: new FormControl('', [Validators.required]),
     zip: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
@@ -36,7 +38,7 @@ export class BuyComponent implements OnInit {
   });
 
   rentalDaysForm = new FormGroup({
-    rentalDays: new FormControl('', [Validators.required]),
+    rentalDays: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000000000)]),
   });
 
   constructor(
@@ -46,7 +48,8 @@ export class BuyComponent implements OnInit {
     private productService: ProductsService,
     private transactionService: TransactionsService,
     public dialog: MatDialog, //private orderComponent: OrderComponent
-    private location: Location
+    private location: Location,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -58,23 +61,29 @@ export class BuyComponent implements OnInit {
   }
 
   confirmOrder(): void {
-    const order = {
-      product: this.product,
-      deliveryAddress: this.deliveryForm.value,
-      rentalDays: this.rentalDaysForm.value,
-    };
-
-    this.dialog
-      .open(OrderComponent, {
-        width: '600px',
-        data: order,
-      })
-      .afterClosed()
-      .subscribe((result) => {
-        if (result) {
-          this.buy();
-        }
-      });
+    this.checkBudget().subscribe((hasEnoughMoney) => {
+      if (hasEnoughMoney) {
+        this.dialog
+          .open(OrderComponent, {
+            width: '600px',
+            data: {
+              product: this.product,
+              deliveryAddress: this.deliveryForm.value,
+              rentalDays: this.rentalDaysForm.get('rentalDays').value,
+            },
+          })
+          .afterClosed()
+          .subscribe((result) => {
+            if (result) {
+              this.buy();
+            }
+          });
+      } else {
+        this.snackbar.open(`You don't have enough money.`, 'close', {
+          duration: 5000,
+        });
+      }
+    });
   }
 
   // User press button 'pay' which then comes here and runs pay/transaction
@@ -92,5 +101,15 @@ export class BuyComponent implements OnInit {
 
   goBack() {
     this.location.back(); // <-- go back to previous location
+  }
+
+  checkBudget() {
+    const total = this.rentalDaysForm.get('rentalDays').value
+      ? this.rentalDaysForm.get('rentalDays').value * this.product.price
+      : this.product.price;
+    const hasEnoughMoney = this.userService
+      .getProfile()
+      .pipe(map((profile) => profile.wallet >= total));
+    return hasEnoughMoney;
   }
 }

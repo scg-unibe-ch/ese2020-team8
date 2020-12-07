@@ -107,13 +107,37 @@
     </mat-step>
     <mat-step label="upload an image">
       <form>
+        <div class="upload-info-div">
+          <p>
+            Here you can add some photos to your advertisement, if you want. It's completely optional, if you don't add any, 
+            a pretty placeholder image will be shown.
+          </p>
+          <p>
+            You can add up to 5 images.
+          </p>
+        </div>
         <input
           type="file"
           multiple
           accept="image/*"
           (change)="onFileChange($event)"
         />
-        <button mat-button (click)="submit()">Save</button>
+        <div class="help-div">
+          <mat-card *ngIf="help">
+            <p>
+              How it works: By clicking on [Durchsuchen], you open a window where you can select the images you want to upload.
+              To upload more than one image, you can select multiple files by 
+              <span *ngIf="!mobile">selecting them with your mouse while pressing 
+                [ctrl] on your compuer's keyboard</span>
+              <span *ngIf="mobile">
+                long-pressing the first image, then you can add more by selecting them normally
+              </span>.
+            </p>
+          </mat-card>
+          <button mat-button class="help-button" color="primary" (click)="help = !help" *ngIf="!help">Help</button>
+          <button mat-button class="help-button" color="primary" (click)="help = !help" *ngIf="help">Hide Help</button>
+        </div>
+        <button mat-raised-button class="submit-button" color="primary" (click)="submit()">Save</button>
       </form>
       <div class="image-container">
         <img *ngFor="let img of previewImages" [src]="img.result" />

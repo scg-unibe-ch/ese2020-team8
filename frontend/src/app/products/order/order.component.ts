@@ -11,6 +11,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class OrderComponent implements OnInit {
   product: IProduct;
+  totalPrice: number;
 
   constructor(
     public dialog: MatDialog,
@@ -18,7 +19,11 @@ export class OrderComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.totalPrice = this.data.rentalDays
+      ? this.data.rentalDays * this.data.product.price
+      : this.data.product.price;
+  }
 
   onNoClick(): void {
     this.dialog.closeAll();

@@ -25,7 +25,7 @@ import { UserModule } from './user/user.module';
 import { ProductsModule } from './products/products.module';
 import { AdminModule } from './admin/admin.module';
 
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationLayoutComponent } from './navigation/navigation-layout.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -36,14 +36,16 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { WalletComponent } from './wallet/wallet.component';
 import {NotificationComponent} from './notification/notification.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
+    NavigationLayoutComponent,
     WelcomeComponent,
     WalletComponent,
-    NotificationComponent
+    NotificationComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

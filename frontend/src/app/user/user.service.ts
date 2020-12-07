@@ -71,8 +71,8 @@ export class UserService {
     return this.http.put<User>(this.url + '/edit', user);
   }
 
-  getProfile(): Observable<User> {
-    return this.http.get<User>(this.url + '/me');
+  getProfile(): Observable<UserProfile> {
+    return this.http.get<UserProfile>(this.url + '/me');
   }
 
   checkUserStatus(): void {

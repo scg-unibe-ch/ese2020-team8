@@ -33,7 +33,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         if (error) {
           if (error.error) {
             switch (error.error.name) {
-              case 'BuyOwnProduct' : {
+              case 'BuyProduct' : {
                 this.snackBar.open(error.error.message, 'Back to Marketplace', {
                   duration: 10000,
                 })
@@ -95,7 +95,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
               }
             }
           }
-          this.snackBar.open(error.message + ' | Error type: ' + error.name, 'close');
+          else { this.snackBar.open(error.message + ' | Error type: ' + error.name, 'close'); }
+          //this.snackBar.open(error.message + ' | Error type: ' + error.name, 'close');
         }
         else { null }
       }

@@ -1,17 +1,32 @@
-  <app-products-filter
-    *ngIf="products"
-    [products]="products"
-    [(filters)]="productFilters"
-    [(searchTerm)]="searchTerm"
-  ></app-products-filter>
-  <app-product-item
-    *ngFor="
-      let product of products
-        | productFilter: productFilters
-        | filter: searchTerm;
-      index as productId
-    "
-    [product]="product"
-  >
+<app-products-filter
+  *ngIf="products"
+  [products]="products"
+  [(filters)]="productFilters"
+  [(searchTerm)]="searchTerm"
+></app-products-filter>
+<app-product-item
+  *ngFor="
+    let product of products
+      | productFilter: productFilters
+      | filter: searchTerm;
+    index as productId
+  "
+  [product]="product"
+>
+  <div class="action-buttons">
+    <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
+      <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-flat-button (click)="goToBuy(product)">
+        Buy
+      </button>
+      <button *ngIf="product.purchaseType === 'rent'" color="primary" mat-flat-button (click)="goToBuy(product)">
+        Rent
+      </button>
+    </div>
+    <section *ngIf="userService.loggedIn" class="favorite-section">
+      <mat-icon matSuffix (click)="toggleFavorites(product)">{{
+        product.Favorites && product.Favorites.length ? "favorite" : "favorite_border"
+      }}</mat-icon>
+    </section>
+  </div>
+</app-product-item>
 
-  </app-product-item>
