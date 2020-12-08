@@ -65,6 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'products/favorites',
+    canActivate: [AuthGuard],
     component: FavoritesComponent,
   },
   {

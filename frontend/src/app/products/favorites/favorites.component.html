@@ -19,7 +19,7 @@
   >
     <div *ngIf="this.userService.loggedIn" class="action-buttons">
       <button color="primary" mat-flat-button (click)="goToBuy(favorite.Product)">
-        Buy
+        {{ favorite.Product.purchaseType === 'buy' ? 'Buy': 'Rent'}}
       </button>
       <section class="favorite-section">
       <mat-icon matSuffix (click)="remove(favorite)">{{

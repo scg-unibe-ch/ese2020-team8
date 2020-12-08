@@ -16,10 +16,7 @@
   <div class="action-buttons">
     <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
       <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-flat-button (click)="goToBuy(product)">
-        Buy
-      </button>
-      <button *ngIf="product.purchaseType === 'rent'" color="primary" mat-flat-button (click)="goToBuy(product)">
-        Rent
+        {{ product.purchaseType === 'buy' ? 'Buy': 'Rent'}}
       </button>
     </div>
     <section *ngIf="userService.loggedIn" class="favorite-section">
