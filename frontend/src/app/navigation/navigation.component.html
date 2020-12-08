@@ -1,52 +1,175 @@
 <app-navigation-layout>
-  <ng-container class="nav-buttons">
-  <button mat-button aria-label="go to marketplace" routerLink="/">
-    <mat-icon>storefront</mat-icon>
-    <span>Marketplace</span>
-  </button>
-  <button *ngIf="userService.loggedIn" mat-button aria-label="go to favorite products" routerLink="/products/favorites">
-    <mat-icon style="color: #cf73a3;">favorite</mat-icon>
-    <span>Favorites</span>
-  </button>
-  <button *ngIf="userService.loggedIn" mat-button aria-label="go to product list" routerLink="/products/history">
-    <mat-icon>shopping_basket</mat-icon>
-    <span>Purchase History</span>
-  </button>
-  <button *ngIf="userService.loggedIn" mat-button aria-label="go to your product management dashboard"
-    routerLink="/products/manage">
-    <mat-icon>gavel</mat-icon>
-    <span>My Sales</span>
-  </button>
-  <button *ngIf="(userService.isAdmin && userService.loggedIn)" mat-button aria-label="go to approve list" routerLink="/admin/approve">
-    <mat-icon>admin_panel_settings</mat-icon>
-    <span>Admin</span>
-  </button>
-  <span class="spacer"></span>
-  <button *ngIf="userService.loggedIn" mat-button aria-label="go to your notification inbox"
-    routerLink="/notifications">
-    <mat-icon [matBadge]="(newNotificationCount|async)?.count" [matBadgeHidden]="(newNotificationCount|async)?.count === 0" matBadgeColor="warn">message</mat-icon>
-  </button>
-  <button *ngIf="!userService.loggedIn" mat-icon-button aria-label="login button" (click)="goToLogin()">
-    Login
-  </button>
-  <span *ngIf="userService.loggedIn">
-    <app-wallet-icon></app-wallet-icon>
-  </span>
-  <button *ngIf="userService.loggedIn" mat-button [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu">
-    <span [innerHTML]="userService.user.userName"></span>
-    <mat-icon>expand_more</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/user/edit">
-      <mat-icon>face</mat-icon>
-      <span>Profile</span>
+  <ng-container class="toolbar-nav-buttons">
+    <button mat-button aria-label="go to marketplace" routerLink="/">
+      <mat-icon>storefront</mat-icon>
+      <span>Marketplace</span>
     </button>
-    <button mat-menu-item (click)="userService.logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Logout</span>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to favorite products"
+      routerLink="/products/favorites"
+    >
+      <mat-icon style="color: #cf73a3">favorite</mat-icon>
+      <span>Favorites</span>
     </button>
-  </mat-menu>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to product list"
+      routerLink="/products/history"
+    >
+      <mat-icon>shopping_basket</mat-icon>
+      <span>Purchase History</span>
+    </button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to your product management dashboard"
+      routerLink="/products/manage"
+    >
+      <mat-icon>gavel</mat-icon>
+      <span>My Sales</span>
+    </button>
+    <button
+      *ngIf="userService.isAdmin && userService.loggedIn"
+      mat-button
+      aria-label="go to approve list"
+      routerLink="/admin/approve"
+    >
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin</span>
+    </button>
+    <span class="spacer"></span>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to your notification inbox"
+      routerLink="/notifications"
+    >
+      <mat-icon
+        [matBadge]="(newNotificationCount | async)?.count"
+        [matBadgeHidden]="(newNotificationCount | async)?.count === 0"
+        matBadgeColor="warn"
+        >message</mat-icon
+      >
+    </button>
+    <button
+      *ngIf="!userService.loggedIn"
+      mat-icon-button
+      aria-label="login button"
+      (click)="goToLogin()"
+    >
+      Login
+    </button>
+    <span *ngIf="userService.loggedIn">
+      <app-wallet-icon></app-wallet-icon>
+    </span>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <span [innerHTML]="userService.user.userName"></span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/user/edit">
+        <mat-icon>face</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="userService.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+  <ng-container class="sidenav-buttons">
+    <button mat-button aria-label="go to marketplace" routerLink="/">
+      <mat-icon>storefront</mat-icon>
+      <span>Marketplace</span>
+    </button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to favorite products"
+      routerLink="/products/favorites"
+    >
+      <mat-icon style="color: #cf73a3">favorite</mat-icon>
+      <span>Favorites</span>
+    </button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to product list"
+      routerLink="/products/history"
+    >
+      <mat-icon>shopping_basket</mat-icon>
+      <span>Purchase History</span>
+    </button>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to your product management dashboard"
+      routerLink="/products/manage"
+    >
+      <mat-icon>gavel</mat-icon>
+      <span>My Sales</span>
+    </button>
+    <button
+      *ngIf="userService.isAdmin && userService.loggedIn"
+      mat-button
+      aria-label="go to approve list"
+      routerLink="/admin/approve"
+    >
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin</span>
+    </button>
+    <span class="spacer"></span>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      aria-label="go to your notification inbox"
+      routerLink="/notifications"
+    >
+      <mat-icon
+        [matBadge]="(newNotificationCount | async)?.count"
+        [matBadgeHidden]="(newNotificationCount | async)?.count === 0"
+        matBadgeColor="warn"
+        >message</mat-icon
+      >
+    </button>
+    <button
+      *ngIf="!userService.loggedIn"
+      mat-icon-button
+      aria-label="login button"
+      (click)="goToLogin()"
+    >
+      Login
+    </button>
+    <span *ngIf="userService.loggedIn">
+      <app-wallet-icon></app-wallet-icon>
+    </span>
+    <button
+      *ngIf="userService.loggedIn"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <span [innerHTML]="userService.user.userName"></span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/user/edit">
+        <mat-icon>face</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="userService.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </ng-container>
   <ng-content></ng-content>
 </app-navigation-layout>

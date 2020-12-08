@@ -1,4 +1,5 @@
 
+
 .main-content {
   background-color: #eee;
 }
@@ -25,3 +26,18 @@ mat-icon {
 .spacer {
   flex: 1 1 auto;
 }
+
+.nav-buttons-toolbar {
+  height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.sidenav-buttons-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
