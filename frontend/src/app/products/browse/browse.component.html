@@ -15,7 +15,7 @@
 >
   <div class="action-buttons">
     <div *ngIf="this.userService.loggedIn && this.userService.user.userId !== product.UserId" class="action-buttons">
-      <button *ngIf="product.purchaseType === 'buy'" color="primary" mat-flat-button (click)="goToBuy(product)">
+      <button color="primary" mat-flat-button (click)="goToBuy(product)">
         {{ product.purchaseType === 'buy' ? 'Buy': 'Rent'}}
       </button>
     </div>
