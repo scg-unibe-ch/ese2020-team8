@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<mat-card *ngIf="notifications" class="main">
+<mat-card *ngIf="notifications?.length; else noNotification" class="main">
   <mat-accordion>
     <mat-expansion-panel
       *ngFor="let notification of notifications; index as notificationId"
@@ -135,4 +135,8 @@
 
     </mat-expansion-panel>
   </mat-accordion>
+</mat-card>
+
+<mat-card #noNotification class="main">
+  <p>No notifications yet</p>
 </mat-card>
