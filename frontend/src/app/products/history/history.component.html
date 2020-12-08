@@ -16,10 +16,5 @@
     *ngFor="let product of products | productFilter: filters; index as productId"
     [product]="product"
   >
-    <div class="action-buttons">
-      <button color="primary" mat-flat-button>
-        Add Review
-      </button>
-    </div>
   </app-product-item>
 </mat-card>
