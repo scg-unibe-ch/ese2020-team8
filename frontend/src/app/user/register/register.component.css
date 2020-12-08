@@ -9,9 +9,16 @@
 }
 
 .user-auth-card {
-  width: 25%;
-  margin: 10vh auto 10vh auto;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 10vh auto 0 auto;
   padding: 2rem;
+}
+
+@media only screen and (min-width: 769px) {
+  .user-auth-card {
+    width: 25%
+  }
 }
 
 .user-auth-card>p{

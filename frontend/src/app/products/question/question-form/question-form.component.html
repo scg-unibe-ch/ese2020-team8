@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<mat-card class="main">
+<mat-card *ngIf="product" class="main">
   <h2>Your question about "{{product.title}}"</h2>
 
   <mat-expansion-panel>

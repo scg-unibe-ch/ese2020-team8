@@ -8,7 +8,8 @@
 }
 
 .user-auth-card {
-  width: 100%;
+  width: 90%;
+  box-sizing: border-box;
   margin: 10vh auto 0 auto;
   padding: 2rem;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation-layout.component.css'],
 })
 export class NavigationLayoutComponent implements OnInit {
+
+  @Input() notificationCount: number;
 
   constructor(
     private router: Router,
