@@ -19,6 +19,7 @@ export class Server {
     private server: Application;
     public sequelize: Sequelize;
     private port = process.env.PORT || 3000;
+    private dbFile = process.env.DB_FILEPATH || 'db.sqlite';
 
     constructor() {
         this.server = this.configureServer();
@@ -82,7 +83,7 @@ export class Server {
     private configureSequelize(): Sequelize {
         return new Sequelize({
             dialect: 'sqlite',
-            storage: 'db.sqlite',
+            storage: this.dbFile,
             logging: false // can be set to true for debugging
         });
     }
