@@ -1,8 +1,18 @@
 <mat-toolbar color="primary">
   <button
-    [matBadge]="notificationCount"
-    [matBadgeHidden]="notificationCount === 0"
+    *ngIf="userService.loggedIn"
+    [matBadge]="(newNotificationCount|async)?.count"
+    [matBadgeHidden]="(newNotificationCount|async)?.count === 0"
     matBadgeColor="warn"
+    mat-icon-button
+    class="mobile-only"
+    aria-label="Example icon-button with menu icon"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button
+    *ngIf="!userService.loggedIn"
     mat-icon-button
     class="mobile-only"
     aria-label="Example icon-button with menu icon"

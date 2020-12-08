@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import {Observable} from 'rxjs';
+import {UserService} from '../user/user.service';
 
 @Component({
   selector: 'app-navigation-layout',
@@ -8,10 +10,11 @@ import { Router } from '@angular/router';
 })
 export class NavigationLayoutComponent implements OnInit {
 
-  @Input() notificationCount: number;
+  @Input() newNotificationCount: Observable<{ count: number}>;
 
   constructor(
     private router: Router,
+    public userService: UserService,
   ) {}
 
   ngOnInit(): void {
