@@ -1,5 +1,6 @@
 export const config = Object.freeze({
     uploadPath: process.env.UPLOAD_PATH || './uploads',
+    dbFile: process.env.DB_FILEPATH || 'db.sqlite',
     mailer: {
         host: process.env.MAIL_HOST || 'smtp.ethereal.email',
         port: process.env.MAIL_PORT || 587,

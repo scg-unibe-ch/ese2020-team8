@@ -1,10 +1,11 @@
 import { Sequelize } from 'sequelize';
 import { User } from '../src/models/user.model';
 import bcrypt from 'bcrypt';
+import {config} from '../src/config';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'db.sqlite',
+    storage: config.dbFile,
     logging: false // can be set to true for debugging
 });
 

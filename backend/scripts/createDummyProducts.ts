@@ -1,9 +1,10 @@
 import { Sequelize } from 'sequelize';
 import { Product } from '../src/models/product.model';
+import {config} from '../src/config';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'db.sqlite',
+    storage: config.dbFile,
     logging: false // can be set to true for debugging
 });
 
