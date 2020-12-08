@@ -15,7 +15,7 @@ export class ProductFilterPipe implements PipeTransform {
 
   transform(
     products: IProduct[],
-    filters: IProductFilters|string[],
+    filters: IProductFilters,
     filterType = 'match'
   ): IProduct[] {
     return products.filter((product) => {
@@ -28,7 +28,7 @@ export class ProductFilterPipe implements PipeTransform {
   assertFilter(
     product: IProduct,
     columnName: string,
-    filter: IProductFilter|string,
+    filter: IProductFilter,
     defaultFilterType: string
   ): boolean {
     // filter is either specified on the filter
@@ -46,10 +46,12 @@ export class ProductFilterPipe implements PipeTransform {
 }
 
 export interface IProductFilters {
-  [columnName: string]: IProductFilter|string;
+  [columnName: string]: IProductFilter;
 }
 
-export interface IProductFilter {
+export type IProductFilter = IProductFilterObject | string | boolean;
+
+export interface IProductFilterObject {
   value: string;
   type?: string;
 }

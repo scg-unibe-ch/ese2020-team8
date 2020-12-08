@@ -36,7 +36,7 @@ export class FilterComponent implements OnInit, OnChanges {
       min: 0,
       max: 1000,
     }),
-    delivery: '',
+    delivery: false,
     productType: '',
     purchaseType: '',
   });
@@ -57,6 +57,8 @@ export class FilterComponent implements OnInit, OnChanges {
       Object.entries(values).forEach(([columnName, value]) => {
         if (value) {
           if (typeof value === 'string') {
+            this.filters[columnName] = value;
+          } else if (typeof value === 'boolean') {
             this.filters[columnName] = value;
           }
         } else {
