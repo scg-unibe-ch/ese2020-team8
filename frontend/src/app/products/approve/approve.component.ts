@@ -30,7 +30,9 @@ export class ApproveComponent implements OnInit {
 
   approve(element: IProduct): void {
     this.productService.approve(element.id).subscribe(product => {
-      this.snackBar.open(`Successfully approved ${product.title}`);
+      this.snackBar.open(`Successfully approved ${product.title}`, 'close', {
+        duration: 5000
+      });
       this.goBack();
     });
   }
@@ -39,12 +41,12 @@ export class ApproveComponent implements OnInit {
     this.productService.reject(element.id).subscribe(product => {
       this.snackBar.open(`Product rejected: ${product.title}`, 'close', {
         duration: 5000,
-      })
+      });
       this.goBack();
     });
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 
