@@ -6,6 +6,11 @@
 
 
 <mat-card class="main">
+  <ng-container *ngIf="!favorites?.length">
+    <h1>Uuuuups</h1>
+    <p>Don't you want to add any favorites?</p>
+    <p>You can go to <a routerLink="/">marketplace</a> and mark a product as favorite and it will appear here</p>
+  </ng-container>
   <app-product-item
     *ngFor="
       let favorite of favorites
