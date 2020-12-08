@@ -31,6 +31,7 @@ export class TransactionsService {
 export interface ITransaction extends ICreateTransactionRequestBody{
   id: number;
   price: number;
+  totalPrice: number;
   ProductId: number;
   productType: string;
   purchaseType: string;
