@@ -48,7 +48,7 @@
       <section class="checkbox-section">
         <mat-checkbox formControlName="delivery">delivery</mat-checkbox>
       </section>
-      <div class="price">
+      <div formGroupName="price" class="price">
         Price:
         <mat-form-field class="price-field">
           <input matInput formControlName="min" type=number placeholder="min">
